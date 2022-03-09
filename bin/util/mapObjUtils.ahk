@@ -21,11 +21,15 @@ map2json(mapObj)
     ; 也可以直接 map2json，json2xml（python）
     ; 也可以 map2xml（ahk）
     str := ""
+    ; replacedStr := ""
+    ; newKey := ""
     for key, value in mapObj
+        ; newKey := key
+        ; replacedStr := StrReplace(value, "`r`n", " ")
         str .= 
         (
             '`t{`n'
-                '`t`t"phrase": "' value '",`n'
+                '`t`t"phrase": "' RegExReplace(value, "[`r`n`"]", "\r") '",`n'
                 '`t`t"shortcut": "' key '"`n'
             '`t},`n'
         )
@@ -55,7 +59,7 @@ json2map(FileName) {
     for chunk in json
     {
         ; 也可自定义修改关键词
-        RegExMatch(chunk, '"phrase": "(.*)".\s+"shortcut": "(.*)"', match)
+        RegExMatch(chunk, '"phrase": "(.*)".\s+"shortcut": "(.*)"', &match)
         mapObj[match[2]] := match[1]
     }
     return mapObj
@@ -63,13 +67,14 @@ json2map(FileName) {
 
 ahkMacDict2ShareDir()
 {
+    tooltip "convert start..."
     ; 调用不要太频繁，每次间隔5秒，因为程序开关或网站会卡会话
     global macDict
     map2json(macDict)
     script := A_ScriptDir "\bin\util\json2plist.py" 
     src_path := A_Clipboard
     dest_path := "F:\Ipad_share\" fileNameAddToday("userMacDict.plist")
-    RunWait "python " script " " src_path " " dest_path,,"Min"
+    RunWait "python -u" script " " src_path " " dest_path
     ; 脚本中已将结果保存到系统剪切版本了
     if A_clipboard == "OK"
         MsgBox "已保存在 " dest_path
@@ -78,3 +83,5 @@ ahkMacDict2ShareDir()
         MsgBox A_Clipboard
 }
 
+
+; CapsLock & 9:: ahkMacDict2ShareDir()

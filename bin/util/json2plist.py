@@ -14,6 +14,9 @@ def json2plist(dictionary: str) -> str:
     """ 
         功能: 调用工具类网站接口，实现用户词典的转换格式
         url: "https://wtools.io/convert-json-to-plist"
+        🐞已知问题： 需要科学上网 + 避免 443，不如手动转换
+        最后拷贝仅 plist 字典文件后需要替换字符
+        &#13;&#13; -> ""
 
         怎么开发的？
             ➤ 网页手动操作 ➤ F12 查看网页请求 ➤ 拷贝请求为 cURL(bash) 格式

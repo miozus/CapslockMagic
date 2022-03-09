@@ -662,12 +662,6 @@ bombExploseGif() {
 ;---------------------------------------------------------------------o
 ;                       常用网站
 ;---------------------------------------------------------------------o
-editArticles() {
-    Run "https://www.zhihu.com/creator/manage/creation/all"
-    Run "https://mp.csdn.net/mp_blog/manage/article"
-    Run "https://www.jianshu.com/writer#/notebooks/51241025/notes/92966389"
-    Run "https://www.cnblogs.com/miozus/"
-}
 
 alg4() {
     Run "https://visualgo.net/zh/sorting"
