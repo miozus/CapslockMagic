@@ -1,33 +1,33 @@
 # CapslockMagic
 
-All my effort is the parody of Ruohang Feng (Vonng) &amp;  Salted Fish Akang (xianyukang).
+All my effort is the parody of Ruohang Feng (Vonng) &amp; Salted Fish Akang (xianyukang).
 
 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 
 ---
- 
+
 ## 历史版本比较
 
 `Magic` 继承了 `Capslock Enhancement` 的经典设计（类似 HHKB 键盘），弥补了它在 Windows 平台的遗憾。
 
 `Magic` 吸收了 `MyKeymap` 的实现细节和设计灵感，并修复了脚本语言向上兼容，采用面向对象的现代编码风格，让开发者更容易拓展和上手维护。
 
-`Magic` 重写了 **新输入法**，可以管理任意的用户指令集，获得念咒语般的魔法。
+`Magic` 进化了 **猴子输入法**，可以管理任意的用户指令集，获得念咒语般的魔法。
 
-| 序号 | 功能特色 | Enhancement                                         | MyKeymap                                                      | Magic                                                              |
-| ---- | -------- | --------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 🌐    | Github   | [Vonng/Capslock](https://github.com/Vonng/Capslock) | [xianyukang/MyKeymap](https://github.com/xianyukang/MyKeymap) | [miozus/CapslockMagic](https://github.com/miozus/CapslockMagic)    | 使用说明书 |
-| 💻    | 支持平台 | 主: MacOS </br> 次: Windows                         | 仅限 Windows11/10                                             | 主: Windows 11/10 </br> 次: MacOS                                  |
-| ⌨️    | 推荐配列 | 87 键                                               | 60 键                                                         | 60 键                                                              |
-| 🧰    | 开发软件 | Kirabiner：不可二次开发                             | AutoHotkey V1：普通脚本风格                                   | AutoHotkey_H_V2 ： 面向对象的现代风格，类似 JavaScript，支持多线程 |
-| ⚙️    | 配置文件 | 难读的超长 json / yaml 本文                         | 内置网页服务，非常友好                                        | 源码即配置，拓展灵活，适合开发者                                   |
-| 👾    | 启动程序 | ✅ 仅打开                                            | ✅支持同类窗口切换                                             | ✅ 支持同类窗口切换                                                 |
-| 📺    | 窗口调整 | ✅ 需安装 Zoom                                       | ✅ 位置和移动                                                  | ✅ 仿写 Zoom（内置）                                                |
-| 🖱️    | 鼠标操作 | ✅ 要双手按住                                        | ✅ 要双手按住                                                  | ✅ 按下进入高光时刻，单手操作                                       |
-| ✏️    | 新输入法 | ❌                                                   | ✅ 分号模式：指令集                                            | ✅ 分号模式进阶版：用户词库、指令集等，可同步 MacOS                 |
-| #️⃣    | 特殊符号 | ❌                                                   | ✅ 重排列到字母键位                                            | ✅ 重排列到字母键位（改良）                                         |
-| 3️⃣    | 数字模式 | ❌                                                   | ✅ 数字小键盘                                                  | ✅ 数字小键盘 + <kbd>F1~12</kbd>                                    |
-| `I`  | 光标编辑 | ✅ 方向移动和前后删除                                | ❌                                                             | ✅ 方向移动和前后删除                                               |
+| 序号 | 功能特色   | Enhancement                                         | MyKeymap                                                      | Magic                                                              |
+| ---- | ---------- | --------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 🌐    | Github     | [Vonng/Capslock](https://github.com/Vonng/Capslock) | [xianyukang/MyKeymap](https://github.com/xianyukang/MyKeymap) | [miozus/CapslockMagic](https://github.com/miozus/CapslockMagic)    |
+| 💻    | 支持平台   | 主: MacOS </br> 次: Windows                         | 仅限 Windows11/10                                             | 主: Windows 11/10 </br> 次: MacOS                                  |
+| ⌨️    | 推荐配列   | 87 键                                               | 60 键                                                         | 60 键                                                              |
+| 🧰    | 开发软件   | Karabiner：不可二次开发                             | AutoHotkey V1：普通脚本风格                                   | AutoHotkey_H_V2 ： 面向对象的现代风格，类似 JavaScript，支持多线程 |
+| ⚙️    | 配置文件   | 难读的超长 json / yaml 本文                         | 内置网页服务，非常友好                                        | 源码即配置，拓展灵活，适合开发者                                   |
+| 👾    | 启动程序   | ✅ 仅打开                                            | ✅ 支持同类窗口切换                                            | ✅ 支持同类窗口切换                                                 |
+| 📺    | 窗口调整   | ✅ 需安装 Moom                                       | ✅ 位置和移动                                                  | ✅ 仿写 Moom（内置）                                                |
+| 🖱️    | 鼠标操作   | ✅ 要双手按住                                        | ✅ 要双手按住                                                  | ✅ 按下进入高光时刻，单手操作                                       |
+| ✏️    | 猴子输入法 | ❌                                                   | ✅ 分号模式：指令集                                            | ✅ 分号模式进阶版：用户词库、指令集等，可同步 MacOS                 |
+| #️⃣    | 特殊符号   | ❌                                                   | ✅ 重排列到字母键位                                            | ✅ 重排列到字母键位（改良）                                         |
+| 3️⃣    | 数字模式   | ❌                                                   | ✅ 数字小键盘                                                  | ✅ 数字小键盘 + <kbd>F1~12</kbd>                                    |
+| `I`  | 光标编辑   | ✅ 方向移动和前后删除                                | ❌                                                             | ✅ 方向移动和前后删除                                               |
 
 ## Magic 增强功能
 
@@ -53,41 +53,52 @@ All my effort is the parody of Ruohang Feng (Vonng) &amp;  Salted Fish Akang (xi
 
 ## 快速开始
 
-#### 1. 下载
+### Windows
+
+1. 下载
 
 ```bash
 git clone https://github.com/miozus/CapslockMagic.git
 ```
 
-#### 2. 运行
+2. 运行
 
-**2.1 Windows**
+- 解压文件 `tools\AutoHotkey_H\AutoHotkey_H-beta.3-fixed.3-author-thqby.7z`
+  - （可选） [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H.git) 下载最新发行版
+- 右键点击解压后的 `AutoHotKey.exe` （x64/x32）， 选择安全 > 兼容性 > 勾选管理员权限
+- 右键单击 `CapslockPlus.ahk` 打开方式，选择到上述解压目录的 `AutoHotKey.exe` 打开。
 
-- 解压压缩包`tools\AutoHotkey_H\AutoHotkey_H-beta.3-fixed.3-author-thqby.7z` 
-  - 也可以在 [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H.git) 下载发行版
-- 右键点击 `AutoHotKey.exe` 安全-兼容性-勾选管理员权限
-- 右键单击 `CapslockPlus.ahk` 打开方式，选择到选择上述目录的 `AutoHotKey.exe` 打开。
+### MacOS
 
-**2.2 MacOS**
+ps. `Magic` 在 MacOS 平台载体也是 Karabainer，仅同步拓展了 `特殊符号`（`Semicolon Pull Down Symbol`） 的功能。没有猴子输入法。
 
-Ps. Magic版本 在 MacOS 平台也用 Kirabainer，只是额外增加了一个 `特殊符号` 的插件。没有新输入法的功能。
+1. 直接从云端引用（免下载）
 
-2.2.1 下载
+使用 Safari 浏览器打开链接，会从云端加载到 Karabiner-Element，然后在复杂映射栏目中点击 `add-rule` 和 `Enable` 启用配置。
 
 ```bash
-wget https://github.com/Vonng/Capslock/blob/master/mac_v3/capslock.yml -P ~/opt/config/capslock.yml 
+karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/miozus/CapslockMagic/master/tools/karabiner/caps_lock_magic.json
 ```
 
-2.2.2 修改
+2. （可选）二次开发
 
-- 复制 `tools\kirabiner\capslock-magic.yml` 替换 `capslock.yml` 开头
-
-2.2. 3 终端运行
+2.1 下载
 
 ```bash
-# zsh
-yq eval -j -I=2 ~/opt/config/capslock.yml > ~/.config/karabiner/assets/complex_modifications/capslock.json
-# 查看是否成功
+git clone https://github.com/miozus/CapslockMagic.git
+```
+
+2.2 修改
+
+修改文件 `tools\karabiner\caps_lock_magic.yml`
+
+2.3 运行终端命令，换格式和启用配置
+
+```bash
+# 格式转换
+yq eval -j -I=2 ~/opt/config/caps_lock_magic.yml > ~/.config/karabiner/assets/complex_modifications/caps_lock_magic.json
+
+# 添加规则和启用配置
 open -a Karabiner-Elements
 ```
 
@@ -103,19 +114,19 @@ open -a Karabiner-Elements
 
 只说两个好玩的功能：
 
-### ⌨️ 新输入法
+### ⌨️ 猴子输入法
 
 ![cne](bin/img/hook_cne.gif)
 
-| 键盘输入                                                          | 显示   | 说明                                             | 分号模式 |
-| ----------------------------------------------------------------- | ------ | ------------------------------------------------ | -------- |
-| <kbd>;</kbd>                                                      | 🙈      | 等待输入密令，猴子不看                           | 进入     |
-| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>e</kbd>                       | cn     | 匹配到了用户词典（纯字符串） 1️⃣，直接输出代码片段 | 退出     |
-| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>k</kbd>                       | cnk    | 尚未匹配到，继续等待                             | 等待     |
-| <kbd>⏎</kbd>                                                      | 💨      | cnk 不存在，猴子跑了                             | 退出     |
-| <kbd>Esc</kbd>                                                    |        | 随时可以中断                                     | 退出     |
-| 假如 <kbd>s</kbd><kbd>l</kbd><kbd>e</kbd><kbd>e</kbd><kbd>p</kbd> | slee   | 匹配用户词典（函数名） 2️⃣，执行指令               |
-|                                                                   | 🙉 睡眠 | 电脑马上进入休眠状态，猴子惊讶你竟然猜对啦       | 退出     |
+| 键盘输入                                                          | 显示   | 说明                                           | 猴子   | 分号模式 |
+| ----------------------------------------------------------------- | ------ | ---------------------------------------------- | ------ | -------- |
+| <kbd>;</kbd>                                                      | 🙈      | 等待输入密令                                   | 不看   | 进入     |
+| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>e</kbd>                       | cn     | 匹配到用户词典（纯字符串 1️⃣），直接输出代码片段 |        | 退出     |
+| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>k</kbd>                       | cnk    | 尚未匹配，继续等待                             |        | 等待     |
+| <kbd>⏎</kbd>                                                      | 💨      | cnk 不存在                                     | 跑了   | 退出     |
+| <kbd>Esc</kbd>                                                    |        | 中断                                           |        | 退出     |
+| 假如 <kbd>s</kbd><kbd>l</kbd><kbd>e</kbd><kbd>e</kbd><kbd>p</kbd> | slee   | 匹配到用户词典（函数名 2️⃣），执行指令           |        |
+|                                                                   | 🙉 睡眠 | 电脑马上进入休眠状态                           | 猜对了 | 退出     |
 
 在 `data\UserDictionary.ahk` 中，使用 map 数据结构保存着用户词典。
 
@@ -132,15 +143,20 @@ open -a Karabiner-Elements
 
 ![数字模式键盘](bin/img/digital-keyboard.png)
 
-按住 <kbd>3</kbd> 不松手，处在数字模式，松开时退出。
+按住数字 <kbd>3</kbd> 不松手，处在数字模式，松开时退出。
 
-| 键盘输入     | 映射到        | 说明 |
-| ------------ | ------------- | ---- |
+| 键盘输入     | 映射到        |
+| ------------ | ------------- |
 | <kbd>2</kbd> | <kbd>F2</kbd> |
 | <kbd>J</kbd> | 4             |
 | <kbd>N</kbd> | 空格键        |
+| 无（松开） | 3        |
 
 想象成稍微倾斜的数字小键盘，方便输入手机号码、坐标、确认、删除。
+
+本人在这里设计取消了映射到 <kbd>F3</kbd> 的按键，因为它为了成全整个模式，牺牲了自己。
+
+---
 
 ## 常见问题
 
@@ -148,16 +164,16 @@ open -a Karabiner-Elements
 
 不可以，一般管理员权限的软件都不能开机自启，这是所有 AutoHokey 都会面临的 PAC 问题。但你可以将它加入计算机启动计划，或者尝试使用 `bat` 脚本运行，将脚本加入开机自启的目录（运行`shell:startup`），来实现开机自启。
 
-- 它需要管理员权限来控制`sehll` ，降权打开 VSCode。
 - 如果不给管理员权限，遇到有些系统软件，脚本就失效了。
+- 它需要管理员权限来控制`sehll` ，降权打开软件（比如 VSCode）。
 
 2. 怎么将插件用户词典（.ahk）转换成苹果用户词典（.plist）呢？
-   1. 在Plus 文件前面，启用插件：（mapObjectUtils）这一行去掉注释符号#
+   1. 在 Plus 文件前面，启用插件：（mapObjectUtils）这一行去掉注释符号#
    2. `mapObjectUtils` 底部，开启接口函数快捷方式，文件底部去掉注释符号#
    3. Dcit 用户词典文件底部，开启 MacObject 列表的注释符号#
-   4. 打开 `json2plit.py`（使用pip安装需要的库），如果失败了，需要继续手动执行以下步骤
+   4. 打开 `json2plit.py`（使用 pip 安装需要的库），如果失败了，需要继续手动执行以下步骤
    5. 按下步骤 `2` 的快捷键，设置系统区域语言为兼容 UTF-8 ，弹窗提示得到 `userDict0309.json`
    6. 复制内容粘贴到步骤 `4` 中函数注释的网站，点击转换（网站抽风，可能需要在线校验 JSON 格式再拷贝回来），转换后得到类似 XML 的`.plist` 格式字典，点击复制
    7. 新建 `.plist` 文件，粘贴内容进去，替换为双引号 `&#13;&#13; -> ""`
    8. 使用局域网共享，将此文件传给苹果电脑，然后打开设置-输入法偏好设置，直接拖放在左边栏。这样拼音打字时，会根据 key 映射出字符片段。
-   ps. 很麻烦是吧，所以自己想更好的办法同步用户词典吧。
+      ps. 很麻烦是吧，所以自己想更好的办法同步用户词典吧。
