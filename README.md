@@ -26,7 +26,7 @@ All my effort is the parody of Ruohang Feng (Vonng) &amp; Salted Fish Akang (xia
 | 🖱️    | 鼠标操作   | ✅ 要双手按住                                        | ✅ 要双手按住                                                  | ✅ 按下进入高光时刻，单手操作                                       |
 | `I`  | 光标编辑   | ✅ 方向移动和前后删除                                | ❌                                                             | ✅ 方向移动和前后删除                                               |
 | ✏️    | 猴子输入法 | ❌                                                   | ✅ 分号模式：指令集                                            | ✅ 分号模式进阶版：用户词库、指令集等，支持词库同步 MacOS           |
-| #️⃣    | 分号特殊符 | ❌                                                   | ✅ 重排列到字母键位                                            | ✅ 重排列到字母键位（改良），支持 MacOS                             |
+| <kbd>;</kbd>    | 分号特殊符 | ❌                                                   | ✅ 重排列到字母键位                                            | ✅ 重排列到字母键位（改良），支持 MacOS                             |
 | 3️⃣    | 数字小键盘 | ❌                                                   | ✅ 数字模式                                                    | ✅ 数字小键盘 + <kbd>F1~12</kbd>（后续支持 MacOS）                  |
 
 ## Magic 增强功能
@@ -43,19 +43,27 @@ All my effort is the parody of Ruohang Feng (Vonng) &amp; Salted Fish Akang (xia
     - 特殊的中文标点符号：已内置在词典中，以备不时之需。
     - 闲鱼阿康的解决方案：推荐禁用中文输入法了。（太简单粗暴了。）
 
+📒 **内置开发者词库**
+
+词库是全新的命名空间，不会和本地输入法冲突，作为支撑着猴子输入法。这是半年来积累的实践,每天都在用，重复三次就考虑入库，灵感式更新。如果你想重写自己的词库，它非常有参考价值。
+
+映射键值编码规则，简单分为两类
+
+- `小鹤双拼` 的拼音编码。比如 jxso（双拼） ⇒ jia suo （全拼） ⇒ 🔒 （输出）
+  - 因为双拼能保证四个字母键，拼出两字单词，重码率低，这套规则的按键频率，分摊到手指也不累。
+- 单词缩写，所读即所得。比如 acf ⇒ `@` `C`on `f` iguration
+  
+内置词库涵盖范围
+
+- `emoji`：数据结构和算法 | 缓存 | 线程 | 设计模式 | 事务
+- `cs`：计算机科学 | Spring 常用注解 | RESTful | 代码片段（如预防各种类型 NPE）
+- `win`: PowerShell 终端命令
+- `private`：完整中文标点符号 （无视输入法）| 按键符号
+- `logo`：收集各种开发框架图标链接，装饰 Notion 标题
+
 🚫 **屏蔽热键**
 
 屏蔽了微软 <kbd>Win</kbd> 键相关的 `一年也用不上几次但几百年都存在` 的组合键，做组合键的吝啬鬼。
-
-📒 **内置开发者词库**
-
-使用 `小鹤双拼` 作为键值重写的词典，也是半年来积累的实践，每天都在用，非常有参考价值。因为双拼能保证四个字母键，拼出两字单词，且重码率低，按键频率分摊到手指也不累。主要涵盖以下方向:
-
-- emoji 词典：数据结构和算法 | 缓存 | 线程 | 设计模式 | 事务
-- private：完整中文标点符号 （无视输入法）| 按键符号
-- logo：收集各种开发框架图标链接，用来装饰 Notion 标题
-- cs：Spring 常用注解 | RESTful | 代码片段（如预防 NPE）
-- win: PowerShell 管理进程终端命令
 
 🧩 **内置插件**
 
@@ -73,9 +81,9 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 2. 运行
 
-- 解压文件 `tools\AutoHotkey_H\AutoHotkey_H-beta.3-fixed.3-author-thqby.7z`
+- 解压文件 `tools/AutoHotkey_H/AutoHotkey_H-beta.3-fixed.3-author-thqby.7z`
   - （可选） [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H.git) 下载最新发行版
-- 右键点击解压后的 `AutoHotKey.exe` （x64/x32）， 选择安全 > 兼容性 > 勾选管理员权限
+- 右键单击 `AutoHotKey.exe` （x64/x32）， 选择属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定
 - 右键单击 `CapslockPlus.ahk` 打开方式，选择到上述解压目录的 `AutoHotKey.exe` 打开。
 
 ### MacOS
@@ -150,7 +158,7 @@ open -a Karabiner-Elements
       - 还要在 `bin\SemicolonHook.ahk` 的`execSemicolonAbbr` 方法中添加一种情况 `case "sleep": computerGoSleep()`
     - 技巧：它可以用来写 Vim 的宏，完美的跨软件运行方案。
 
-### #️⃣ 分号特殊符（特舒服）
+### <kbd>;</kbd> 分号特殊符（特舒服）
 
 ![分号特殊符](bin/img/semicolon-keyboard.png)
 
@@ -204,18 +212,17 @@ open -a Karabiner-Elements
 
 作者取消了映射到 <kbd>F3</kbd> 的按键，因为 <kbd>F3</kbd> 为了成全整个模式，牺牲了它自己。
 
----
-
 ## 常见问题
 
-1. 可以设置开机自启吗？
+1.可以设置开机自启吗？
 
 不可以，一般管理员权限的软件都不能开机自启，这是所有 AutoHokey 都会面临的 PAC 问题。但你可以将它加入计算机启动计划，或者尝试使用 `bat` 脚本运行，将脚本加入开机自启的目录（运行`shell:startup`），来实现开机自启。
 
 - 如果不给管理员权限，遇到有些系统软件，脚本就失效了。
 - 它需要管理员权限来控制`sehll` ，降权打开软件（比如 VSCode）。
 
-2. 怎么将插件用户词典（.ahk）转换成苹果用户词典（.plist）呢？
+2.怎么将插件用户词典（.ahk）转换成苹果用户词典（.plist）呢？
+
    1. 在 Plus 文件前面，启用插件：（mapObjectUtils）这一行去掉注释符号#
    2. `mapObjectUtils` 底部，开启接口函数快捷方式，文件底部去掉注释符号#
    3. Dcit 用户词典文件底部，开启 MacObject 列表的注释符号#
