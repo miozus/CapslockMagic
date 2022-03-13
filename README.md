@@ -109,48 +109,51 @@ git clone https://github.com/miozus/CapslockMagic.git
 2.运行
 
 - 解压文件 `tools/AutoHotkey_H/AutoHotkey_H-beta.3-fixed.3-author-thqby.7z`
-  - （可选） [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H.git) 下载最新发行版
-- 右键单击 `AutoHotKey.exe` （x64/x32）， 选择属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定
+  - （可选） [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H.git) 下载最新发行版。
+- 右键单击 `AutoHotKey.exe` （x64 / x32）， 选择属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
 - 右键单击 `CapslockPlus.ahk` 打开方式，选择到上述解压目录的 `AutoHotKey.exe` 打开。
 
 ### MacOS
 
 `Magic` 在 MacOS 平台载体也是 Karabainer , 已实现了 `分号特殊符`（`Semicolon Pull Down Symbol`）和 `数字小键盘`（`3 Awake Digital Keyboard`） 的功能。没有猴子输入法。
 
-1.直接从云端引用（免下载）
+**直接从云端导入**（免下载）
 
-使用 Safari 浏览器打开链接，会从云端加载到 Karabiner-Element，然后在复杂映射栏目中点击 `add-rule` 和 `Enable` 启用配置。
+使用 Safari 浏览器打开链接，会从云端加载到 Karabiner-Element，然后在复杂映射栏目点击左下角 `add-rule`, 然后 `Enable` 启用配置。
 
 ```bash
 karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/miozus/CapslockMagic/master/tools/karabiner/caps_lock_magic.json
 ```
 
-（可选）从官方仓库中导入
+<details>
+<summary>（可选）从官方仓库中导入</summary>
 
 ```bash
 https://ke-complex-modifications.pqrs.org/#caps_lock_magic
 ```
 
-<details>
-<summary> 2.（可选）二次开发 </summary>
+</details>
 
-2.1 下载
+<details>
+<summary> （可选）二次开发手动导入 </summary>
+
+1 下载
 
 ```bash
 git clone https://github.com/miozus/CapslockMagic.git
 ```
 
-2.2 修改
+2 修改
 
 修改文件 `tools/karabiner/caps_lock_magic.yml`
 
-2.3 运行终端命令 yq (如果没安装过，则运行 `brew install yq`)，转换格式 yaml ⇒ json 放到默认配置目录中
+3 运行终端命令 yq (如果没安装过，则先运行 `brew install yq`)，转换格式 yaml ⇒ json 放到默认配置目录中
 
 ```bash
 yq eval -j -I=2 your_path_to_CapslockMagic/tools/karabiner/caps_lock_magic.yml > ~/.config/karabiner/assets/complex_modifications/caps_lock_magic.json
 ```
 
-2.4 打开应用,添加规则和启用配置
+4 打开应用,添加规则和启用配置
 
 ```bash
 open -a Karabiner-Elements

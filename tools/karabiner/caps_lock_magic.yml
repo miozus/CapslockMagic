@@ -41,67 +41,67 @@ rules:
       - description: '; + i = :'
         type: basic
         from: { key_code: i , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: semicolon, modifiers: [ left_shift ] } ]
+        to: [ { key_code: semicolon, modifiers: [ left_shift ] } ]
 
       - description: '; + q = ('
         type: basic
         from: { key_code: q , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '9' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '9' , modifiers: [ left_shift ] } ]
 
       - description: '; + c = .'
         type: basic
         from: { key_code: c , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: period } ]
+        to: [ { key_code: period } ]
 
       - description: '; + u = $'
         type: basic
         from: { key_code: u , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '4' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '4' , modifiers: [ left_shift ] } ]
 
       - description: '; + e = ^'
         type: basic
         from: { key_code: e , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '6' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '6' , modifiers: [ left_shift ] } ]
 
       - description: '; + d = ='
         type: basic
         from: { key_code: d , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: equal_sign } ]
+        to: [ { key_code: equal_sign } ]
 
       - description: '; + s = <'
         type: basic
         from: { key_code: s , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: comma, modifiers: [ left_shift ] } ]
+        to: [ { key_code: comma, modifiers: [ left_shift ] } ]
 
       - description: '; + f = >'
         type: basic
         from: { key_code: f , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: period, modifiers: [ left_shift ] } ]
+        to: [ { key_code: period, modifiers: [ left_shift ] } ]
 
       - description: '; + r = &'
         type: basic
         from: { key_code: r , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '7' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '7' , modifiers: [ left_shift ] } ]
 
       - description: '; + v = |'
         type: basic
         from: { key_code: v , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: backslash, modifiers: [ left_shift ] } ]
+        to: [ { key_code: backslash, modifiers: [ left_shift ] } ]
 
       - description: '; + g = {!}'
         type: basic
         from: { key_code: g , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '1' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '1' , modifiers: [ left_shift ] } ]
 
       - description: '; + y = @'
         type: basic
         from: { key_code: y , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '2' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '2' , modifiers: [ left_shift ] } ]
 
       - description: '; + x = _'
         type: basic
         from: { key_code: x , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: hyphen, modifiers: [ left_shift ] } ]
+        to: [ { key_code: hyphen, modifiers: [ left_shift ] } ]
 
       - description: '; + h = `%'
         type: basic
@@ -111,37 +111,37 @@ rules:
       - description: '; + b = {'
         type: basic
         from: { key_code: b , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: open_bracket, modifiers: [ left_shift ] } ]
+        to: [ { key_code: open_bracket, modifiers: [ left_shift ] } ]
 
       - description: '; + j = {text}`;'
         type: basic
         from: { key_code: j , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: semicolon } ]
+        to: [ { key_code: semicolon } ]
 
       - description: '; + k = ``'
         type: basic
         from: { key_code: k , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: grave_accent_and_tilde } ]
+        to: [ { key_code: grave_accent_and_tilde } ]
 
       - description: '; + l = `"'
         type: basic
         from: { key_code: l , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: quote, modifiers: [ left_shift ] } ]
+        to: [ { key_code: quote, modifiers: [ left_shift ] } ]
 
       - description: '; + w = {#}'
         type: basic
         from: { key_code: w , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: '3' , modifiers: [ left_shift ] } ]
+        to: [ { key_code: '3' , modifiers: [ left_shift ] } ]
 
       - description: '; + n = {-}'
         type: basic
         from: { key_code: n , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: hyphen } ]
+        to: [ { key_code: hyphen } ]
 
       - description: '; + m = +'
         type: basic
         from: { key_code: m , modifiers: {  mandatory: [ right_command,right_control,fn,right_option ] } }
-        to: [  { key_code: equal_sign, modifiers: [ left_shift ] } ]
+        to: [ { key_code: equal_sign, modifiers: [ left_shift ] } ]
 
       # 照顾60配列键盘: Esc ~ ` 三合一, 原生操作要 shift Fn1 esc 才能按出来
       - description: '; + t = ~'
@@ -188,47 +188,47 @@ rules:
       - description: '3 + m = 1'
         type: basic
         from: { key_code: m , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '1'} ]
+        to: [ { key_code: '1'} ]
 
       - description: '3 + , = 2'
         type: basic
         from: { key_code: comma , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '2' } ]
+        to: [ { key_code: '2' } ]
 
       - description: '3 + . = 3'
         type: basic
         from: { key_code: period , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '3' } ]
+        to: [ { key_code: '3' } ]
 
       - description: '3 + j = 4'
         type: basic
         from: { key_code: j , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '4' } ]
+        to: [ { key_code: '4' } ]
 
       - description: '3 + k = 5'
         type: basic
         from: { key_code: k , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '5' } ]
+        to: [ { key_code: '5' } ]
 
       - description: '3 + l = 6'
         type: basic
         from: { key_code: l , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '6' } ]
+        to: [ { key_code: '6' } ]
 
       - description: '3 + u = 7'
         type: basic
         from: { key_code: u , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '7' } ]
+        to: [ { key_code: '7' } ]
 
       - description: '3 + i = 8'
         type: basic
         from: { key_code: i , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '8' } ]
+        to: [ { key_code: '8' } ]
 
       - description: '3 + o = 9'
         type: basic
         from: { key_code: o , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: '9' } ]
+        to: [ { key_code: '9' } ]
 
       - description: '3 + n = space'
         type: basic
@@ -238,27 +238,32 @@ rules:
       - description: '3 + h = ,'
         type: basic
         from: { key_code: h , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: comma} ]
+        to: [ { key_code: comma} ]
 
       - description: '3 + y = .'
         type: basic
         from: { key_code: y , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: period } ]
+        to: [ { key_code: period } ]
 
       - description: '3 + enter = enter'
         type: basic
         from: { key_code: return_or_enter, modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: return_or_enter} ]
+        to: [ { key_code: return_or_enter } ]
 
-      - description: '3 + ' = delete_or_backspace'
+      - description: '3 + ; = enter'
+        type: basic
+        from: { key_code: semicolon, modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
+        to: [ { key_code: return_or_enter } ]
+
+      - description: '3 + '' = delete_or_backspace'
         type: basic
         from: { key_code: quote , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: delete_or_backspace } ]
+        to: [ { key_code: delete_or_backspace } ]
 
       - description: '3 + 1 = f1'
         type: basic
         from: { key_code: '1' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f1} ]
+        to: [ { key_code: f1} ]
 
       - description: '3 + 2 = f2'
         type: basic
@@ -268,37 +273,37 @@ rules:
       - description: '3 + 4 = f4'
         type: basic
         from: { key_code: '4' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f4} ]
+        to: [ { key_code: f4} ]
 
       - description: '3 + 5 = f5'
         type: basic
         from: { key_code: '5' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f5} ]
+        to: [ { key_code: f5} ]
 
       - description: '3 + 6 = f6'
         type: basic
         from: { key_code: '6' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f6 } ]
+        to: [ { key_code: f6 } ]
 
       - description: '3 + 7 = f7'
         type: basic
         from: { key_code: '7' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: quote} ]
+        to: [ { key_code: quote} ]
 
       - description: '3 + 8 = f8'
         type: basic
         from: { key_code: '8' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f8 } ]
+        to: [ { key_code: f8 } ]
 
       - description: '3 + 9 = f9'
         type: basic
         from: { key_code: '9' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f9 } ]
+        to: [ { key_code: f9 } ]
 
       - description: '3 + 0 = f10'
         type: basic
         from: { key_code: '0' , modifiers: {  mandatory: [ right_command,right_control,fn,right_shift ] } }
-        to: [  { key_code: f10 } ]
+        to: [ { key_code: f10 } ]
 
       - description: '3 + - = f11'
         type: basic
