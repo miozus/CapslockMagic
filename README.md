@@ -1,6 +1,6 @@
 # CapslockMagic
 
-All my effort is the parody of Ruohang Feng (Vonng) &amp; Salted Fish Akang (xianyukang).
+All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@xianyukang).
 
 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 
@@ -52,14 +52,12 @@ All my effort is the parody of Ruohang Feng (Vonng) &amp; Salted Fish Akang (xia
 
 📒 **内置开发者词库**
 
-词库是全新的命名空间，不会和本地输入法冲突，作为支撑着猴子输入法。这是半年来积累的实践,每天都在用，重复三次就考虑入库，灵感式更新。如果你想重写自己的词库，它非常有参考价值。
+词库是全新的命名空间，作为底层支撑着猴子输入法,也不会和本地输入法冲突。这是半年来积累的实践,每天都在用，重复三次就考虑入库，灵感式更新。如果你想重写自己的词库，它非常有参考价值。
 
 <details>
 <summary>映射键值编码规则</summary>
 
-简单分为两类
-
-- `小鹤双拼` 的拼音编码。比如 jxso（双拼） ⇒ jia suo （全拼） ⇒ 🔒 （输出）
+- `小鹤双拼` 的拼音编码。比如 jxso（双拼,意思加锁） ⇒ 🔒
   - 因为双拼能保证四个字母键，拼出两字单词，重码率低，这套规则的按键频率，分摊到手指也不累。
 - 单词缩写，所读即所得。比如 acf ⇒ `@` `C`on `f` iguration
 
@@ -73,6 +71,19 @@ All my effort is the parody of Ruohang Feng (Vonng) &amp; Salted Fish Akang (xia
 - `win`: PowerShell 终端命令
 - `private`：完整中文标点符号 （无视输入法）| 按键符号
 - `logo`：收集各种开发框架图标链接，装饰 Notion 标题
+
+</details>
+
+<details>
+<summary>支持同步到 Mac （点击展开详情） </summary>
+
+![importMacDict](bin/img/macObj2macDict.gif)
+
+偏好设置 > 键盘 > 文本
+
+一般先全选删除旧词典,再将成品文件 `.plist` 拖拽进来, 导入内置中文输入法,和平时打字没有区别,只是多了候选项, 润物细无声。
+
+转换步骤有点复杂, 详见末尾问答。
 
 </details>
 </br>
@@ -235,9 +246,9 @@ open -a Karabiner-Elements
 
 想象成稍微倾斜的数字小键盘，方便输入手机号码、坐标、确认、删除。
 
-本人取消了映射到 <kbd>F3</kbd> 的按键，因为 <kbd>F3</kbd> 为了成全整个模式，牺牲了它自己。
+这里取消了映射到 <kbd>F3</kbd> 的按键，因为 <kbd>F3</kbd> 为了成全整个模式，牺牲了它自己。
 
-本人把 <kbd>F1~12</kbd> 加上, 是因为他们都和数字有关,而且我的 60 配列键盘 `fn2` 键在右下角对称 `Ctrl` 键,组合太难按了.
+这里把 <kbd>F1~12</kbd> 加上, 是因为他们都和数字有关,而且我的 60 配列键盘 `fn2` 键在右下角对称 `Ctrl` 键, 单个键要瞟一眼键盘,再整组合键的话,就像龙抓手,太难按了。
 
 ## 常见问题
 
@@ -264,6 +275,6 @@ open -a Karabiner-Elements
 6. 复制内容粘贴到步骤 `4` 中函数注释的网站，点击转换（网站抽风，可能需要在线校验 JSON 格式再拷贝回来），转换后得到类似 XML 的`.plist` 格式字典，点击复制
 7. 新建 `.plist` 文件，粘贴内容进去，替换为双引号 `&#13;&#13; -> ""`
 8. 使用局域网共享，将此文件传给苹果电脑，然后打开设置-输入法偏好设置，直接拖放在左边栏。这样拼音打字时，会根据 key 映射出字符片段。
-    ps. 很麻烦是吧，所以自己想更好的办法同步用户词典吧。
+    ps. 很麻烦是吧，自己想更好的办法同步用户词典吧。
 
 </details>
