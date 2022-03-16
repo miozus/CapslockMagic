@@ -222,7 +222,7 @@ open -a Karabiner-Elements
 
 ### ⌨️ 猴子输入法
 
-![cne](bin/img/hook_cne.gif)
+<img src="bin/img/hook_cne.gif" width="100%" alt="print_snippets.gif">
 
 | 键盘输入                                                          | 显示    | 说明                                            | 猴子   | 输入法状态 |
 | ----------------------------------------------------------------- | ------- | ----------------------------------------------- | ------ | ---------- |
@@ -250,10 +250,12 @@ MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
 > 目前已支持 MacOS、QQ拼音、搜狗拼音
 
-根据需要调用 `Converter` 类的转换方法，获得用户自定义短语文件 ，通过局域网/蓝牙/微信等方式传输，导入输入法软件即可。举例来说
+![UserDict](bin/img/userDict.png)
+
+根据需要调用 `Converter` 类的转换方法，获得用户自定义短语文件 ，通过局域网/蓝牙/微信等方式传输，导入输入法软件即可。具体步骤可参考案例
 
 <details>
-<summary> 【案例】如何将猴子词典（.ahk）转换成苹果词典（.plist）？（点击展开详情） </summary>
+<summary> 【案例】如何将猴子词典（.ahk）转换成苹果词典（.plist）?</summary>
 </br>
 
 1.打开猴子词典 `./data/UserDictionary.ahk` ，在底部根据自身需要去掉注释，保存后按 <kbd>Caps</kbd> <kbd>Y</kbd> 重启脚本。
