@@ -119,6 +119,7 @@ CapsLock & 4::
 }
 ;---------------------------------------------------------------------o
 CapsLock & 5:: commentByDoubleSlash()
+LAlt & v:: pasteCodeSingleLine()
 #Hotif
 ;---------------------------------------------------------------------o
 
@@ -212,8 +213,19 @@ switchCodeAsJavaFormat() {
     Send "{Blind^}{LButton}"
     Send "{blind!#}^/"
     Sleep 50
-    Send "{Text}Java"
+    Send "{Text}SQL"
     Sleep 700
     Send "{Enter}"
 
+}
+pasteCodeSingleLine(){
+    Send "{Bind!}^v"
+    Sleep 50
+    Send "{Bind!}{BackSpace}"
+    Send "{Bind!}{Home}" ; 删除头部空白
+    Send "{Bind!}^{Right}"
+    Send "{Bind!}^{Left}"
+    Send "{Bind!}^{BackSpace}"
+    Send "{Bind!}{End}{Enter}{Tab}" ; 另一一行
+    ; Send "{Bind!}^{Tab}" ; 中文注释
 }

@@ -29,7 +29,7 @@ All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@x
 | 📺           | 窗口调整   | ✅ 需安装 Moom                                      | ✅ 位置和移动                                                 | ✅ 仿写 Moom（内置）                                            |
 | 🖱️           | 鼠标操作   | ✅ 需双手按住                                       | ✅ 需双手按住                                                 | ✅ 按下进入高光时刻，单手操作                                   |
 | `I`          | 光标编辑   | ✅ 方向移动和前后删除                               | ❌                                                            | ✅ 方向移动和前后删除                                           |
-| ✏️           | 猴子输入法 | ❌                                                  | ✅ 分号模式：指令集                                           | ✅ 分号模式进阶版：用户词库、指令集等，支持词库同步 MacOS       |
+| 🐵           | 猴子输入法 | ❌                                                  | ✅ 分号模式：指令集                                           | ✅ 分号模式进阶版：用户词典、指令集等，支持词典同步 MacOS       |
 | <kbd>;</kbd> | 分号特殊符 | ❌                                                  | ✅ 重排列到字母键位                                           | ✅ 重排列到字母键位（调优），支持 MacOS                         |
 | 3️⃣           | 数字小键盘 | ❌                                                  | ✅ 数字模式                                                   | ✅ 数字小键盘 + <kbd>F1~12</kbd> ，支持 MacOS                   |
 
@@ -54,9 +54,9 @@ All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@x
 </details>
 </br>
 
-📒 **内置开发者词库**
+📒 **内置猴子词典**
 
-词库是全新的命名空间，作为底层支撑着猴子输入法，也不会和本地输入法冲突。这是半年来积累的实践，每天都在用，打字重复三次就考虑入库，灵感式更新。如果你想重写自己的词库，它非常有参考价值。
+词典是全新的命名空间，本质是 Map 数据结构，作为底层支撑着猴子输入法，不会和本地输入法冲突。这是半年来积累的实践，每天都在用，打字重复三次就考虑入库，灵感式更新。如果你想重写自己的词典，它非常有参考价值。
 
 <details>
 <summary>映射键值编码规则</summary>
@@ -68,26 +68,13 @@ All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@x
 </details>
 
 <details>
-<summary>内置词库涵盖范围</summary>
+<summary>猴子词典涵盖范围</summary>
 
 - `emoji`：数据结构和算法 | 缓存 | 线程 | 设计模式 | 事务
 - `cs`：计算机科学 | Spring 常用注解 | RESTful | 代码片段（如预防各种类型 NPE）
 - `win`: PowerShell 终端命令
 - `private`：完整中文标点符号 （无视输入法）| 按键符号
 - `logo`：收集各种开发框架图标链接，装饰 Notion 标题
-
-</details>
-
-<details>
-<summary>支持同步到 Mac （点击展开详情） </summary>
-
-![importMacDict](bin/img/macObj2macDict.gif)
-
-偏好设置 > 键盘 > 文本
-
-一般先全选删除旧词典，再将成品文件 `.plist` 拖拽进来， 导入内置中文输入法，和平时打字没有区别，只是多了候选项， 润物细无声。
-
-转换步骤有点复杂， 详见末尾问答。
 
 </details>
 </br>
@@ -177,31 +164,24 @@ open -a Karabiner-Elements
 
 只说三个好玩的功能：
 
-### ⌨️ 猴子输入法
+### 3️⃣ 数字小键盘
 
-![cne](bin/img/hook_cne.gif)
+![数字小键盘](bin/img/digital-keyboard.png)
 
-| 键盘输入                                                          | 显示    | 说明                                            | 猴子   | 输入法状态 |
-| ----------------------------------------------------------------- | ------- | ----------------------------------------------- | ------ | ---------- |
-| <kbd>;</kbd>                                                      | 🙈      | 等待输入密令                                    | 不看   | 进入       |
-| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>e</kbd>                       | cn      | 匹配到用户词典（纯字符串 1️⃣），直接输出代码片段 |        | 退出       |
-| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>k</kbd>                       | cnk     | 尚未匹配，继续等待                              |        | 等待       |
-| <kbd>⏎</kbd> 或 <kbd>Esc</kbd> 或 <kbd>␣</kbd>                    | 💨      | 截至目前未匹配成功，中断                        | 跑了   | 退出       |
-| 假如 <kbd>s</kbd><kbd>l</kbd><kbd>e</kbd><kbd>e</kbd><kbd>p</kbd> | slee    | 匹配到用户词典（函数名 2️⃣），执行指令           |        |
-|                                                                   | 🙉 睡眠 | 电脑马上进入休眠状态                            | 猜对了 | 退出       |
+按住数字 <kbd>3</kbd> 不松手，处在数字模式，松开时退出。
 
-这是 Windows **独占**功能，在 `data\UserDictionary.ahk` 中，使用 map 数据结构保存着用户词典。
+| 键盘输入     | 映射到        |
+| ------------ | ------------- |
+| <kbd>2</kbd> | <kbd>F2</kbd> |
+| <kbd>J</kbd> | 4             |
+| <kbd>N</kbd> | 空格键        |
+| 无（松开）   | 3             |
 
-- key：自定义的缩写，怎么好记怎么来。
-- value: 指令集，主要分为两类
-  - 1️⃣ **`xxDict` 纯字符串**。其他所有的变量 都是这类，比如代码片段（支持换行和缩进），邮箱，网址，emoji 等。
-  - 2️⃣ **`secretDict` 函数名**。它代表用户定义的一系列 AHK 指令集的可执行函数。
-    - 这里设计为必须写注释，不写不生效。
-      - 比如添加一行 `"sleep", "睡眠",`
-      - 还要在 `bin\SemicolonHook.ahk` 的`execSemicolonAbbr` 方法中添加一种情况 `case "sleep": computerGoSleep()`
-    - 技巧：它可以用来写 Vim 的宏，完美的跨软件运行方案。
+想象成稍微倾斜的数字小键盘，方便输入验证码、手机号码、坐标、确认、删除。
 
-MacOS 仅将用户词库添加到内置输入法，作为打字候选项。
+这里取消了映射到 <kbd>F3</kbd> 的按键，因为 <kbd>F3</kbd> 为了成全整个模式，牺牲了它自己。
+
+这里把 <kbd>F1~12</kbd> 加上， 是因为他们都和数字有关，而且我的 60 配列键盘 `fn2` 键在右下角对称 `Ctrl` 键， 单个键要瞟一眼键盘，再整组合键的话，就像龙抓手，太难按了。
 
 ### <kbd>;</kbd> 分号特殊符（特舒服）
 
@@ -240,24 +220,81 @@ MacOS 仅将用户词库添加到内置输入法，作为打字候选项。
 - <kbd>Z</kbd> 撤销操作：如果打错字或误删，撤销就好了。
 - <kbd>O</kbd> 切换输入法：能不用手掌按 <kbd>Ctrl</kbd> 键，就不要去按了，让双手保持在热键区。
 
-### 3️⃣ 数字小键盘
+### ⌨️ 猴子输入法
 
-![数字小键盘](bin/img/digital-keyboard.png)
+![cne](bin/img/hook_cne.gif)
 
-按住数字 <kbd>3</kbd> 不松手，处在数字模式，松开时退出。
+| 键盘输入                                                          | 显示    | 说明                                            | 猴子   | 输入法状态 |
+| ----------------------------------------------------------------- | ------- | ----------------------------------------------- | ------ | ---------- |
+| <kbd>;</kbd>                                                      | 🙈      | 等待输入密令                                    | 不看   | 进入       |
+| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>e</kbd>                       | cn      | 匹配到用户词典（纯字符串 1️⃣），直接输出代码片段 |        | 退出       |
+| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>k</kbd>                       | cnk     | 尚未匹配，继续等待                              |        | 等待       |
+| <kbd>⏎</kbd> 或 <kbd>Esc</kbd> 或 <kbd>␣</kbd>                    | 💨      | 截至目前未匹配成功，中断                        | 跑了   | 退出       |
+| 假如 <kbd>s</kbd><kbd>l</kbd><kbd>e</kbd><kbd>e</kbd><kbd>p</kbd> | slee    | 匹配到用户词典（函数名 2️⃣），执行指令           |        |
+|                                                                   | 🙉 睡眠 | 电脑马上进入休眠状态                            | 猜对了 | 退出       |
 
-| 键盘输入     | 映射到        |
-| ------------ | ------------- |
-| <kbd>2</kbd> | <kbd>F2</kbd> |
-| <kbd>J</kbd> | 4             |
-| <kbd>N</kbd> | 空格键        |
-| 无（松开）   | 3             |
+这是 Windows **独占**功能，在 `/data/UserDictionary.ahk` 中，使用 map 数据结构保存着用户词典（简称猴子词典，方便好记）。
 
-想象成稍微倾斜的数字小键盘，方便输入验证码、手机号码、坐标、确认、删除。
+- key：自定义的缩写，怎么好记怎么来。
+- value: 指令集，主要分为两类
+  - 1️⃣ **`xxDictionary` 纯字符串词典:**。其他所有的变量 都是这类，比如代码片段（支持换行和缩进），邮箱，网址，emoji 等。
+  - 2️⃣ **`secretDictionary` 函数词典**。它代表用户定义的一系列 AHK 指令集的可执行函数。
+    - 这里设计为必须写注释，不写不生效。
+      - 比如添加一行 `"sleep", "睡眠",`
+      - 还要在 `bin\SemicolonHook.ahk` 的`execSemicolonAbbr` 方法中添加一种情况 `case "sleep": computerGoSleep()`
+    - 技巧：它可以用来写 Vim 的宏，完美的跨软件运行方案。
 
-这里取消了映射到 <kbd>F3</kbd> 的按键，因为 <kbd>F3</kbd> 为了成全整个模式，牺牲了它自己。
+MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
-这里把 <kbd>F1~12</kbd> 加上， 是因为他们都和数字有关，而且我的 60 配列键盘 `fn2` 键在右下角对称 `Ctrl` 键， 单个键要瞟一眼键盘，再整组合键的话，就像龙抓手，太难按了。
+#### 📒 猴子词典支持导出到第三方输入法
+
+> 目前已支持 MacOS、QQ拼音、搜狗拼音
+
+根据需要调用 `Converter` 类的转换方法，获得用户自定义短语文件 ，通过局域网/蓝牙/微信等方式传输，导入输入法软件即可。举例来说
+
+<details>
+<summary> 【案例】如何将猴子词典（.ahk）转换成苹果词典（.plist）？（点击展开详情） </summary>
+</br>
+
+1.打开猴子词典 `./data/UserDictionary.ahk` ，在底部根据自身需要去掉注释，保存后按 <kbd>Caps</kbd> <kbd>Y</kbd> 重启脚本。
+
+
+```JavaScript
+
+; 选择性注释，开放转换接口
+global macDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict])
+
+CapsLock & 9:: 
+{
+    ; 猴子词典 -> 苹果词典（枚举类参数可选 MAC/PINYIN/JSON）
+    Converter.convert(macDictionary, DictTypeEnum.MAC)
+
+    ; 猴子词典 <- 苹果词典（弹窗选择文件）
+    ; Converter.parse()
+
+    ; 猴子词典 <- 苹果词典（文件目录） 
+    ; fileDir := "/dist/userdict4macos.plist"
+    ; Converter.parse(fileDir)
+
+}
+
+```
+
+2.按 <kbd>Caps</kbd> <kbd>9</kbd> ，根据弹窗提示操作后，点击确定，脚本所在目录就生成了文件 `/dist/userdict4macos.plist` ，通过局域网共享文件传输到 MacOS。
+
+![转换弹窗提示](bin/img/convertMsg.png)
+
+3.MacOS 拖拽用户词典到文本
+
+![importMacDict](bin/img/macObj2macDict.gif)
+
+偏好设置 > 键盘 > 文本
+
+一般先全选删除旧词典，再将成品文件 `.plist` 拖拽进来， 导入内置中文输入法，和平时打字没有区别，只是多了候选项， 润物细无声。
+
+没有切换输入法，也可以自动补全（但在 IDE 中却失效了）。
+
+</details>
 
 ## 常见问题
 
@@ -269,22 +306,5 @@ MacOS 仅将用户词库添加到内置输入法，作为打字候选项。
 
 - 如果不给管理员权限，遇到有些系统软件，脚本就失效了。
 - 它需要管理员权限来控制`sehll` ，降权打开软件（比如 VSCode）。
-
-</details>
-
-<details>
-<summary> 2. 怎么将插件用户词典（.ahk）转换成苹果用户词典（.plist）呢？ </summary>
-</br>
-
-1. 在 Plus 文件前面，启用插件：（mapObjectUtils）这一行去掉注释符号#
-2. `mapObjectUtils` 底部，开启接口函数快捷方式，文件底部去掉注释符号#
-3. Dcit 用户词典文件底部，开启 MacObject 列表的注释符号#
-4. 打开 `json2plit.py`（使用 pip 安装需要的库），如果失败了，需要继续手动执行以下步骤
-5. 按下步骤 `2` 的快捷键，设置系统区域语言为兼容 UTF-8 ，弹窗提示得到 `userDict0309.json`
-6. 复制内容粘贴到步骤 `4` 中函数注释的网站，点击转换（网站抽风，可能需要在线校验 JSON 格式再拷贝回来），转换后得到类似 XML 的`.plist` 格式字典，点击复制
-7. 新建 `.plist` 文件，粘贴内容进去，替换为双引号 `&#13;&#13; -> ""`
-8. 使用局域网共享，将此文件传给苹果电脑，然后打开设置-输入法偏好设置，直接拖放在左边栏。这样拼音打字时，会根据 key 映射出字符片段。
-
-ps. 很麻烦是吧，自己想更好的办法同步用户词典吧。
 
 </details>

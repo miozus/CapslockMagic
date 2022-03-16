@@ -487,24 +487,6 @@ class DevUtils {
     
 }
 
-;=====================================================================o
-;                     Copy & Paste
-;---------------------------------------------------------------------o
-; 系统剪切板候选(冒号右边不加空格)
-:?cX*:cb1::getClipboard(1)
-:?cX*:cb2::getClipboard(2)
-:?cX*:cb3::getClipboard(3)
-:?cX*:cb4::getClipboard(4)
-:?cX*:cb5::getClipboard(5)
-;---------------------------------------------------------------------o
-getClipboard(index := 1)
-{
-    index--
-    Send "#v"
-    Sleep 200
-    Send "{Down " index "}{Enter}"
-}
-;---------------------------------------------------------------------o
 backupDotfiles() {
     ;  ahk 本脚本直接在 dot 项目中(快捷方式)使用和维护，不再另外备份本地和转移了
     ; C:\Users\miozus\AppData\Roaming\JetBrains\IntelliJIdea2021.3\options\postfixTemplates.xml
@@ -516,8 +498,8 @@ backupDotfiles() {
     FileCopy nvim, dotfiles "\.config\nvim\init.vim", true
 
     ideaFolder := A_AppData "\JetBrains\IntelliJIdea2022.1"
-    DirCopy ideaFolder "\jba_config\win.keymaps", dotfiles "\apps\Idea\keymaps", true
-    FileCopy ideaFolder "\options\postfixTemplates.xml", dotfiles "\apps\Idea\snippets", true
+    ; DirCopy ideaFolder "\jba_config\win.keymaps", dotfiles "\apps\Idea\keymaps", true
+    ; FileCopy ideaFolder "\options\postfixTemplates.xml", dotfiles "\apps\Idea\snippets", true
 
     FileCopy A_AppData "\Code\User\sync", dotfiles "\apps\Code", true 
     ; codeFolders := ["sync\keybindings\preview", "snippets"]
@@ -541,60 +523,67 @@ backupDotfiles() {
 }
 ;---------------------------------------------------------------------o
 
-;=====================================================================o
-;                    User Dictionary Method
-;---------------------------------------------------------------------o
-concatDict(dictList)
+; 文件管理工具：读写，文件名添加日期
+class FileUtils {
+
+
+    static outputAs(textStr, fileName)
 {
-    dictMap := Map()
-    for dict in dictList
-    {
-        for key, value in dict
-        {
-            dictMap[key] := value
+        if (FileName == "" || textStr == "") {
+            msgbox "传输数据/文件名称为空，无法导出"
+            return
         }
+        try {
+            DirCreate ".\dist"
+            FileName := ".\dist\" this.fileNameAddToday(fileName)
     }
-    return dictMap
+        catch Error as err {
+            ToolTip err.Message
+            return
 }
-;---------------------------------------------------------------------o
-
-;=====================================================================o
-;                     Output & Input File
-;---------------------------------------------------------------------o
-outputAs(textStr, fileName)
-{
     ; FileName := FileSelect("S16",, "Create a new file:")
-    FileName := "E:\backup\User\" fileNameAddToday(fileName)
     ; connect other script
-    A_Clipboard := FileName
+        absoluteDir := A_WorkingDir LTrim(FileName, ".") 
+        A_Clipboard := absoluteDir
 
-    if (FileName = "")
-        return
     try
     ; 要打开文件的路径, 如果未指定绝对路径则假定在 A_WorkingDir 中.
         FileObj := FileOpen(FileName, "w")
     catch Error
     {
-        MsgBox "Can't open '" FileName "' for writing."
-            . "`n`nError " Error.Extra ": " Error.Message
+            MsgBox "无法打开文件 " FileName 
+                . "`n`n" Type(err) ": " err.Message
+                . "`n`n 请检查文件路径或名称是否正确" 
         return
     }
+        try {
     ; 通过这种方式写入内容到文件时, 要使用 `r`n 而不是 `n 来开始新行.
-    ToolTip "当前编码为 " FileObj.Encoding "（只有 UTF-8 才能保留绘文字）"
     FileObj.Write(textStr)
     FileObj.Close()
+        msg := 
+        (
+            '1.当前系统编码为 ' FileObj.Encoding 
+            '`n`n注意：只有 UTF-8 支持保留 emoji（修改方法：系统设置 > 搜索管理语言设置 > 更改系统区域设置 > 勾选 Beta版：UTF-8。不用重启，多转换几次，成功后再改回去）`n'
+            '`n2.保存完成，地址已拷贝（可按 Ctrl+V 粘贴）:`n`n' absoluteDir
+        )
+            MsgBox msg, "CapslockMagic 🎊"
+        } catch Error as err {
+            ToolTip err
+            return
+        }
     SetTimer () => ToolTip(), -2000
 }
 
-inputFrom(FileName) {
+    static inputFrom(FileName) {
     ; 默认目录 A_WorkingDir
     ; 现在已经把内容写入文件了, 把它们读取回内存中.
     try
         FileObj := FileOpen(FileName, "r-d")	; 读取文件 ("r"), 共享除了删除 ("-d") 外的所有访问权限
-    catch Error
+        catch Error as err
     {
-        MsgBox "Can't open '" FileName "' for reading."
-            . "`n`n" Type(Error) ": " Error.Message
+            MsgBox "无法打开文件 " FileName 
+                . "`n`n" Type(err) ": " err.Message
+                . "`n`n 请检查文件路径或名称是否正确" 
         return
     }
     ; 限制读取首行的字节长度，默认为全文长度
@@ -606,16 +595,17 @@ inputFrom(FileName) {
     ; MsgBox "The following string was read from the file: " textString
 }
 
-fileNameAddToday(fileName) {
+    static fileNameAddToday(fileName) {
     name := StrSplit(fileName, ".")
-    return name[1] FormatTime(, "MMdd") "." name[2]
+        return name[1] FormatTime(, "yyyyMMdd") "." name[2]
 }
-;---------------------------------------------------------------------o
 
-;=====================================================================o
-;                     Animation
-;---------------------------------------------------------------------o
-switchTrayIcon() {
+}
+
+; 动画合集
+class Animation {
+
+    static switchTrayIcon() {
     ;  停用脚本，为了打字
     if A_IsSuspended {
         Traytip "⏸️ 已暂停"
@@ -628,14 +618,14 @@ switchTrayIcon() {
     }
 }
 
-initAnimation() {
+    static initTrayIcon() {
     TraySetIcon("bin\img\capslock_run.ico", 1, 1)
     ToolTip "🖤"
     SetTimer () => ToolTip(), -500
 }
 
-bombExploseGif() {
-    ; 1.2s
+    ; 爆炸动画，持续1.2s
+    static bombExploseGif() {
     ToolTip "-----"
     Sleep 100
     ToolTip "*----"
@@ -657,6 +647,9 @@ bombExploseGif() {
     ToolTip " 💥 "
     Sleep 500
     ToolTip
+    }
+
+
 }
 
 ;---------------------------------------------------------------------o

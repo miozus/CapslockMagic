@@ -70,7 +70,7 @@ emojiDict := Map(
     "yrzi", "⚛️",	; 原子/原子操作/AtomicOperation
     "jxso", "🔒",	; 加锁/lock
     "jpso", "🔓",	; 解锁/unlock
-    "ycui", "🔑",	; 钥匙/当前掌握资源者/key
+    "ycui", "🗝️",	; 钥匙/当前掌握资源者/key
     "mifj", "🍚",	; 米饭/防饿死
     "kjmf", "🐕",	; 看门/看门狗/WatchDog
     "xnxi", "💬",	; 消息/读取/ReadWriteLock
@@ -89,12 +89,14 @@ emojiDict := Map(
     "jkvg", "⚔️",	; 竞争/互斥/conflict/mutex
     "pbtu", "🧩",	; 拼图
     "memo", "📝",	; memory/备忘录
+    "iexn", "◀️",	; 撤销/返回
     "gria", "🔭",	; 观察/哨兵/望远镜
     "yiiu", "🌊",	; 溢出/OOM
     "kkvc", "📸",	; 快照/quickshot
     "qppm", "✂️",	; 切片/剪刀
     ; 缓存一致性
     "ulxp", "👥",	; 双写/双人影
+    "yshu", "👤", ; 用户/匿名/人像
     ; 排序
     "pdxu", "📊",	; 排序
     "mcpc", "💭",	; 冒泡: 强调相邻关系，越小的元素会经由交换，慢慢 “浮” 到数列的顶端。
@@ -105,6 +107,7 @@ emojiDict := Map(
     "jiuu1", "🧱",	; 基数
     "svji", "🃏",	; 随机
     "jiuu2", "🔢",	; 计数
+    "ejv", "🔟",	; 二进制
     ; 数据结构
     "eiu", "🌲",	; 二叉树/BinaryTree
     "zyz", "🍂",	; 左子树/leftTree
@@ -244,7 +247,7 @@ privateDict := Map(
     "enter", "⏎",
     "shift", "⇧",
     "tab", "⇥",
-    "+tab", "⇤",
+    "ltab", "⇤",
     "space", "␣",
     "yrdm", "•",
 
@@ -272,7 +275,7 @@ logoDict := Map(
     "imgmysql", "https://favicon.yandex.net/favicon/v2/mysql.com",
     "imghibernate", "https://hibernate.org/images/hibernate_icon_whitebkg.svg",
     "imgmybatis", "https://baomidou.com/img/logo.svg",
-    "imgreids", "https://cdn.icon-icons.com/icons2/2415/PNG/512/redis_original_logo_icon_146368.png",
+    "imgredis", "https://cdn.icon-icons.com/icons2/2415/PNG/512/redis_original_logo_icon_146368.png",
     "imgjava", "https://image.flaticon.com/icons/png/128/226/226777.png",
     "imgnginx", "https://img.icons8.com/color/50/000000/nginx.png",
     "imgnode", "https://www.pikpng.com/pngl/b/430-4309640_js-logo-nodejs-logo-clipart.png",
@@ -329,7 +332,7 @@ csDict := Map(
     "dlt", "DELETE ",
     "put", "PUT ",
     "post", "POST ",
-    "es", "elasticsearch",
+    "esh", "elasticsearch",
     ; 服务器
     "lh3", "localhost:3000",
     "lh4", "localhost:4000",
@@ -355,8 +358,8 @@ csDict := Map(
     "sne", "StringUtils.isNotEmpty()",
     "cie", "CollectionUtils.isEmpty()",
     "cne", "CollectionUtils.isNotEmpty()",
-    "cfr", " CompletableFuture.runAsync(()->{},executor);",
-    "cfa", " CompletableFuture.allOf().get();",
+    "cfr", "CompletableFuture.runAsync(()->{},executor);",
+    "cfa", "CompletableFuture.allOf().get();",
     "uuid", "String uuid = UUID.randomUUID().toString();",
     "clg", 'console.log("")',
     "hsr", "HttpServletRequest request",
@@ -369,6 +372,7 @@ csDict := Map(
     "asn", "@Setter(AccessLevel.NONE)",
     "agn", "@Getter(AccessLevel.NONE)",
     "asv", "@Service",
+    "asp", "@Aspect",
     "alg", "@Slf4j",
     "acf", "@Configuration",
     "act", "@Controller",
@@ -383,19 +387,23 @@ csDict := Map(
     "ats", '@Transactional',
     "arp", '@RequestParam("")',
     "apv", '@PathVariable("")',
-    "arl", '@RabbitListener(queues = {")',
+    "aide", '@Idempotent("")',
+    "arl", '@RabbitListener(queues = {"")',
     "arh", '@RabbitHandler',
-    "atpe", "@Autowired`nThreadPoolExecutor executor;",
+    "atp", "@Autowired`nThreadPoolExecutor executor;",
     "art", "@Autowired`nRabbitTemplate rabbitTemplate;",
     "edc", "@EnableDiscoveryClient",
     "sba", "@SpringBootApplication",
     "erb", "@EnableRabbit",
     "ess", "@EnableRedisHttpSession",
     "efc", "@EnableFeignClients",
+    "esg", "@EnableScheduling",  ; 定时任务
+    "asg", '@Scheduled(cron="")',
+    "eas", "@EnableAsync",
+    "asy", "@Async",
     "jpo", "JSON.parseObject()",
     "jts", "JSON.toJSONString()",
     "cel", "Collections.emptyList();",
-    ; "hs", "HttpSession session",
     "msg", 'message=""',
     "ps", "private String ",
     ; thymeleaf
@@ -413,11 +421,9 @@ csDict := Map(
     "glm", "http://member.gulimall.com/memberOrder.html",
     "glk", "npx kill-port 88 8000 8080 9020 10000 11000 12000 20000 30000 40000",
     "glf", "http://tjijdi.natappfree.cc",
-    "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
-    "cdn", "cdn `;; start nginx `;; E:\frp\natapp\natapp.exe",  ; Nginx + RPC 内网穿透
     "ascii", "https://asciiflow.com/#/",
     ; mysql
-    "mc", "set global max_connections=1000;", ; too many connections
+    "mc", "set global max_connections=1000`;", ; too many connections
     ; unittest
     "sk", '@unittest.skip("")',
 )
@@ -434,13 +440,16 @@ winDict := Map(
     "fd", "netstat -ano | findstr :8",	; 根据端口号，查看进程号
     "nkp", "npx kill-port 8",	; cnpm i -g kill-port 杀端口号
     "md5", "certutil -hashfile some_file MD5",	; 终端自带工具计算值
+    ; 使用插件删除Git历史文件,清空缓存
+    "bfg", 'java -jar "E:\projects\IdeaProjects\plugins\bfg-1.14.0.jar" --delete-files file_name_in_project.java .git',
+    "ggc", "git reflog expire --expire=now --all `; git gc --prune=now --aggressive",
     "rmreg", 'Get-ChildItem $Path | Where{$_.Name -Match "<RegEx Pattern>"} | Remove-Item',	; 正则匹配文件名并删除
+    "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
+    "cdn", "cdn `; start nginx `; E:\frp\natapp\natapp.exe",  ; Nginx + RPC 内网穿透
 )
 
-global secretDict := Map(
+global secretDictionary := Map(
     ; 注册中心: 翻译命令的含义(不注册，不生效)
-    ; "bb", "必应词典",
-    ; "gg", "谷歌翻译",
     "ee", "置顶与否",
     "qq", "关闭程序",
     "dx", "下载",
@@ -453,7 +462,6 @@ global secretDict := Map(
     "dm", "配置目录",
     "db", "备份库",
     "dpr", "项目库",
-    "ds", "局域网共享",
     "tm", "任务管理器",
     "spy", "查看控件",
     "dotb", "备份配置",
@@ -481,6 +489,21 @@ global secretDict := Map(
     "gg", "",
 )
 
-global userDict := concatDict([emojiDict, csDict, privateDict, logoDict, winDict])
-; 开放接口，允许Mac专用词典
-; global macDict := concatDict[emojiDict, csDict, privateDict, logoDict ])
+global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])
+
+; 选择性注释，开放转换接口
+; global macDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict])
+
+; CapsLock & 9:: 
+; {
+    ; 猴子词典 -> 苹果词典
+    ; Converter.convert(macDictionary, DictTypeEnum.MAC)
+
+    ; 猴子词典 <- 苹果词典（弹窗选择文件）
+    ; Converter.parse()
+
+    ; 猴子词典 <- 苹果词典（文件目录） 
+    ; fileDir := "./dist/userdict4macos.plist"
+    ; Converter.parse(fileDir)
+
+; }

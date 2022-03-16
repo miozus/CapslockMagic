@@ -12,32 +12,26 @@
 ; ░ ░            ░  ░               ░      ░  ░    ░ ░  ░ ░      ░  ░   
 ; ░                                                     ░               
 ;
-;                                                      AHK_H V2.0_alpha
+;                                            AHK H-beta.3-fixed.3-thqby
+;                                                        Author: miozus
+
  
 SendMode "Input"          ; 速度快
 SetWorkingDir A_ScriptDir ; 当前脚本目录，就是脚本运行目录
 InstallKeybdHook          ; 无条件安装键盘钩子,防止丢失
 
-
 ;=====================================================================o
-;                       CapsLock Icon
+;                       CapsLock init
 
-initAnimation()
+Animation.initTrayIcon()
 
-
-;=====================================================================o
-;                       Hotkey Register Center
-
+; Hotkey Register Center
 allHotkeys := []
 allHotkeys.Push("*;")
 allHotkeys.Push("*3")
-; allHotkeys.Push("*j")
-; allHotkeys.Push("*capslock")
-
-;=====================================================================o
-;                       CapsLock bin
 
 #Include bin\util\Common.ahk
+#Include bin\util\UserDictUtils.ahk
 #Include data\UserDictionary.ahk
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\DigitKeyboard.ahk
@@ -46,9 +40,10 @@ allHotkeys.Push("*3")
 #Include bin\MoomWinManager.ahk
 #Include bin\SemicolonHook.ahk
 #Include bin\plugin\GarbageCollector.ahk
+#Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
 ; #Include bin\plugin\Premiere.ahk
-; #Include bin\util\mapObjUtils.ahk
+
 
 
 
@@ -88,44 +83,6 @@ CapsLock & v::
 
 ; 看电视
 CapsLock & 8:: Send "{Media_Play_Pause}"
-
-
-
-;=====================================================================o
-;                    Start Computer                                                             
-
-; quick start learning cource
-CapsLock & 0::
-{
-    if GetKeyState("Alt") = 1 
-    {
-        Run "http://39.108.228.2:8848/nacos"
-        Run "https://easydoc.xyz/s/78237135" ; 谷粒商城在线接口文档
-        Run "https://blog.csdn.net/hancoder/article/details/107612619"  ; 谷粒商城笔记2/4
-        ; Run "https://www.bilibili.com/video/BV1np4y1C7Yf?p=4"
-        Run "https://element.eleme.cn/#/zh-CN/component/installation"
-        ; Run "https://docs.spring.io/spring-cloud-gateway/docs/2.2.4.RELEASE/reference/html/#glossary"
-        Run "http://adkx.net/wxamg"  ; 算法指南
-        Run "https://gitee.com/phoenixscholar/JavaFamily"  ; Java面经
-        Run "https://snailclimb.gitee.io/javaguide/#/"
-        Run "E:\JetBrains\Toolbox\apps\IDEA-U\ch-0\212.5080.55\bin\idea64.exe"
-        Run "D:\TOOLS\Microsoft VS Code\Code.exe"
-
-    } 
-    ; auto resize windows flex
-    else if GetKeyState("Ctrl") = 1 
-    {
-        alterProjectWinFrame()
-    }
-    else if GetKeyState("LWin") = 1 
-    {
-        turn2ReadWinMode()
-        WinActivate "ahk_exe notion.exe"
-        Send "^+n"
-        Sleep 3000
-        zoomWin("|")
-    }
-}
 
 
 
@@ -338,116 +295,9 @@ CapsLock & y::
 ; 停用脚本
 SuspendScript() {
     Suspend
-    switchTrayIcon() 
+    Animation.switchTrayIcon() 
 }
-
-;=====================================================================o
-;                    Vscode operate content
-
-; Steps:
-;    1) contenxt -> vscode(regex, replace format)
-;           /^(\d+[\.\s]+)+/ -> ""
-;        - each line end, append new blank line 
-;          ^v , mi, {End}, {Enter} 
-;    2) Notion: ^v , ^+7 for batch togggle block
-;    3) WebBook: tab right place untill right contains level
-;     use regex to replace
 
 ; =====================================================================o
 ;                      自动优化格式编辑区，快速删除用 vim
 ; ---------------------------------------------------------------------o
-class SceneContextTest {
-    
-    __New(param) {
-        this.x := param
-        msgbox "New instance , param: " param 
-    }
-
-    ; 类中 this 作用域：默认属于实例资源（方法和属性，包括初始化的属性，和其他区域声明的实例）
-    ; 静态方法中的 this 作用域：所有以 static 关键字修饰的静态资源（方法和属性）
-
-    ; 实例资源，与静态资源，互相独立。
-    ; 如需资源共享，需要先创建实例，或者使用类名访问静态资源作为桥梁
-    ; 虽然都有 this 前缀，注意区分 this 的上下文语境来调用
-    ; 只要有创建实例的代码，无论在类内或类外，脚本加载时，都会执行，分配内存空间
-
-    i := "insVar"
-
-    static si := "staicVar"
-
-    static staticMethod(index) {
-        return "static method works :" index  " " 
-    }
-    
-    ; 静态访问动态的方法: 内部实例化，并声明为静态变量，静态方法中添加 this 前缀调用; 外部使用类名调用
-    ; static innerIns := SceneContextTest("innerInstance")
-    static static_ins() {
-        return "static_ins ⇒ " this.innerIns.inner("p_static_ins")
-    }
-
-    ; 动态方法访问静态方法: 需要 ClassName 来调用，相当于创建了一个副本
-    ins_static() {
-        return "ins_static ⇒ " SceneContextTest.staticMethod(777)
-    }
-    
-    inner(p_ins) {
-        return "inner ⇒ " this.i " p_ins: " p_ins
-    } 
-
-    outer() {
-        ; 实例方法的嵌套，必须添加 this. 前缀，类似古代的 JavaScripts
-        return "outer ⇒ " this.inner("p_ins")
-    }
-    
-    
-    attr
-    {
-        get => this.x
-        set => this.x := value
-    }
-    
-}
-
-
-; ^f:: msgbox sceneTest.Prototype.__Class
-; ^f:: printClassResult()
-; printClassResult() {
-;     sceneTest := SceneContextTest(2)
-;     msgbox 
-;     (
-;         sceneTest.inner("p_inner") "`n"
-;         sceneTest.outer() "`n"
-;         sceneTest.ins_static() "`n"
-;         SceneContextTest.static_ins() "`n"
-;         sceneTest.attr "`n"
-;         rel := (sceneTest.attr := "new_attr") "`n"
-;         sceneTest.attr "`n"
-;         sceneTest.x "`n"
-;     )
-; }
-; !f:: msgbox type(sceneTest) "`n"  sceneTest.isMethod() "`n" sceneTest.__New(666) "`n" sceneTest.x
-; !f::msgbox SceneContextTest.staticMethod(2) SceneContextTest.si "`n", type(SceneContextTest)
-
-
-; [TODO] 坐标的持久化保存，又复用，如果不准再动态计算。
-; msgbox type(counterPos)
-; counterPos["work"]["+"] := 60
-; counterPos["work"]["+"] := 80
-; msgbox counterPos["work"]["+"] 
-; counterPos.serialize := Func(nestedObj2Str)
-
-; testArray() {
-    ; attrs := ["max", "plus", "center", "minus", "min"]
-    ; for index, attr in attrs
-        ; msgbox index attr
-; }
-
-; !f::testArray()
-
-class OuterTest {
-    static outerValue := "outer"
-    
-    class innerTest {
-        static innerValue := "inner"
-    }
-}

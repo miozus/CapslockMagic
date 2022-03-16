@@ -24,16 +24,15 @@ global DigitMode := false
     enableOtherHotkey(thisHotkey)
 }
 
-
 #Hotif DigitMode
 ; 对应标准的小键盘指法
-*,::Send "{blind}," ; 方便输坐标
-*.::Send "{blind}."
-*Space:: Send "{blind}{Space}"
-*M::Send "{blind}0"
-*N::Send "{blind}1"
-*H::Send "{blind}2"
-*Y::Send "{blind}3"
+*h::Send "{blind}," ; 方便输坐标
+*Y::Send "{blind}."
+*N:: Send "{blind}{Space}"
+*Space::Send "{blind}0"
+*M::Send "{blind}1"
+*,::Send "{blind}2"
+*.::Send "{blind}3"
 *J::Send "{blind}4"
 *K::Send "{blind}5"
 *L::Send "{blind}6"

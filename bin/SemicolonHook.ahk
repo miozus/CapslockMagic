@@ -7,7 +7,7 @@ SetWorkingDir A_ScriptDir
 
 global PunctuationMode := false
 ; all dict comes from database
-semicolonHookStr := getKeyStr(secretDict) "," getKeyStr(userDict) 
+semicolonHookStr := getKeyStr(secretDictionary) "," getKeyStr(userDictionary) 
 semicolonHook := InputHook("C", "{Space}{Esc}", semicolonHookStr)
 semicolonHook.OnChar := onTypoChar
 semicolonHook.OnEnd := onTypoEnd
@@ -42,7 +42,7 @@ enterSemicolonAbbr(ih) {
     if (ih.Match)
     {
         try {
-            value := "{text}" userDict[ih.Match]
+            value := "{text}" userDictionary[ih.Match]
             Send value
             if isEndWithCommaBracket(value) {
                 Send "{Left 2}"
@@ -55,7 +55,7 @@ enterSemicolonAbbr(ih) {
             return
         }
         ; 带命令词典: 功能比较重
-        ToolTip "🙉 " secretDict[ih.Match] 
+        ToolTip "🙉 " secretDictionary[ih.Match] 
         execSemicolonAbbr(ih.Match)
     } else {
         ; 未收录词典，猴子跑了
@@ -98,7 +98,6 @@ execSemicolonAbbr(typo) {
         case "dr": Run "shell:RecycleBinFolder"
         case "dx": Run "shell:downloads"
         case "db": Run "E:\backup"
-        case "ds": Run "F:\Ipad_share"
         case "dpr": Run "E:\projects"
         case "qq": SmartCloseWindow()
         case "ee": ToggleTopMost()
