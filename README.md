@@ -1,14 +1,14 @@
 # CapslockMagic
 
-Make Capslock Great Again!
-
-让 Capslock 再次伟大！
-
-All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@xianyukang).
-
-我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
-
----
+>Make Capslock Great Again!
+>
+> 让 Capslock 再次伟大！
+>
+> All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@xianyukang).
+>
+> 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
+>
+> ![depende](https://img.shields.io/badge/dependencies-thqby%2FAutoHotkey__H-orange?style=flat&logo=GitHub)
 
 ## 历史版本比较
 
