@@ -1,5 +1,7 @@
 # CapslockMagic
 
+ > [中文文档](https://github.com/miozus/CapslockMagic) | [README](https://translate.google.cn/) | [Karabiner Gallery](https://ke-complex-modifications.pqrs.org/#caps_lock_magic) | [Github Repo](https://github.com/miozus/CapslockMagic) | [Gitee Repo](https://gitee.com/miozus/CapslockMagic)
+>
 >Make Capslock Great Again!
 >
 > 让 Capslock 再次伟大！
@@ -8,13 +10,13 @@
 >
 > 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 >
-> ![depende](https://img.shields.io/badge/dependencies-thqby%2FAutoHotkey__H-orange?style=flat&logo=GitHub)
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/dependencies-thqby%2FAutoHotkey__H-orange?style=flat&logo=GitHub"></a>
 
 ## 历史版本比较
 
 `Magic` 继承了 `Capslock Enhancement` 的经典设计（类似 HHKB 键盘），弥补了它在 Windows 平台的遗憾。
 
-`Magic` 吸收了 `MyKeymap` 的实现细节和设计灵感，并修复了脚本语言向上兼容，采用面向对象的现代编码风格，让开发者更容易拓展和上手维护。
+`Magic` 吸收了 `MyKeymap` 的实现细节和设计灵感，并修复了脚本语言向上兼容，采用面向对象的现代编码风格，让开发者更容易拓展和上手维护。  
 
 `Magic` 进化了 **猴子输入法**，可以管理任意的用户指令集，获得念咒语般的魔法。
 
@@ -102,7 +104,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 - 解压文件 `tools/AutoHotkey_H/AutoHotkey_H-beta.3-fixed.3-author-thqby.7z`
   - （可选） [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H.git) 下载最新发行版。
 - 右键单击 `AutoHotKey.exe` （x64 / x32）， 选择属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
-- 右键单击 `CapslockPlus.ahk` 打开方式，选择到上述解压目录的 `AutoHotKey.exe` 打开。
+- 右键单击 `CapslockMagic.ahk` 打开方式，选择到上述解压目录的 `AutoHotKey.exe` 打开。
 
 ### MacOS
 
@@ -260,7 +262,6 @@ MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
 1.打开猴子词典 `./data/UserDictionary.ahk` ，在底部根据自身需要去掉注释，保存后按 <kbd>Caps</kbd> <kbd>Y</kbd> 重启脚本。
 
-
 ```JavaScript
 
 ; 选择性注释，开放转换接口
@@ -316,7 +317,7 @@ CapsLock & 9::
 </br>
 
 `Magic` 早期也是从 V1 迭代过来，历史版本保存在 `/tools/release/AutoHotkey_V1` 目录下，可从 
-[AutoHotkey 官网地址](https://www.autohotkey.com/) 下载配套软件（AutoHotkey_1.1.33.10+）直接运行。
+[AutoHotkey 官网地址](https://www.autohotkey.com/) 下载当前版本的配套软件（AutoHotkey_1.1.33.10+）直接运行。
 
 - `magic_v1` 单机服务，简单的光标编辑等，想到什么功能就扔进去。
 - `magic_v2` 拆分多个微服务，为不同的软件编写脚本，做了拆分，可见现在的雏形。
