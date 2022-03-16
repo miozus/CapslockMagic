@@ -310,3 +310,17 @@ CapsLock & 9::
 - 它需要管理员权限来控制`sehll` ，降权打开软件（比如 VSCode）。
 
 </details>
+
+<details>
+<summary> 2. 脚本支持旧版的 AutoHotkey 吗？（脚本支持 Windows 7）吗？ </summary>
+</br>
+
+`Magic` 早期也是从 V1 迭代过来，历史版本保存在 `/tools/release/AutoHotkey_V1` 目录下，可从 
+[AutoHotkey 官网地址](https://www.autohotkey.com/) 下载配套软件（AutoHotkey_1.1.33.10+）直接运行。
+
+- `magic_v1` 单机服务，简单的光标编辑等，想到什么功能就扔进去。
+- `magic_v2` 拆分多个微服务，为不同的软件编写脚本，做了拆分，可见现在的雏形。
+
+这两个版本，本人不再更新维护了，因为后面遇到了面向对象风格的版本，维护和拓展更方便。如果你在用 Windows7 ，可以参考修改，直接拿去用吧。
+
+</details>
