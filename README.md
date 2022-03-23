@@ -164,7 +164,7 @@ open -a Karabiner-Elements
 
 基本操作逻辑一致的，原作者写的很详细，感兴趣的功能直接用键盘试一试，这里不再赘述。
 
-只说三个好玩的功能：
+只说 `Magic` 进化出的功能：
 
 ### 3️⃣ 数字小键盘
 
@@ -298,6 +298,46 @@ CapsLock & 9::
 没有切换输入法，也可以自动补全（但在 IDE 中却失效了）。
 
 </details>
+
+### 窗口禅模式
+
+**禅模式**：开启后，键盘进入 1.5 秒的监听状态，接下来会根据按键做出及时响应。默认情况下，等待超时，会退出状态，或者按下 <kbd>Esc</kbd> 键主动退出禅模式。
+
+![窗口禅模式](bin/img/moom-move.gif)
+
+<kbd>Caps</kbd> <kbd>Alt</kbd> <kbd>A</kbd> 开启（可以松手了）
+
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 控制方向（Vim）
+- <kbd>␣</kbd> 窗口回到屏幕中央
+
+（菜单快速弹出，作为收尾动作，是为了解除 `Win` 键的按键锁定，避免卡键造成的副作用）
+
+### 窗口定型
+
+![窗口定型](bin/img/moom-zoom.gif)
+
+<kbd>Caps</kbd> <kbd>Ctrl</kbd> <kbd>A</kbd> 开启（一次性）
+
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 窗口占据上下左右（Vim）
+- <kbd>|</kbd> 窗口占据屏幕中央
+- <kbd>N</kbd> 窗口占据屏幕中央，大小适中
+- <kbd>[</kbd> <kbd>]</kbd> 窗口占据偏左 / 右屏幕（2:1）
+- <kbd>M</kbd> <kbd>,</kbd> 窗口最大/小化
+- <kbd>.</kbd> 窗口大小回到上一个状态
+
+### 鼠标禅模式
+
+![鼠标禅模式](bin/img/mouse-move.gif)
+
+<kbd>Caps</kbd> <kbd>Win</kbd> <kbd>A</kbd> 或者 <kbd>;</kbd> `mm` 开启（可以松手了）
+
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 控制方向（Vim）
+  - <kbd>A</kbd> 配合按住不放，降低鼠标移动速度
+- <kbd>I</kbd> <kbd>O</kbd> 单击左 / 右
+- <kbd>U</kbd> <kbd>P</kbd> 滚轮前 / 后
+- <kbd>N</kbd> <kbd>M</kbd> 侧键前 / 后
+- <kbd>C</kbd> <kbd>V</kbd> 复制/粘贴 选中文字
+- <kbd>G</kbd> 指针回到窗口中央
 
 ## 常见问题
 
