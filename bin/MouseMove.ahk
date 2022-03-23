@@ -288,12 +288,12 @@ class Mouse {
             case "↓"  : MouseMove       0, +OFFSET, 0, "R"
             case "←"  : MouseMove -OFFSET,       0, 0, "R"
             case "→"  : MouseMove +OFFSET,       0, 0, "R"
-            case "🖱️" : Send "{Blind^!}{LButton}" 
-            case "⚙️"  : Send "{Blind^!}{RButton}" 
-            case "⏫" : Send "{Blind^!}{WheelUp}"
-            case "⏬" : Send "{Blind^!}{WheelDown}"
-            case "◀"  : Send "{Blind^!}{XButton2}"
-            case "▶"  : Send "{Blind^!}{XButton1}"
+            case "🖱️" : Click
+            case "⚙️"  : Click "Right"
+            case "⏫" : Click "WheelUp"
+            case "⏬" : Click "WheelDown"
+            case "◀"  : Click "XButton2" 
+            case "▶"  : Click "XButton1" 
             case "💕" : Send "^c"
             case "💌" : Send "^v"
             case "🎯" : 

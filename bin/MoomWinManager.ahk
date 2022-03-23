@@ -49,7 +49,7 @@ class Window {
                 case "→" : winmove  w*2/3 , 0  , w/3  , h    , "A" ; 1/3 右
                 case "[" : winmove  0     , 0  , w*2/3, h    , "A" ; 2/3 左
                 case "]" : winmove  w/3   , 0  , w*2/3, h    , "A" ; 2/3 右
-                case "n" : winmove  w/5   , h/6, w*2/3, h*2/3, "A" ; 视觉中央
+                case "n" : winmove  w/4   , h/6, w/2  , h*2/3, "A" ; 视觉中央
                 case "m" : winmaximize "A"
                 case "," : winminimize "A" 
                 case "." : winrestore  "A" ; vim 复刻上次操作

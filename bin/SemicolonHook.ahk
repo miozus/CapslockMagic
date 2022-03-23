@@ -137,6 +137,7 @@ execSemicolonAbbr(typo) {
         case "tt": Vim.paste2LastLineUp()
         case "gg": Vim.paste2LastLineReplace()
         case "bb": Vim.paste2LastLineDown()
+        case "mm": Mouse.move()
         default: 
             return false
     }

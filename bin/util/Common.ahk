@@ -158,7 +158,7 @@ WinVisible(id)
     ;WinGet, state, MinMax, ahk_id %id%
     ;tooltip %x% %y% %width% %height%
 
-    ;sizeTooSmall := width < 300 && height <height 300 && state != -1 ; -1 is minimized
+    ;sizeTooSmall := width < 300 && height <dict 300 && state != -1 ; -1 is minimized
     empty := !Trim(title)
     ;if (!sizeTooSmall && !empty)
     ;    tooltip %x% %y% %width% %height% "%title%"
@@ -528,7 +528,7 @@ class FileUtils {
 
 
     static outputAs(textStr, fileName)
-{
+    {
         if (FileName == "" || textStr == "") {
             msgbox "传输数据/文件名称为空，无法导出"
             return
@@ -536,30 +536,30 @@ class FileUtils {
         try {
             DirCreate ".\dist"
             FileName := ".\dist\" this.fileNameAddToday(fileName)
-    }
+        }
         catch Error as err {
             ToolTip err.Message
             return
-}
-    ; FileName := FileSelect("S16",, "Create a new file:")
-    ; connect other script
+        }
+        ; FileName := FileSelect("S16",, "Create a new file:")
+        ; connect other script
         absoluteDir := A_WorkingDir LTrim(FileName, ".") 
         A_Clipboard := absoluteDir
 
-    try
-    ; 要打开文件的路径, 如果未指定绝对路径则假定在 A_WorkingDir 中.
-        FileObj := FileOpen(FileName, "w")
-    catch Error
-    {
+        try
+            ; 要打开文件的路径, 如果未指定绝对路径则假定在 A_WorkingDir 中.
+            FileObj := FileOpen(FileName, "w")
+        catch Error
+        {
             MsgBox "无法打开文件 " FileName 
                 . "`n`n" Type(err) ": " err.Message
                 . "`n`n 请检查文件路径或名称是否正确" 
-        return
-    }
+            return
+        }
         try {
-    ; 通过这种方式写入内容到文件时, 要使用 `r`n 而不是 `n 来开始新行.
-    FileObj.Write(textStr)
-    FileObj.Close()
+            ; 通过这种方式写入内容到文件时, 要使用 `r`n 而不是 `n 来开始新行.
+            FileObj.Write(textStr)
+            FileObj.Close()
         msg := 
         (
             '1.当前系统编码为 ' FileObj.Encoding 
@@ -571,34 +571,34 @@ class FileUtils {
             ToolTip err
             return
         }
-    SetTimer () => ToolTip(), -2000
-}
+        SetTimer () => ToolTip(), -2000
+    }
 
     static inputFrom(FileName) {
-    ; 默认目录 A_WorkingDir
-    ; 现在已经把内容写入文件了, 把它们读取回内存中.
-    try
-        FileObj := FileOpen(FileName, "r-d")	; 读取文件 ("r"), 共享除了删除 ("-d") 外的所有访问权限
+        ; 默认目录 A_WorkingDir
+        ; 现在已经把内容写入文件了, 把它们读取回内存中.
+        try
+            FileObj := FileOpen(FileName, "r-d")	; 读取文件 ("r"), 共享除了删除 ("-d") 外的所有访问权限
         catch Error as err
-    {
+        {
             MsgBox "无法打开文件 " FileName 
                 . "`n`n" Type(err) ": " err.Message
                 . "`n`n 请检查文件路径或名称是否正确" 
-        return
+            return
+        }
+        ; 限制读取首行的字节长度，默认为全文长度
+        ; CharsToRead := StrLen(textString)
+        ; textString := FileObj.Read(CharsToRead)
+        textString := FileObj.Read()
+        FileObj.Close()
+        return textString
+        ; MsgBox "The following string was read from the file: " textString
     }
-    ; 限制读取首行的字节长度，默认为全文长度
-    ; CharsToRead := StrLen(textString)
-    ; textString := FileObj.Read(CharsToRead)
-    textString := FileObj.Read()
-    FileObj.Close()
-    return textString
-    ; MsgBox "The following string was read from the file: " textString
-}
 
     static fileNameAddToday(fileName) {
-    name := StrSplit(fileName, ".")
+        name := StrSplit(fileName, ".")
         return name[1] FormatTime(, "yyyyMMdd") "." name[2]
-}
+    }
 
 }
 
@@ -606,47 +606,47 @@ class FileUtils {
 class Animation {
 
     static switchTrayIcon() {
-    ;  停用脚本，为了打字
-    if A_IsSuspended {
-        Traytip "⏸️ 已暂停"
-        TraySetIcon("bin\img\capslock_pause.ico", 1, 1)
-        SetTimer () => Traytip(), -1000
-    } else {
-        Traytip "🖤 继续运行"
-        TraySetIcon("bin\img\capslock_run.ico", 1, 1)
-        SetTimer () => Traytip(), -1000
+        ;  停用脚本，为了打字
+        if A_IsSuspended {
+            Traytip "⏸️ 已暂停"
+            TraySetIcon("bin\img\capslock_pause.ico", 1, 1)
+            SetTimer () => Traytip(), -1000
+        } else {
+            Traytip "🖤 继续运行"
+            TraySetIcon("bin\img\capslock_run.ico", 1, 1)
+            SetTimer () => Traytip(), -1000
+        }
     }
-}
 
     static initTrayIcon() {
-    TraySetIcon("bin\img\capslock_run.ico", 1, 1)
-    ToolTip "🖤"
-    SetTimer () => ToolTip(), -500
-}
+        TraySetIcon("bin\img\capslock_run.ico", 1, 1)
+        ToolTip "🖤"
+        SetTimer () => ToolTip(), -500
+    }
 
     ; 爆炸动画，持续1.2s
     static bombExploseGif() {
-    ToolTip "-----"
-    Sleep 100
-    ToolTip "*----"
-    Sleep 50
-    ToolTip "**---"
-    Sleep 50
-    ToolTip "***--"
-    Sleep 50
-    ToolTip "****-"
-    Sleep 100
-    ToolTip " 💣 "
-    Sleep 150
-    ToolTip "      "
-    Sleep 25
-    ToolTip " 💣 "
-    Sleep 150
-    ToolTip "      "
-    Sleep 25
-    ToolTip " 💥 "
-    Sleep 500
-    ToolTip
+        ToolTip "-----"
+        Sleep 100
+        ToolTip "*----"
+        Sleep 50
+        ToolTip "**---"
+        Sleep 50
+        ToolTip "***--"
+        Sleep 50
+        ToolTip "****-"
+        Sleep 100
+        ToolTip " 💣 "
+        Sleep 150
+        ToolTip "      "
+        Sleep 25
+        ToolTip " 💣 "
+        Sleep 150
+        ToolTip "      "
+        Sleep 25
+        ToolTip " 💥 "
+        Sleep 500
+        ToolTip
     }
 
 
@@ -672,7 +672,16 @@ class GC {
 ;---------------------------------------------------------------------o
 ;                       常用网站
 ;---------------------------------------------------------------------o
+editArticles() {
+    Run "https://www.zhihu.com/creator/manage/creation/all"
+    Run "https://mp.csdn.net/mp_blog/manage/article"
+    Run "https://www.jianshu.com/writer#/notebooks/51241025/notes/92966389"
+    Run "https://www.cnblogs.com/miozus/"
+}
 
 alg4() {
     Run "https://visualgo.net/zh/sorting"
 }
+
+
+ 

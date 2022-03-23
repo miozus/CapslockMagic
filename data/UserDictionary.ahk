@@ -493,6 +493,7 @@ global secretDictionary := Map(
     "list", "环绕列表",
     "tt", "",
     "bb", "",
+    "mm", "鼠标禅模式",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])

@@ -110,16 +110,15 @@ CapsLock & a::
     ; 跳出问题，大括号之外释放热键
     if GetKeyState("LAlt", "p") = 1
     {
-        ; mouseGenMode()
-        Window.zoom()
+        Window.move()
     }
     else if GetKeyState("LWin", "p") = 1
     {
-        Window.move()
+        Mouse.move()
     } 
     else if GetKeyState("LCtrl", "p") = 1
     {
-        Mouse.move()
+        Window.zoom()
     }
     else {
         return
