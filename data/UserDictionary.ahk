@@ -192,6 +192,9 @@ emojiDict := Map(
     "ioc", "👆", ; 控制反转
     "di", "🤸", ; 依赖注入/倒置
     "qnjp", "🌉", ; 桥接/AOP
+    ; JVM
+    "qiqq", "🎈", ; 堆球/栈线（两字神似）
+    "fjue", "🪞", ; 反射
     
 )
 
@@ -426,6 +429,10 @@ csDict := Map(
     "mc", "set global max_connections=1000`;", ; too many connections
     ; unittest
     "sk", '@unittest.skip("")',
+    ; Golang
+    "utf8", "\xEF\xBB\xBF",
+    "enn", "if err != nil {`rpanic(err)`r", ; throw Exception
+    "regcn", "^[\u4e00-\u9fa5]$", ; 匹配中文
 )
 
 winDict := Map(
@@ -434,11 +441,11 @@ winDict := Map(
     "dpa", "docker ps -a",
     "nginxconf", "nvim E:\Java\nginx-1.21.3\conf\nginx.conf",
     ; powershell
+    "nkp", "npx kill-port 8",	; cnpm i -g kill-port 杀端口号
     "tkp", "taskkill /F /PID 8",	; 按进程号结束
     "tki", "taskkill /F /IM .exe",	; 按名称结束
     "tfd", "tasklist | findstr 8",	; 根据端口号，查看所有进程
-    "fd", "netstat -ano | findstr :8",	; 根据端口号，查看进程号
-    "nkp", "npx kill-port 8",	; cnpm i -g kill-port 杀端口号
+    "nfd", "netstat -ano | findstr :8",	; 根据端口号，查看进程号
     "md5", "certutil -hashfile some_file MD5",	; 终端自带工具计算值
     ; 使用插件删除Git历史文件,清空缓存
     "bfg", 'java -jar "E:\projects\IdeaProjects\plugins\bfg-1.14.0.jar" --delete-files file_name_in_project.java .git',
@@ -451,7 +458,7 @@ winDict := Map(
 global secretDictionary := Map(
     ; 注册中心: 翻译命令的含义(不注册，不生效)
     "ee", "置顶与否",
-    "qq", "关闭程序",
+    "quit", "关闭程序",
     "dx", "下载",
     "oo", "输入法",
     "om", "特别注释",
@@ -486,7 +493,6 @@ global secretDictionary := Map(
     "list", "环绕列表",
     "tt", "",
     "bb", "",
-    "gg", "",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])
@@ -502,7 +508,7 @@ global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDi
     ; 猴子词典 <- 苹果词典（弹窗选择文件）
     ; Converter.parse()
 
-    ; 猴子词典 <- 苹果词典（文件目录） 
+    ; 猴子词典 <- 苹果词典（文件目录，可选） 
     ; fileDir := "./dist/userdict4macos.plist"
     ; Converter.parse(fileDir)
 

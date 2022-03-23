@@ -40,7 +40,7 @@ XButton2:: ^]
 CapsLock & f::
 {
     if GetKeyState("Ctrl") {
-        switchCodeAsJavaFormat()
+        switchCodeAsFormat("Java")
     } else if GetKeyState("Alt") {
         Send "{Blind!}^!m"
     } else {
@@ -152,7 +152,7 @@ pasteCodeAs(language)
     Sleep 300
     Send language
     Sleep 700
-    if (hasIME() = 1) {
+    if (IME.exists() = 1) {
         ; 输入法中文状态时
         Send "{Enter}"
         Sleep 50
@@ -209,11 +209,11 @@ cleanVariableFormat() {
     Send "{Blind}{LButton}"
     Send "{Blind}^a^e^e^b^b^i^i"
 }
-switchCodeAsJavaFormat() {
+switchCodeAsFormat(language) {
     Send "{Blind^}{LButton}"
     Send "{blind!#}^/"
     Sleep 50
-    Send "{Text}SQL"
+    Send "{Text}" language
     Sleep 700
     Send "{Enter}"
 

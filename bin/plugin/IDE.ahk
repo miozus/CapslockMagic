@@ -12,17 +12,27 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 #Hotif
 ;---------------------------------------------------------------------o
 
+hasIdeActive() { 
+    ides := ["idea64.exe", "code.exe", "goland64.exe", "WindowsTerminal.exe"]
+    for ide in ides
+        if WinActive("ahk_exe" ide) 
+            return true
+    return false
+}
+
+hasInteljActive() {
+    return WinActive("ahk_exe idea64.exe") or WinActive("ahk_exe goland64.exe")
+}
 
 ;=====================================================================o
-; #Hotif ideaAct or codeAct or termAct
-#hotif WinActive("ahk_exe idea64.exe") or winActive("ahk_exe code.exe") or WinActive("ahk_exe WindowsTerminal.exe")
+#hotif hasIdeActive()
 ;---------------------------------------------------------------------o
 ; VIM 敏感: 自动切换输入法, 输入悬浮框存在时不会切换，Esc 可用来撤回打字拼写的错误
 CapsLock::
 {
     ; 如果正在打拼音，就不切换输入法
-    if isNotTypingPinYin(){
-        setIME("EN")
+    if IME.isNotTypingPinYin(){
+        IME.set("EN")
     }
     ; 如果先返回，图片消失了，就检测不到了，所以最后返回
     Send "{Esc}"
@@ -34,14 +44,15 @@ CapsLock::
     ; Sleep 50
     ; Send "^v"
 ; }
+CapsLock & 2:: Send "!{F12}"    ; terminal
 #HotIf
 ;---------------------------------------------------------------------o
 
 
 ;=====================================================================o
-#Hotif WinActive("ahk_exe idea64.exe")
+#Hotif hasInteljActive() ; WinActive("ahk_exe idea64.exe")
 ;=====================================================================o
-LCtrl & \:: javaDocViaMethodLine()
+LCtrl & \:: Vim.javaDocViaMethodLine()
 
 ; Leetcode
 LWin & h:: Send "{blind!#}^#!o"   ; submit
@@ -56,20 +67,14 @@ LWin & v:: batchClearOrFindLog(4, "🔒")
 CapsLock & b:: Send "{blind}^!b"    ; jump to implement
 CapsLock & w:: Send "{blind}^#w"    ; close current tab
 CapsLock & 1:: Send "!{F1}1"
-CapsLock & 2:: abstractVariable()
-; CapsLock & 3::
+CapsLock & 3:: Vim.abstractVariable()
 CapsLock & 4:: runCmdPythonUnittest()
 
 runCmdPythonUnittest() {
-    ; command := "E:/miniconda3/envs/autotest/python.exe e:/projects/IdeaProjects/gulimall/selenium/autotest/test/authorize.py"
     python := "E:/miniconda3/envs/autotest/python.exe"
     unittest := " e:/projects/IdeaProjects/gulimall/selenium/autotest/test/" 
     cases := "order_test.py"
-    ; Run A_ComSpec " /c " command
-    ; ActivateOrRun("", command)
-    ; ShellRun(python, unittest)
     Run python unittest cases
-    ; tooltip python unittest cases
 }
 
 
@@ -126,59 +131,8 @@ CapsLock & n::
     }
 }
 
-; VIM 敏感: 在中文注释、普通模式和插入模式的边界，自动切换输入法
-:?*b0:o//::
-:?*b0:a//::
-:?*b0:i//::
-:?*b0://::
-{
-    setIME("中文")
-}
 #HotIf
 ;---------------------------------------------------------------------o
-; 当前行直接注释方法名称
-; - 免去每次手动跳转到方法
-; - 冗余操作：接口也行
-javaDocViaMethodLine()
-{
-    Send "{Text}^2W"
-    Send "{Blind}^\"
-    Send "{Text}B"
-    Send "{Blind}^\"
-}
-; r寄存器：强化提取变量
-abstractVariable(){
-    send "{Blind}!{Enter}"
-    sleep 500  
-    send "va{Enter}" ; 提取变量
-    send "{Enter}"
-    sleep 50  
-    send "{Enter}"
-    send "{Esc}"
-    send '{Text}^W"rywo' ; vim：复制变量，另起一行
-}
-
-
-;=====================================================================o
-#Hotif WinActive("ahk_exe Code.exe")
-;---------------------------------------------------------------------o
-; VIM 敏感: 在中文注释、普通模式和插入模式的边界，自动切换输入法
-;djdjfdsdjdk;dfsjl
-; djsl 
-:*?b0:o;::
-:*?b0:a;::
-:*?b0:i;::
-:*?b0:;::
-{
-    setIME("中文")
-}
-; ElasticSearch Plugins like kibana
-; CapsLock & 5:: Send "^#!{Enter}"  ; Run Query
-; CapsLock & 5:: Send "^+{F5}"  ; Run Query
-; CapsLock & b:: saveRestAPI()
-#Hotif
-;---------------------------------------------------------------------o
-
 
 ;=====================================================================o
 #Hotif WinActive("ahk_exe Postman.exe")
@@ -220,19 +174,6 @@ selectWin(index:=1){
 
 ;=====================================================================o
 ;                    Code Macro
-;---------------------------------------------------------------------o
-trimTitleNumber() {
-    Send "^#r"
-    Send "!r"         ; activate regex
-    Sleep 100
-    Send "{text}^(\d+[\.\s]+)+"  ; always lose
-    Send "{Tab}"
-    Send "{LShift down}{Home}{LShift up}{Del}"
-    Sleep 100
-    Send "^!{Enter}"
-    Send "{Esc}"
-    Sleep 200
-}
 ;---------------------------------------------------------------------o
 saveRestAPI()
 {
@@ -296,9 +237,5 @@ focusPasteElementByIdeavim() {
     ; Send "{Blind}!{Tab}"
     ActivateOrRun("ahk_exe idea64.exe")
     Sleep 100
-    Send "{Blind}/"
-    Send "{Blind}^r"
-    Send "{Blind}{+}"
-    Send "{Blind}{Enter}"
+    Vim.searchByPaste()
 }
-

@@ -29,7 +29,7 @@ PowerShell(Script, Options := "", Params := "-ExecutionPolicy Bypass")
 {
     SplitPath Script, psfile, WorkingDir
     ;MsgBox % psfile "|" WorkingDir
-    Run % "PowerShell.exe " . Params . " -Command &{./'" . psfile . "'}", % WorkingDir == "" ? A_ScriptDir : WorkingDir, % Options, PID
+    Run % "PowerShell.exe " . Params . " -Command &{./'" . psfile . "'}", % WorkingDir == "" ? A_ScriptDir : WorkingDir,  Options, PID
     Return PID
 }
 ;---------------------------------------------------------------------o

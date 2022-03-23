@@ -11,22 +11,21 @@ class Converter {
     ; - target：导出的文件名称，只支持枚举类，如 DictTypeEnum.MAC/PINYIN/JSON
     ; 文件生成在 ./dist/ 目录下
     static convert(source, target) {
-        msg := "
-        (
-            convert 第二个参数
-            请使用类似 FileTypeEnum.MAC 这样格式
-        )"
-        if !IsObject(target) {
-            msgbox msg
+        try {
+            switch target.suffix  {
+                case ".plist": result := UserDict.toMacUserDictionaryAsPlist(source)
+                case ".ini": result := UserDict.toPinYinAsIni(source)
+                case ".json": result := UserDict.toJson(source)
+                default:
+                    return
+            }
+        } catch Error {
+            msgbox "
+                (
+                    convert 函数第二个参数
+                    请使用类似 DictTypeEnum.MAC 这样格式
+                )"
             return
-        }
-        switch target.suffix  {
-            case ".plist": result := UserDict.toMacUserDictionaryAsPlist(source)
-            case ".ini": result := UserDict.toPinYinAsIni(source)
-            case ".json": result := UserDict.toJson(source)
-            default:
-                msgbox msg, "CapsLockMagic"
-                return
         }
         filename :=  target.name target.suffix 
         FileUtils.outputAs(result, filename)
@@ -58,14 +57,6 @@ class Converter {
         FileUtils.outputAs(result, "userdict4mapobj.ahk")
     }
 }
-
-; 支持导出的用户词典枚举类
-class DictTypeEnum {
-   static MAC    := {name:"userdict4mac", suffix:".plist"}
-   static JSON   := {name: "userdict4mac", suffixt: ".json"}
-   static PINYIN := {name: "userdict4pinyin", suffixt: ".ini"}
-}
-
 
 ; 词典转换工具：合并多个词典 、转换输入法词库。使用 mapObj 作为数据结构。
 class UserDict {

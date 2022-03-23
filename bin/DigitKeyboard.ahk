@@ -29,6 +29,7 @@ global DigitMode := false
 *h::Send "{blind}," ; 方便输坐标
 *Y::Send "{blind}."
 *N:: Send "{blind}{Space}"
+*G:: Send "{blind}G" ; Vim Goto line
 *Space::Send "{blind}0"
 *M::Send "{blind}1"
 *,::Send "{blind}2"
@@ -56,10 +57,4 @@ global DigitMode := false
 *-::Send "{blind}{F11}"
 *=::Send "{blind}{F12}"
 
-; *r::``
-    ; DigitMode := false
-    ; FnMode := true
-    ; keywait r
-    ; FnMode := false
-    ; return
 #Hotif

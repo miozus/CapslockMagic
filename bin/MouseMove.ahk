@@ -238,7 +238,7 @@ CapsLock & Enter::
         SendEvent "{Blind}{LButton down}" 
         KeyWait "Enter" 
         SendEvent "{Blind}{LButton up}" 
-        setIDEIME("EN")
+        IME.setIdeDefault("EN")
     }
 
 } 
@@ -246,7 +246,7 @@ CapsLock & Enter::
 ~LButton::
 {
     ; 物理鼠标点击
-    setIDEIME("EN")
+    IME.setIdeDefault("EN")
     ; signMouseShadowAvatarPhysical()
 }
 
@@ -258,194 +258,182 @@ CapsLock & Enter::
 }
 
 
-;=====================================================================o
-;                    Mouse Enhance                                                             
-
 ; 备忘录模式：记录鼠标（坐标）影分身
 global mouseMemoCount := 0
 global mouseClickCount := 0
 
-doMouse(event, OFFSET := 97)
-{
-    ; 分离告知和执行
-    ToolTip event
-    mouse(event, OFFSET)
-    SetTimer () => ToolTip(), -500
-}
+; Mouse Enhance                                                             
+class Mouse {
 
-mouse(event, OFFSET := 97)
-{
-    global CurrentMousePosX, CurrentMousePosY
-    OFFSET_SLOW := 11
-    if GetKeyState("a", "p")
-    {
-        OFFSET := OFFSET_SLOW
-    }
-    switch (event)
-    {
-        case "↑"  : MouseMove       0, -OFFSET, 0, "R"
-        case "↓"  : MouseMove       0, +OFFSET, 0, "R"
-        case "←"  : MouseMove -OFFSET,       0, 0, "R"
-        case "→"  : MouseMove +OFFSET,       0, 0, "R"
-        case "🖱️" : Send "{Blind^!}{LButton}" 
-        case "⚙️"  : Send "{Blind^!}{RButton}" 
-        case "⏫" : Send "{Blind^!}{WheelUp}"
-        case "⏬" : Send "{Blind^!}{WheelDown}"
-        case "◀"  : Send "{Blind^!}{XButton2}"
-        case "▶"  : Send "{Blind^!}{XButton1}"
-        case "💕" : Send "^c"
-        case "💌" : Send "^v"
-        case "🎯" : centerMouse()
-        default:
-            return
-    }
-    MouseGetPos &CurrentMousePosX, &CurrentMousePosY
-}
 
-; 鼠标影分身（水波纹）：每次点击鼠标，会掀起水面涟漪，留下分身，返回上次位置
-signMouseShadowAvatarPhysical()
-{
-    global mouseClickCount
-    global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
-    if (mouseClickCount != 0) {
-        ; 两元素交换需要第三方支援
-        CaretX := BeforeMousePosX
-        caretY := BeforeMousePosY
+    static speedUp(event, OFFSET := 97)
+    {
+        OFFSET := kMouseMoveSpeedFast  
+        OFFSET_SLOW := kMouseMoveSpeedSlow
+        if GetKeyState("a", "p")
+        {
+            OFFSET := OFFSET_SLOW
+        }
+        ToolTip event
+        this.doMove(event, OFFSET)
+        SetTimer () => ToolTip(), -500
+    }
+
+    static doMove(event, OFFSET := 97)
+    {
+        global CurrentMousePosX, CurrentMousePosY
+        switch (event)
+        {
+            case "↑"  : MouseMove       0, -OFFSET, 0, "R"
+            case "↓"  : MouseMove       0, +OFFSET, 0, "R"
+            case "←"  : MouseMove -OFFSET,       0, 0, "R"
+            case "→"  : MouseMove +OFFSET,       0, 0, "R"
+            case "🖱️" : Send "{Blind^!}{LButton}" 
+            case "⚙️"  : Send "{Blind^!}{RButton}" 
+            case "⏫" : Send "{Blind^!}{WheelUp}"
+            case "⏬" : Send "{Blind^!}{WheelDown}"
+            case "◀"  : Send "{Blind^!}{XButton2}"
+            case "▶"  : Send "{Blind^!}{XButton1}"
+            case "💕" : Send "^c"
+            case "💌" : Send "^v"
+            case "🎯" : 
+                ; to Center
+                WingetPos          &x,           &y, &width, &height  , "A"
+                mousemove x + width/2, y + height/2, 0
+            default:
+                return
+        }
         MouseGetPos &CurrentMousePosX, &CurrentMousePosY
-        BeforeMousePosX := CurrentMousePosX
-        BeforeMousePosY := CurrentMousePosY
-    } else {
-        ; 初始化副本和第三个元素
-        MouseGetPos &CurrentMousePosX, &CurrentMousePosY
-        BeforeMousePosX := CurrentMousePosX
-        BeforeMousePosY := CurrentMousePosY
-        CaretX := CurrentMousePosX
-        caretY := CurrentMousePosY
     }
-    mouseClickCount++
-}
 
-switchMousePos(event) 
-{
-    global mouseMemoCount
-    switch(Mod(mouseMemoCount, 2))
+    ; 鼠标影分身（水波纹）：每次点击鼠标，会掀起水面涟漪，留下分身，返回上次位置
+    static signMouseShadowAvatarPhysical()
     {
-        case 0: mouseMemo(event)
-        case 1: mouseMemo("↩")
+        global mouseClickCount
+        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
+        if (mouseClickCount != 0) {
+            ; 两元素交换需要第三方支援
+            CaretX := BeforeMousePosX
+            caretY := BeforeMousePosY
+            MouseGetPos &CurrentMousePosX, &CurrentMousePosY
+            BeforeMousePosX := CurrentMousePosX
+            BeforeMousePosY := CurrentMousePosY
+        } else {
+            ; 初始化副本和第三个元素
+            MouseGetPos &CurrentMousePosX, &CurrentMousePosY
+            BeforeMousePosX := CurrentMousePosX
+            BeforeMousePosY := CurrentMousePosY
+            CaretX := CurrentMousePosX
+            caretY := CurrentMousePosY
+        }
+        mouseClickCount++
     }
-    mouseMemoCount++
-}
 
-mouseMemo(event)
-{
-    ToolTip event
-    global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
-    switch(event)
+    static switchMousePos(event) 
     {
-        ; 编辑模式：工字型光标位置
-        case "🐱‍👤" : MouseMove CaretX, CaretY
-        case "↩" : MouseMove CurrentMousePosX, CurrentMousePosY
-        ; 禅模式之前的鼠标位置（但ahk能力有限，在ide里两者混同了）
-        case "👥": MouseMove BeforeMousePosX, BeforeMousePosY
+        global mouseMemoCount
+        switch(Mod(mouseMemoCount, 2))
+        {
+            case 0: this.mouseMemo(event)
+            case 1: this.mouseMemo("↩")
+        }
+        mouseMemoCount++
     }
-    SetTimer () => ToolTip(), -500
-}
 
-; 获取屏幕坐标，留下影分身，可返回原处
-signMouseShadowAvatar()
-{
-    global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY
-    MouseGetPos &BeforeMousePosX, &BeforeMousePosY
-    ; 如果无法获取 IDE 的编辑区光标时，设定两个一样
-    try if !CaretGetPos(&CaretX, &CaretY)
+    static mouseMemo(event)
     {
-        CaretX := BeforeMousePosX
-        CaretY := BeforeMousePosY
+        ToolTip event
+        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
+        switch(event)
+        {
+            ; 编辑模式：工字型光标位置
+            case "🐱‍👤" : MouseMove CaretX, CaretY
+            case "↩" : MouseMove CurrentMousePosX, CurrentMousePosY
+            ; 禅模式之前的鼠标位置（但ahk能力有限，在ide里两者混同了）
+            case "👥": MouseMove BeforeMousePosX, BeforeMousePosY
+        }
+        SetTimer () => ToolTip(), -500
     }
-}
 
-; 设定的键位重复时，reload 脚本检测不出，运行时乱按会陷入死循环，需要仔细排查重复
-onKeyPress() {
-    BlockInput "On"
-    loop 
+    ; 获取屏幕坐标，留下影分身，可返回原处
+    static signMouseShadowAvatar()
     {
-        if GetKeyState("h", "P")  {
-            doMouse("←")
-        } else if GetKeyState("j", "p") {
-            doMouse("↓")
-        } else if GetKeyState("k", "p") {
-            doMouse("↑")
-        } else if GetKeyState("l", "p") {
-            doMouse("→")
-        } else if GetKeyState("i", "p") {
-            doMouse("🖱️")
-        } else if GetKeyState("o", "p") {
-            doMouse("⚙️")
-        } else if GetKeyState("n", "p") {
-            doMouse("◀")
-        } else if GetKeyState("m", "p") {
-            doMouse("▶")
-        } else if GetKeyState("u", "p") {
-            ; 习惯 cpas + U / P 滚屏翻页; 按住不放时，会受外部起始逻辑影响，变成 ^{WU}
-            doMouse("⏫")
-        } else if GetKeyState("p", "p") {
-            doMouse("⏬")
-        } else if GetKeyState("c", "p") {
-            doMouse("💕")
-        } else if GetKeyState("v", "p") {
-            doMouse("💌")
-        } else if GetKeyState("g", "p") {
-            doMouse("🎯")
-        } else if GetKeyState("a", "p") {
-            ; 起始容易误触，所以置空
-        } else if GetKeyState("b", "p") {
-            switchMousePos("🐱‍👤")
-        } else if GetKeyState("s", "p") {
-            switchMousePos("👥")
-        } else if GetKeyState("Space", "p") {
-            ToolTip "⏹" ; 物理按键停止
-            break
-        } else if GetKeyState("Esc", "p") {
-            ToolTip "⏹" ; 物理按键停止
-            break
-        } else if A_TimeIdlePhysical > 2000 {
-            ToolTip "⌛" ; 超时自动停止
-            break
+        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY
+        MouseGetPos &BeforeMousePosX, &BeforeMousePosY
+        ; 如果无法获取 IDE 的编辑区光标时，设定两个一样
+        try if !CaretGetPos(&CaretX, &CaretY)
+        {
+            CaretX := BeforeMousePosX
+            CaretY := BeforeMousePosY
         }
     }
-    BlockInput "Off"
-}
 
-; 禅模式(BlockInput)
-; ----
-;    - 管理员身份运行脚本才生效，阻塞所有输入设备与计算机交互，监听按下的物理逻辑状态
-;    - UAC 问题，可通过 shell 降权，以普通用户权限启动应用，已实现在 common 插件里
-;    - 脚本所有热键（功能），仍然有效；甚至作废的组合，死灰复燃；所以只按字母键就好
-;    - 外部嵌套函数的所有组合键已锁死按下状态，无法改变（闭包），甚至{Blind} 盲从模式也失效了，获取状态永远为 1
-mouseGenMode()
-{
-    signMouseShadowAvatar()
-    ToolTip "🔄"
-    ; 安静地监听键盘输入
-    onKeyPress()
-    ; 收尾阶段，按下外部逻辑锁死的键（可能需要抬起按键），解除锁定
-    Sleep 50
-    Send "{Alt}{Ctrl}"
-    if GetKeyState("LWin")
-    {
-        Send "{LWin}"
-        Sleep 100
-        Send "{Esc}"
+    ; 设定的键位重复时，reload 脚本检测不出，运行时乱按会陷入死循环，需要仔细排查重复
+    static onKeyPress() {
+        BlockInput "On"
+        loop 
+        {
+            if GetKeyState("h", "P")  {
+                this.speedUp("←")
+            } else if GetKeyState("j", "p") {
+                this.speedUp("↓")
+            } else if GetKeyState("k", "p") {
+                this.speedUp("↑")
+            } else if GetKeyState("l", "p") {
+                this.speedUp("→")
+            } else if GetKeyState("i", "p") {
+                this.speedUp("🖱️")
+            } else if GetKeyState("o", "p") {
+                this.speedUp("⚙️")
+            } else if GetKeyState("n", "p") {
+                this.speedUp("◀")
+            } else if GetKeyState("m", "p") {
+                this.speedUp("▶")
+            } else if GetKeyState("u", "p") {
+                ; 习惯 cpas + U / P 滚屏翻页; 按住不放时，会受外部起始逻辑影响，变成 ^{WU}
+                this.speedUp("⏫")
+            } else if GetKeyState("p", "p") {
+                this.speedUp("⏬")
+            } else if GetKeyState("c", "p") {
+                this.speedUp("💕")
+            } else if GetKeyState("v", "p") {
+                this.speedUp("💌")
+            } else if GetKeyState("g", "p") {
+                this.speedUp("🎯")
+            } else if GetKeyState("a", "p") {
+                ; 起始容易误触，所以置空
+            } else if GetKeyState("b", "p") {
+                this.switchMousePos("🐱‍👤")
+            } else if GetKeyState("s", "p") {
+                this.switchMousePos("👥")
+            } else if GetKeyState("Space", "p") {
+                ToolTip "⏹" ; 物理按键停止
+                break
+            } else if GetKeyState("Esc", "p") {
+                ToolTip "⏹" ; 物理按键停止
+                break
+            } else if A_TimeIdlePhysical > 2000 {
+                ToolTip "⌛" ; 超时自动停止
+                break
+            }
+        }
+        BlockInput "Off"
     }
-    ToolTip 
+
+    ; 禅模式(BlockInput)
+    ; ----
+    ;    - 管理员身份运行脚本才生效，阻塞所有输入设备与计算机交互，监听按下的物理逻辑状态
+    ;    - UAC 问题，可通过 shell 降权，以普通用户权限启动应用，已实现在 common 插件里
+    ;    - 脚本所有热键（功能），仍然有效；甚至作废的组合，死灰复燃；所以只按字母键就好
+    ;    - 外部嵌套函数的所有组合键已锁死按下状态，无法改变（闭包），甚至{Blind} 盲从模式也失效了，获取状态永远为 1
+    static move()
+    {
+        this.signMouseShadowAvatar()
+        ToolTip "🖱️"
+        ; 安静地监听键盘输入
+        this.onKeyPress()
+    }
+
+
+
 }
-
-
-;                    Mouse Macro                                                             
-
-centerMouse() 
-{
-    WingetPos &x          , &y, &width, &height  , "A"
-    mousemove x + width/2, y +       height/2, 0
-}
-

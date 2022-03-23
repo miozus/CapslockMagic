@@ -6,7 +6,6 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
 ; 不用使用“Off”因为语法自身瑕疵，会莫名其妙切换大小写，估计源码底层是！写法
 SetCapsLockState "AlwaysOff" 
-; A_StoreCapsLockMode := false
 
 
 ;=====================================================================o
@@ -20,12 +19,11 @@ CapsLock & `::
     if GetKeyState("CapsLock", "T") {
         SetCapsLockState "AlwaysOff"
         Tooltip "a"
-        SetTimer () => ToolTip(), -1000
     } else {
         SetCapsLockState "AlwaysOn" 
         Tooltip "A"
-        SetTimer () => ToolTip(), -1000
     }
+    SetTimer () => ToolTip(), -1000
     KeyWait "``","T1"
 }
 
@@ -188,6 +186,6 @@ CapsLock & q::
 
 ; close Tab
 CapsLock & w:: ^w
-
+; open menu like right click
 CapsLock & \:: AppsKey
 

@@ -34,7 +34,7 @@ prClickPositionAttrAndBack() {
     Click "155 207"
     Sleep 50
     ; 返回按热键时鼠标位置
-    Click x, y " 0"
+    Click x y " 0"
 }
 
 ; prSort(index, x:=875, y:=885, dx:=75, dy:=0) {
@@ -54,7 +54,7 @@ prSort(index, x:=875, y:=785, dx:=75, dy:=0) {
     Click "155 207"
     Sleep 50
     prGetNewPos(index, x, y, dx, dy)
-    Click posx, posy  " 0"
+    Click posx posy  " 0"
 }
 
 ; 坐标轴

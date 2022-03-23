@@ -23,6 +23,19 @@ InstallKeybdHook          ; 无条件安装键盘钩子,防止丢失
 ;=====================================================================o
 ;                       CapsLock init
 
+
+; 全局配置类
+
+; 声明正在使用的中文输入法
+; MICROSOFT_PINYIN 微软拼音/搜狗五笔/手心输入法
+; QQ_PINYIN        QQ拼音
+; OTHER_PINYIN     搜狗拼音/其他
+global kImeType := ImeTypeEnum.MICROSOFT_PINYIN
+; 鼠标移速
+global kMouseMoveSpeedFast := 97
+global kMouseMoveSpeedSlow := 11
+
+; 托盘图标
 Animation.initTrayIcon()
 
 ; Hotkey Register Center
@@ -31,17 +44,19 @@ allHotkeys.Push("*;")
 allHotkeys.Push("*3")
 
 #Include bin\util\Common.ahk
+#Include bin\util\AutoConfiguration.ahk
 #Include bin\util\UserDictUtils.ahk
 #Include data\UserDictionary.ahk
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\DigitKeyboard.ahk
-#Include bin\InputMethodEditorMS.ahk
+#Include bin\InputMethodEditor.ahk
 #Include bin\MouseMove.ahk
 #Include bin\MoomWinManager.ahk
 #Include bin\SemicolonHook.ahk
 #Include bin\plugin\GarbageCollector.ahk
 #Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
+#Include bin\plugin\Vim.ahk
 ; #Include bin\plugin\Premiere.ahk
 
 
@@ -92,23 +107,24 @@ CapsLock & 8:: Send "{Media_Play_Pause}"
 CapsLock & a:: 
 {
     ; 魔鬼逻辑：当前区块内，此键永远为按下，无论方法渗透多深都无法改变
-    ; 虽然禁用交互，但所有的快捷键仍然有效
-    ; 禅模式：忘记 CapsLock 键的使用，否则带来上述机制的副作用
+    ; 跳出问题，大括号之外释放热键
     if GetKeyState("LAlt", "p") = 1
     {
-        mouseGenMode()
+        ; mouseGenMode()
+        Window.zoom()
     }
     else if GetKeyState("LWin", "p") = 1
     {
-        moveWinGenMode()
+        Window.move()
     } 
     else if GetKeyState("LCtrl", "p") = 1
     {
-        mouseGenMode()
+        Mouse.move()
     }
     else {
-        zoomWinManager()
+        return
     }
+    GC.ModifyKey()
 }
 
 CapsLock & d:: 
@@ -140,21 +156,22 @@ CapsLock & d::
 
 CapsLock & f:: 
 {
-    if GetKeyState("Alt") = 1
-        ; Everything
-        Send "{Blind}^#!f"
-    else if GetKeyState("Ctrl") = 1
+    if GetKeyState("LWin") 
+    {
+        path := A_Programs "Apifox.lnk"
+        ActivateOrRun("ahk_exe Apifox.exe", path)
+    } else if GetKeyState("Ctrl") 
         ; 资源管理器
         activateOrRun("ahk_class CabinetWClass","")
-            ; Winactivate
-    else
-        if WinExist("ahk_exe Illustrator.exe") {
-            activateOrRun("ahk_exe Illustrator.exe")
-        } else {
-            ; switchero - no sudo privileges
+    else {
+        ; if not WinExist("ahk_exe Illustrator.exe") {
+            ; everything
             Send "{blind}^+!f"
-        }
-    setIME("EN")
+        ; } else {
+            ; activateOrRun("ahk_exe Illustrator.exe")
+        ; }
+    }
+    IME.set("EN")
 }
 
 CapsLock & g:: 
@@ -184,7 +201,7 @@ CapsLock & e::
     else {
         path := A_Programs "\Notion Enhanced.lnk"
         activateOrRun("ahk_exe Notion Enhanced.exe", path)
-        setIME("中文")
+        IME.set("中文")
     }
 }
 
@@ -192,11 +209,13 @@ CapsLock & r::
 {
     if GetKeyState("Alt") = 1 
     {
-        if winExist("ahk_exe javaw.exe") or winExist("VisualVM 2.1 ahk_exe java.exe")
-            WinActivate
-        else
+        path := A_Programs "\JetBrains Toolbox\GoLand.lnk"
+        activateOrRun("ahk_exe goland64.exe", path)
+        ; if winExist("ahk_exe javaw.exe") or winExist("VisualVM 2.1 ahk_exe java.exe")
+            ; WinActivate
+        ; else
             ; visualvm_21
-            activateOrRun("Windows PowerShell", "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.6.10571.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe", "E:\Java\visualvm_21\bin\visualvm --jdkhome C:\Users\lss81\.jdks\adopt-openjdk-14.0.2")
+            ; activateOrRun("Windows PowerShell", "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.6.10571.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe", "E:\Java\visualvm_21\bin\visualvm --jdkhome C:\Users\lss81\.jdks\adopt-openjdk-14.0.2")
     }
     else if GetKeyState("LWin") == 1 {
         ; Apache JMeter
@@ -242,14 +261,14 @@ CapsLock & t::
     }
 }
 
-CapsLock & z::
-{
-    if getKeyState("Alt") {
-        DevUtils.getPixelSearchCode()
-    } else {
-        DevUtils.getMousePosCode()
-    }
-}
+; CapsLock & z::
+; {
+    ; if getKeyState("Alt") {
+        ; DevUtils.getPixelSearchCode()
+    ; } else {
+        ; DevUtils.getMousePosCode()
+    ; }
+; }
 
 #SuspendExempt
 CapsLock & y:: 

@@ -158,7 +158,7 @@ WinVisible(id)
     ;WinGet, state, MinMax, ahk_id %id%
     ;tooltip %x% %y% %width% %height%
 
-    ;sizeTooSmall := width < 300 && height < 300 && state != -1 ; -1 is minimized
+    ;sizeTooSmall := width < 300 && height <height 300 && state != -1 ; -1 is minimized
     empty := !Trim(title)
     ;if (!sizeTooSmall && !empty)
     ;    tooltip %x% %y% %width% %height% "%title%"
@@ -372,7 +372,7 @@ activateOrRunOld(title, exe_path, language := "EN") {
     } else {
         Run exe_path
     }
-    setIME(language)	; 默认以小写开始; posh 失去控制权，要下两下才能保持英文
+    IME.set(language)	; 默认以小写开始; posh 失去控制权，要下两下才能保持英文
 }
 ;---------------------------------------------------------------------o
 openWinSpy() {
@@ -394,7 +394,7 @@ loginAdmin() {
     Send "{Tab}"
     Send "{text}admin"
     Send "{Tab}"
-    setIME("EN")
+    IME.set("EN")
 }
 ;---------------------------------------------------------------------o
 ; 复制文字用记事本查看
@@ -650,6 +650,23 @@ class Animation {
     }
 
 
+}
+
+class GC {
+    ; 收尾阶段，按下外部逻辑锁死的键，解除锁定(不要按 CapsLock 停止)
+    static ModifyKey() {
+        Send "{Alt}{Ctrl}"
+        if GetKeyState("LWin")
+        {
+            Send "{LWin}"
+            Sleep 100
+            Send "{Esc}"
+        }
+        Sleep 100
+        ToolTip
+        ; ToolTip "  LAlt" GetKeyState("LAlt") " LWin" GetKeyState("LWin") " LCtrl" GetKeyState("LCtrl") 
+    }
+    
 }
 
 ;---------------------------------------------------------------------o
