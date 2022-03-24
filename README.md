@@ -320,7 +320,6 @@ CapsLock & 9::
 - <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 控制方向（Vim）
 - <kbd>␣</kbd> 窗口回到屏幕中央
 
-
 ### 窗口定型
 
 ![窗口定型](bin/img/moom-zoom.gif)
@@ -365,7 +364,7 @@ CapsLock & 9::
 <summary> 2. 脚本支持旧版的 AutoHotkey 吗？（脚本支持 Windows 7）吗？ </summary>
 </br>
 
-`Magic` 早期也是从 V1 迭代过来，历史版本保存在 `/tools/release/AutoHotkey_V1` 目录下，可从 
+`Magic` 早期也是从 V1 迭代过来，历史版本保存在 `/tools/release/AutoHotkey_V1` 目录下，可从
 [AutoHotkey 官网地址](https://www.autohotkey.com/) 下载当前版本的配套软件（AutoHotkey_1.1.33.10+）直接运行。
 
 - `magic_v1` 单机服务，简单的光标编辑等，想到什么功能就扔进去。

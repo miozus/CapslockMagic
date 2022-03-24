@@ -3,9 +3,9 @@ SetWorkingDir A_ScriptDir
 
 
 ;=====================================================================o
-;                      Punctuation Hook Registry
+;                      Semicolon Hook Registry
 
-global PunctuationMode := false
+global EnableSemicolonMonkey := false
 ; all dict comes from database
 semicolonHookStr := getKeyStr(secretDictionary) "," getKeyStr(userDictionary) 
 semicolonHook := InputHook("C", "{Space}{Esc}", semicolonHookStr)
@@ -15,12 +15,12 @@ semicolonHook.OnEnd := onTypoEnd
 +`;:: Send "{blind}:"
 *`;::
 {
-    global semicolonHook, PunctuationMode
+    global semicolonHook, EnableSemicolonMonkey
     thisHotkey := A_ThisHotkey
     disableOtherHotkey(thisHotkey)
-    PunctuationMode := true
+    EnableSemicolonMonkey := true
     KeyWait ";"
-    PunctuationMode := false
+    EnableSemicolonMonkey := false
     if (A_PriorKey == ";" && A_TimeSinceThisHotkey < 350)
     {
         enterSemicolonAbbr(semicolonHook)
@@ -144,7 +144,7 @@ execSemicolonAbbr(typo) {
     return true
 }
 
-#Hotif PunctuationMode
+#Hotif EnableSemicolonMonkey
 *A::
 {
 Send "{blind}*"

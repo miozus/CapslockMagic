@@ -20,21 +20,25 @@ SendMode "Input"          ; 速度快
 SetWorkingDir A_ScriptDir ; 当前脚本目录，就是脚本运行目录
 InstallKeybdHook          ; 无条件安装键盘钩子,防止丢失
 
+
 ;=====================================================================o
-;                       CapsLock init
-
-
-; 全局配置类
-
-; 声明正在使用的中文输入法
-; MICROSOFT_PINYIN 微软拼音/搜狗五笔/手心输入法
-; QQ_PINYIN        QQ拼音
-; OTHER_PINYIN     搜狗拼音/其他
-global kImeType := ImeTypeEnum.MICROSOFT_PINYIN
+; 全局配置
+;
+; 声明正在使用的中文输入法类型
+; ---
+; - MICROSOFT 微软拼音/搜狗五笔/手心输入法
+; - QQ        QQ拼音
+; - OTHER     搜狗拼音/其他
+global kImeType := PinYinEnum.MICROSOFT
 ; 鼠标移速
 global kMouseMoveSpeedFast := 97
 global kMouseMoveSpeedSlow := 11
+; 是否开启输入法保证中文标点[，。：？] 但分号特殊符不受影响，仍是英文标点
+global EnableChinesePunctuation := true
 
+
+;=====================================================================o
+;                       CapsLock init
 ; 托盘图标
 Animation.initTrayIcon()
 
@@ -44,13 +48,12 @@ allHotkeys.Push("*;")
 allHotkeys.Push("*3")
 
 #Include bin\util\Common.ahk
-#Include bin\util\AutoConfiguration.ahk
 #Include bin\util\UserDictUtils.ahk
 #Include data\UserDictionary.ahk
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\DigitKeyboard.ahk
 #Include bin\InputMethodEditor.ahk
-#Include bin\MouseMove.ahk
+#Include bin\MouseController.ahk
 #Include bin\MoomWinManager.ahk
 #Include bin\SemicolonHook.ahk
 #Include bin\plugin\GarbageCollector.ahk

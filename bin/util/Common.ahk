@@ -341,7 +341,7 @@ firstVisibleWindow(windowSelector)
 
 disableOtherHotkey(thisHotkey)
 {
-    global allHotkeys, chinesePunctuationHotkey := false
+    global allHotkeys, EnableChinesePunctuation := false
     for index, value in allHotkeys
     {
         if (value != thisHotkey) {
@@ -352,7 +352,7 @@ disableOtherHotkey(thisHotkey)
 
 enableOtherHotkey(thisHotkey)
 {
-    global allHotkeys, chinesePunctuationHotkey := true
+    global allHotkeys, EnableChinesePunctuation := true
     for index, value in allHotkeys
     {
         if (value != thisHotkey) {

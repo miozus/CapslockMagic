@@ -2,6 +2,18 @@
 SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
+
+; 支持导出的用户词典枚举类
+; ---
+; - MAC
+; - JSON
+; - PINYIN
+class DictTypeEnum {
+    static MAC    := {name: "userdict4mac",    suffix: ".plist"}
+    static JSON   := {name: "userdict4mac",    suffix: ".json"}
+    static PINYIN := {name: "userdict4pinyin", suffix: ".ini"}
+}
+
 ; 猴子输入法词典转换工具
 class Converter {
     

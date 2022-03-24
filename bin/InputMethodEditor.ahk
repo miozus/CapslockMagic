@@ -5,23 +5,30 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 ;               中文输入法特殊优待（默认中文状态使用英文字符）
 ;                   微软拼音让它进化了:在一个输入法中，中文和英文模式切换
 
-; 在分号模式和数字模式中，保持英文标点
-global chinesePunctuationHotkey := true
 
 ; 其他中文标点符号，已收录进分号模式的私有字典
-#Hotif IME.exists() and chinesePunctuationHotkey
+#Hotif IME.exists() and EnableChinesePunctuation
 ,:: Send "{text}，"
 .:: Send "{text}。"
 +`;:: Send "{blind}{text}："
 +/:: Send "{blind}{text}？"
 #Hotif
 
+; 声明正在使用的中文输入法类型
+; ---
+; - MICROSOFT 微软拼音/搜狗五笔/手心输入法
+; - QQ        QQ拼音
+; - OTHER     搜狗拼音/其他
+class PinYinEnum {
+    static MICROSOFT := {wParam:"0x001", name:"微软拼音/搜狗五笔/手心输入法", value:"Miocrosoft"}
+    static QQ        := {wParam:"0x005", name:"QQ拼音"                  , value:"QQ"}
+    static OTHER     := {wParam:"0x005", name:"搜狗拼音/其他"             , value:"Other"}
+}
+
 ; Input Method Editor 
 ; 作者：知乎 @查理
 ; 时间：2022年3月
 ; 更新：https://www.zhihu.com/question/470805790/answer/2022570065
-; 请在全局配置中声明正在使用的中文输入法，比如微软拼音
-; global kImeType := ImeTypeEnum.MICROSOFT_PINYIN
 class IME {
 
     static wParam := kImeType.wParam
@@ -85,11 +92,12 @@ class IME {
                 "ahk_id " DllCall("imm32\ImmGetDefaultIMEWnd", "Uint", hWnd, "Uint")
                 )
         DetectHiddenWindows False
-        ; 微软拼音（英-中，新/旧，新旧/新旧）0/1024-1/1025
-        ; 搜狗五笔  0-1025
-        ; 手心  1024-1025
-        ; 搜狗拼音中英都是1025（无效）
-        ; 其他输入法 0-1
+        ; 测试用例（英-中，新/旧，新旧/新旧）
+        ; 微软拼音 0/1024-1/1025
+        ; 搜狗五笔 0-1025
+        ; 搜狗拼音 1025-1025（无效）类型要选 OTHER
+        ; 手心    1024-1025
+        ; 其他    0-1
         return (result == 1 or result == 1025)
     }
 

@@ -7,16 +7,16 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 ;        按住3不松手: 右手变成小键盘, 横板数字键变成 Fn 键, 特殊地 F3=fn2+3
 ;               
 
-global DigitMode := false
+global EnableDigitKeyboard := false
 
 *3::
 {
-    global DigitMode
+    global EnableDigitKeyboard
     thisHotkey := A_ThisHotkey
     disableOtherHotkey(thisHotkey)
-    DigitMode := true
+    EnableDigitKeyboard := true
     keywait "3" 
-    DigitMode := false
+    EnableDigitKeyboard := false
     if (A_PriorKey == "3" && A_TimeSinceThisHotkey < 350)
     {
         Send "{blind}3"
@@ -24,7 +24,7 @@ global DigitMode := false
     enableOtherHotkey(thisHotkey)
 }
 
-#Hotif DigitMode
+#Hotif EnableDigitKeyboard
 ; 对应标准的小键盘指法
 *h::Send "{blind}," ; 方便输坐标
 *Y::Send "{blind}."
@@ -56,5 +56,4 @@ global DigitMode := false
 *0::Send "{blind}{F10}"
 *-::Send "{blind}{F11}"
 *=::Send "{blind}{F12}"
-
 #Hotif

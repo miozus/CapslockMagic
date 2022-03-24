@@ -243,11 +243,11 @@ CapsLock & Enter::
 
 } 
 
+; 物理鼠标点击
 ~LButton::
 {
-    ; 物理鼠标点击
     IME.setIdeDefault("EN")
-    ; signMouseShadowAvatarPhysical()
+    ; MouseShadowAvatar.signPhysical()
 }
 
 ~LButton up::
@@ -258,13 +258,22 @@ CapsLock & Enter::
 }
 
 
-; 备忘录模式：记录鼠标（坐标）影分身
-global mouseMemoCount := 0
-global mouseClickCount := 0
 
-; Mouse Enhance                                                             
+; 鼠标禅模式(BlockInput)
+; ----
+; - 管理员身份运行脚本才生效，阻塞所有输入设备与计算机交互，监听按下的物理逻辑状态
+; - UAC 问题，可通过 shell 降权，以普通用户权限启动应用，已实现在 common 插件里
+; - 脚本所有热键（功能），仍然有效；甚至作废的组合，死灰复燃；所以只按字母键就好
+; - 外部嵌套函数的所有组合键已锁死按下状态，无法改变（闭包），甚至{Blind} 盲从模式也失效了，获取状态永远为 1
 class Mouse {
 
+    static move()
+    {
+        MouseShadowAvatar.sign()
+        ToolTip "🖱️"
+        ; 安静地监听键盘输入
+        this.onKeyPress()
+    }
 
     static speedUp(event, OFFSET := 97)
     {
@@ -289,7 +298,7 @@ class Mouse {
             case "←"  : MouseMove -OFFSET,       0, 0, "R"
             case "→"  : MouseMove +OFFSET,       0, 0, "R"
             case "🖱️" : Click
-            case "⚙️"  : Click "Right"
+            case "⚙️" : Click "Right"
             case "⏫" : Click "WheelUp"
             case "⏬" : Click "WheelDown"
             case "◀"  : Click "XButton2" 
@@ -297,79 +306,17 @@ class Mouse {
             case "💕" : Send "^c"
             case "💌" : Send "^v"
             case "🎯" : 
-                ; to Center
                 WingetPos          &x,           &y, &width, &height  , "A"
-                mousemove x + width/2, y + height/2, 0
+                mousemove x + width/2, y + height/2, 0 ; back to window center
             default:
                 return
         }
         MouseGetPos &CurrentMousePosX, &CurrentMousePosY
     }
 
-    ; 鼠标影分身（水波纹）：每次点击鼠标，会掀起水面涟漪，留下分身，返回上次位置
-    static signMouseShadowAvatarPhysical()
-    {
-        global mouseClickCount
-        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
-        if (mouseClickCount != 0) {
-            ; 两元素交换需要第三方支援
-            CaretX := BeforeMousePosX
-            caretY := BeforeMousePosY
-            MouseGetPos &CurrentMousePosX, &CurrentMousePosY
-            BeforeMousePosX := CurrentMousePosX
-            BeforeMousePosY := CurrentMousePosY
-        } else {
-            ; 初始化副本和第三个元素
-            MouseGetPos &CurrentMousePosX, &CurrentMousePosY
-            BeforeMousePosX := CurrentMousePosX
-            BeforeMousePosY := CurrentMousePosY
-            CaretX := CurrentMousePosX
-            caretY := CurrentMousePosY
-        }
-        mouseClickCount++
-    }
-
-    static switchMousePos(event) 
-    {
-        global mouseMemoCount
-        switch(Mod(mouseMemoCount, 2))
-        {
-            case 0: this.mouseMemo(event)
-            case 1: this.mouseMemo("↩")
-        }
-        mouseMemoCount++
-    }
-
-    static mouseMemo(event)
-    {
-        ToolTip event
-        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
-        switch(event)
-        {
-            ; 编辑模式：工字型光标位置
-            case "🐱‍👤" : MouseMove CaretX, CaretY
-            case "↩" : MouseMove CurrentMousePosX, CurrentMousePosY
-            ; 禅模式之前的鼠标位置（但ahk能力有限，在ide里两者混同了）
-            case "👥": MouseMove BeforeMousePosX, BeforeMousePosY
-        }
-        SetTimer () => ToolTip(), -500
-    }
-
-    ; 获取屏幕坐标，留下影分身，可返回原处
-    static signMouseShadowAvatar()
-    {
-        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY
-        MouseGetPos &BeforeMousePosX, &BeforeMousePosY
-        ; 如果无法获取 IDE 的编辑区光标时，设定两个一样
-        try if !CaretGetPos(&CaretX, &CaretY)
-        {
-            CaretX := BeforeMousePosX
-            CaretY := BeforeMousePosY
-        }
-    }
-
     ; 设定的键位重复时，reload 脚本检测不出，运行时乱按会陷入死循环，需要仔细排查重复
-    static onKeyPress() {
+    static onKeyPress() 
+    {
         BlockInput "On"
         loop 
         {
@@ -403,9 +350,9 @@ class Mouse {
             } else if GetKeyState("a", "p") {
                 ; 起始容易误触，所以置空
             } else if GetKeyState("b", "p") {
-                this.switchMousePos("🐱‍👤")
+                MouseShadowAvatar.switchPosition("🐱")
             } else if GetKeyState("s", "p") {
-                this.switchMousePos("👥")
+                MouseShadowAvatar.switchPosition("👥")
             } else if GetKeyState("Space", "p") {
                 ToolTip "⏹" ; 物理按键停止
                 break
@@ -420,20 +367,77 @@ class Mouse {
         BlockInput "Off"
     }
 
-    ; 禅模式(BlockInput)
-    ; ----
-    ;    - 管理员身份运行脚本才生效，阻塞所有输入设备与计算机交互，监听按下的物理逻辑状态
-    ;    - UAC 问题，可通过 shell 降权，以普通用户权限启动应用，已实现在 common 插件里
-    ;    - 脚本所有热键（功能），仍然有效；甚至作废的组合，死灰复燃；所以只按字母键就好
-    ;    - 外部嵌套函数的所有组合键已锁死按下状态，无法改变（闭包），甚至{Blind} 盲从模式也失效了，获取状态永远为 1
-    static move()
+}
+
+; 备忘录模式：记录鼠标（坐标）影分身
+global mouseMemoCount := 0
+global mouseClickCount := 0
+
+; 鼠标影分身（水波纹）
+; ---
+; 每次点击鼠标，会掀起水面涟漪，留下分身，返回上次位置
+; @Deprecated
+class MouseShadowAvatar {
+
+    ; 获取屏幕坐标，留下影分身，可返回原处
+    static sign()
     {
-        this.signMouseShadowAvatar()
-        ToolTip "🖱️"
-        ; 安静地监听键盘输入
-        this.onKeyPress()
+        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY
+        MouseGetPos &BeforeMousePosX, &BeforeMousePosY
+        ; 如果无法获取 IDE 的编辑区光标时，设定两个一样
+        try if !CaretGetPos(&CaretX, &CaretY)
+        {
+            CaretX := BeforeMousePosX
+            CaretY := BeforeMousePosY
+        }
+    }
+
+    static signPhysical() 
+    {
+        global mouseClickCount
+        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
+        if (mouseClickCount != 0) {
+            ; 两元素交换需要第三方支援
+            CaretX := BeforeMousePosX
+            caretY := BeforeMousePosY
+            MouseGetPos &CurrentMousePosX, &CurrentMousePosY
+            BeforeMousePosX := CurrentMousePosX
+            BeforeMousePosY := CurrentMousePosY
+        } else {
+            ; 初始化副本和第三个元素
+            MouseGetPos &CurrentMousePosX, &CurrentMousePosY
+            BeforeMousePosX := CurrentMousePosX
+            BeforeMousePosY := CurrentMousePosY
+            CaretX := CurrentMousePosX
+            caretY := CurrentMousePosY
+        }
+        mouseClickCount++
     }
 
 
+    static switchPosition(event) 
+    {
+        global mouseMemoCount
+        switch(Mod(mouseMemoCount, 2))
+        {
+            case 0: this.doSwitch(event)
+            case 1: this.doSwitch("↩")
+        }
+        mouseMemoCount++
+    }
 
+    static doSwitch(event)
+    {
+        ToolTip event
+        global BeforeMousePosX, BeforeMousePosY, CaretX, CaretY, CurrentMousePosX, CurrentMousePosY
+        switch(event)
+        {
+            ; 编辑模式：工字型光标位置
+            case "🐱" : MouseMove CaretX, CaretY
+            case "↩" : MouseMove CurrentMousePosX, CurrentMousePosY
+            ; 禅模式之前的鼠标位置（但ahk能力有限，在ide里两者混同了）
+            case "👥": MouseMove BeforeMousePosX, BeforeMousePosY
+        }
+        SetTimer () => ToolTip(), -500
+    }
 }
