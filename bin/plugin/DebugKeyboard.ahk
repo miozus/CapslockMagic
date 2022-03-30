@@ -40,7 +40,7 @@ global EnableDebugKeyboard := false
 ^3:: Debug.stepOut()
 *3:: Debug.resumeProgram()
 
-*5:: Hotspot.reflush()
+*5:: Hotspot.refresh()
 *6:: Debug.reboot()
 *[:: SourceHunter.usage()
 *]:: SourceHunter.hierarchy()
@@ -52,8 +52,8 @@ global EnableDebugKeyboard := false
 *S:: Debug.exitSilent()
 *C:: Debug.exitSilent()
 
-^Tab:: Hotspot.reflush()
-*Tab:: Chrome.flush()
+^Tab:: Hotspot.refresh()
+*Tab:: Chrome.refresh()
 ^Esc:: Debug.view()
 *Esc:: Debug.exit()
 *Space:: Debug.evaluate()
@@ -69,7 +69,7 @@ class Debug {
     ; view , when contion is true
     static view() {
         Send "{blind}^+{F8}" 
-        ToolTip "👓"
+        ToolTip "🔍"
     }
 
     ; Run to Cursor
@@ -178,7 +178,7 @@ class Debug {
 ; Devtools and Jrebel be like
 class Hotspot {
     
-    static reflush() {
+    static refresh() {
         Send "{blind}^{F9}" 
         ToolTip "🫕"
     }
@@ -186,7 +186,8 @@ class Hotspot {
 
 class Chrome {
 
-    static flush() {
+    static refresh() {
+        ToolTip "G"
         path := A_AppData "\Microsoft\Internet Explorer\Quick Launch\Google Chrome.lnk"
         activateOrRun("ahk_exe chrome.exe", path)
         Send "{Blind}^r"

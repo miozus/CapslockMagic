@@ -10,7 +10,7 @@
 >
 > 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 >
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/dependencies-thqby%2FAutoHotkey__H-orange?style=flat&logo=GitHub"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/dependencies-thqby%2FAutoHotkey__H-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/MagicVersion-1.2.0-brighten-green?style=flat&logo=Macy’s"></a>
 
 ## 历史版本比较
 
@@ -28,18 +28,20 @@
 | 🧰           | 开发软件   | Karabiner 单纯的字典风格                            | AutoHotkey V1 面向过程的脚本风格                              | AutoHotkey_H_V2 面向对象的现代风格，类似 JavaScript，支持多线程 |
 | ⚙️           | 配置文件   | 鸿篇巨制的 json / yaml 文本                         | 内置网页服务，界面非常友好                                    | 源码即配置，拓展灵活，适合开发者                                |
 | 👾           | 启动程序   | ✅ 仅打开第一个                                     | ✅ 支持同类窗口切换                                           | ✅ 支持同类窗口切换                                             |
-| 📺           | 窗口调整   | ✅ 需安装 Moom                                      | ✅ 位置和移动                                                 | ✅ 仿写 Moom（内置）、支持禅模式                                             |
+| 📺           | 窗口调整   | ✅ 需安装 Moom                                      | ✅ 调整位置和移动                                                 | ✅ 调整位置和移动（仿写的 Moom）、支持禅模式                                             |
 | 🖱️           | 鼠标操作   | ✅ 需双手按住                                       | ✅ 需双手按住                                                 | ✅ 按下进入禅模式，可单手操作                                   |
 | `I`          | 光标编辑   | ✅ 方向移动和前后删除                               | ❌                                                            | ✅ 方向移动和前后删除                                           |
 | 🐵           | 猴子输入法 | ❌                                                  | ✅ 分号模式：指令集                                           | ✅ 分号模式进阶版：用户词典、指令集等，支持词典同步 MacOS       |
 | <kbd>;</kbd> | 分号特殊符 | ❌                                                  | ✅ 重排列到字母键位                                           | ✅ 重排列到字母键位（调优），支持 MacOS                         |
 | 3️⃣           | 数字小键盘 | ❌                                                  | ✅ 数字模式                                                   | ✅ 数字小键盘 + <kbd>F1~12</kbd> ，支持 MacOS                   |
+| 🤖           | 中英文管家 | ❌                                                  | ❌                                                   | ✅ 解决写代码又写注释的痛点                   |
+| 🦉           | 单手就调试 | ❌                                                  | ❌                                                   | ✅ 浓缩的 Idea 风格调试组合键
 
 ## Magic 增强功能
 
-🔫 **中英文切换自动管理**
+🤖 **中英文管家**
 
-重点优化了写代码注释的体验。
+优化了写代码注释的体验，让脚本托管软件对应的中英文状态以及切换。
 
 - 开发者在各种编辑器 `VSCode`、`Intelj Idea`、`Vim` 写完注释后，按 <kbd>Caps</kbd> 可以直接返回到 `Normal` 模式。
 - 如果切换到 `Notion` 写文档，默认使用中文，切回 IDE 默认变回英文。
@@ -52,6 +54,17 @@
   - 特殊的中文标点符号：已内置在词典中，以备不时之需。
   - 闲鱼阿康的解决方案：推荐禁用中文输入法了。（太简单粗暴了。）
 - 在中英文标点的细节上，为了避免被 InputHook 模式冲突， 特别声明了 中文标点输入 开关（chinsePunctuationHotkey），进行拦截
+
+</details>
+
+<details>
+<summary>设计思想：下定决心忘记所有输入法的状态</summary>
+<br/>
+为你的常用程序分别设置初始状态，每次切换回来。它会默默自动初始化中文 / 英文输入法状态，然后你要做的。你只要敲键盘，忘记它的的状态。
+
+<br>
+
+参考文章: [AHK 实现中英文输入法自由](https://www.jianshu.com/p/72f63e9f7c0e)
 
 </details>
 </br>
@@ -108,9 +121,9 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 ### MacOS
 
-`Magic` 在 MacOS 平台载体也是 Karabainer ， 已实现了 `分号特殊符`（`Semicolon Pull Down Symbol`）和 `数字小键盘`（`3 Awake Digital Keyboard`） 的功能。没有猴子输入法。
+> `Magic` 在 MacOS 平台载体是 Karabiner-Element （需下载）， 已实现 `分号特殊符`（`Semicolon Pull Down Symbol`）和 `数字小键盘`（`3 Awake Digital Keyboard`） 的两个功能。
 
-**直接从云端导入**（免下载）
+**直接从云端导入配置**（免下载）
 
 使用 Safari 浏览器打开链接，会从云端加载到 Karabiner-Element，在复杂映射栏目点击左下角 `add-rule`， 然后 `Enable` 启用配置。
 
@@ -223,6 +236,19 @@ open -a Karabiner-Elements
 
 - <kbd>Z</kbd> 撤销操作：如果打错字或误删，撤销就好了。
 - <kbd>O</kbd> 切换输入法：能不用手掌按 <kbd>Ctrl</kbd> 键，就不要去按了，让双手保持在热键区。
+
+### 🦉单手就调试
+
+<img src="bin/img/debug-keyboard.png" width="100%" alt="print_snippets.gif">
+
+- 进入：
+  - 按住生效：按住数字键 <kbd>4</kbd> 不松手
+  - 循环使用（可松开4）：猴子输入法打字 `dbg` 开启
+- 退出：
+  - 明示：<kbd>Esc</kbd>
+  - 静默：<kbd>A</kbd> <kbd>I</kbd> <kbd>O</kbd> <kbd>S</kbd> 增删改代码时，或打开计算器时默默退出
+  
+特别地，同时按下 <kbd>Ctrl</kbd> 键，左上角按键都获得增强功能。
 
 ### ⌨️ 猴子输入法
 
