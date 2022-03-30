@@ -98,17 +98,16 @@ execSemicolonAbbr(typo) {
             path := "tools\重启资源管理器.exe"
             ActivateOrRun("", path, "", "")
             return
-        case "dm": Run A_ScriptDir
-        case "dpc": Run "shell:my pictures"
-        case "dw": Run "shell:Personal"
-        case "dr": Run "shell:RecycleBinFolder"
-        case "dx": Run "shell:downloads"
-        case "db": Run "E:\backup"
-        case "dpr": Run "E:\projects"
+        case "os": Run A_ScriptDir
+        case "opc": Run "shell:my pictures"
+        case "ow": Run "shell:Personal"
+        case "or": Run "shell:RecycleBinFolder"
+        case "ox": Run "shell:downloads"
+        case "ob": Run "E:\backup"
+        case "opr": Run "E:\projects"
         case "quit": SmartCloseWindow()
         case "ee": ToggleTopMost()
         case "oo": IME.toggle() ; 如果第一次没切换成功，将就连按切换
-        case "om": IME.inputChineseInDdoubleQuotes() ; 引号中输入中文
         case "gcam":
             gitStr := "git add -A`; git commit -a -m ''`; git push origin (git branch --show-current)`;"
             SendAndLeft(gitStr, 47)
@@ -117,7 +116,7 @@ execSemicolonAbbr(typo) {
         case "reboot": slideToReboot()
         case "shutdown": slideToShutdown()
         case "spy": openWinSpy()
-        case "dotb": backupDotfiles()
+        case "dotb": Dotfiles.backup()
         case "doto": 
             path := A_Programs "\Visual Studio Code\Visual Studio Code.lnk"
             activateOrRun("dotfiles ahk_exe Code.exe", path,  "E:\dotfiles")
@@ -132,12 +131,16 @@ execSemicolonAbbr(typo) {
         case "4": Send "{Blind}^+!4"
         case "5": Send "{Blind}^+!5"
         case "cc": Vim.EditJavaCommentTitle()
+        case "il": Vim.inputChineseInDdoubleQuotes() ; 引号中输入中文
         case "cil": Vim.changeCnCommentInDoubleQuotes()
         case "list": Vim.surroundWithList() 
         case "tt": Vim.paste2LastLineUp()
         case "gg": Vim.paste2LastLineReplace()
         case "bb": Vim.paste2LastLineDown()
         case "mm": Mouse.move()
+        case "vsa": Vim.swapArg()
+        case "dota": Dotfiles.apply()
+        case "dbg": Debug.toggle()
         default: 
             return false
     }

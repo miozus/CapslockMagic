@@ -15,6 +15,7 @@ global EnableDigitKeyboard := false
     thisHotkey := A_ThisHotkey
     disableOtherHotkey(thisHotkey)
     EnableDigitKeyboard := true
+    ToolTip "🔢"
     keywait "3" 
     EnableDigitKeyboard := false
     if (A_PriorKey == "3" && A_TimeSinceThisHotkey < 350)
@@ -22,14 +23,15 @@ global EnableDigitKeyboard := false
         Send "{blind}3"
     }
     enableOtherHotkey(thisHotkey)
+    ToolTip
 }
 
 #Hotif EnableDigitKeyboard
 ; 对应标准的小键盘指法
 *h::Send "{blind}," ; 方便输坐标
 *Y::Send "{blind}."
-*N:: Send "{blind}{Space}"
-*G:: Send "{blind}G" ; Vim Goto line
+*N::Send "{blind}{Space}"
+*G::Send "{blind}G" ; Vim Goto line
 *Space::Send "{blind}0"
 *M::Send "{blind}1"
 *,::Send "{blind}2"

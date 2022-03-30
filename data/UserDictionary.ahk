@@ -1,4 +1,4 @@
-﻿;#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+;#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode "Input"	; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir A_ScriptDir	; Ensures a consistent starting directory.
@@ -171,6 +171,7 @@ emojiDict := Map(
     "anli", "🌰", ; 案例/例子/栗子/抽象通用案例
     "rsdr", "🌋", ; 熔断/火山/具体案例
     "xtbg", "🏔️", ; 雪崩/雪山
+    "xmlq", "🚧", ; 限流/路障 
     "hwds", "🕳️", ; 黑洞/hole
     "jlji", "🍱", ; 降级/盒饭安慰
     ; MySQL
@@ -182,7 +183,7 @@ emojiDict := Map(
     "iijq", "💾", ; 持久
     "soyb", "🐬", ; MySQL/数据库/索引
     ; 设计模式
-   "gsih", "🏭", ; 工厂
+    "gsih", "🏭", ; 工厂
     "djli", "🧬", ; 单例
     "yrxk", "🤖", ; 原型/克隆
     "uipw", "🔌", ; 适配
@@ -192,6 +193,7 @@ emojiDict := Map(
     "ioc", "👆", ; 控制反转
     "di", "🤸", ; 依赖注入/倒置
     "qnjp", "🌉", ; 桥接/AOP
+    "jiig", "👶", ; 继承/宝宝/孙子
     ; JVM
     "qiqq", "🎈", ; 堆球/栈线（两字神似）
     "fjue", "🪞", ; 反射
@@ -199,6 +201,7 @@ emojiDict := Map(
 )
 
 privateDict := Map(
+    ; 中文词组
     "guli", "谷粒",
     "vswf", "中文",
     ; 英文标点括号三兄弟
@@ -258,6 +261,8 @@ privateDict := Map(
 
 logoDict := Map(
     ; Mac用户短语不支持特殊符号开头，所以用 img 兼容
+    "imgsentinel", "https://landscape.cncf.io/logos/sentinel.svg",
+    "imggolang", "https://www.clipartmax.com/png/full/288-2881446_image-result-for-golang-go-programming-language-logo.png",
     "imgspring", "https://spring.io/images/favicon-9d25009f65637a49ac8d91eb1cf7b75e.ico",
     "imgboot", "https://spring.io/images/projects/spring-boot-7f2e24fb962501672cc91ccd285ed2ba.svg",
     "imgframework", "https://spring.io/images/projects/spring-framework-640ad1b04f7efa89e0f0f7353e6b5e02.svg?v=2",
@@ -369,7 +374,8 @@ csDict := Map(
     "att", "@Test`nvoid test",
     "aa", "@Autowired`r",
     "ab", "@Bean",
-    "ad", "@Data",
+    "add", "@Data",
+    "adp", "@Deprecated",
     "aen","@Getter`n@AllArgsConstructor",
     "aee","@Getter`n@AllArgsConstructor`nprivate final int code;`nprivate final String msg;",
     "asn", "@Setter(AccessLevel.NONE)",
@@ -410,7 +416,10 @@ csDict := Map(
     "msg", 'message=""',
     "ps", "private String ",
     ; thymeleaf
-    "tnf", '${#numbers.formatDecimal(variable, 1, 2)}',
+    "tnf", '#numbers.formatDecimal(variable, 1, 2)',
+    "tdf", '#dates.format(new java.util.Date(varaibale),"yyyy-MM-dd HH:mm:ss")',
+    "tdn", '#dates.createNow().getTime()', ; now
+    "jqi", '$("#")', ;jQuery
     "tip", "SetTimer () => ToolTip(), -1000",
     "kbd", "<kbd></kbd>",
     "mdmath", "https://latex.codecogs.com/svg.latex?",	; github 接数学公式，渲染图片的 API
@@ -421,9 +430,11 @@ csDict := Map(
     "glo", "http://order.gulimall.com/toTrade",
     "gli", "http://item.gulimall.com/15.html",
     "glp", "http://gulimall.com",
+    "gle", "http://seckill.gulimall.com", ; 秒杀
     "glm", "http://member.gulimall.com/memberOrder.html",
-    "glk", "npx kill-port 88 8000 8080 9020 10000 11000 12000 20000 30000 40000",
+    "glk", "npx kill-port 88 7000 8000 8080 9020 10001 11000 12000 20000 25000 30000 40000",
     "glf", "http://tjijdi.natappfree.cc",
+    "glt", "http://localhost:8858",
     "ascii", "https://asciiflow.com/#/",
     ; mysql
     "mc", "set global max_connections=1000`;", ; too many connections
@@ -441,10 +452,10 @@ winDict := Map(
     "dpa", "docker ps -a",
     "nginxconf", "nvim E:\Java\nginx-1.21.3\conf\nginx.conf",
     ; powershell
-    "nkp", "npx kill-port 8",	; cnpm i -g kill-port 杀端口号
     "tkp", "taskkill /F /PID 8",	; 按进程号结束
     "tki", "taskkill /F /IM .exe",	; 按名称结束
-    "tfd", "tasklist | findstr 8",	; 根据端口号，查看所有进程
+    "tfd", "tasklist | findstr 8",	; 根据端口号/名称，查看所有进程
+    "nkp", "npx kill-port 8",	; cnpm i -g kill-port 杀端口号
     "nfd", "netstat -ano | findstr :8",	; 根据端口号，查看进程号
     "md5", "certutil -hashfile some_file MD5",	; 终端自带工具计算值
     ; 使用插件删除Git历史文件,清空缓存
@@ -453,6 +464,9 @@ winDict := Map(
     "rmreg", 'Get-ChildItem $Path | Where{$_.Name -Match "<RegEx Pattern>"} | Remove-Item',	; 正则匹配文件名并删除
     "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
     "cdn", "cdn `; start nginx `; E:\frp\natapp\natapp.exe",  ; Nginx + RPC 内网穿透
+    "sds", 'java -jar "E:\Java\sentinel\sentinel-dashboard-1.8.0.jar" --server.port=8858', ; 不支持 JDK1.17
+    ; "sdd", 'java -Dserver.port=8333 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar',
+
 )
 
 global secretDictionary := Map(
@@ -461,14 +475,13 @@ global secretDictionary := Map(
     "quit", "关闭程序",
     "dx", "下载",
     "oo", "输入法",
-    "om", "特别注释",
     "no", "记事本",
-    "dw", "文档",
-    "dpc", "图片",
-    "dr", "回收站",
-    "dm", "配置目录",
-    "db", "备份库",
-    "dpr", "项目库",
+    "ow", "文档",
+    "opc", "图片",
+    "or", "回收站",
+    "os", "脚本目录",
+    "ob", "备份库",
+    "opr", "项目库",
     "tm", "任务管理器",
     "spy", "查看控件",
     "dotb", "备份配置",
@@ -489,11 +502,15 @@ global secretDictionary := Map(
     "4", "粘贴4",
     "5", "粘贴5",
     "cc", "标题注释",
-    "cil", "中文字符串",
+    "il", "中文字符",
+    "cil", "改中文字符",
     "list", "环绕列表",
     "tt", "",
     "bb", "",
+    "vsa", "",
+    "dota", "加载配置",
     "mm", "鼠标禅模式",
+    "dbg", "调试动作",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])

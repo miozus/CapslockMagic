@@ -72,4 +72,13 @@ class Vim {
         Sleep 100
         Send "{Text}Vp"
     }
+    
+    ; AHK 交换第1个和第2个参数，适用于拷贝文件上传和下载
+    ; 调用寄存器删除，需要延迟 40 毫秒
+    static swapArg(){
+        Send '{Text}^f,wdf,'
+        Sleep 40
+        Send '{Text}"_x^wPa '
+        Send "{Blind}{Esc}{Enter}"
+    }
 }

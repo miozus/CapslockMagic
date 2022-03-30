@@ -46,6 +46,7 @@ Animation.initTrayIcon()
 allHotkeys := []
 allHotkeys.Push("*;")
 allHotkeys.Push("*3")
+allHotkeys.Push("*4")
 
 #Include bin\util\Common.ahk
 #Include bin\util\UserDictUtils.ahk
@@ -56,6 +57,7 @@ allHotkeys.Push("*3")
 #Include bin\MouseController.ahk
 #Include bin\MoomWinManager.ahk
 #Include bin\SemicolonHook.ahk
+#Include bin\plugin\DebugKeyboard.ahk
 #Include bin\plugin\GarbageCollector.ahk
 #Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
@@ -67,7 +69,7 @@ allHotkeys.Push("*3")
 
 ;=====================================================================o
 ;                    Copy & Paste Enhancement
-
+; c = copy
 ; 强化复制粘贴，光标只在两处徘徊时
 CapsLock & c::
 {
@@ -87,6 +89,7 @@ CapsLock & c::
     Send "^v"
 }
 
+; v = paste | clipboard
 CapsLock & v:: 
 {
     ; Ditto
@@ -107,6 +110,7 @@ CapsLock & 8:: Send "{Media_Play_Pause}"
 ;=====================================================================o
 ;                      Application                          
 
+; a = appearence | window | shot 
 CapsLock & a:: 
 {
     ; 魔鬼逻辑：当前区块内，此键永远为按下，无论方法渗透多深都无法改变
@@ -129,12 +133,25 @@ CapsLock & a::
     GC.ModifyKey()
 }
 
+; shot 2 text
+<!+a::
+{
+    python3 := "E:\miniconda3\envs\textshot\pythonw.exe"
+    textshot := " E:\projects\Python\textshot\textshot.py"
+    args := " chi_sim+eng" ; 优先简体中文，其次英文
+    ; args := " chi_sim"
+    ShellRun(python3, textshot args)
+}
+
+; d = database | api docs
 CapsLock & d:: 
 {
     if GetKeyState("Alt") = 1 
     {
-        path := A_Programs "\Postman\Postman.lnk"
-        activateOrRun("ahk_exe Postman.exe", path)
+        path := A_Programs "\Apifox.lnk"
+        ActivateOrRun("ahk_exe Apifox.exe", path)
+        ; path := A_Programs "\Postman\Postman.lnk"
+        ; activateOrRun("ahk_exe Postman.exe", path)
     } else if GetKeyState("Ctrl") = 1
     {
         path := A_Desktop "\RDM.lnk"
@@ -156,13 +173,10 @@ CapsLock & d::
     }
 }
 
+; f = find | search cabinet
 CapsLock & f:: 
 {
-    if GetKeyState("LWin") 
-    {
-        path := A_Programs "Apifox.lnk"
-        ActivateOrRun("ahk_exe Apifox.exe", path)
-    } else if GetKeyState("Ctrl") 
+    if GetKeyState("Ctrl") 
         ; 资源管理器
         activateOrRun("ahk_class CabinetWClass","")
     else {
@@ -176,6 +190,7 @@ CapsLock & f::
     IME.set("EN")
 }
 
+; g = google
 CapsLock & g:: 
 {
     if GetKeyState("Alt") = 1
@@ -188,11 +203,12 @@ CapsLock & g::
     }
     else
     {
-        ; path := A_StartMenuCommon "\Programs\Google Chrome.lnk"
         path := A_AppData "\Microsoft\Internet Explorer\Quick Launch\Google Chrome.lnk"
         activateOrRun("ahk_exe chrome.exe", path)
     }
 }
+
+; e = editor
 CapsLock & e:: 
 {
     if GetKeyState("Alt") == 1
@@ -207,6 +223,7 @@ CapsLock & e::
     }
 }
 
+; r = run | develop | java | back-end
 CapsLock & r:: 
 {
     if GetKeyState("Alt") = 1 
@@ -216,32 +233,37 @@ CapsLock & r::
         ; if winExist("ahk_exe javaw.exe") or winExist("VisualVM 2.1 ahk_exe java.exe")
             ; WinActivate
         ; else
-            ; visualvm_21
-            ; activateOrRun("Windows PowerShell", "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.6.10571.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe", "E:\Java\visualvm_21\bin\visualvm --jdkhome C:\Users\lss81\.jdks\adopt-openjdk-14.0.2")
+            ; visualvm := "E:\Java\visualvm_21\bin\visualvm"
+            ; params := " --jdkhome C:\Users\miozus\.jdks\corretto-1.8.0_322"
+            ; activateOrRun(visualvm, "wt.exe " visualvm, params) 
     }
     else if GetKeyState("LWin") == 1 {
         ; Apache JMeter
-        path :=  "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.6.10571.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe"
-        params :=  "E:\Java\apache-jmeter-5.4.1\bin\jmeter.bat -t E:\Java\apache-jmeter-5.4.1\MyTest\谷粒商城压力测试.jmx"
-        activateOrRun("Apache JMeter", path, params)
+        jmeter := "E:\Java\apache-jmeter-5.4.1\bin\jmeter.bat"
+        params := " -t E:\Java\apache-jmeter-5.4.1\MyTest\谷粒商城压力测试.jmx"
+        activateOrRun("Apache JMeter", "wt.exe " jmeter, params)
     }
     else if GetKeyState("Ctrl") = 1 
     {
         ; arthas
-        path :=  "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.6.10571.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe"
-        param :=  "C:\Users\lss81\.jdks\adopt-openjdk-14.0.2\bin\java -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
-        activateOrRun("Windows PowerShell", path, params)
+        arthas := "C:\Users\miozus\.jdks\corretto-1.8.0_322\bin\java"
+        params :=  " -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
+        activateOrRun(arthas, "wt.exe " arthas, params)
     } else {
-        path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate Early Access Program.lnk"
-        activateOrRun("ahk_exe idea64.exe", path)
+        if WinExist("ahk_exe goland64.exe") {
+            activateOrRun("ahk_exe goland64.exe")
+        } else {
+            path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate Early Access Program.lnk"
+            activateOrRun("ahk_exe idea64.exe", path)
+        }
     }
 }
 
-CapsLock & t:: 
+; t = terminal | develop | front-end
+    CapsLock & t:: 
 {
     if GetKeyState("Alt") = 1 
     {
-        ; path :=  "C:\Program Files\WindowsApps\Microsoft.WindowsTerminal_1.10.2714.0_x64__8wekyb3d8bbwe\WindowsTerminal.exe"
         path := "bin\util\Windows Terminal.lnk"
         activateOrRun("ahk_exe WindowsTerminal.exe", path)
 
@@ -272,6 +294,7 @@ CapsLock & t::
     ; }
 ; }
 
+; y = why | reload script
 #SuspendExempt
 CapsLock & y:: 
 {
@@ -311,7 +334,6 @@ CapsLock & y::
         }
     }
 }
-
 
 ; 停用脚本
 SuspendScript() {

@@ -487,42 +487,60 @@ class DevUtils {
     
 }
 
-backupDotfiles() {
-    ;  ahk 本脚本直接在 dot 项目中(快捷方式)使用和维护，不再另外备份本地和转移了
-    ; C:\Users\miozus\AppData\Roaming\JetBrains\IntelliJIdea2021.3\options\postfixTemplates.xml
-    ; C:\Users\miozus\AppData\Roaming\JetBrains\IntelliJIdea2021.3\jba_config\templates\Java.xml
-    A_HOME := Rtrim(A_AppData, "AppData\Roaming")
-    dotfiles := "E:\dotfiles"
+class Dotfiles {
 
-    nvim := A_HOME "\AppData\Local\nvim\init.vim"
-    FileCopy nvim, dotfiles "\.config\nvim\init.vim", true
+    static backup() {
 
-    ideaFolder := A_AppData "\JetBrains\IntelliJIdea2022.1"
-    ; DirCopy ideaFolder "\jba_config\win.keymaps", dotfiles "\apps\Idea\keymaps", true
-    ; FileCopy ideaFolder "\options\postfixTemplates.xml", dotfiles "\apps\Idea\snippets", true
-
-    FileCopy A_AppData "\Code\User\sync", dotfiles "\apps\Code", true 
-    ; codeFolders := ["sync\keybindings\preview", "snippets"]
-    ; for folder in codeFolders
-    ; {
-        ; folder := "\Code\User\" folder
-        ; DirCopy A_AppData folder, dotfiles "\apps" folder, true
-    ; }
-
-    configFiles := [".ideavimrc", ".ipython\profile_default\ipython_config.py"]
-    ; configFiles := [".ideavimrc", ".vimrc", ".tmux.conf", ".ipython\profile_default\ipython_config.py"]
-    for file in configFiles
-    {
-        ; 如果其中一个文件夹/文件，不存在，会报错
-        FileCopy A_HOME "\" file, dotfiles "\" file, true
+        HOME_DIR := "C:\Users\" A_UserName
+        DOTS_DIR := "E:\dotfiles"
+    
+        NVIM_DIR := HOME_DIR "\AppData\Local\nvim\init.vim"
+        FileCopy NVIM_DIR, DOTS_DIR "\apps\nvim\.config\nvim\init.vim", true
+    
+        IDEA_DIR := A_AppData "\JetBrains\IntelliJIdea2022.1"
+        FileCopy IDEA_DIR "\keymaps\macOS For All copy.xml", DOTS_DIR "\apps\Idea\keymaps\macOS For All copy.xml", true
+    
+        ; 有的版本可能是这样
+        ; FileCopy IDEA_DIR "\options\postfixTemplates.xml", DOTS_DIR "\apps\Idea\snippets", true
+        ; DirCopy IDEA_DIR "\jba_config\win.keymaps", DOTS_DIR "\apps\Idea\keymaps", true
+    
+        DirCopy A_AppData "\Code\User\sync", DOTS_DIR "\apps\Code\User\sync", true 
+        FileCopy HOME_DIR "\.ideavimrc", DOTS_DIR "\apps\idea\.ideavimrc", true 
+        FileCopy HOME_DIR "\.ipython\profile_default\ipython_config.py", DOTS_DIR "\apps\python\.ipython\profile_default\ipython_config.py", true 
+    
+        POSH_DIR := A_MyDocuments "\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+        FileCopy POSH_DIR, DOTS_DIR "\Windows\Microsoft.PowerShell_profile.ps1", true
+    
+        MsgBox "本机配置已备份，详情可见`n`n" DOTS_DIR
     }
-    pshrc := A_MyDocuments "\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
-    FileCopy pshrc, dotfiles "\Windows\Microsoft.PowerShell_profile.ps1", true
-
-    MsgBox "本机配置已备份"
+    
+    static apply() {
+    
+        HOME_DIR := "C:\Users\" A_UserName
+        DOTS_DIR := "E:\dotfiles"
+    
+        NVIM_DIR := HOME_DIR "\AppData\Local\nvim\init.vim"
+        FileCopy DOTS_DIR "\apps\nvim\.config\nvim\init.vim", NVIM_DIR,  true
+    
+        IDEA_DIR := A_AppData "\JetBrains\IntelliJIdea2022.1"
+        FileCopy DOTS_DIR "\apps\Idea\keymaps\macOS For All copy.xml", IDEA_DIR "\keymaps\macOS For All copy.xml",  true
+    
+        ; 有的版本可能是这样
+        ; FileCopy IDEA_DIR "\options\postfixTemplates.xml", DOTS_DIR "\apps\Idea\snippets", true
+        ; DirCopy IDEA_DIR "\jba_config\win.keymaps", DOTS_DIR "\apps\Idea\keymaps", true
+    
+        DirCopy DOTS_DIR "\apps\Code\User\sync", A_AppData "\Code\User\sync",  true 
+        FileCopy DOTS_DIR "\apps\idea\.ideavimrc", HOME_DIR "\.ideavimrc",  true 
+        FileCopy DOTS_DIR "\apps\python\.ipython\profile_default\ipython_config.py", HOME_DIR "\.ipython\profile_default\ipython_config.py",  true 
+    
+        POSH_DIR := A_MyDocuments "\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+        FileCopy DOTS_DIR "\Windows\Microsoft.PowerShell_profile.ps1", POSH_DIR, true
+    
+        MsgBox "本机配置已备份，详情可见`n`n" DOTS_DIR
+    }
+    
+    
 }
-;---------------------------------------------------------------------o
-
 ; 文件管理工具：读写，文件名添加日期
 class FileUtils {
 
@@ -683,5 +701,3 @@ alg4() {
     Run "https://visualgo.net/zh/sorting"
 }
 
-
- 
