@@ -6,7 +6,6 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
 global EnableDebugKeyboard := false
 
-
 ; 调试小键盘
 ; ---
 ; - 进入：
@@ -146,6 +145,7 @@ class Debug {
     
     ; exit dbg state
     static exit() {
+        global EnableDebugKeyboard
         EnableDebugKeyboard := false
         ToolTip "💨"
         SetTimer () => ToolTip(), -1000

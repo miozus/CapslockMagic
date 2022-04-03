@@ -1,0 +1,88 @@
+<keymap version="1" name="macOS For All copy" parent="macOS For All">
+  <action id="$Paste">
+    <keyboard-shortcut first-keystroke="ctrl v" />
+    <keyboard-shortcut first-keystroke="shift insert" />
+    <keyboard-shortcut first-keystroke="shift ctrl v" />
+  </action>
+  <action id="$SelectAll">
+    <keyboard-shortcut first-keystroke="ctrl a" />
+    <keyboard-shortcut first-keystroke="alt a" />
+  </action>
+  <action id="ActivateHierarchyToolWindow">
+    <keyboard-shortcut first-keystroke="alt 9" />
+  </action>
+  <action id="ActivateVersionControlToolWindow" />
+  <action id="ActivateleetcodeToolWindow">
+    <keyboard-shortcut first-keystroke="ctrl meta alt 0" />
+  </action>
+  <action id="CodeInspection.OnEditor" />
+  <action id="ConsoleView.ClearAll">
+    <keyboard-shortcut first-keystroke="shift ctrl meta d" />
+  </action>
+  <action id="CopyPaths" />
+  <action id="Editor Paste">
+    <keyboard-shortcut first-keystroke="shift ctrl v" />
+  </action>
+  <action id="Editor SelectAll">
+    <keyboard-shortcut first-keystroke="alt a" />
+  </action>
+  <action id="EditorDeleteLine" />
+  <action id="EditorDeleteToWordEnd">
+    <keyboard-shortcut first-keystroke="ctrl delete" />
+  </action>
+  <action id="EditorDeleteToWordStart">
+    <keyboard-shortcut first-keystroke="ctrl back_space" />
+  </action>
+  <action id="EditorMatchBrace" />
+  <action id="ExternalSystem.ProjectRefreshAction">
+    <keyboard-shortcut first-keystroke="shift alt i" />
+  </action>
+  <action id="Generate.Missing.Members.ES6" />
+  <action id="Generate.Missing.Members.TypeScript" />
+  <action id="GotoChangedFile" />
+  <action id="GotoClass" />
+  <action id="ImplementMethods" />
+  <action id="JavadocGenerate">
+    <keyboard-shortcut first-keystroke="alt back_slash" />
+  </action>
+  <action id="JumpToLastChange">
+    <keyboard-shortcut first-keystroke="shift ctrl back_space" />
+    <keyboard-shortcut first-keystroke="ctrl o" />
+  </action>
+  <action id="JumpToNextChange">
+    <keyboard-shortcut first-keystroke="ctrl i" />
+  </action>
+  <action id="MethodHierarchy.ImplementMethodAction" />
+  <action id="MinimizeCurrentWindow" />
+  <action id="NewClass">
+    <keyboard-shortcut first-keystroke="meta alt n" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt n" />
+  </action>
+  <action id="PasteMultiple">
+    <keyboard-shortcut first-keystroke="shift ctrl insert" />
+  </action>
+  <action id="Replace">
+    <keyboard-shortcut first-keystroke="ctrl r" />
+    <keyboard-shortcut first-keystroke="ctrl meta r" />
+  </action>
+  <action id="SafeDelete" />
+  <action id="ShowPopupMenu">
+    <keyboard-shortcut first-keystroke="context_menu" />
+  </action>
+  <action id="UsageFiltering.WriteAccess" />
+  <action id="Vcs.QuickListPopupAction" />
+  <action id="editRunConfigurations">
+    <keyboard-shortcut first-keystroke="shift alt e" />
+  </action>
+  <action id="leetcode.SubmitAction">
+    <keyboard-shortcut first-keystroke="ctrl meta alt o" />
+  </action>
+  <action id="leetcode.TestcaseAction">
+    <keyboard-shortcut first-keystroke="ctrl meta alt t" />
+  </action>
+  <action id="leetcode.positionAction">
+    <keyboard-shortcut first-keystroke="ctrl meta alt p" />
+  </action>
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleItalicAction" />
+  <action id="refactoring.extract.dependency" />
+</keymap>

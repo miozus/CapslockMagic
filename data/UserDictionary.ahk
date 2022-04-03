@@ -13,9 +13,12 @@ SetWorkingDir A_ScriptDir	; Ensures a consistent starting directory.
 
 emojiDict := Map(
     ; 推荐
-    "tj", "👍",
-    "btj", "👎",
-    "bg", "🐞",
+    "tj", "👍", ; 推荐
+    "btj", "👎", ; 不推荐
+    "bg", "🐞", ; bug
+    "mty", "🦉", ; 猫头鹰/debug
+    "jsq", "🧮", ; 计算器/算盘
+    "whlo", "🌐", ; 网络/地球
     ; RESTful
     "dv", "✅",
     "xyhr", "🔁",	; 循环/多次/重复/loop/multiple
@@ -123,6 +126,8 @@ emojiDict := Map(
     "guti", "🧊",
     ; 其他
     "ulyj", "👀",	; 双眼/observe
+    "yjjk", "👓",   ; 眼镜/查看
+    "fhda", "🔍",   ; 放大
     "redm", "🔥",	; 热点/火焰/Hotspot
     "bcjk", "🚨",	; 报警/警示灯/alert
     "jkxl", "🪞",	; 镜像/镜子/mirrow
@@ -436,6 +441,8 @@ csDict := Map(
     "glf", "http://tjijdi.natappfree.cc",
     "glt", "http://localhost:8858",
     "ascii", "https://asciiflow.com/#/",
+    ; 支付宝沙箱
+    "zfb", "vsdgso6117@sandbox.com",
     ; mysql
     "mc", "set global max_connections=1000`;", ; too many connections
     ; unittest
@@ -511,6 +518,22 @@ global secretDictionary := Map(
     "dota", "加载配置",
     "mm", "鼠标禅模式",
     "dbg", "调试动作",
+    ; Ide Action
+    "sn", "",
+    "ln", "",
+    "lj", "",
+    "lo", "",
+    "lz", "",
+    "lf", "",
+    "le", "",
+    "la", "",
+    "ls", "",
+    "lh", "",
+    "lb", "",
+    "ldd", "",
+    "lrr", "",
+    "H", "",
+    "L", "",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])

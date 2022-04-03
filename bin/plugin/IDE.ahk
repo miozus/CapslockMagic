@@ -1,8 +1,8 @@
-SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
+SendMode "Input"	; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir A_ScriptDir	; Ensures a consistent starting directory.
 
 ;=====================================================================o
-;                    I need it 
+;                    I need it
 ;=====================================================================o
 #Hotif !(WinActive("ahk_exe idea64.exe") or WinActive("ahk_exe Code.exe"))
 ;---------------------------------------------------------------------o
@@ -12,10 +12,10 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 #Hotif
 ;---------------------------------------------------------------------o
 
-hasIdeActive() { 
+hasIdeActive() {
     ides := ["idea64.exe", "code.exe", "goland64.exe", "WindowsTerminal.exe"]
     for ide in ides
-        if WinActive("ahk_exe" ide) 
+        if WinActive("ahk_exe" ide)
             return true
     return false
 }
@@ -31,7 +31,7 @@ hasInteljActive() {
 CapsLock::
 {
     ; 如果正在打拼音，就不切换输入法
-    if IME.isNotTypingPinYin(){
+    if IME.isNotTypingPinYin() {
         IME.set("EN")
     }
     ; 如果先返回，图片消失了，就检测不到了，所以最后返回
@@ -40,43 +40,41 @@ CapsLock::
 ; 强化复制粘贴，光标只在两处徘徊时
 ; CapsLock & c::
 ; {
-    ; Send "!{Tab}"
-    ; Sleep 50
-    ; Send "^v"
+; Send "!{Tab}"
+; Sleep 50
+; Send "^v"
 ; }
-CapsLock & 2:: Send "!{F12}"    ; terminal
+CapsLock & 2:: Send "!{F12}"	; terminal
 #HotIf
 ;---------------------------------------------------------------------o
 
-
 ;=====================================================================o
-#Hotif hasInteljActive() ; WinActive("ahk_exe idea64.exe")
+#Hotif hasInteljActive()	; WinActive("ahk_exe idea64.exe")
 ;=====================================================================o
 LCtrl & \:: Vim.javaDocViaMethodLine()
 
 ; Leetcode
-LWin & h:: Send "{blind!#}^#!o"   ; submit
-LWin & f:: Send "{blind!#}^#!t"   ; test
-LWin & s:: Send "{blind!#}^#!p"   ; position
-LWin & o:: Send "{blind!#}^#!0"   ; colapse
-LWin & p:: Send "{blind!#}^#!0"   ; colapse
+LWin & h:: Send "{blind!#}^#!o"	; submit
+LWin & f:: Send "{blind!#}^#!t"	; test
+LWin & s:: Send "{blind!#}^#!p"	; position
+LWin & o:: Send "{blind!#}^#!0"	; colapse
+LWin & p:: Send "{blind!#}^#!0"	; colapse
 LWin & c:: batchClearOrFindLog(4)
 LWin & v:: batchClearOrFindLog(4, "🔒")
 ; Lwin & n:: Send "{blind}#!n"   ; next
 ; #b::^!b    ; jump to implement
-CapsLock & b:: Send "{blind}^!b"    ; jump to implement
-CapsLock & w:: Send "{blind}^#w"    ; close current tab
+CapsLock & b:: Send "{blind}^!b"	; jump to implement
+CapsLock & w:: Send "{blind}^#w"	; close current tab
 CapsLock & 1:: Send "!{F1}1"
 CapsLock & 3:: Vim.abstractVariable()
 CapsLock & 4:: runCmdPythonUnittest()
 
 runCmdPythonUnittest() {
     python := "E:/miniconda3/envs/autotest/python.exe"
-    unittest := " e:/projects/IdeaProjects/gulimall/selenium/autotest/test/" 
+    unittest := " e:/projects/IdeaProjects/gulimall/selenium/autotest/test/"
     cases := "order_test.py"
     Run python unittest cases
 }
-
 
 reloadCurrentService() {
     ; 重启当前服务
@@ -92,10 +90,10 @@ CapsLock & 5::
     Sleep 2500
     activateOrRun("ahk_exe chrome.exe")
     Send "{blind!}{F5}"
-    
+
 }
 ;---------------------------------------------------------------------o
-CapsLock & 7:: 
+CapsLock & 7::
 {
     if GetKeyState("Alt") = 1
     {
@@ -103,27 +101,27 @@ CapsLock & 7::
         ; Send "^a^v"
     }
 }
-CapsLock & x:: Send "{Blind}^{F2}" ; 停止运行当前程序
-CapsLock & z:: Send "{Blind}^+c" ; 运行当前上下文的程序
+CapsLock & x:: Send "{Blind}^{F2}"	; 停止运行当前程序
+CapsLock & z:: Send "{Blind}^+c"	; 运行当前上下文的程序
 ;---------------------------------------------------------------------o
 ; 根据软件快捷键特性，重写方法: Insert 模式成功率高
-CapsLock & .:: 
+CapsLock & .::
 {
     if GetKeyState("Alt") = 0
-        Send "^{Del}" 
+        Send "^{Del}"
     else
     {
         Send "^+{Right}"
         Sleep 50
         Send "{Del}"
-    } 
+    }
 }
 ;---------------------------------------------------------------------o
-CapsLock & n:: 
+CapsLock & n::
 {
     if GetKeyState("Alt") = 0
-        Send "^{BS}" 
-    else 
+        Send "^{BS}"
+    else
     {
         Send "^+{Left}"
         Sleep 50
@@ -144,7 +142,7 @@ CapsLock & b::
     Click "1138 690 1"
     Click "1123 730 1"
 }
-#Hotif 
+#Hotif
 ;---------------------------------------------------------------------o
 
 ;=====================================================================o
@@ -163,14 +161,13 @@ CapsLock & 2:: focusPasteElementByIdeavim()
 4:: selectWin(4)
 5:: selectWin(5)
 ;---------------------------------------------------------------------o
-selectWin(index:=1){
+selectWin(index := 1) {
     index--
     Send "{Down " index "}"
     Send "{Enter}"
 }
 #Hotif
 ;---------------------------------------------------------------------o
-
 
 ;=====================================================================o
 ;                    Code Macro
@@ -194,21 +191,20 @@ saveRestAPI()
 }
 ;---------------------------------------------------------------------o
 
-
 ;=====================================================================o
 ;                    Idea Macro
 ;---------------------------------------------------------------------o
-batchClearOrFindLog(threadCount:=1, keyword :="null" )
+batchClearOrFindLog(threadCount := 1, keyword := "null")
 {
     Loop threadCount
     {
         Send "{Tab}"
         if (keyword != "null")
         {
-            Send "^f"    
+            Send "^f"
             Send keyword
         } else {
-            Send "^#+d"   ; clear all
+            Send "^#+d"	; clear all
         }
         Send "!8"
         Send "!8"
@@ -223,7 +219,7 @@ batchClearOrFindLog(threadCount:=1, keyword :="null" )
     }
 }
 ;---------------------------------------------------------------------o
-eidtVmOptions(){
+eidtVmOptions() {
     Send "!+e"
     Sleep 200
     Send "!v"
@@ -238,4 +234,82 @@ focusPasteElementByIdeavim() {
     ActivateOrRun("ahk_exe idea64.exe")
     Sleep 100
     Vim.searchByPaste()
+}
+
+; Ide 底层指令合集
+class IdeAction {
+     
+    ; <leader> n 下一个错误
+    static markernext() {
+        Send "{Bind}{F2}"
+    }
+     
+    ; <leader> j 快速修复
+    static actionquickFix() {
+        Send "{Bind}!{Enter}"
+    }
+     
+    ; <leader> o 大纲
+    static  outlinefocus() {
+        Send "{Bind}!{F7}"
+    }
+     
+    ; <leader> z 禅模式
+    static actiontoggleZenMode() {
+        Send "{Bind}^kz"
+    }
+     
+    ; <leader> f 排版
+    static actionformatDocument() {
+        Send "{Bind}^!l"
+    }
+     
+    ; <leader> e 转到文件
+    static actionquickOpen() {
+        Send "{Bind}^+n"
+    }
+     
+    ; <leader> a 文件中查找
+    static  findInFiles() {
+        Send "{Bind}^c"
+        Send "{Bind}^+f"
+        Send "{Bind}^v"
+    }
+     
+    ; <leader> s 资源浏览器中查看该文件
+    static viewexplorer() {
+        Send "{Bind}^1"
+    }
+     
+    ; <leader> h  该文件版本历史
+    static gitlensshowQuickFileHistory() {
+        Send "{Bind}^+gh"
+    }
+     
+    ; <leader> b 该行打断点
+    static toggleBreakpoint() {
+        Send "{Bind}^{F8}"
+    }
+
+    ; <leader> dd  该行打断点
+    static debugStart() {
+        Send "{Bind}{F5}"
+    }
+    
+    ; <leader> rr 重构：重命名
+    static rename() {
+        Send "{Bind}+{F6}"
+    }
+
+    ; <leader> H 标签：一个
+    static tabPreview() {
+        Send "{Bind}^+["
+
+    }   
+     
+    ; <leader> L 标签：一个
+    static tabNext() {
+        Send "{Bind}^+]"
+    }
+    
 }
