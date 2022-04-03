@@ -291,7 +291,7 @@ class IdeAction {
         Send "{Bind}^{F8}"
     }
 
-    ; <leader> dd  该行打断点
+    ; <leader> dd 开始调试
     static debugStart() {
         Send "{Bind}{F5}"
     }
@@ -301,13 +301,13 @@ class IdeAction {
         Send "{Bind}+{F6}"
     }
 
-    ; <leader> H 标签：一个
+    ; <leader> H 标签：上一个
     static tabPreview() {
         Send "{Bind}^+["
 
     }   
      
-    ; <leader> L 标签：一个
+    ; <leader> L 标签：下一个
     static tabNext() {
         Send "{Bind}^+]"
     }

@@ -1,0 +1,216 @@
+""" ====================================================  
+"
+"   ██╗██████╗ ███████╗ █████╗ ██╗   ██╗██╗███╗   ███╗
+"   ██║██╔══██╗██╔════╝██╔══██╗██║   ██║██║████╗ ████║
+"   ██║██║  ██║█████╗  ███████║██║   ██║██║██╔████╔██║
+"   ██║██║  ██║██╔══╝  ██╔══██║╚██╗ ██╔╝██║██║╚██╔╝██║
+"   ██║██████╔╝███████╗██║  ██║ ╚████╔╝ ██║██║ ╚═╝ ██║
+"   ╚═╝╚═════╝ ╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝╚═╝     ╚═╝
+"
+"                              @miozus 2021-4-15 17:58
+"
+" List of Supported Set Commands
+" https://github.com/JetBrains/ideavim/wiki/%22set%22-commands
+" https://github.com/JetBrains/ideavim
+" https://github.com/fdietze/dotfiles/blob/master/.ideavimrc
+" command: IdeaVim: track action Ids
+""" ====================================================  
+
+
+""" Map leader to space ---------------------
+let mapleader=" "
+
+""" Plugins  --------------------------------
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotin
+set textobj-entire
+set ReplaceWithRegister
+set which-key
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+" Only work on mac or EN default Win10(avoid plugins IME )
+" set keep-english-in-normal
+" set keep-english-in-normal-and-restore-in-insert
+
+""" Common settings (vim)-------------------------
+set showmode
+set scrolloff=5
+set incsearch  " show where search pattern typed so far matches
+set hlsearch  " highlight matches with the last search pattern
+set number
+set relativenumber
+set clipboard=unnamed
+set history=200
+" noremap = nzz
+" noremap - Nzz
+noremap <Leader><CR> :nohlsearch<CR>
+" Window operation
+nnoremap <Leader>w- <C-W>s
+nnoremap <Leader>w\| <C-W>v
+nnoremap <Leader>ww <C-W>w
+nnoremap <Leader>wx <C-W>c
+nnoremap <Leader>wh <C-W>h
+nnoremap <Leader>wj <C-W>j
+nnoremap <Leader>wk <C-W>k
+nnoremap <Leader>wl <C-W>l
+map <leader>wo <Action>(MoveEditorToOppositeTabGroup)
+nnoremap cow ciw<C-Space>
+nnoremap <C-@> <C-Space>
+
+" Operator Pending 少按一次的快捷键 c/d/y = o
+" Docs: https://medium.com/usevim/operator-pending-mode-a4247d8596b7
+" Docs: https://dev.to/iggredible/basic-vim-mapping-5ahj
+onoremap " i"
+onoremap ] i]
+onoremap [ i[
+onoremap b ib
+onoremap B iB
+onoremap w iw
+onoremap W iW
+" vno
+vnoremap ] i]
+vnoremap [ i[
+vnoremap b ib
+vnoremap B iB
+vnoremap w iw
+vnoremap W iW
+" 因为需要复制整段，这样写就不能跨段落了，这里使用b/B代替;不要写 ' ⇒ i' 因为会丢失书签
+"onoremap } i}
+nnoremap < <<
+nnoremap > >>
+
+nnoremap dP ddkP
+nnoremap dp ddp
+nnoremap dc d'c
+nnoremap yc y'c
+nnoremap yp yyp
+nnoremap yP yyP
+
+nnoremap Y y$
+"nnoremap H ^
+"nnoremap L $
+nmap H <Action>(PreviousTab)
+nmap L <Action>(NextTab)
+
+
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+set clipboard+=ideaput  " without new line
+
+""" Mappings --------------------------------
+
+""" Custom bindings --------------------------------
+
+" don't overwrite register when pasting over selection
+nnoremap <leader>p v$<Left>p
+
+" clear search highlighting
+nnoremap <leader>/ :nohls<return><esc>
+
+" " TODO: toggle chars at end of line
+nnoremap <leader>, mZA,<Esc>`Z
+nnoremap <leader>; mZA;<Esc>`Z
+
+" " highlight current word
+nnoremap <leader>h mZ*`Z
+
+""" easymotion --------------------------------
+map <leader><leader>f <Plug>(easymotion-s)
+map <leader><leader>e <Plug>(easymotion-f)
+
+map <leader>z <Action>(ToggleDistractionFreeMode)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>t <Action>(Annotate)
+map <leader>n <Action>(GotoNextError)
+
+map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+
+map <leader>dd <Action>(Debug)
+map <leader>b <Action>(ToggleLineBreakpoint)
+map <leader>o <Action>(FileStructurePopup)
+map <leader>j <Action>(ShowIntentionActions)
+
+" code navigation
+" https://youtrack.jetbrains.com/issue/VIM-44
+nnoremap <c-o> <Action>(Back)
+nnoremap <c-i> <Action>(Forward)
+
+nmap <leader>e <Action>(GotoFile)
+nmap <leader>a <Action>(FindInPath)
+nmap <leader>gr <Action>(ShowUsages)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gs <Action>(GotoSuperMethod)
+nmap <leader>gz <Action>(Vcs.RollbackChangedLines)
+
+nmap <C-p> <Action>(ParameterInfo)
+imap <C-p> <C-o> <Action>(ParameterInfo)
+nmap <leader>n <Action>(GotoNextError)
+
+" Refactor
+nmap <leader>ri <Action>(Inline)
+nmap <leader>rr <Action>(RenameElement)
+nmap <leader>rev <Action>(IntroduceVariable)
+vmap <leader>rev <Action>(IntroduceVariable)
+nmap <leader>rem <Action>(ExtractMethod)
+vmap <leader>rem <Action>(ExtractMethod)
+nmap <leader>rm <Action>(Move)
+nmap <leader>ro <Action>(OptimizeImports)
+nmap <leader>rG <Action>(Generate)
+
+nmap <leader>f <Action>(ReformatCode)
+
+nmap <, <Action>(MoveElementLeft)
+nmap >, <Action>(MoveElementRight)
+
+
+""" option config ----------------------------
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+sethandler <S- > a:ide
+sethandler <C-2> a:ide
+sethandler <C-S-2> a:vim
+sethandler <C-S-6> a:vim
+sethandler <C-;> a:ide
+sethandler <C-S-;> a:ide
+sethandler <C-A> a:vim
+sethandler <C-B> a:ide
+sethandler <C-C> a:ide
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:ide
+sethandler <C-G> a:ide
+sethandler <C-H> a:ide
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:ide
+sethandler <C-L> a:vim
+sethandler <C-M> a:ide
+sethandler <C-N> n:ide i-x:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:ide
+sethandler <C-Q> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S> a:ide
+sethandler <C-T> a:vim
+sethandler <C-U> a:vim
+sethandler <C-V> n:vim i-x:ide
+sethandler <C-W> a:ide
+sethandler <C-X> a:vim
+sethandler <C-Y> a:vim
+sethandler <C-[> a:vim
+sethandler <C-\> a:ide
+sethandler <C-]> a:vim
+
+""" User Dictionary ----------------------------
+
+
+
+

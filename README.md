@@ -10,7 +10,7 @@
 >
 > 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 >
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/dependencies-thqby%2FAutoHotkey__H-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/MagicVersion-1.2.0-brighten-green?style=flat&logo=Macy’s"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.0-brightengreen?style=flat&logo=ClickUp"></a>
 
 ## 历史版本比较
 
@@ -30,12 +30,13 @@
 | 👾           | 启动程序   | ✅ 仅打开第一个                                     | ✅ 支持同类窗口切换                                           | ✅ 支持同类窗口切换                                             |
 | 📺           | 窗口调整   | ✅ 需安装 Moom                                      | ✅ 调整位置和移动                                                 | ✅ 调整位置和移动（仿写的 Moom）、支持禅模式                                             |
 | 🖱️           | 鼠标操作   | ✅ 需双手按住                                       | ✅ 需双手按住                                                 | ✅ 按下进入禅模式，可单手操作                                   |
-| `I`          | 光标编辑   | ✅ 方向移动和前后删除                               | ❌                                                            | ✅ 方向移动和前后删除                                           |
+| `I`          | 光标编辑   | ✅ 方向移动和前后删除                               | ✅ 需双手按住                                                            | ✅ 方向移动和前后删除                                           |
 | 🐵           | 猴子输入法 | ❌                                                  | ✅ 分号模式：指令集                                           | ✅ 分号模式进阶版：用户词典、指令集等，支持词典同步 MacOS       |
 | <kbd>;</kbd> | 分号特殊符 | ❌                                                  | ✅ 重排列到字母键位                                           | ✅ 重排列到字母键位（调优），支持 MacOS                         |
 | 3️⃣           | 数字小键盘 | ❌                                                  | ✅ 数字模式                                                   | ✅ 数字小键盘 + <kbd>F1~12</kbd> ，支持 MacOS                   |
-| 🤖           | 中英文管家 | ❌                                                  | ❌                                                   | ✅ 解决写代码又写注释的痛点                   |
-| 🦉           | 单手就调试 | ❌                                                  | ❌                                                   | ✅ 浓缩的 Idea 风格调试组合键
+| 🤖           | 中英文管家 | ❌                                                  | ❌                                                   | ✅ 解决写代码又写注释的切换痛点                   |
+| 🦉           | 单手就调试 | ❌                                                  | ❌                                                   | ✅ 压缩的调试组合键（程序员特供）
+| 🦑           | 宇宙编辑器 | ❌                                                  | ❌                                                   | ✅ 统一的 Idea + vscoDe 键位映射方案 + vim 增强热键 （程序员特供）
 
 ## Magic 增强功能
 
@@ -237,19 +238,6 @@ open -a Karabiner-Elements
 - <kbd>Z</kbd> 撤销操作：如果打错字或误删，撤销就好了。
 - <kbd>O</kbd> 切换输入法：能不用手掌按 <kbd>Ctrl</kbd> 键，就不要去按了，让双手保持在热键区。
 
-### 🦉单手就调试
-
-<img src="bin/img/debug-keyboard.png" width="100%" alt="print_snippets.gif">
-
-- 进入：
-  - 按住生效：按住数字键 <kbd>4</kbd> 不松手
-  - 循环使用（可松开4）：猴子输入法打字 `dbg` 开启
-- 退出：
-  - 明示：<kbd>Esc</kbd>
-  - 静默：<kbd>A</kbd> <kbd>I</kbd> <kbd>O</kbd> <kbd>S</kbd> 增删改代码时，或打开计算器时默默退出
-  
-特别地，同时按下 <kbd>Ctrl</kbd> 键，左上角按键都获得增强功能。
-
 ### ⌨️ 猴子输入法
 
 <img src="bin/img/hook_cne.gif" width="100%" alt="print_snippets.gif">
@@ -337,7 +325,7 @@ CapsLock & 9::
 > - 如果遇到菜单快速弹出作为收尾动作，这是正常现象，用于解除 `Win` 键的按键锁定，避免卡键的副作用。
 > - <kbd>A</kbd> 的组合键，集成了窗口管理和鼠标控制的功能
 
-### 窗口禅模式
+### 📺 窗口移动
 
 ![窗口禅模式](bin/img/moom-move.gif)
 
@@ -346,7 +334,7 @@ CapsLock & 9::
 - <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 控制方向（Vim）
 - <kbd>␣</kbd> 窗口回到屏幕中央
 
-### 窗口定型
+### 📺 窗口定型
 
 ![窗口定型](bin/img/moom-zoom.gif)
 
@@ -359,7 +347,7 @@ CapsLock & 9::
 - <kbd>M</kbd> <kbd>,</kbd> 窗口最大/小化
 - <kbd>.</kbd> 窗口大小回到上一个状态
 
-### 鼠标禅模式
+### 🖱️ 鼠标控制
 
 ![鼠标禅模式](bin/img/mouse-move.gif)
 
@@ -372,6 +360,97 @@ CapsLock & 9::
 - <kbd>N</kbd> <kbd>M</kbd> 侧键前 / 后
 - <kbd>C</kbd> <kbd>V</kbd> 复制/粘贴 选中文字
 - <kbd>G</kbd> 指针回到窗口中央
+
+---
+
+## 程序员特供
+
+V1.2.0 更新
+
+### 🦉单手就调试
+
+<img src="bin/img/debug-keyboard.png" width="100%" alt="print_snippets.gif">
+
+- 进入（二选一）
+  - 按住生效：按住数字键 <kbd>4</kbd> 不松手
+  - 循环使用（可松开4）：猴子输入法打字 `dbg` 开启
+- 退出
+  - 主动：<kbd>Esc</kbd>
+  - 被动：<kbd>A</kbd> <kbd>I</kbd> <kbd>O</kbd> <kbd>S</kbd> 增删改代码时，或 <kbd>␣</kbd> 打开计算器时默默退出
+  
+特别地，同时按下 <kbd>Ctrl</kbd> 键，左上角按键都获得增强功能。
+
+V1.3.0 更新
+
+### 🦑 宇宙编辑器
+
+封装了编辑器的常见操作。（非 Neovim 的用户，可参考设计思想）
+
+一般：需添加前缀 `<leader>` （默认空格键）
+
+- <kbd>n</kbd> 下一个错误
+- <kbd>j</kbd> 快速修复
+- <kbd>o</kbd> 大纲
+- <kbd>z</kbd> 禅模式
+- <kbd>f</kbd> 代码格式排版
+- <kbd>e</kbd> 转到文件
+- <kbd>a</kbd> 文件中查找
+- <kbd>s</kbd> 左侧资源管理器中查看该文件
+- <kbd>h</kbd> 该文件版本历史
+- <kbd>b</kbd> 该行打断点
+- <kbd>rr</kbd> 重构：重命名
+
+idea 特供（vscode 相似接口不起作用）
+
+- <kbd>g</kbd> 类名高亮时可生成代码
+- <kbd>,</kbd> 参数换位左移
+- <kbd>.</kbd> 参数换位右移
+- <kbd>v</kbd> 重构：抽取变量
+- <kbd>m</kbd> 重构：抽取为新方法
+
+特殊：
+
+- <kbd>H</kbd> 窗口标签：上一个（无前缀）
+- <kbd>L</kbd> 窗口标签：下一个（无前缀）
+
+通过用户自定义配置实现：
+
+```bash
+# Windows 复制粘贴到（默认/类似）位置 ->
+tree .\CAPSLOCKMAGIC\TOOLS
+│
+├───code
+│     └─keybindings.json          -> Vscode 键位映射配置 -> C:\Users\<UserName>\AppData\Roaming\Code\User\keybindings.json
+│
+├───idea
+│     ├─.ideavimrc                -> Idea Neovim 插件配置 -> C:\Users\<UserName>\.ideavimrc
+│     └─ macOS For All Magic.xml  -> Idea 键位映射配置 -> C:\Users\<UserName>\AppData\Roaming\JetBrains\IntelliJIdea2022.1\keymaps\macOS For All Magic.xml
+│
+└───neovim
+      └─init.vim                  -> Neovim/Vscode 用户配置 ->  C:\Users\<UserName>\AppData\Local\nvim\init.vim
+```
+
+#### 1.跨平台键位映射方案增强
+
+ 比如 <kbd>Shift</kbd> <kbd>F6</kbd> 代码重命名
+
+> 源自 idea 插件（win+mac）的键位映射方案: [samvtran/jetbrains-macos-keybindings-for-all](https://github.com/samvtran/jetbrains-macos-keybindings-for-all)
+
+它主要做了 MacOS / Windows 的按键兼容。半年前开始使用它，移植到了 vscode。
+
+#### 2.Neovim 增强
+
+比如 `<leader>rr` 代码重命名
+
+特别地，在 Idea + Vscode 的 Neovim 插件（.ideavimrc + init.vim），对于调用编辑器动作接口，都做了统一适配。
+
+这份配置记录了一年来，从化身八爪鱼敲键盘也无法退出 vim 的小白，到如今形成肌肉记忆的程序员，它吸收了众多设计思想：两本书，三四个开源仓库，十多个国内外视频，在各种编辑器摸爬滚打,删繁就简妥协后，获得相对平衡的结果。
+
+#### 3.AutoHotkey 增强
+
+比如 <kbd>;</kbd> `lrr` 代码重命名（前面加个小写的`L`，代替 `<leader>` 键）
+
+在插件 IDE.ahk 中的 `IdeAction` 类，封装了 1 方案的组合键。
 
 ## 常见问题
 
