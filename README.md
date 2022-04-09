@@ -10,7 +10,7 @@
 >
 > 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 >
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.0-brightengreen?style=flat&logo=ClickUp"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.1-brightengreen?style=flat&logo=ClickUp"></a>
 
 ## 历史版本比较
 
@@ -340,10 +340,13 @@ CapsLock & 9::
 
 <kbd>Caps</kbd> <kbd>Ctrl</kbd> <kbd>A</kbd> 开启（一次性）
 
-- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 窗口占据上下左右（Vim）
-- <kbd>[</kbd> <kbd>]</kbd> 窗口占据偏左 / 右屏幕（2:1）
-- <kbd>␣</kbd> 窗口占据屏幕中央
-- <kbd>N</kbd> 窗口占据屏幕中央，大小适中
+窗口占据屏幕
+
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 上下左右（Vim）
+- <kbd>[</kbd> <kbd>]</kbd> 偏左 / 右（2:1）
+- <kbd>I</kbd> <kbd>O</kbd> 偏左 / 右（1:1）
+- <kbd>␣</kbd> 中央（1:1:1）
+- <kbd>N</kbd> 正中央
 - <kbd>M</kbd> <kbd>,</kbd> 窗口最大/小化
 - <kbd>.</kbd> 窗口大小回到上一个状态
 
