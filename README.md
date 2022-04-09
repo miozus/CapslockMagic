@@ -10,7 +10,7 @@
 >
 > 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 >
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.1-brightengreen?style=flat&logo=ClickUp"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.1-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
 ## 历史版本比较
 
