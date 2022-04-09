@@ -4,15 +4,28 @@
 >
 >Make Capslock Great Again!
 >
-> 让 Capslock 再次伟大！
->
-> All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@xianyukang).
->
-> 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
 >
 > <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.1-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
-## 历史版本比较
+- [CapslockMagic](#capslockmagic)
+  - [历史版本](#历史版本)
+  - [增强功能](#增强功能)
+  - [快速开始](#快速开始)
+  - [如何使用](#如何使用)
+    - [3️⃣ 数字小键盘](#3️⃣-数字小键盘)
+    - [<kbd>;</kbd> 分号特殊符（特舒服）](#-分号特殊符特舒服)
+    - [⌨️ 猴子输入法](#️-猴子输入法)
+    - [📺 窗口移动](#-窗口移动)
+    - [📺 窗口定型](#-窗口定型)
+    - [🖱️ 鼠标控制](#️-鼠标控制)
+  - [程序员特供](#程序员特供)
+    - [🦉单手就调试](#单手就调试)
+    - [🦑 宇宙编辑器](#-宇宙编辑器)
+  - [常见问题](#常见问题)
+
+---
+
+## 历史版本
 
 `Magic` 继承了 `Capslock Enhancement` 的经典设计（类似 HHKB 键盘），弥补了它在 Windows 平台的遗憾。
 
@@ -38,7 +51,7 @@
 | 🦉           | 单手就调试 | ❌                                                  | ❌                                                   | ✅ 压缩的调试组合键（程序员特供）
 | 🦑           | 宇宙编辑器 | ❌                                                  | ❌                                                   | ✅ 统一的 Idea + vscoDe 键位映射方案 + vim 增强热键 （程序员特供）
 
-## Magic 增强功能
+## 增强功能
 
 🤖 **中英文管家**
 
@@ -105,7 +118,7 @@
 
 ## 快速开始
 
-### Windows
+**Windows**
 
 1.下载
 
@@ -120,7 +133,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 - 右键单击 `AutoHotKey.exe` （x64 / x32）， 选择属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
 - 右键单击 `CapslockMagic.ahk` 打开方式，选择到上述解压目录的 `AutoHotKey.exe` 打开。
 
-### MacOS
+**MacOS**
 
 > `Magic` 在 MacOS 平台载体是 Karabiner-Element （需下载）， 已实现 `分号特殊符`（`Semicolon Pull Down Symbol`）和 `数字小键盘`（`3 Awake Digital Keyboard`） 的两个功能。
 
@@ -264,7 +277,7 @@ open -a Karabiner-Elements
 
 MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
-#### 📒 猴子词典支持导出到第三方输入法
+📒 猴子词典支持导出到第三方输入法
 
 > 目前已支持 MacOS、QQ拼音、搜狗拼音
 
@@ -433,7 +446,7 @@ tree .\CAPSLOCKMAGIC\TOOLS
       └─init.vim                  -> Neovim/Vscode 用户配置 ->  C:\Users\<UserName>\AppData\Local\nvim\init.vim
 ```
 
-#### 1.跨平台键位映射方案增强
+1.跨平台键位映射方案增强
 
  比如 <kbd>Shift</kbd> <kbd>F6</kbd> 代码重命名
 
@@ -441,7 +454,7 @@ tree .\CAPSLOCKMAGIC\TOOLS
 
 它主要做了 MacOS / Windows 的按键兼容。半年前开始使用它，移植到了 vscode。
 
-#### 2.Neovim 增强
+2.Neovim 增强
 
 比如 `<leader>rr` 代码重命名
 
@@ -449,7 +462,7 @@ tree .\CAPSLOCKMAGIC\TOOLS
 
 这份配置记录了一年来，从化身八爪鱼敲键盘也无法退出 vim 的小白，到如今形成肌肉记忆的程序员，它吸收了众多设计思想：两本书，三四个开源仓库，十多个国内外视频，在各种编辑器摸爬滚打,删繁就简妥协后，获得相对平衡的结果。
 
-#### 3.AutoHotkey 增强
+3.AutoHotkey 增强
 
 比如 <kbd>;</kbd> `lrr` 代码重命名（前面加个小写的`L`，代替 `<leader>` 键）
 
@@ -481,3 +494,10 @@ tree .\CAPSLOCKMAGIC\TOOLS
 这两个版本，本人不再更新维护了，因为后面遇到了面向对象风格的版本，维护和拓展更方便。如果你在用 Windows7 ，可以参考修改，直接拿去用吧。
 
 </details>
+
+</br>
+
+>
+> All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@xianyukang).
+>
+> 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。
