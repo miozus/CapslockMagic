@@ -28,8 +28,8 @@ global EnableDigitKeyboard := false
 
 #Hotif EnableDigitKeyboard
 ; 对应标准的小键盘指法
-*h::Send "{blind}," ; 方便输坐标
-*Y::Send "{blind}."
+*H::Send "{blind}." ; 小数频率更高
+*Y::Send "{blind},"
 *N::Send "{blind}{Space}"
 *G::Send "{blind}G" ; Vim Goto line
 *Space::Send "{blind}0"

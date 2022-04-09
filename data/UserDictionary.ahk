@@ -266,6 +266,7 @@ privateDict := Map(
 
 logoDict := Map(
     ; Mac用户短语不支持特殊符号开头，所以用 img 兼容
+    "imgseeyon", "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/384d106fe9e05cb51600",
     "imgsentinel", "https://landscape.cncf.io/logos/sentinel.svg",
     "imggolang", "https://www.clipartmax.com/png/full/288-2881446_image-result-for-golang-go-programming-language-logo.png",
     "imgspring", "https://spring.io/images/favicon-9d25009f65637a49ac8d91eb1cf7b75e.ico",

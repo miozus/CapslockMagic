@@ -93,7 +93,8 @@ CapsLock & c::
 CapsLock & v:: 
 {
     ; Ditto
-    Send "{blind}^+!b"
+    ; Send "{blind}^+!b"
+    App.Ditto.active()
 }
 
 ; 魔法键：因地制宜，每个程序专属技能，默认鼠标返回上个点击位置，需要重写
@@ -110,21 +111,41 @@ CapsLock & 8:: Send "{Media_Play_Pause}"
 ;=====================================================================o
 ;                      Application                          
 
+
+; 应用魔法值：管理软件自定义快捷键
+class App {
+    
+    class Everything {
+        static active() {
+            Send "{blind}^+f"
+        }
+    }
+
+    class Ditto {
+        
+        static active() {
+            Send "{blind}^+!b"
+        }
+
+        static paste(index) {
+            Send "{Blind}^+!" index
+        }
+    }
+
+}
+
 ; a = appearence | window | shot 
 CapsLock & a:: 
 {
     ; 魔鬼逻辑：当前区块内，此键永远为按下，无论方法渗透多深都无法改变
     ; 跳出问题，大括号之外释放热键
-    if GetKeyState("LAlt", "p") = 1
-    {
+    if GetKeyState("LAlt", "p") {
         Window.move()
     }
-    else if GetKeyState("LWin", "p") = 1
-    {
+    else if GetKeyState("LWin", "p") {
         Mouse.move()
     } 
-    else if GetKeyState("LCtrl", "p") = 1
-    {
+    else if GetKeyState("LCtrl", "p") {
         Window.zoom()
     }
     else {
@@ -146,18 +167,18 @@ CapsLock & a::
 ; d = database | api docs
 CapsLock & d:: 
 {
-    if GetKeyState("Alt") = 1 
+    if GetKeyState("Alt")  
     {
         path := A_Programs "\Apifox.lnk"
         ActivateOrRun("ahk_exe Apifox.exe", path)
         ; path := A_Programs "\Postman\Postman.lnk"
         ; activateOrRun("ahk_exe Postman.exe", path)
-    } else if GetKeyState("Ctrl") = 1
+    } else if GetKeyState("Ctrl") 
     {
         path := A_Desktop "\RDM.lnk"
         ; path := A_Programs "\RDM\RDM.lnk"
         activateOrRun("ahk_exe rdm.exe", path)
-    } else if GetKeyState("LWin") = 1 
+    } else if GetKeyState("LWin")  
     {
         path := A_Programs "\DevDocs.lnk"
         activateOrRun("ahk_exe DevDocs.exe", path)
@@ -182,7 +203,7 @@ CapsLock & f::
     else {
         ; if not WinExist("ahk_exe Illustrator.exe") {
             ; everything
-            Send "{blind}^+!f"
+            App.Everything.active()
         ; } else {
             ; activateOrRun("ahk_exe Illustrator.exe")
         ; }
@@ -193,7 +214,7 @@ CapsLock & f::
 ; g = google
 CapsLock & g:: 
 {
-    if GetKeyState("Alt") = 1
+    if GetKeyState("Alt") 
     {
         ; 谷歌搜索选中文字
         Send "^c"
@@ -211,7 +232,7 @@ CapsLock & g::
 ; e = editor
 CapsLock & e:: 
 {
-    if GetKeyState("Alt") == 1
+    if GetKeyState("Alt") 
     {
         path := A_Programs "\Microsoft Edge.lnk"
         activateOrRun("ahk_exe msedge.exe", path)
@@ -226,7 +247,7 @@ CapsLock & e::
 ; r = run | develop | java | back-end
 CapsLock & r:: 
 {
-    if GetKeyState("Alt") = 1 
+    if GetKeyState("Alt")  
     {
         path := A_Programs "\JetBrains Toolbox\GoLand.lnk"
         activateOrRun("ahk_exe goland64.exe", path)
@@ -237,13 +258,13 @@ CapsLock & r::
             ; params := " --jdkhome C:\Users\miozus\.jdks\corretto-1.8.0_322"
             ; activateOrRun(visualvm, "wt.exe " visualvm, params) 
     }
-    else if GetKeyState("LWin") == 1 {
+    else if GetKeyState("LWin") {
         ; Apache JMeter
         jmeter := "E:\Java\apache-jmeter-5.4.1\bin\jmeter.bat"
         params := " -t E:\Java\apache-jmeter-5.4.1\MyTest\谷粒商城压力测试.jmx"
         activateOrRun("Apache JMeter", "wt.exe " jmeter, params)
     }
-    else if GetKeyState("Ctrl") = 1 
+    else if GetKeyState("Ctrl")  
     {
         ; arthas
         arthas := "C:\Users\miozus\.jdks\corretto-1.8.0_322\bin\java"
@@ -262,18 +283,18 @@ CapsLock & r::
 ; t = terminal | develop | front-end
     CapsLock & t:: 
 {
-    if GetKeyState("Alt") = 1 
+    if GetKeyState("Alt")  
     {
         path := "bin\util\Windows Terminal.lnk"
         activateOrRun("ahk_exe WindowsTerminal.exe", path)
 
     } 
-    else if getKeyState("Ctrl") = 1
+    else if getKeyState("Ctrl") 
     {
         path := A_StartMenuCommon "\Programs\Git\Git Bash.lnk"
         activateOrRun("ahk_exe mintty.exe", path,  "--cd-to-home")
     } 
-    else if getKeyState("LWin") = 1
+    else if getKeyState("LWin") 
     {
         if WinExist("ahk_exe HwMirror.exe") 
             WinActivate
@@ -285,30 +306,22 @@ CapsLock & r::
     }
 }
 
-; CapsLock & z::
-; {
-    ; if getKeyState("Alt") {
-        ; DevUtils.getPixelSearchCode()
-    ; } else {
-        ; DevUtils.getMousePosCode()
-    ; }
-; }
 
-; y = why | reload script
+; y = why | reload script 脚本暂停标记，至少留一组快捷键控制脚本重启
 #SuspendExempt
 CapsLock & y:: 
 {
-    if GetKeyState("Alt")  = 1
+    if GetKeyState("Alt")  
     {
         ; Edit this AHK
         path := A_Programs "\Visual Studio Code\Visual Studio Code.lnk"
         activateOrRun("CapslockPlus_V2H ahk_exe Code.exe", path, A_WorkingDir)
     }
-    else if GetKeyState("Ctrl") = 1
+    else if GetKeyState("Ctrl") 
     {
         SuspendScript()
     }
-    else if GetKeyState("LWin") = 1
+    else if GetKeyState("LWin") 
     {
         ; search for help
         ; Run "https://wyagd001.github.io/v2/docs/AutoHotkey.htm"
@@ -340,7 +353,3 @@ SuspendScript() {
     Suspend
     Animation.switchTrayIcon() 
 }
-
-; =====================================================================o
-;                      自动优化格式编辑区，快速删除用 vim
-; ---------------------------------------------------------------------o

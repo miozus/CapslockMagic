@@ -187,7 +187,6 @@ class Hotspot {
 class Chrome {
 
     static refresh() {
-        ToolTip "G"
         path := A_AppData "\Microsoft\Internet Explorer\Quick Launch\Google Chrome.lnk"
         activateOrRun("ahk_exe chrome.exe", path)
         Send "{Blind}^r"

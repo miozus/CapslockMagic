@@ -115,20 +115,19 @@ execSemicolonAbbr(typo) {
         case "reboot": slideToReboot()
         case "shutdown": slideToShutdown()
         case "spy": openWinSpy()
+        case "dota": Dotfiles.apply()
         case "dotb": Dotfiles.backup()
-        case "doto":
-            path := A_Programs "\Visual Studio Code\Visual Studio Code.lnk"
-            activateOrRun("dotfiles ahk_exe Code.exe", path, "E:\dotfiles")
+        case "doto": Dotfiles.open()
         case "login": loginAdmin()
         case "dt": Send FormatTime(, "yyyy-MM-dd HH:mm:ss")
         case "hey": Sleep 500
         case "dh": Send "{Blind}^#{Left}"
         case "dl": Send "{Blind}^#{Right}"
-        case "1": Send "{Blind}^+!1"
-        case "2": Send "{Blind}^+!2"
-        case "3": Send "{Blind}^+!3"
-        case "4": Send "{Blind}^+!4"
-        case "5": Send "{Blind}^+!5"
+        case "1": App.Ditto.paste(1)
+        case "2": App.Ditto.paste(2)
+        case "3": App.Ditto.paste(3)
+        case "4": App.Ditto.paste(4)
+        case "5": App.Ditto.paste(5)
         case "cc": Vim.EditJavaCommentTitle()
         case "il": Vim.inputChineseInDdoubleQuotes()	; 引号中输入中文
         case "cil": Vim.changeCnCommentInDoubleQuotes()
@@ -136,9 +135,8 @@ execSemicolonAbbr(typo) {
         case "tt": Vim.paste2LastLineUp()
         case "gg": Vim.paste2LastLineReplace()
         case "bb": Vim.paste2LastLineDown()
-        case "mm": Mouse.move()
         case "vsa": Vim.swapArg()
-        case "dota": Dotfiles.apply()
+        case "mm": Mouse.move()
         case "dbg": Debug.toggle()
         case "ln": IdeAction.markernext()
         case "lj": IdeAction.actionquickFix()
