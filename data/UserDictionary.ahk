@@ -202,7 +202,7 @@ emojiDict := Map(
     ; JVM
     "qiqq", "🎈", ; 堆球/栈线（两字神似）
     "fjue", "🪞", ; 反射
-    
+
 )
 
 privateDict := Map(
@@ -247,6 +247,7 @@ privateDict := Map(
     "xydy", "≤",
     "dayu", ">",
     "dydy", "≥",
+    "numno", "№", ; 数字编号
     ; 系统按键符号
     "backdel", "⌦",
     "del", "⌫",
@@ -266,6 +267,7 @@ privateDict := Map(
 
 logoDict := Map(
     ; Mac用户短语不支持特殊符号开头，所以用 img 兼容
+    "imginfopath", "data:image/png;base64,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",
     "imgseeyon", "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/384d106fe9e05cb51600",
     "imgsentinel", "https://landscape.cncf.io/logos/sentinel.svg",
     "imggolang", "https://www.clipartmax.com/png/full/288-2881446_image-result-for-golang-go-programming-language-logo.png",
@@ -535,6 +537,7 @@ global secretDictionary := Map(
     "lrr", "",
     "H", "",
     "L", "",
+    "docs", "腾讯文档",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])

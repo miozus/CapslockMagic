@@ -1,4 +1,4 @@
-<keymap version="1" name="macOS For All copy" parent="macOS For All">
+<ukeymap version="1" name="macOS For All Magic">
   <action id="$Paste">
     <keyboard-shortcut first-keystroke="ctrl v" />
     <keyboard-shortcut first-keystroke="shift insert" />

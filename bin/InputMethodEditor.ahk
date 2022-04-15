@@ -114,7 +114,7 @@ class IME {
     ; 策略模式：保持原接口不变，实现方式根据场景可选
     ; 系统有时会自动降级兼容，太诡异了
     static isNotTypingPinYin() {
-        return !(this.isTypingPinYinImg() or this.isTypingPinYinWin())
+        return !(this.isTypingPinYinImg() or this.isTypingPinYinWin() or this.isTypingPinYinImgOld())
     }
 
     ; 适用蓝底白字老版本，Win11白皮肤接口失效，因为窗口常驻后台
@@ -129,10 +129,16 @@ class IME {
         }
     }
 
-    ; 适用新版微软拼音，截图桃心
+    ; Win11: 适用新版微软拼音，截图桃心
     static isTypingPinYinImg() {
         CoordMode "Pixel"  ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
         return ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogo.png")
+    }
+
+    ; Win10: 适用旧版微软拼音，截图笑脸
+    static isTypingPinYinImgOld() {
+        CoordMode "Pixel"  ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
+        return ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogoOld.png")
     }
 
 }

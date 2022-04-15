@@ -375,9 +375,9 @@ activateOrRunOld(title, exe_path, language := "EN") {
     IME.set(language)	; 默认以小写开始; posh 失去控制权，要下两下才能保持英文
 }
 ;---------------------------------------------------------------------o
+; 使用ahk工具查看控件，以便获得控制权限
 openWinSpy() {
-    ; 版本不兼容的痛
-    activateOrRunOld("ahk_exe WindowSpy.exe", "D:\TOOLS\AutoHotKey\AutoHotKey_L-V1\AutoHotkeyU64.exe D:\TOOLS\AutoHotKey\AutoHotKey_L-V1\WindowSpy.ahk")
+    activateOrRunOld("ahk_exe WindowSpy.exe", "bin\plugin\WindowSpy.ahk")
 }
 
 ; 单击鼠标右键，以第 N 个方式打开该文件
@@ -672,7 +672,45 @@ class Animation {
         Sleep 500
         ToolTip
     }
+}
 
+; 动画计时器
+class Timer {
+    
+    ; 周期
+    static moonRetation(count) {
+        i := 1
+        Loop count {
+            switch Mod(i, 8) {
+               case 1 : tooltip "🌑"
+               case 2 : tooltip "🌒"
+               case 3 : tooltip "🌓"
+               case 4 : tooltip "🌔"
+               case 5 : tooltip "🌕"
+               case 6 : tooltip "🌖"
+               case 7 : tooltip "🌗"
+               case 0 : tooltip "🌘"
+            }
+            Sleep 1000
+            i++
+        }
+        tooltip
+    }
+
+    ; 二进制沙漏
+    static hourGlass(count) {
+        i := 1
+        Loop count {
+            if Mod(i, 2) {
+                tooltip "⏳ " i
+            } else {
+                tooltip "⌛ " i
+            }
+            Sleep 1000
+            i++
+        }
+        tooltip
+    }
 
 }
 
@@ -707,3 +745,9 @@ alg4() {
     Run "https://visualgo.net/zh/sorting"
 }
 
+class Tencent {
+
+    static docs() {
+        Run "https://docs.qq.com/desktop/"
+    }
+}

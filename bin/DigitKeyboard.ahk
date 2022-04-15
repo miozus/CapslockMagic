@@ -47,6 +47,7 @@ global EnableDigitKeyboard := false
 ; Fn键 
 *Esc::Send "{blind}``"
 *1::Send "{blind}{F1}"
+^2::Send "{blind!+^}{F12}" ; 浏览器控制台，常用又远
 *2::Send "{blind}{F2}"
 ; *3::Send "{blind}{F3}" ; 牺牲小我，拯救大伙
 *4::Send "{blind}{F4}"

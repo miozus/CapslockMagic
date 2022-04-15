@@ -5,7 +5,7 @@
 >Make Capslock Great Again!
 >
 >
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.1-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.4-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
 - [CapslockMagic](#capslockmagic)
   - [历史版本](#历史版本)
@@ -115,6 +115,10 @@
 🧩 **内置插件**
 
 `Notion.ahk` 支持粘贴不同语言的代码块、调整`block`折叠或无序列表，左手删除字符，代码块语言格式；去掉粘贴文本格式等功能。
+
+⏳ **动画计时器**
+
+如果你网络请求，等待时间比较长，看上去像电脑死机，为什么不试试  `Timer` 动画呢？人有悲欢离合，月有阴晴圆缺。
 
 ## 快速开始
 

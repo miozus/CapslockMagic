@@ -185,7 +185,9 @@ CapsLock & q::
 } 
 
 ; close Tab
-CapsLock & w:: ^w
+CapsLock & w:: {
+    Send "{Blind}^w"
+}
 ; open menu like right click
 CapsLock & \:: AppsKey
 

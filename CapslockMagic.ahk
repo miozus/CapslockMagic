@@ -1,4 +1,4 @@
-﻿;=====================================================================o
+;=====================================================================o
 ;                                                              
 ; 
 ;  ▄████▄   ▄▄▄       ██▓███    ██████  ██▓     ▒█████   ▄████▄   ██ ▄█▀
@@ -62,6 +62,7 @@ allHotkeys.Push("*4")
 #Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
 #Include bin\plugin\Vim.ahk
+#Include bin\plugin\BatchDownload.ahk
 ; #Include bin\plugin\Premiere.ahk
 
 
@@ -89,6 +90,7 @@ CapsLock & c::
     Send "^v"
 }
 
+
 ; v = paste | clipboard
 CapsLock & v:: 
 {
@@ -112,7 +114,7 @@ CapsLock & 8:: Send "{Media_Play_Pause}"
 ;                      Application                          
 
 
-; 应用魔法值：管理软件自定义快捷键
+; 应用魔法值（枚举类）：管理软件自定义快捷键
 class App {
     
     class Everything {
@@ -130,6 +132,10 @@ class App {
         static paste(index) {
             Send "{Blind}^+!" index
         }
+    }
+    
+    class Java {
+        static JDK := "C:\Users\miozus\.jdks\azul-1.8.0_322\bin\java"
     }
 
 }
@@ -188,7 +194,7 @@ CapsLock & d::
         if winexist("ahk_exe Photoshop.exe") {
             activateOrRun("ahk_exe Photoshop.exe")
         } else {
-            path := A_ProgramsCommon "\PremiumSoft\Navicat 15 for MySQL.lnk"
+            path := A_ProgramsCommon "\PremiumSoft\Navicat Premium 16.lnk"
             activateOrRun("ahk_exe navicat.exe", path)
         }
     }
@@ -249,8 +255,9 @@ CapsLock & r::
 {
     if GetKeyState("Alt")  
     {
-        path := A_Programs "\JetBrains Toolbox\GoLand.lnk"
-        activateOrRun("ahk_exe goland64.exe", path)
+        Seeyon.activeFormDesigner()
+        ; path := A_Programs "\JetBrains Toolbox\GoLand.lnk"
+        ; activateOrRun("ahk_exe goland64.exe", path)
         ; if winExist("ahk_exe javaw.exe") or winExist("VisualVM 2.1 ahk_exe java.exe")
             ; WinActivate
         ; else
@@ -267,16 +274,18 @@ CapsLock & r::
     else if GetKeyState("Ctrl")  
     {
         ; arthas
-        arthas := "C:\Users\miozus\.jdks\corretto-1.8.0_322\bin\java"
+        arthas := App.Java.JDK
         params :=  " -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
         activateOrRun(arthas, "wt.exe " arthas, params)
     } else {
-        if WinExist("ahk_exe goland64.exe") {
-            activateOrRun("ahk_exe goland64.exe")
-        } else {
-            path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate Early Access Program.lnk"
-            activateOrRun("ahk_exe idea64.exe", path)
-        }
+        excel := "ahk_exe EXCEL.EXE"
+        ActivateOrRun(excel)
+        ; if WinExist("ahk_exe goland64.exe") {
+            ; activateOrRun("ahk_exe goland64.exe")
+        ; } else {
+            ; path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate.lnk"
+            ; activateOrRun("ahk_exe idea64.exe", path)
+        ; }
     }
 }
 
@@ -326,7 +335,7 @@ CapsLock & y::
         ; search for help
         ; Run "https://wyagd001.github.io/v2/docs/AutoHotkey.htm"
         ; Run "D:\TOOLS\AutoHotKey\AutoHotkey_H v2.chm"
-        path :=  "D:\TOOLS\AutoHotKey\docs\AutoHotkey_V2L_CN.chm"
+        path :=  "tools\AutoHotkey_V2L_CN.chm"
         activateOrRun("AutoHotkey v2", path)
         Send "!s^a"
         
