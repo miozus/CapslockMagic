@@ -45,6 +45,8 @@ CapsLock::
 ; Send "^v"
 ; }
 CapsLock & 2:: Send "!{F12}"	; terminal
+CapsLock & 4:: Send "!8"    ; service
+CapsLock & 5:: Send "^+d"  ; debug
 #HotIf
 ;---------------------------------------------------------------------o
 
@@ -66,8 +68,10 @@ LWin & v:: batchClearOrFindLog(4, "🔒")
 CapsLock & b:: Send "{blind}^!b"	; jump to implement
 CapsLock & w:: Send "{blind}^#w"	; close current tab
 CapsLock & 1:: Send "!{F1}1"
-CapsLock & 3:: Vim.abstractVariable()
-CapsLock & 4:: runCmdPythonUnittest()
+; CapsLock & 3:: Vim.abstractVariable()
+CapsLock & 3:: Send "+{F6}"
+; CapsLock & 4:: runCmdPythonUnittest()
+
 
 runCmdPythonUnittest() {
     python := "E:/miniconda3/envs/autotest/python.exe"

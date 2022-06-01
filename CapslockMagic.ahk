@@ -48,9 +48,12 @@ allHotkeys.Push("*;")
 allHotkeys.Push("*3")
 allHotkeys.Push("*4")
 
-#Include bin\util\Common.ahk
-#Include bin\util\UserDictUtils.ahk
 #Include data\UserDictionary.ahk
+#Include bin\util\Common.ahk
+#Include bin\util\UserDictUtil.ahk
+#Include bin\util\Animation.ahk
+#Include bin\util\Dotfiles.ahk
+#Include bin\util\Location.ahk
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\DigitKeyboard.ahk
 #Include bin\InputMethodEditor.ahk
@@ -62,9 +65,7 @@ allHotkeys.Push("*4")
 #Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
 #Include bin\plugin\Vim.ahk
-#Include bin\plugin\BatchDownload.ahk
-; #Include bin\plugin\Premiere.ahk
-
+ 
 
 
 
@@ -119,7 +120,7 @@ class App {
     
     class Everything {
         static active() {
-            Send "{blind}^+f"
+            Send "{blind}!+f"
         }
     }
 
@@ -135,7 +136,7 @@ class App {
     }
     
     class Java {
-        static JDK := "C:\Users\miozus\.jdks\azul-1.8.0_322\bin\java"
+        static JDK := "C:\Users\miozus\.jdks\jdk1.8.0_202\bin\java"
     }
 
 }
@@ -278,14 +279,19 @@ CapsLock & r::
         params :=  " -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
         activateOrRun(arthas, "wt.exe " arthas, params)
     } else {
-        excel := "ahk_exe EXCEL.EXE"
-        ActivateOrRun(excel)
+        ; excel := "ahk_exe EXCEL.EXE"
+        ; ActivateOrRun(excel)
         ; if WinExist("ahk_exe goland64.exe") {
             ; activateOrRun("ahk_exe goland64.exe")
         ; } else {
             ; path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate.lnk"
             ; activateOrRun("ahk_exe idea64.exe", path)
         ; }
+
+        if WinExist("ahk_exe idea64.exe") {
+            path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate.lnk"
+            activateOrRun("ahk_exe idea64.exe", path)
+        }
     }
 }
 

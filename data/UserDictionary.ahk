@@ -21,7 +21,8 @@ emojiDict := Map(
     "whlo", "🌐", ; 网络/地球
     ; RESTful
     "dv", "✅",
-    "xyhr", "🔁",	; 循环/多次/重复/loop/multiple
+    "xyhr", "🔄",	; 循环/多次/重复/loop/multiple
+    "zrui", "💠",	; 钻石
     "ks", "🈳",
     "wu", "🈚",
     ; 步骤/线程 u 数字 + 汉语拼音
@@ -40,14 +41,14 @@ emojiDict := Map(
     "lipu", "😱",	; 离谱
     "kulz", "☠",	; 骷髅/压爆了/死锁/deadLock/失效
     ; 速度
-    "wugv", "🐢",
-    "pcbu", "🏃‍♂️",
-    "djie", "🚲",
-    "moto", "🏍️",
-    "qiie", "🚗",
-    "gctp", "🚄",
-    "fwji", "✈️",
-    "hojm", "🚀",
+    "wugv", "🐢",  ; 乌龟
+    "pcbu", "🏃‍♂️",  ; 跑步
+    "djie", "🚲",  ; 单车
+    "moto", "🏍️",  ; 摩托
+    "qiie", "🚗",  ; 汽车
+    "gctp", "🚄",  ; 高铁
+    "fwji", "✈️",  ; 飞机
+    "hojm", "🚀",  ; 火箭
     ; 线程生命周期
     "xkxk", "⭐️",	; 星星/初始/new
     "yyxk", "🟢",	; 运行/runnabele（running+ready）
@@ -57,7 +58,7 @@ emojiDict := Map(
     "tkvi", "🔴",	; 停止/终止/terminated
     ; 线程方法
     "kdui", "▶️",	; 开始/播放/继续/start
-    "uvjn", "😪",	; 睡觉/sleep
+    "uvjn", "💤",	; 睡觉/sleep/什么也没发生
     "hrxk", "🔔",	; 唤醒/铃铛/notify/notifyAll
     "jxru", "🎉",	; 加入/派对/join
     "jiuiqi", "⏱️",	; 计时器/timer
@@ -202,6 +203,7 @@ emojiDict := Map(
     ; JVM
     "qiqq", "🎈", ; 堆球/栈线（两字神似）
     "fjue", "🪞", ; 反射
+    "new", "🆕", ; 新
 
 )
 
@@ -334,6 +336,8 @@ logoDict := Map(
 )
 
 csDict := Map(
+    ; SQL
+    "ss", "sqlserver ",
     ; Java
     "apy", "application.yml",
     "app", "application.properties",
@@ -370,10 +374,10 @@ csDict := Map(
     "onn", "Objects.nonNull()",
     "aie", "ArrayUtils.isEmpty()",
     "ane", "ArrayUtils.isNotEmpty()",
-    "sie", "StringUtils.isEmpty()",
-    "sne", "StringUtils.isNotEmpty()",
-    "cie", "CollectionUtils.isEmpty()",
-    "cne", "CollectionUtils.isNotEmpty()",
+    "sie", "StrUtil.isEmpty()",
+    "sne", "StrUtil.isNotEmpty()",
+    "cie", "CollUtil.isEmpty()",
+    "cne", "CollUtil.isNotEmpty()",
     "cfr", "CompletableFuture.runAsync(()->{},executor);",
     "cfa", "CompletableFuture.allOf().get();",
     "uuid", "String uuid = UUID.randomUUID().toString();",
@@ -454,6 +458,10 @@ csDict := Map(
     "utf8", "\xEF\xBB\xBF",
     "enn", "if err != nil {`rpanic(err)`r", ; throw Exception
     "regcn", "^[\u4e00-\u9fa5]$", ; 匹配中文
+    ; Vue3
+    "vss", '<script setup lang="ts">`r</script>',
+    "vir", "import { ref } from 'vue'",
+    "via", "import axios from 'axios'",
 )
 
 winDict := Map(
@@ -475,6 +483,7 @@ winDict := Map(
     "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
     "cdn", "cdn `; start nginx `; E:\frp\natapp\natapp.exe",  ; Nginx + RPC 内网穿透
     "sds", 'java -jar "E:\Java\sentinel\sentinel-dashboard-1.8.0.jar" --server.port=8858', ; 不支持 JDK1.17
+    "catlog", "cat ./log.log -Wait -Tail 10",
     ; "sdd", 'java -Dserver.port=8333 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar',
 
 )
@@ -531,7 +540,7 @@ global secretDictionary := Map(
     "le", "",
     "la", "",
     "ls", "",
-    "lh", "",
+    "lgh", "",
     "lb", "",
     "ldd", "",
     "lrr", "",

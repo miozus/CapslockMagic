@@ -4,7 +4,7 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 ;=====================================================================o
 ;                    Windows Garbage
 ;---------------------------------------------------------------------o
-; Windows 10
+; WindowsOS
 #h:: ; 听写，几乎没有麦克风
 #c:: ; Cortana，人工智障
 #p:: ; 投影屏幕，没有别的屏幕，单机版

@@ -43,6 +43,7 @@ $CapsLock::Esc
 CapsLock Up::
 {
     keepCapsLockLower()
+    ; gcHotkey()
 }
 
 
@@ -50,6 +51,12 @@ keepCapsLockLower() {
     if GetKeyState("CapsLock", "T") {
         SetCapsLockState "AlwaysOff"
     }
+}
+
+; 避免被占用触发副作用
+gcHotkey() {
+    global EnableDigitKeyboard
+    EnableDigitKeyboard := false
 }
 
 ;=====================================================================o
@@ -190,4 +197,3 @@ CapsLock & w:: {
 }
 ; open menu like right click
 CapsLock & \:: AppsKey
-

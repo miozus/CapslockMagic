@@ -5,7 +5,7 @@
 >Make Capslock Great Again!
 >
 >
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.3.4-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/thqby%2FAutoHotkey__H-beta.3fixed.4-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.0-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
 - [CapslockMagic](#capslockmagic)
   - [历史版本](#历史版本)
@@ -21,6 +21,7 @@
   - [程序员特供](#程序员特供)
     - [🦉单手就调试](#单手就调试)
     - [🦑 宇宙编辑器](#-宇宙编辑器)
+    - [🕷️ 爬虫零件箱](#️-爬虫零件箱)
   - [常见问题](#常见问题)
 
 ---
@@ -471,6 +472,37 @@ tree .\CAPSLOCKMAGIC\TOOLS
 比如 <kbd>;</kbd> `lrr` 代码重命名（前面加个小写的`L`，代替 `<leader>` 键）
 
 在插件 IDE.ahk 中的 `IdeAction` 类，封装了 1 方案的组合键。
+
+V1.4.0 更新
+
+### 🕷️ 爬虫零件箱
+
+提供零件，可组合实现浏览器爬虫，点击网页元素，下载资源的自动化机器人。（实际案例下载文件数过万）
+
+适用场景：
+
+- 害怕 Python 爬虫而封禁IP，或解析资源路径困难。
+- 可复制的网页预览的文件（非图片）
+
+```bash
+CapslockMagic\bin\util
+├── Animation.ahk     # 时间动画: 挂机运行非静止画面
+├── FilePipe.ahk      # 文件管道：导入导出和文件名添加日期
+├── FileStream.ahk    # 文件流：增删改查
+├── Interceptor.ahk   # 过滤器：不必每个点开看
+├── Internet.ahk      # 网络测试：是否断网
+├── Location.ahk      # 定位器：网页元素坐标
+└── Logger.ahk        # 日志：每条记录处理过程和结果
+```
+
+日志示例：每个表情代表执行了一种管道操作
+
+``` bash
+[2022-12-12 05:18:44] 4582-8 🙈 *** empty file
+[2022-12-12 05:20:38] 4591-2 🐘 *** too big size
+[2022-12-12 16:06:50] 4: ✅: source => destination | well-done
+[2022-12-12 16:33:57] 9: 🈚⭐🐞: source ⇒ destination | not exist & create file & bug
+```
 
 ## 常见问题
 

@@ -2,6 +2,8 @@
 SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
+; 读写文件
+#Include FilePipe.ahk
 
 ; 支持导出的用户词典枚举类
 ; ---
@@ -40,7 +42,7 @@ class Converter {
             return
         }
         filename :=  target.name target.suffix 
-        FileUtils.outputAs(result, filename)
+        FilePipe.outputAs(result, filename)
     }
 
     ; 解析第三方词库，储存为猴子输入法词库 \
@@ -66,7 +68,7 @@ class Converter {
                 msgbox suffix, "不支持的类型" 
                 return
         }
-        FileUtils.outputAs(result, "userdict4mapobj.ahk")
+        FilePipe.outputAs(result, "userdict4mapobj.ahk")
     }
 }
 
@@ -109,7 +111,7 @@ class UserDict {
             (
                 '`t`t<dict>`n'
                     '`t`t`t<key>phrase</key>`n'
-                    '`t`t`t<string>' StringUtils.formatAsPlist(value) '</string>`n'
+                    '`t`t`t<string>' StrUtil.formatAsPlist(value) '</string>`n'
                     '`t`t`t<key>shortcut</key>`n'
                     '`t`t`t<string>' key '</string>`n'
                 '`t`t</dict>`n'
@@ -133,7 +135,7 @@ class UserDict {
         ini := ""
         for key, value in mapObj
             ; 默认候选第 2 位        
-            ini .= key "=2," StringUtils.formatAsIni(value) "`n" 
+            ini .= key "=2," StrUtil.formatAsIni(value) "`n" 
         ini := Rtrim(ini, ",`n")
         ; MsgBox ini
         return ini
@@ -171,7 +173,7 @@ class UserDict {
             str .= 
             (
                 '`t{`n'
-                    '`t`t"phrase": "' StringUtils.formatAsJson(value) '",`n'
+                    '`t`t"phrase": "' StrUtil.formatAsJson(value) '",`n'
                     '`t`t"shortcut": "' key '"`n'
                 '`t},`n'
             )
@@ -187,7 +189,7 @@ class UserDict {
     ;
     ; 文件中需删除单独一行的诸如 [section]
     static parseIni(FileName) {
-        str := FileUtils.inputFrom(FileName)
+        str := FilePipe.inputFrom(FileName)
         ini := StrSplit(str, "`n")
         mapObj := Map()
         tempKey := ""
@@ -196,7 +198,7 @@ class UserDict {
             isOneLine := RegExMatch(chunk, '(.*)=\d+,(.*)', &match)
             if (isOneLine) {
                 tempKey := match[1]
-                mapObj[tempKey] := StringUtils.formatAsMap(match[2])
+                mapObj[tempKey] := StrUtil.formatAsMap(match[2])
             } else {
                 multiLineStr := mapObj[tempKey] '``r' chunk
                 mapObj[tempKey] := multiLineStr
@@ -214,14 +216,14 @@ class UserDict {
     ; }]
     ;
     static parseMacJson(FileName) {
-        str := FileUtils.inputFrom(FileName)
+        str := FilePipe.inputFrom(FileName)
         json := StrSplit(str, "},", "[]")
         mapObj := Map()
         for chunk in json
         {
             execute := RegExMatch(chunk, '"phrase": "(.*)".\s+"shortcut": "(.*)"', &match)
             if(execute){
-                mapObj[match[2]] := StringUtils.formatAsMap(match[1])
+                mapObj[match[2]] := StrUtil.formatAsMap(match[1])
             }
         }
         return this.toMapString(mapObj)
@@ -235,13 +237,13 @@ class UserDict {
     ;     <string>key</string>
     ; </dict>
     static parsePlist(FileName) {
-        str := FileUtils.inputFrom(FileName)
+        str := FilePipe.inputFrom(FileName)
         plist := StrSplit(str, "</dict>")
         mapObj := Map()
         for chunk in plist {
             execute := RegExMatch(chunk, 's)<string>(.*)</string>.*<string>(.*)</string>', &match)
             if (execute){
-                mapObj[match[2]] := StringUtils.formatAsMap(match[1])
+                mapObj[match[2]] := StrUtil.formatAsMap(match[1])
             } 
         }
         return this.toMapString(mapObj)
@@ -250,7 +252,7 @@ class UserDict {
 }
 
 ; 字符串工具：不同文件转义字符的替换
-class StringUtils {
+class StrUtil {
 
     static formatAsPlist(value){
         value := StrReplace(value, "<", "&lt;")

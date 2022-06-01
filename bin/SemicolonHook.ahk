@@ -146,12 +146,13 @@ execSemicolonAbbr(typo) {
         case "le": IdeAction.actionquickOpen()
         case "la": IdeAction.findInFiles()
         case "ls": IdeAction.viewexplorer()
-        case "lh": IdeAction.gitlensshowQuickFileHistory()
+        case "lgh": IdeAction.gitlensshowQuickFileHistory()
         case "lb": IdeAction.toggleBreakpoint()
         case "ldd": IdeAction.debugStart()
         case "lrr": IdeAction.rename()
         case "H": IdeAction.tabPreview()
         case "L": IdeAction.tabNext()
+        case "docs": Tencent.docs()
         default:
             return false
     }
@@ -270,4 +271,5 @@ getKeyStr(dict) {
         string .= key ","
     }
     return RTrim(string, ",")
+
 }

@@ -202,6 +202,7 @@ class ApiFox {
         Send "{Blind}^{Enter}"
     }
 }
+
 ; 源码猎手
 class SourceHunter {
 
