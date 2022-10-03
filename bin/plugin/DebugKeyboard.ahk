@@ -18,7 +18,7 @@ global EnableDebugKeyboard := false
 {
     global EnableDebugKeyboard
     thisHotkey := A_ThisHotkey
-    disableOtherHotkey(thisHotkey)
+    GC.disableOtherHotkey(thisHotkey)
     EnableDebugKeyboard := true
     ToolTip "🦉"
     keywait "4" 
@@ -27,7 +27,7 @@ global EnableDebugKeyboard := false
     {
         Send "{blind}4"
     }
-    enableOtherHotkey(thisHotkey)
+    GC.enableOtherHotkey(thisHotkey)
     ToolTip
 }
 

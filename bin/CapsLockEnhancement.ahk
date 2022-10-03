@@ -39,11 +39,16 @@ CapsLock & `::
 ;=====================================================================o
 ;                         CapsLock Escaper:                          
 
-$CapsLock::Esc
-CapsLock Up::
+CapsLock::Esc
+
+; 解放大小写锁定
+\::
 {
+    Send "\"
     keepCapsLockLower()
+    ; GC.disableAllHotkey()
     ; gcHotkey()
+    SetTimer () => GC.ModifyKeyDocker(), -1000
 }
 
 

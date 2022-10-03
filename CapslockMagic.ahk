@@ -1,4 +1,4 @@
-;=====================================================================o
+﻿;=====================================================================o
 ;                                                              
 ; 
 ;  ▄████▄   ▄▄▄       ██▓███    ██████  ██▓     ▒█████   ▄████▄   ██ ▄█▀
@@ -65,9 +65,14 @@ allHotkeys.Push("*4")
 #Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
 #Include bin\plugin\Vim.ahk
+#Include bin\plugin\Seeyon.ahk
  
 
 
+
+;=====================================================================o
+;                    DevUtl
+!0:: Location.getMousePosCode()
 
 ;=====================================================================o
 ;                    Copy & Paste Enhancement
@@ -182,9 +187,9 @@ CapsLock & d::
         ; activateOrRun("ahk_exe Postman.exe", path)
     } else if GetKeyState("Ctrl") 
     {
-        path := A_Desktop "\RDM.lnk"
+        path := A_Desktop "\Another Redis Desktop Manager.lnk"
         ; path := A_Programs "\RDM\RDM.lnk"
-        activateOrRun("ahk_exe rdm.exe", path)
+        activateOrRun("ahk_exe Another Redis Desktop Manager.exe", path)
     } else if GetKeyState("LWin")  
     {
         path := A_Programs "\DevDocs.lnk"
@@ -192,12 +197,8 @@ CapsLock & d::
     }
     else
     {
-        if winexist("ahk_exe Photoshop.exe") {
-            activateOrRun("ahk_exe Photoshop.exe")
-        } else {
-            path := A_ProgramsCommon "\PremiumSoft\Navicat Premium 16.lnk"
-            activateOrRun("ahk_exe navicat.exe", path)
-        }
+        path := A_ProgramsCommon "\PremiumSoft\Navicat Premium 16.lnk"
+        activateOrRun("ahk_exe navicat.exe", path)
     }
 }
 
@@ -241,8 +242,10 @@ CapsLock & e::
 {
     if GetKeyState("Alt") 
     {
-        path := A_Programs "\Microsoft Edge.lnk"
-        activateOrRun("ahk_exe msedge.exe", path)
+        ; path := A_Programs "\Microsoft Edge.lnk"
+        ; activateOrRun("ahk_exe msedge.exe", path)
+        path := "E:\seeyon\project\安顺市平坝区煤矿企业产销量综合监管平台项目\UML\协同分析业务流程设计稿.drawio"
+        activateOrRun("ahk_exe draw.io.exe", path)
     }
     else {
         path := A_Programs "\Notion Enhanced.lnk"
@@ -274,19 +277,22 @@ CapsLock & r::
     }
     else if GetKeyState("Ctrl")  
     {
+        ; todesk
+        ActivateOrRun("ahk_exe ToDesk.exe", "")
         ; arthas
-        arthas := App.Java.JDK
-        params :=  " -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
-        activateOrRun(arthas, "wt.exe " arthas, params)
+        ; arthas := App.Java.JDK
+        ; params :=  " -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
+        ; activateOrRun(arthas, "wt.exe " arthas, params)
     } else {
         ; excel := "ahk_exe EXCEL.EXE"
         ; ActivateOrRun(excel)
         ; if WinExist("ahk_exe goland64.exe") {
             ; activateOrRun("ahk_exe goland64.exe")
         ; } else {
-            ; path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate.lnk"
-            ; activateOrRun("ahk_exe idea64.exe", path)
-        ; }
+
+        
+        ; ppt := "ahk_exe POWERPNT.EXE"
+        ; ActivateOrRun(ppt)
 
         if WinExist("ahk_exe idea64.exe") {
             path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate.lnk"
@@ -300,8 +306,10 @@ CapsLock & r::
 {
     if GetKeyState("Alt")  
     {
-        path := "bin\util\Windows Terminal.lnk"
-        activateOrRun("ahk_exe WindowsTerminal.exe", path)
+        ; path := "bin\util\Windows Terminal.lnk"
+        ; activateOrRun("ahk_exe WindowsTerminal.exe", path)
+        path := "bin\util\Tabby Terminal.lnk"
+        activateOrRun("ahk_exe Tabby.exe", path)
 
     } 
     else if getKeyState("Ctrl") 
@@ -326,32 +334,34 @@ CapsLock & r::
 #SuspendExempt
 CapsLock & y:: 
 {
-    if GetKeyState("Alt")  
-    {
-        ; Edit this AHK
-        path := A_Programs "\Visual Studio Code\Visual Studio Code.lnk"
-        activateOrRun("CapslockPlus_V2H ahk_exe Code.exe", path, A_WorkingDir)
-    }
-    else if GetKeyState("Ctrl") 
-    {
-        SuspendScript()
-    }
-    else if GetKeyState("LWin") 
-    {
-        ; search for help
-        ; Run "https://wyagd001.github.io/v2/docs/AutoHotkey.htm"
-        ; Run "D:\TOOLS\AutoHotKey\AutoHotkey_H v2.chm"
-        path :=  "tools\AutoHotkey_V2L_CN.chm"
-        activateOrRun("AutoHotkey v2", path)
-        Send "!s^a"
+    ; if GetKeyState("Alt")  
+    ; {
+      ;  ; Edit this AHK
+        ; path := A_Programs "\Visual Studio Code\Visual Studio Code.lnk"
+        ; activateOrRun("CapslockPlus_V2H ahk_exe Code.exe", path, A_WorkingDir)
+    ; }
+    ; else if GetKeyState("Ctrl") 
+    ; {
+        ; SuspendScript()
+    ; }
+    ; else if GetKeyState("LWin") 
+    ; {
+     ;;   search for help
+     ;;   Run "https://wyagd001.github.io/v2/docs/AutoHotkey.htm"
+     ;;   Run "D:\TOOLS\AutoHotKey\AutoHotkey_H v2.chm"
+        ; path :=  "tools\AutoHotkey_V2L_CN.chm"
+        ; activateOrRun("AutoHotkey v2", path)
+        ; Send "!s^a"
         
-    }
-    else
-    {
-        if winExist("ahk_class AutoHotkey")
-            WinActivate
-        else
-        {
+    ; }
+    ; else
+    ; {
+        ; if winExist("ahk_class AutoHotkey")
+        ; {
+            ; WinActivate
+        ; }
+        ; else
+        ; {
             ; 设计悬浮动画，再重载本脚本，因为重载太快，后面很难放出来
             if WinActive("ahk_exe Code.exe")
             {
@@ -359,8 +369,8 @@ CapsLock & y::
                 Send "^s" ; 合并动作常用
             }
             Reload
-        }
-    }
+        ; }
+    ; }
 }
 
 ; 停用脚本

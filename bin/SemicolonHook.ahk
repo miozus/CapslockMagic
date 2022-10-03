@@ -16,7 +16,7 @@ semicolonHook.OnEnd := onTypoEnd
 {
     global semicolonHook, EnableSemicolonMonkey
     thisHotkey := A_ThisHotkey
-    disableOtherHotkey(thisHotkey)
+    GC.disableOtherHotkey(thisHotkey)
     EnableSemicolonMonkey := true
     KeyWait ";"
     EnableSemicolonMonkey := false
@@ -24,7 +24,7 @@ semicolonHook.OnEnd := onTypoEnd
     {
         enterSemicolonAbbr(semicolonHook)
     }
-    enableOtherHotkey(thisHotkey)
+    GC.enableOtherHotkey(thisHotkey)
 }
 
 ; 自定义输入法
@@ -58,6 +58,11 @@ enterSemicolonAbbr(ih) {
 
 moveCursorLeftIfEndWithBracket(value) {
 
+    if isEndWithSemicolonBracket(value) {
+        Send "{Left 3}"
+        return
+    }
+
     if isEndWithCommaBracket(value) {
         Send "{Left 2}"
         return
@@ -66,6 +71,14 @@ moveCursorLeftIfEndWithBracket(value) {
     if isEndWithCoupleBracket(value) {
         Send "{Left}"
         return
+    }
+    
+    ; Java
+    isEndWithSemicolonBracket(value) {
+        HayStack := '");'
+        needle := SubStr(value, -3, 3)
+        return InStr(HayStack, needle, false, -1)
+
     }
 
     ; 注解字符：如以括号和字符串结尾，光标向左偏移2位（Spring注解）
@@ -152,7 +165,12 @@ execSemicolonAbbr(typo) {
         case "lrr": IdeAction.rename()
         case "H": IdeAction.tabPreview()
         case "L": IdeAction.tabNext()
-        case "docs": Tencent.docs()
+        case "docs": Website.docs()
+        case "syl": Seeyon.login()
+        case "syd": Seeyon.dev()
+        case "sya": Seeyon.app()
+        case "cxyl": Seeyon.chuXiongLogin()
+        case "cgl": Website.codeGen()
         default:
             return false
     }
@@ -160,6 +178,7 @@ execSemicolonAbbr(typo) {
 }
 
 #Hotif EnableSemicolonMonkey
++A:: Send "{Blind}{text}●" ; 分点论述的符号
 *A::
 {
     Send "{blind}*"
@@ -180,6 +199,7 @@ execSemicolonAbbr(typo) {
 *V:: Send "{blind}|"	; or
 *Y:: Send "{blind}@"
 *D:: Send "{blind}="	; 逻辑判断
++S:: Send "{Blind}{text}○" ; 分点论述二级符号
 *S:: Send "{blind}<"
 *F:: Send "{blind}>"
 *R:: Send "{blind}&"	; and

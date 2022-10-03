@@ -1,4 +1,4 @@
-﻿SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
+﻿SendMode "Input"    ; Recommended for new scripts due to its superior  speed and reliability.
 SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
 ;=====================================================================o
@@ -29,6 +29,8 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 ~LWin::
 {
     SendEvent "{Blind}{vkE8}"
+    ; SendEvent "{Blind}{vkE8} Up"
+    ; GC.ModifyKeyDocker()
 }
 
 ;---------------------------------------------------------------------o

@@ -9,7 +9,7 @@ class Dotfiles {
     static HOME_DIR := "C:\Users\" A_UserName
     static DOTS_DIR := "E:\dotfiles"
     static NVIM_DIR := this.HOME_DIR "\AppData\Local\nvim\init.vim"
-    static IDEA_DIR := A_AppData "\JetBrains\IntelliJIdea2022.1"
+    static IDEA_DIR := A_AppData "\JetBrains\IntelliJIdea2022.2"
     static POSH_DIR := A_MyDocuments "\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
     static open() {

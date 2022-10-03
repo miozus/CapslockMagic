@@ -13,7 +13,7 @@ SetWorkingDir A_ScriptDir	; Ensures a consistent starting directory.
 ;---------------------------------------------------------------------o
 
 hasIdeActive() {
-    ides := ["idea64.exe", "code.exe", "goland64.exe", "WindowsTerminal.exe"]
+    ides := ["idea64.exe", "code.exe", "goland64.exe", "WindowsTerminal.exe", "Tabby.exe", "ToDesk.exe"]
     for ide in ides
         if WinActive("ahk_exe" ide)
             return true
@@ -61,8 +61,8 @@ LWin & f:: Send "{blind!#}^#!t"	; test
 LWin & s:: Send "{blind!#}^#!p"	; position
 LWin & o:: Send "{blind!#}^#!0"	; colapse
 LWin & p:: Send "{blind!#}^#!0"	; colapse
-LWin & c:: batchClearOrFindLog(4)
-LWin & v:: batchClearOrFindLog(4, "🔒")
+; LWin & c:: batchClearOrFindLog(4)
+; LWin & v:: batchClearOrFindLog(4, "🔒")
 ; Lwin & n:: Send "{blind}#!n"   ; next
 ; #b::^!b    ; jump to implement
 CapsLock & b:: Send "{blind}^!b"	; jump to implement

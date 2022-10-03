@@ -117,4 +117,4 @@ class Log {
             func(self, args*)
         }
     }
-}
+r}

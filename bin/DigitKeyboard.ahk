@@ -13,7 +13,7 @@ global EnableDigitKeyboard := false
 {
     global EnableDigitKeyboard
     thisHotkey := A_ThisHotkey
-    disableOtherHotkey(thisHotkey)
+    GC.disableOtherHotkey(thisHotkey)
     EnableDigitKeyboard := true
     ToolTip "🔢"
     keywait "3" 
@@ -22,7 +22,7 @@ global EnableDigitKeyboard := false
     {
         Send "{blind}3"
     }
-    enableOtherHotkey(thisHotkey)
+    GC.enableOtherHotkey(thisHotkey)
     ToolTip
 }
 
