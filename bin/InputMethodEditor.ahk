@@ -104,7 +104,12 @@ class IME {
     static setIdeDefault(language:="EN")
     {
         MouseGetPos , , &ahkId
-        title := WinGetProcessName(ahkId)
+        try {
+            ; 预防下拉选项框或虚拟机找不到窗口
+            title := WinGetProcessName(ahkId)
+        } catch Error {
+            return
+        }
         if InStr(title, "idea64.exe") or InStr(title, "Code.exe") or InStr(title, "ahk_exe chrome.exe")
         {
             this.set(language)

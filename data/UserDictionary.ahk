@@ -1,4 +1,4 @@
-;#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+﻿;#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode "Input"	; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir A_ScriptDir	; Ensures a consistent starting directory.
@@ -24,7 +24,7 @@ emojiDict := Map(
     "xyhr", "🔄",	; 循环/多次/重复/loop/multiple
     "zrui", "💠",	; 钻石
     "ks", "🈳",
-    "wu", "🈚",
+    "wuzi", "🈚",
     ; 步骤/线程 u 数字 + 汉语拼音
     "ulk", "0️⃣",
     "uyi", "1️⃣",	; 线程/Tread1/T1
@@ -45,6 +45,7 @@ emojiDict := Map(
     "pcbu", "🏃‍♂️",  ; 跑步
     "djie", "🚲",  ; 单车
     "moto", "🏍️",  ; 摩托
+    "hoie", "🚚",  ; 货车
     "qiie", "🚗",  ; 汽车
     "gctp", "🚄",  ; 高铁
     "fwji", "✈️",  ; 飞机
@@ -61,9 +62,10 @@ emojiDict := Map(
     "uvjn", "💤",	; 睡觉/sleep/什么也没发生
     "hrxk", "🔔",	; 唤醒/铃铛/notify/notifyAll
     "jxru", "🎉",	; 加入/派对/join
-    "jiuiqi", "⏱️",	; 计时器/timer
+    "jiui", "⏱️",	; 计时/计时器/timer
     "gsyr", "⛲",	; 公园/喷泉/park
     ; 缓存
+    "hrcy", "🥏",   ; 缓存/飞盘
     "xlzi", "📦",	; 缓存中心/cache
     "yzlk", "👻",	; 缓存穿透
     "xthx", "❄",	; 缓存雪崩
@@ -120,19 +122,21 @@ emojiDict := Map(
     "lmbn", "🔗",	; 链表
     "dsgv", "🌀", ; 动态规划/动规/斐波那契数列/状态转移方程
     "dpuz", "👾", ; dp 数组/养蛊/最值进化
+    "pddv", "📶",  ; 排队/队列/信号/Queue
+    "jihe", "📕", ; 集合/新华字典/字典/映射/Map
     ; 物理
     "qiti", "🌫",
-    "xibc", "🧫",
     "yeti", "💧",
     "guti", "🧊",
     ; 其他
+    "xibc", "🧫",   ; 细胞
     "ulyj", "👀",	; 双眼/observe
     "yjjk", "👓",   ; 眼镜/查看
     "fhda", "🔍",   ; 放大
     "redm", "🔥",	; 热点/火焰/Hotspot
     "bcjk", "🚨",	; 报警/警示灯/alert
     "jkxl", "🪞",	; 镜像/镜子/mirrow
-    "vinjvf", "🧭",	; 指南针
+    "vinj", "🧭",	; 指南/指南针
     "ykbi", "🪙",	; 硬币/coin
     "ncvs", "⏰",	; 闹钟
     "error", "❌",
@@ -147,8 +151,9 @@ emojiDict := Map(
     "yzjm", "⚙️",
     "yzxi", "🎮",
     "jxyr", "🛖",
-    "tpgc", "⛏️",
-    "bwbc", "🎒",
+    "tpgc", "⛏️", ; 铁镐
+    "qizi", "🪛", ; 起子
+    "bwbc", "🎒", ; 背包
     "xluh", "↑",
     "xlxx", "↓",
     "xlzo", "←",
@@ -204,8 +209,24 @@ emojiDict := Map(
     "qiqq", "🎈", ; 堆球/栈线（两字神似）
     "fjue", "🪞", ; 反射
     "new", "🆕", ; 新
+    ; 基础服务
+    "wfjm", "📁", ; 文件/FTP
+    "bjgs", "💼 ", ; 办公/公文包/OA 
+    ; 时间
+    "ualz", "⏳", ; 沙漏/倒计时/ttl
+    "uuju", "🛢️", ; 数据/数据库/水桶/databasse
+    "jmks", "📸", ; 单独矿区/监控/拍照
+    "vxpd", "📷", ; 抓拍/
+    ; 项目
+    "pidd", "🧣", ; 皮带/围巾
+    "muma", "🎠", ; 旋转木马/队列
+    "yiho", "❓", ; 疑惑/红色问号/中立
+    ; 微信生态
+    "gzh", "⛩️", ; 公众号
+    "xcx", "🐣", ; 小程序
 
 )
+
 
 privateDict := Map(
     ; 中文词组
@@ -354,7 +375,7 @@ csDict := Map(
     "post", "POST ",
     "esh", "elasticsearch",
     ; 服务器
-    "lh3", "localhost:3000",
+    "lh3", "localhost:3036",
     "lh4", "localhost:4000",
     "lh7", "localhost:7000",
     "lh8", "localhost:8000",
@@ -367,6 +388,7 @@ csDict := Map(
     "sfs", "static final String ",
     "fs", "FeignService",
     ; 语法嗅探
+    "lgi", 'log.info("");',
     "bc", "BeanUtils.copyProperties()",
     "if", "if ()",
     "brn", "if (root == null) return null;",
@@ -374,8 +396,8 @@ csDict := Map(
     "onn", "Objects.nonNull()",
     "aie", "ArrayUtils.isEmpty()",
     "ane", "ArrayUtils.isNotEmpty()",
-    "sie", "StrUtil.isEmpty()",
-    "sne", "StrUtil.isNotEmpty()",
+    "sie", "CharSequenceUtil.isEmpty()",
+    "sne", "CharSequenceUtil.isNotEmpty()",
     "cie", "CollUtil.isEmpty()",
     "cne", "CollUtil.isNotEmpty()",
     "cfr", "CompletableFuture.runAsync(()->{},executor);",
@@ -383,45 +405,65 @@ csDict := Map(
     "uuid", "String uuid = UUID.randomUUID().toString();",
     "clg", 'console.log("")',
     "hsr", "HttpServletRequest request",
-    "att", "@Test`nvoid test",
-    "aa", "@Autowired`r",
-    "ab", "@Bean",
-    "add", "@Data",
+    "att", "@Test`npublic void test",
+    "aaw", "@Autowired`npublic void setBeanProperties(){",
+    "ars", "@Resource",
+    "abb", "@Bean",
     "adp", "@Deprecated",
-    "aen","@Getter`n@AllArgsConstructor",
-    "aee","@Getter`n@AllArgsConstructor`nprivate final int code;`nprivate final String msg;",
-    "asn", "@Setter(AccessLevel.NONE)",
-    "agn", "@Getter(AccessLevel.NONE)",
     "asv", "@Service",
-    "asp", "@Aspect",
+    "adp", "@Deprecated",
+    "asv", "@Service",
     "alg", "@Slf4j",
     "acf", "@Configuration",
     "act", "@Controller",
-    "acp", "@Component",
-    "afc", '@FeignClient("")',
     "apm", '@PostMapping("")',
     "agm", '@GetMapping("")',
     "arm", '@RequestMapping("")',
+    "ats", '@Transactional',
     "arc", '@RestController',
-    "arb", '@RequestBody ',
-    "ars", '@ResponseBody',
+    "arb", '@ResponseBody',
     "ats", '@Transactional',
     "arp", '@RequestParam("")',
     "apv", '@PathVariable("")',
-    "aide", '@Idempotent("")',
     "arl", '@RabbitListener(queues = {"")',
     "arh", '@RabbitHandler',
     "atp", "@Autowired`nThreadPoolExecutor executor;",
     "art", "@Autowired`nRabbitTemplate rabbitTemplate;",
-    "edc", "@EnableDiscoveryClient",
     "sba", "@SpringBootApplication",
     "erb", "@EnableRabbit",
     "ess", "@EnableRedisHttpSession",
-    "efc", "@EnableFeignClients",
     "esg", "@EnableScheduling",  ; 定时任务
     "asg", '@Scheduled(cron="")',
     "eas", "@EnableAsync",
     "asy", "@Async",
+    ; SpringCloud
+    "afc", '@FeignClient("")',
+    "efc", "@EnableFeignClients",
+    "edc", "@EnableDiscoveryClient",
+    ; AOP
+    "asp", "@Aspect",
+    "aide", '@Idempotent("")',
+    "acp", "@Component",
+    ; swagger2
+    "apt", '@Api(tags = "")',    ; 控制器标签
+    "apo", '@ApiOperation("")',  ; 接口函数
+    "api", '@ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = Long.class)',
+    "aps", "@ApiImplicitParams({})",  ; 多个入参
+    "apd", '@ApiModel("")', ; POJO
+    "amp", '@ApiModelProperty(value = "用户编号", required = true, example = "1024")',
+    ; lobmok
+    "add", "@Data",
+    "agt", "@Getter",
+    "ast", "@Setter",
+    "ape", '@Getter`n@AllArgsConstructor`npublic enum CustomEnum {`nCUSTOM(1,"注释"),`n;`nprivate final int code;`nprivate final String msg;',
+    "asn", "@Setter(AccessLevel.NONE)",
+    "agn", "@Getter(AccessLevel.NONE)",
+    "aex", "@ToString(callSuper = true)`n@EqualsAndHashCode(callSuper = true)",
+    "acc", "@Accessors(chain = true)",
+    "aex", "@ToString(callSuper = true)`n@EqualsAndHashCode(callSuper = true)",
+    ; Json
+    "ajt", "@TableField(typeHandler = JacksonTypeHandler.class)",
+    "jth", 'typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"',
     "jpo", "JSON.parseObject()",
     "jts", "JSON.toJSONString()",
     "cel", "Collections.emptyList();",
@@ -448,6 +490,8 @@ csDict := Map(
     "glf", "http://tjijdi.natappfree.cc",
     "glt", "http://localhost:8858",
     "ascii", "https://asciiflow.com/#/",
+    ; cron
+    "crons", "* * * * *", ; 每分钟执行一次在脚本（Linux）
     ; 支付宝沙箱
     "zfb", "vsdgso6117@sandbox.com",
     ; mysql
@@ -480,10 +524,12 @@ winDict := Map(
     "bfg", 'java -jar "E:\projects\IdeaProjects\plugins\bfg-1.14.0.jar" --delete-files file_name_in_project.java .git',
     "ggc", "git reflog expire --expire=now --all `; git gc --prune=now --aggressive",
     "rmreg", 'Get-ChildItem $Path | Where{$_.Name -Match "<RegEx Pattern>"} | Remove-Item',	; 正则匹配文件名并删除
-    "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
     "cdn", "cdn `; start nginx `; E:\frp\natapp\natapp.exe",  ; Nginx + RPC 内网穿透
     "sds", 'java -jar "E:\Java\sentinel\sentinel-dashboard-1.8.0.jar" --server.port=8858', ; 不支持 JDK1.17
     "catlog", "cat ./log.log -Wait -Tail 10",
+    ; github
+    "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
+    "gm", "gaa `;`; gcam '",
     ; "sdd", 'java -Dserver.port=8333 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar',
 
 )
@@ -528,10 +574,7 @@ global secretDictionary := Map(
     "bb", "",
     "vsa", "",
     "dota", "加载配置",
-    "mm", "鼠标禅模式",
-    "dbg", "调试动作",
-    ; Ide Action
-    "sn", "",
+    ; Idea Action
     "ln", "",
     "lj", "",
     "lo", "",
@@ -547,6 +590,10 @@ global secretDictionary := Map(
     "H", "",
     "L", "",
     "docs", "腾讯文档",
+    "gpt", "ChatGpt",
+    "gen", "工具箱",
+    "json", "excel2json",
+    "deveco", "开发工具包",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])
@@ -567,3 +614,5 @@ global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDi
     ; Converter.parse(fileDir)
 
 ; }
+
+

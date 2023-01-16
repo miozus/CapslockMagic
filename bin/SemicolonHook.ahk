@@ -101,15 +101,8 @@ execSemicolonAbbr(typo) {
 
     switch typo
     {
-        case "no":
-            path := "notepad"
-            pasteInNotepad()
-            ActivateOrRun("记事本", path, "", "")
-            return
-        case "rex":
-            path := "tools\重启资源管理器.exe"
-            ActivateOrRun("", path, "", "")
-            return
+        case "no": Launcher.notepad()
+        case "rex": Launcher.explorerReload()
         case "os": Run A_ScriptDir
         case "opc": Run "shell:my pictures"
         case "ow": Run "shell:Personal"
@@ -120,9 +113,6 @@ execSemicolonAbbr(typo) {
         case "quit": SmartCloseWindow()
         case "ee": ToggleTopMost()
         case "oo": IME.toggle()	; 如果第一次没切换成功，将就连按切换
-        case "gcam":
-            gitStr := "git add -A`; git commit -a -m ''`; git push origin (git branch --show-current)`;"
-            SendAndLeft(gitStr, 47)
         case "tm": Run "taskmgr"
         case "sleep": DllCall("PowrProf\SetSuspendState", "Int", 0, "Int", 0, "Int", 0)
         case "reboot": slideToReboot()
@@ -136,11 +126,11 @@ execSemicolonAbbr(typo) {
         case "hey": Sleep 500
         case "dh": Send "{Blind}^#{Left}"
         case "dl": Send "{Blind}^#{Right}"
-        case "1": App.Ditto.paste(1)
-        case "2": App.Ditto.paste(2)
-        case "3": App.Ditto.paste(3)
-        case "4": App.Ditto.paste(4)
-        case "5": App.Ditto.paste(5)
+        case "1": Launcher.dittoPaste(1)
+        case "2": Launcher.dittoPaste(2)
+        case "3": Launcher.dittoPaste(3)
+        case "4": Launcher.dittoPaste(4)
+        case "5": Launcher.dittoPaste(5)
         case "cc": Vim.EditJavaCommentTitle()
         case "il": Vim.inputChineseInDdoubleQuotes()	; 引号中输入中文
         case "cil": Vim.changeCnCommentInDoubleQuotes()
@@ -170,7 +160,10 @@ execSemicolonAbbr(typo) {
         case "syd": Seeyon.dev()
         case "sya": Seeyon.app()
         case "cxyl": Seeyon.chuXiongLogin()
-        case "cgl": Website.codeGen()
+        case "gen": Website.codeGen()
+        case "json": Website.excel2json()
+        case "gpt": Website.chatGpt()
+        case "deveco": Startup.devEco()
         default:
             return false
     }

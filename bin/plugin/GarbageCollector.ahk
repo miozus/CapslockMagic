@@ -21,6 +21,8 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 !Esc:: ; 切换系统窗口签
 !Space:: ; 窗口大小切换
 ~$<#!r::
+#q::  ; 搜索
+^#s:: ; 设置语音识别
 {
 }
 ;---------------------------------------------------------------------o

@@ -1,2 +1,4 @@
 # local
 /tools/*.chm
+.idea
+/dist

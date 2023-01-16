@@ -25,8 +25,8 @@ global INDENT_LEVEL := 0
 ;---------------------------------------------------------------------o
 
 ;=====================================================================o
-#Hotif WinActive("ahk_exe Notion Enhanced.exe")
-; #Hotif WinActive("ahk_exe notion.exe")
+;#Hotif WinActive("ahk_exe Notion Enhanced.exe")
+#Hotif WinActive("ahk_exe notion.exe")
 ;---------------------------------------------------------------------o
 ; 复用上次格式样式
 ; 居然映射成 ESC 和 ^v 这太诡异了; 不要留空格;
