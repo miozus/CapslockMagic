@@ -530,6 +530,7 @@ winDict := Map(
     ; github
     "gcnn", "gaa `; gcn! `; gpf",	; rebase 一条龙，提交修改并强制推送到 github
     "gm", "gaa `;`; gcam '",
+    "gtg", "git tag -a v0.2.3_email_warning 6b781af -m '邮件预警：第一时间告知管理员服务故障，请立即重启'",
     ; "sdd", 'java -Dserver.port=8333 -Dcsp.sentinel.dashboard.server=localhost:8080 -Dproject.name=sentinel-dashboard -jar sentinel-dashboard.jar',
 
 )
@@ -593,7 +594,12 @@ global secretDictionary := Map(
     "gpt", "ChatGpt",
     "gen", "工具箱",
     "json", "excel2json",
-    "deveco", "开发工具包",
+    "devst", "开始编程",
+    "devex", "结束编程",
+    "gmst", "开始游戏",
+    "gmex", "结束游戏",
+    "ww", "隐藏状态栏",
+    "ca", "清空日志",
 )
 
 global userDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict, winDict])

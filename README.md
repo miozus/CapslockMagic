@@ -4,7 +4,7 @@
 >
 > Make Capslock Great Three!
 > 
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.4-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.5-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
 - [CapslockMagic](#capslockmagic)
   - [快速开始](#快速开始)
@@ -21,6 +21,7 @@
     - [🦉 V1.2.0 单手就调试](#-v120-单手就调试)
     - [🦑 V1.3.0 宇宙编辑器](#-v130-宇宙编辑器)
     - [🕷️ v1.4.0 爬虫零件箱](#-v140-爬虫零件箱)
+    - [️🕶️ v1.5.0 HHKB兼容适配](#-v150-HHKB兼容适配)
   - [1分钟学会开发一个猴子词条](#1分钟学会开发一个猴子词条)
   - [进化史](#进化史)
   - [五个人性化设计](#五个人性化设计)
@@ -467,9 +468,15 @@ CapslockMagic\bin\util
 [2022-12-12 16:06:50] 4: ✅: source => destination | well-done
 [2022-12-12 16:33:57] 9: 🈚⭐🐞: source ⇒ destination | not exist & create file & bug
 ```
+###  ️🕶️ v1.5.0 HHKB兼容适配
+![HHKB-win-keymap](bin/img/HHKB-win-keymap.png)
+
+TODO: 兼容更BT的 60 配列，按常用功能进行整合重构，移除冷门应用
+
+这样改键，为了兼顾 Mac 习惯，又不失caps常用功能，过渡自然
 
 ## 1分钟学会开发一个猴子词条
-TODO
+TODO: 语法嗅探、快捷短语、自定义函数，（特殊应用环境生效），集成进词条
 
 ## 进化史
 

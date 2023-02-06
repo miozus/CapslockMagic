@@ -9,6 +9,7 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
 global EnableDigitKeyboard := false
 
+; 数字小键盘
 *3::
 {
     global EnableDigitKeyboard

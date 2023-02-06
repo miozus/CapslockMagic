@@ -1,5 +1,5 @@
-SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
+SendMode "Input"
+SetWorkingDir A_ScriptDir
 
 ;=====================================================================o
 ;               Intelj Keymap for debug
@@ -21,7 +21,7 @@ global EnableDebugKeyboard := false
     GC.disableOtherHotkey(thisHotkey)
     EnableDebugKeyboard := true
     ToolTip "🦉"
-    keywait "4" 
+    keywait "4"
     EnableDebugKeyboard := false
     if (A_PriorKey == "4" && A_TimeSinceThisHotkey < 350)
     {
@@ -39,10 +39,10 @@ global EnableDebugKeyboard := false
 ^3:: Debug.stepOut()
 *3:: Debug.resumeProgram()
 
-*5:: Hotspot.refresh()
+*5:: Idea.Jrebel.hotspot()
 *6:: Debug.reboot()
-*[:: SourceHunter.usage()
-*]:: SourceHunter.hierarchy()
+*[:: Ide.usage()
+*]:: Ide.hierarchy()
 *\:: Debug.run2Cursor()
 
 *A:: Debug.exitSilent()
@@ -51,8 +51,8 @@ global EnableDebugKeyboard := false
 *S:: Debug.exitSilent()
 *C:: Debug.exitSilent()
 
-^Tab:: Hotspot.refresh()
-*Tab:: Chrome.refresh()
+^Tab:: Idea.Jrebel.hotspot()
+*Tab:: Launcher.Google.refresh()
 ^Esc:: Debug.view()
 *Esc:: Debug.exit()
 *Space:: Debug.evaluate()
@@ -64,85 +64,85 @@ global EnableDebugKeyboard := false
 class Debug {
 
     Enable := false
-    
+
     ; view , when contion is true
     static view() {
-        Send "{blind}^+{F8}" 
+        Send "{blind}^+{F8}"
         ToolTip "🔍"
     }
 
     ; Run to Cursor
     static run2Cursor() {
-        Send "{blind}!{F9}" 
+        Send "{blind}!{F9}"
         ToolTip "I"
     }
 
     ; Run debug
     static reboot() {
-        Send "{blind}^!d" 
+        Send "{blind}^!d"
         ToolTip "🐞"
     }
 
     ; next breakpoint, let me go
     static resumeProgram() {
-        Send "{blind}{F9}" 
+        Send "{blind}{F9}"
         ToolTip "▶️"
     }
 
     ; step into [ any ] detail [infinity] if entrance exists
     static stepIntoForce() {
-        Send "{blind}!+{F7}" 
+        Send "{blind}!+{F7}"
         ToolTip "↘️!"
     }
 
     ; step into [custom] detail [once] if entrance exists
     static stepInto() {
-        Send "{blind}{F7}" 
+        Send "{blind}{F7}"
         ToolTip "↘️"
     }
 
     ; step into [custom] detail [once] you can choose one
     static stepIntoSmart() {
-        Send "{blind}+{F7}" 
+        Send "{blind}+{F7}"
         ToolTip "↘️"
     }
 
     ;  step over [no] detail like N ext keyword in vim
     static stepOver() {
-        Send "{blind}{F8}" 
+        Send "{blind}{F8}"
         ToolTip "⬇️"
     }
 
-    ; preview last step 
+    ; preview last step
     static stepOverForce() {
-        Send "{blind}!+{F8}" 
+        Send "{blind}!+{F8}"
         ToolTip "⬇️!"
     }
 
     ; undo step into like over
     static stepOut() {
-        Send "{blind}+{F8}" 
+        Send "{blind}+{F8}"
         ToolTip "↗️"
     }
 
     ; open calculate statement
     static evaluateExpression() {
-        Send "{blind}!{F8}" 
+        Send "{blind}!{F8}"
         ToolTip "🧮"
     }
 
-    static stopDebug(){
-        Send "{blind}^{F2}" 
+    static stopDebug() {
+        Send "{blind}^{F2}"
         ToolTip "⏹️"
     }
-    
+
     ; exit and remap as origin key
     static exitSilent() {
-        originKey := LTrim A_ThisHotkey, '*'
-        Send "{Blind}" originKey 
+        originKey := LTrim(A_ThisHotkey, '*')
+        Send "{Blind}" originKey
         this.exit()
     }
-    
+
     ; exit dbg state
     static exit() {
         global EnableDebugKeyboard
@@ -171,51 +171,37 @@ class Debug {
         }
         SetTimer () => ToolTip(), -1000
     }
-    
-}
 
 
-; Devtools and Jrebel be like
-class Hotspot {
-    
-    static refresh() {
-        Send "{blind}^{F9}" 
-        ToolTip "🫕"
+    ; 切面：业务逻辑，自动切换窗口
+    static around(self, func, args*) {
+        try {
+            ; 最常用：首先自动切换窗口
+            Launcher.Idea.activate()
+            func(self, args*)
+        } catch Error as e {
+            ToolTip e.Message
+            SetTimer () => ToolTip(), -3000
+        }
     }
-}
 
-class Chrome {
+    ; 切面: 注册
+    static __New() {
 
-    static refresh() {
-        path := A_AppData "\Microsoft\Internet Explorer\Quick Launch\Google Chrome.lnk"
-        activateOrRun("ahk_exe chrome.exe", path)
-        Send "{Blind}^r"
+        fns := [
+            this.stepOver,
+            this.stepIntoSmart,
+            this.resumeProgram
+        ]
+
+        for _, fn in fns {
+            tmp := fn    ; 由于读取一次性，必须临时储存
+            fn_name := LTrim(tmp.Name, 'Debug.')
+            this.DefineProp(fn_name, {
+                call: (self, args*) => this.around(self, tmp, args*)
+            })
+        }
+
     }
-}
 
-; 接口管理工具
-class ApiFox {
-
-    static post(){
-        path := A_Programs "\Apifox.lnk"
-        ActivateOrRun("ahk_exe Apifox.exe", path)
-        Send "{Blind}^{Enter}"
-    }
-}
-
-; 源码猎手
-class SourceHunter {
-
-   ; 在哪关联使用
-   static usage() {
-        Send "{blind}!+{F7}" 
-        ToolTip "👥"
-   }
-
-   ; 它的继承实现类子孙
-   static hierarchy() {
-        Send "{blind}^h" 
-        ToolTip "👶"
-   }
-   
 }

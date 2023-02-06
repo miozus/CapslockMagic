@@ -27,10 +27,6 @@ CapsLock & `::
     KeyWait "``","T1"
 }
 
-; fix bug: CapsLock + Shift -> SetCapsLockState "AlwaysOn"
-; +CapsLock::
-; CapsLock & Shift::
-; fix bug: ^{Esc} -> Win ; !{Esc} -> WinMini
 ^CapsLock::
 !CapsLock::
 {}
@@ -41,13 +37,11 @@ CapsLock & `::
 
 CapsLock::Esc
 
-; 解放大小写锁定
+; 手动解放大小写锁定
 \::
 {
     Send "\"
     keepCapsLockLower()
-    ; GC.disableAllHotkey()
-    ; gcHotkey()
     SetTimer () => GC.ModifyKeyDocker(), -1000
 }
 
@@ -58,11 +52,6 @@ keepCapsLockLower() {
     }
 }
 
-; 避免被占用触发副作用
-gcHotkey() {
-    global EnableDigitKeyboard
-    EnableDigitKeyboard := false
-}
 
 ;=====================================================================o
 ;                       CapsLock  Shift Switch                                     

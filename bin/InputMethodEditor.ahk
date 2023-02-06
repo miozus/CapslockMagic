@@ -1,5 +1,5 @@
-﻿SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
+﻿SendMode "Input"             ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir A_ScriptDir    ; Ensures a consistent starting directory.
 
 ;=====================================================================o
 ;               中文输入法特殊优待（默认中文状态使用英文字符）
@@ -20,12 +20,12 @@ SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 ; - QQ        QQ拼音
 ; - OTHER     搜狗拼音/其他
 class PinYinEnum {
-    static MICROSOFT := {wParam:"0x001", name:"微软拼音/搜狗五笔/手心输入法", value:"Miocrosoft"}
-    static QQ        := {wParam:"0x005", name:"QQ拼音"                  , value:"QQ"}
-    static OTHER     := {wParam:"0x005", name:"搜狗拼音/其他"             , value:"Other"}
+    static MICROSOFT := { wParam: "0x001", name: "微软拼音/搜狗五笔/手心输入法", value: "Miocrosoft" }
+    static QQ        := { wParam: "0x005", name: "QQ拼音", value: "QQ" }
+    static OTHER     := { wParam: "0x005", name: "搜狗拼音/其他", value: "Other" }
 }
 
-; Input Method Editor 
+; Input Method Editor
 ; 作者：知乎 @查理
 ; 时间：2022年3月
 ; 更新：https://www.zhihu.com/question/470805790/answer/2022570065
@@ -38,7 +38,7 @@ class IME {
     static toggle() {
         if (this.exists()) {
             Send "^{Space}"
-            ToolTip "EN" 
+            ToolTip "EN"
         } else {
             Send "^{Space}"
             ToolTip "中"
@@ -49,7 +49,7 @@ class IME {
     ; @param language EN / 中文
     static set(language)
     {
-        Sleep 50 ; 等一等是为了承接窗口切换的缓冲
+        Sleep 50    ; 等一等是为了承接窗口切换的缓冲
         switch (language) {
             case "EN":
                 if (this.exists() = 1) {
@@ -62,7 +62,7 @@ class IME {
                     ToolTip "中"
                 }
         }
-        SetCapsLockState "AlwaysOff"  ; 热键切换一定概率出现大写 A
+        SetCapsLockState "AlwaysOff"    ; 热键切换一定概率出现大写 A
         SetTimer () => ToolTip(), -200
     }
 
@@ -74,7 +74,7 @@ class IME {
     ;   API: https://docs.microsoft.com/en-us/windows/win32/intl/wm-ime-control
     ;   API: https://docs.microsoft.com/en-us/previous-versions/windows/embedded/ms920833(v=msdn.10)
     ;   API: https://docs.microsoft.com/zh-cn/windows/win32/intl/input-method-manager-functions
-    static exists(WinTitle:="A")
+    static exists(WinTitle := "A")
     {
         try {
             hWnd := WinGetID(WinTitle)
@@ -84,13 +84,13 @@ class IME {
         }
         DetectHiddenWindows True
         result := SendMessage(
-                0x283,   ; Message : WM_IME_CONTROL
-                this.wParam,  ; wParam  : IMC_GETCONVERSIONMODE
-                0,      ; lParam  ： (NoArgs)
-                ,        ; Control ： (Window)
-                ; 获取当前输入法的模式
-                "ahk_id " DllCall("imm32\ImmGetDefaultIMEWnd", "Uint", hWnd, "Uint")
-                )
+            0x283,          ; Message : WM_IME_CONTROL
+            this.wParam,    ; wParam  : IMC_GETCONVERSIONMODE
+            0,              ; lParam  ： (NoArgs)
+            ,               ; Control ： (Window)
+            ; 获取当前输入法的模式
+            "ahk_id " DllCall("imm32\ImmGetDefaultIMEWnd", "Uint", hWnd, "Uint")
+        )
         DetectHiddenWindows False
         ; 测试用例（英-中，新/旧，新旧/新旧）
         ; 微软拼音 0/1024-1/1025
@@ -101,7 +101,7 @@ class IME {
         return (result == 1 or result == 1025)
     }
 
-    static setIdeDefault(language:="EN")
+    static setIdeDefault(language := "EN")
     {
         MouseGetPos , , &ahkId
         try {
@@ -136,14 +136,24 @@ class IME {
 
     ; Win11: 适用新版微软拼音，截图桃心
     static isTypingPinYinImg() {
-        CoordMode "Pixel"  ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
-        return ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogo.png")
+        CoordMode "Pixel"    ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
+        try {
+            pixelExist := ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogo.png")
+        } catch Error as e {
+            return false
+        }
+        return PixelExist
     }
 
     ; Win10: 适用旧版微软拼音，截图笑脸
     static isTypingPinYinImgOld() {
-        CoordMode "Pixel"  ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
-        return ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogoOld.png")
+        CoordMode "Pixel"    ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
+        try {
+            pixelExist := ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogoOld.png")
+        } catch Error as e {
+            return false
+        }
+        return pixelExist
     }
 
 }

@@ -55,18 +55,16 @@ allHotkeys.Push("*4")
 #Include bin\util\UserDictUtil.ahk
 #Include bin\util\Animation.ahk
 #Include bin\util\Dotfiles.ahk
-#Include bin\util\Location.ahk
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\DigitKeyboard.ahk
+#Include bin\DebugKeyboard.ahk
 #Include bin\InputMethodEditor.ahk
 #Include bin\MouseController.ahk
 #Include bin\SemicolonHook.ahk
-#Include bin\plugin\DebugKeyboard.ahk
 #Include bin\plugin\GarbageCollector.ahk
 #Include bin\plugin\IDE.ahk
 #Include bin\plugin\Notion.ahk
 #Include bin\plugin\Vim.ahk
-#Include bin\plugin\Seeyon.ahk
 #Include bin\MoomWinManager.ahk
 
 
@@ -99,13 +97,13 @@ CapsLock & d::
 {
     if GetKeyState("Alt")
     {
-        Launcher.apifox()
+        Launcher.apifox.run()
     } else if GetKeyState("Ctrl")
     {
-        Launcher.redisManager()
+        Launcher.redisManager.run()
     } else
     {
-        Launcher.navicat()
+        Launcher.navicat.run()
     }
 }
 
@@ -126,11 +124,11 @@ CapsLock & g::
 {
     if GetKeyState("Alt")
     {
-        Launcher.googleSearch()
+        Launcher.Chrome.searchSelected()
     }
     else
     {
-        Launcher.google()
+        Launcher.Chrome.run()
     }
 }
 
@@ -149,31 +147,31 @@ CapsLock & e::
 ; r = run | develop | java | back-end
 CapsLock & r::
 {
-    if GetKeyState("Alt")
+    if GetKeyState("Ctrl")
     {
-        Seeyon.activeFormDesigner()
+        Launcher.Uniapp.activate()
     }
     else if GetKeyState("LWin") {
         Launcher.jmeter()
     }
-    else if GetKeyState("Ctrl")
+    else if GetKeyState("Alt")
     {
-        Launcher.todesk()
+        Launcher.todesk.run()
     } else {
-        Launcher.idea()
+        Launcher.Idea.activate()
     }
 }
 
 ; t = terminal | develop | front-end
 CapsLock & t::
 {
-    if GetKeyState("Alt")
+    if GetKeyState("Ctrl")
     {
-        Launcher.tabby()
+        Launcher.WxDevTools.activate()
     }
-    else if getKeyState("Ctrl")
+    else if getKeyState("Alt")
     {
-        Launcher.wxDevTools()
+        Launcher.Tabby.run()
     }
     else if getKeyState("LWin")
     {
@@ -181,7 +179,7 @@ CapsLock & t::
     }
     else
     {
-        Launcher.vscode()
+        Launcher.Vscode.run()
     }
 }
 
