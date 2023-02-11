@@ -1,39 +1,38 @@
-SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
-
 ;=====================================================================o
-;                       CapsLock Initializer                         
+;                       CapsLock Initializer
 
+#Include plugin\impl\WinOS.ahk
+#Include plugin\impl\GarbageCollector.ahk
 ; 不用使用“Off”因为语法自身瑕疵，会莫名其妙切换大小写，估计源码底层是！写法
-SetCapsLockState "AlwaysOff" 
+SetCapsLockState "AlwaysOff"
 
 
 ;=====================================================================o
-;                       CapsLock Switcher:                           
+;                       CapsLock Switcher:
 ;---------------------------------o-----------------------------------o
-;                    CapsLock + ` | {CapsLock}                       
+;                    CapsLock + ` | {CapsLock}
 ;---------------------------------o-----------------------------------o
-CapsLock & Esc:: ; 兼顾 60 配列键盘左上角的键
-CapsLock & `:: 
+CapsLock & Esc::    ; 兼顾 60 配列键盘左上角的键
+CapsLock & `::
 {
     if GetKeyState("CapsLock", "T") {
         SetCapsLockState "AlwaysOff"
         Tooltip "a"
     } else {
-        SetCapsLockState "AlwaysOn" 
+        SetCapsLockState "AlwaysOn"
         Tooltip "A"
     }
     SetTimer () => ToolTip(), -1000
-    KeyWait "``","T1"
+    KeyWait "``", "T1"
 }
 
 ^CapsLock::
 !CapsLock::
-{}
+{ }
 
 
 ;=====================================================================o
-;                         CapsLock Escaper:                          
+;                         CapsLock Escaper:
 
 CapsLock::Esc
 
@@ -54,140 +53,140 @@ keepCapsLockLower() {
 
 
 ;=====================================================================o
-;                       CapsLock  Shift Switch                                     
+;                       CapsLock  Shift Switch
 
 ;键\修饰      	✱	         ⌘(Alt)	          ⌥(Ctrl)
-;        -             _            页面缩小	
-;        =             +            页面放大	
+;        -             _            页面缩小
+;        =             +            页面放大
 ;        [             (            	{	             <
 ;        ]             )            	}	             >
-;        ;             !            	:	
-;        '             =            	=	
-;        /             ⌘ /		
-;        \             ⌘/		
+;        ;             !            	:
+;        '             =            	=
+;        /             ⌘ /
+;        \             ⌘/
 ;
 
-CapsLock & -:: 
+CapsLock & -::
 {
-    Send "_" 
-} 
-CapsLock & =:: 
+    Send "_"
+}
+CapsLock & =::
 {
-    Send "{+}" 
+    Send "{+}"
 }
 
 CapsLock & `;::
 {
-    if GetKeyState("Alt") = 0 
-        Send ":" 
-    else 
-        Send "{!}"  
-} 
+    if GetKeyState("Alt") = 0
+        Send ":"
+    else
+        Send "{!}"
+}
 
-CapsLock & ':: 
+CapsLock & '::
 {
-    if GetKeyState("Alt") = 0 
-        Send "=" 
-    else 
-        Send "=" 
-} 
+    if GetKeyState("Alt") = 0
+        Send "="
+    else
+        Send "="
+}
 
-CapsLock & [:: 
+CapsLock & [::
 {
-    if GetKeyState("control") = 1 
-        Send "<" 
-    else if GetKeyState("LAlt") = 1 
-        Send "{{}" 
-    else 
+    if GetKeyState("control") = 1
+        Send "<"
+    else if GetKeyState("LAlt") = 1
+        Send "{{}"
+    else
         Send "("
-} 
+}
 
-CapsLock & ]:: 
+CapsLock & ]::
 {
-    if GetKeyState("control") = 1 
-        Send ">" 
-    else if GetKeyState("LAlt") = 1 
-        Send "{text}}" 
-    else 
+    if GetKeyState("control") = 1
+        Send ">"
+    else if GetKeyState("LAlt") = 1
+        Send "{text}}"
+    else
         Send ")"
-} 
+}
 
 
 ;=====================================================================o
-;                       CapsLock Media Controller                    
+;                       CapsLock Media Controller
 
-CapsLock & F10:: Volume_Mute 
-CapsLock & F11:: Volume_Down 
-CapsLock & F12:: Volume_Up 
-CapsLock & F8:: Media_Play_Pause 
-CapsLock & F5:: Media_Next                                   
-CapsLock & F6:: Media_Stop                                   
-
+CapsLock & F10::Volume_Mute
+CapsLock & F11::Volume_Down
+CapsLock & F12::Volume_Up
+CapsLock & F8::Media_Play_Pause
+CapsLock & F5::Media_Next
+CapsLock & F6::Media_Stop
 
 
 ;=====================================================================o
-;                           CapsLock Deletor                         
+;                           CapsLock Deletor
 
 ;   键\修饰	        ✱	         ⌘	           ⌥
 ;   N	        前删一词	   删至行首        	整行删除
 ;   M	        前删一字	 🚫前删一词        	将行下移
 ;   ,	        后删一字	 🚫后删一词        	将行上移
 ;   .	        后删一词	   删至行尾        	整行删除
-;   ⌫	        删除文件	   永久删除         文件	
+;   ⌫	        删除文件	   永久删除         文件
 ;
 
-CapsLock & n:: 
+CapsLock & n::
 {
     if GetKeyState("Alt") = 0
-        Send "^{BS}" 
-    else 
+        Send "^{BS}"
+    else
         Send "+{Home}{BS}"
 }
 
-CapsLock & m:: BackSpace
+CapsLock & m::BackSpace
 
-CapsLock & .:: 
+CapsLock & .::
 {
     if GetKeyState("Alt") = 0
-        Send "^{Del}" 
-    else 
+        Send "^{Del}"
+    else
         Send "+{End}{Del}"
 }
 
-CapsLock & ,:: Delete 
+CapsLock & ,::Delete
 
 
 ;=====================================================================o
-;                      CapsLock Window Controller                    
+;                      CapsLock Window Controller
 ;-----------------------------------o---------------------------------o
-;                     CapsLock + s  |  Ctrl + Tab (Swith Tag)        
-;                     CapsLock + q  |  Ctrl + W   (Close Tag)        
-;   (Disabled)  Alt + CapsLock + s  |  AltTab     (Switch Windows)   
-;               Alt + CapsLock + q  |  Ctrl + Tab (Close Windows)    
-;                     CapsLock + \  |  AppsKey    (Menu Key)         
+;                     CapsLock + s  |  Ctrl + Tab (Swith Tag)
+;                     CapsLock + q  |  Ctrl + W   (Close Tag)
+;   (Disabled)  Alt + CapsLock + s  |  AltTab     (Switch Windows)
+;               Alt + CapsLock + q  |  Ctrl + Tab (Close Windows)
+;                     CapsLock + \  |  AppsKey    (Menu Key)
 ;-----------------------------------o---------------------------------o
-CapsLock & s:: 
+CapsLock & s::
 {
-    if GetKeyState("Alt") = 1 
-        Send "^+{Tab}" 
+    if GetKeyState("Alt") = 1
+        Send "^+{Tab}"
     else if GetKeyState("Ctrl") = 1
         ; 同类窗口的切换
-        SwitchWindows()
-    else 
+        WinOS.Window.shift()
+    else
         Send "^{Tab}"
-} 
+}
 
-CapsLock & q:: 
+CapsLock & q::
 {
-    if GetKeyState("Alt") = 0 
-        Send "^{F4}" 
-    else 
-        Send "!{F4}" 
-} 
+    if GetKeyState("Alt") = 0
+        Send "^{F4}"
+    else
+        Send "!{F4}"
+}
 
 ; close Tab
 CapsLock & w:: {
     Send "{Blind}^w"
 }
+
 ; open menu like right click
-CapsLock & \:: AppsKey
+CapsLock & /::AppsKey

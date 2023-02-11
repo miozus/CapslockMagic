@@ -2,4 +2,4 @@
 /tools/*.chm
 .idea
 /dist
-/bin/plugin/Seeyon.ahk
+/bin/plugin/seeyon

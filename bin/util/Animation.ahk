@@ -1,8 +1,3 @@
-
-SendMode "Input"
-SetWorkingDir A_ScriptDir
-FileEncoding "UTF-8"
-
 ; 动画合集
 class Animation {
 
@@ -55,7 +50,7 @@ class Animation {
 class Timer {
 
     ; 二进制沙漏:2
-    static hourGlass(count:=2, msg:="") {
+    static get2HourGlass(count:=2, msg:="") {
         if msg != "" {
             msg := " " msg
         }
@@ -71,7 +66,7 @@ class Timer {
     }
 
     ; 下雨打伞:2
-    static holdUmbrella(count:=2, msg:="") {
+    static get2HoldUmbrella(count:=2, msg:="") {
         if msg != "" {
             msg := " " msg
         }
@@ -87,7 +82,7 @@ class Timer {
     }
 
     ; 下大雨打伞:2
-    static rainyThunder(count:=2, msg:="") {
+    static get2RainyThunder(count:=2, msg:="") {
         if msg != "" {
             msg := " " msg
         }
@@ -104,7 +99,7 @@ class Timer {
     
 
     ; 自转地球：3
-    static earthRotation(count:=3, msg:="") {
+    static get3EarthRotation(count:=3, msg:="") {
         if msg != "" {
             msg := " " msg
         }
@@ -120,7 +115,7 @@ class Timer {
     }
 
     ; 缩小方块：4
-    static shrinkBlock(count:=4, msg:="") {
+    static get4ShrinkBlock(count:=4, msg:="") {
         if msg != "" {
             msg := " " msg
         }
@@ -137,7 +132,7 @@ class Timer {
     }
     
     ; 月球自转：8
-    static moonRetation(count:=8, msg:="") {
+    static get8MoonRetation(count:=8, msg:="") {
         if msg != "" {
             msg := " " msg
         }
@@ -158,7 +153,7 @@ class Timer {
     }
     
     ; 时钟: 12
-    static clockTwelve(count:=12, msg:="") {
+    static get12Clock(count:=12, msg:="") {
         if msg != "" {
             msg := " " msg
         }

@@ -2,7 +2,6 @@ SendMode "Input"
 SetWorkingDir A_ScriptDir
 FileEncoding "UTF-8"
 
-
 ; 备份和应用配置文件
 class Dotfiles {
     

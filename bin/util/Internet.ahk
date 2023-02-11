@@ -1,7 +1,3 @@
-SendMode "Input"
-SetWorkingDir A_ScriptDir
-FileEncoding "UTF-8"
-
 class Internet {
 
     static CheckConnection(Url:="",FIFC:=1) {

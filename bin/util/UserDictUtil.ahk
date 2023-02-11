@@ -1,7 +1,3 @@
-
-SendMode "Input"    ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
-
 ; 读写文件
 #Include FilePipe.ahk
 
@@ -27,9 +23,9 @@ class Converter {
     static convert(source, target) {
         try {
             switch target.suffix  {
-                case ".plist": result := UserDict.toMacUserDictionaryAsPlist(source)
-                case ".ini": result := UserDict.toPinYinAsIni(source)
-                case ".json": result := UserDict.toJson(source)
+                case ".plist": result := DictUtil.toMacUserDictAsPlist(source)
+                case ".ini": result := DictUtil.toPinYinAsIni(source)
+                case ".json": result := DictUtil.toJson(source)
                 default:
                     return
             }
@@ -61,9 +57,9 @@ class Converter {
         } 
         suffix := "." StrSplit(source, ".")[-1]
         switch suffix {
-            case ".plist": result := UserDict.parsePlist(source)
-            case ".ini": result := UserDict.parseIni(source)
-            case ".json": result := UserDict.parseMacJson(source)
+            case ".plist": result := DictUtil.parsePlist(source)
+            case ".ini": result := DictUtil.parseIni(source)
+            case ".json": result := DictUtil.parseMacJson(source)
             default:
                 msgbox suffix, "不支持的类型" 
                 return
@@ -73,7 +69,7 @@ class Converter {
 }
 
 ; 词典转换工具：合并多个词典 、转换输入法词库。使用 mapObj 作为数据结构。
-class UserDict {
+class DictUtil {
 
     ; 不允许实例化，因为工具类使用类名.方法调用更优雅
     __New(p*) {
@@ -96,7 +92,7 @@ class UserDict {
 
     ; 苹果系统用户词典.plist
     ; 可用苹果终端自带工具校验语法错误 `pluitl -lint your_file.plist`
-    static toMacUserDictionaryAsPlist(mapObj)
+    static toMacUserDictAsPlist(mapObj)
     {
         statement_start := "
         (

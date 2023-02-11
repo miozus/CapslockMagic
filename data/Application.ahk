@@ -1,5 +1,7 @@
+#Include ..\bin\interface\Software.ahk
+
 ; 启动器：常用软件
-class Launcher {
+class App {
 
     ; === 环境 =================================================
 
@@ -9,21 +11,21 @@ class Launcher {
 
     ; === 开发 =================================================
 
-    class Idea extends Program {
+    class Idea extends Software {
         static __New() {
             this.title := "ahk_class SunAwtFrame ahk_exe idea64.exe"
             this.path := A_Programs "\JetBrains Toolbox\IntelliJ IDEA Ultimate.lnk"
         }
     }
 
-    class Vscode extends Program {
+    class Vscode extends Software {
         static __New() {
             this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe Code.exe"
             this.path := A_Programs "\Visual Studio Code\Visual Studio Code.lnk"
         }
     }
 
-    class Uniapp extends Program {
+    class Uniapp extends Software {
         static __New() {
             this.title := "ahk_class Qt5QWindowIcon ahk_exe HBuilderX.exe"
             this.path := A_Desktop "\HBuilder X.lnk"
@@ -35,21 +37,21 @@ class Launcher {
         }
     }
 
-    class WxDevTools extends Program {
+    class WxDevTools extends Software {
         static __New() {
             this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe wechatdevtools.exe"
             this.path := ""
         }
     }
 
-    class Tabby extends Program {
+    class Tabby extends Software {
         static __New() {
             this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe Tabby.exe"
             this.path := "bin\util\Tabby Terminal.lnk"
         }
     }
 
-    class Terminal extends Program {
+    class Terminal extends Software {
         static __New() {
             this.title := "ahk_exe WindowsTerminal.exe"
             this.path := "bin\util\Windows Terminal.lnk"
@@ -59,14 +61,14 @@ class Launcher {
 
     ; === 数据 =================================================
 
-    class Navicat extends Program {
+    class Navicat extends Software {
         static __New() {
             this.title := "ahk_class TNavicatMainForm ahk_exe navicat.exe"
             this.path := A_ProgramsCommon "\PremiumSoft\Navicat Premium 16.lnk"
         }
     }
 
-    class RedisManager extends Program {
+    class RedisManager extends Software {
         static __New() {
             this.title := "ahk_exe Another Redis Desktop Manager.exe"
             this.path := A_Desktop "\Another Redis Desktop Manager.lnk"
@@ -75,7 +77,7 @@ class Launcher {
 
     ; === 测试 =================================================
 
-    class Apifox extends Program {
+    class Apifox extends Software {
 
         static __New() {
             this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe Apifox.exe"
@@ -99,18 +101,18 @@ class Launcher {
 
     static visualVM() {
         title := "E:\Java\visualvm_21\bin\visualvm"
-        params := " --jdkhome " Launcher.Java.JDK
+        params := " --jdkhome " App.Java.JDK
         activateOrRun(title, "wt.exe " title, params)
     }
 
     static arthas() {
-        title := Launcher.Java.JDK
+        title := App.Java.JDK
         params := " -jar E:\Java\arthas-packaging-3.5.3-bin\arthas-boot.jar"
         activateOrRun(title, "wt.exe " title, params)
     }
 
 
-    class Todesk extends Program {
+    class Todesk extends Software {
         static __New() {
             this.title := "ahk_exe ToDesk.exe"
             this.path := ""
@@ -120,7 +122,7 @@ class Launcher {
 
     ; === 浏览器 =================================================
 
-    class Chrome extends Program {
+    class Chrome extends Software {
 
         static __New() {
             this.path := A_AppData "\Microsoft\Internet Explorer\Quick Launch\Google Chrome.lnk"
@@ -193,7 +195,7 @@ class Launcher {
     }
 
     static dittoPaste(index) {
-        Launcher.ditto()
+        App.ditto()
         Loop index {
             Send "{Blind}{Down}"
             Sleep 50
@@ -207,23 +209,7 @@ class Launcher {
         }
     }
 
-    ; 资源管理器
-    static explorer() {
-        activateOrRun("ahk_class CabinetWClass", "")
-    }
-
-    static explorerReload() {
-        path := "tools\重启资源管理器.exe"
-        ActivateOrRun("", path, "", "")
-    }
-
-    static notepad() {
-        pasteInNotepad()
-        path := "notepad"
-        activateOrRun("记事本", path, "", "")
-    }
-
-    class Ahk {
+    class AHK {
 
         static help() {
             ;   Run "https://wyagd001.github.io/v2/docs/AutoHotkey.htm"
@@ -253,12 +239,20 @@ class Launcher {
 
     }
 
-    class TxCouldGame extends Program {
+    class TxCouldGame extends Software {
         static __New() {
             this.title := "ahk_class Qt5152QWindowIcon ahk_exe START.exe"
             this.path := A_Programs "\腾讯游戏\START\START.lnk"
         }
     }
+
+    class WeChat extends Software {
+        static __New() {
+            this.title := "ahk_class WeChatMainWndForPC ahk_exe WeChat.exe"
+            this.path := A_Programs "\微信\微信.lnk"
+        }
+    }
+
 
 }
 
@@ -268,101 +262,65 @@ class Launcher {
 ; 一键启动
 class BatchLauncher {
 
-    static devStart() {
-        Launcher.TxCouldGame.close()
-        Launcher.Idea.run()
-        Launcher.Vscode.run()
-        Launcher.Uniapp.run()
-        Launcher.Chrome.run()
+    static devStart()
+    {
+        App.TxCouldGame.close()
+        App.Idea.run()
+        App.Vscode.run()
+        App.Uniapp.run()
+        App.Chrome.run()
     }
 
-    static devExit() {
-
-        Launcher.Idea.close()
-        Launcher.Uniapp.closeForce()
-        Launcher.Navicat.close()
-        Launcher.RedisManager.close()
-        Launcher.Todesk.close()
-        Launcher.Tabby.close()
-        Launcher.Terminal.close()
-        Launcher.Apifox.close()
+    static devExit()
+    {
+        App.Idea.close()
+        App.Uniapp.closeForce()
+        App.Navicat.close()
+        App.RedisManager.close()
+        App.Todesk.close()
+        App.Tabby.close()
+        App.Terminal.close()
+        App.Apifox.close()
         ; 多个窗口
         Loop 2 {
-            Launcher.Vscode.close()
-            Launcher.WxDevTools.close()
+            App.Vscode.close()
+            App.WxDevTools.close()
         }
         ; 延迟出现的窗口
-        SetTimer () => Launcher.WxDevTools.close(), -2000
+        SetTimer () => App.WxDevTools.close(), -2000
     }
 
     static gameStart() {
         this.devExit()
-        Launcher.TxCouldGame.run()
+        App.TxCouldGame.run()
     }
 
     static gameExit() {
-        Launcher.TxCouldGame.close()
+        App.TxCouldGame.close()
     }
 }
 
 ;; ======================================================================
 
+; 运行环境
+class Enviorment {
 
-;; 常用网站
-class Website {
-
-    static docs() {
-        Run "https://docs.qq.com/desktop/"
+    static hasIde() {
+        ides := [
+            App.Idea,
+            App.Vscode,
+            App.Terminal,
+            App.Tabby,
+            App.Todesk,
+        ]
+        for ide in ides
+            if WinActive(ide.Title)
+                return true
+        return false
     }
 
-    static codeGen() {
-        Run "https://cloud.codegen.cc/"
-    }
-
-    static alg4() {
-        Run "https://visualgo.net/zh/sorting"
-    }
-
-    static excel2json() {
-        Run "https://tableconvert.com/excel-to-json"
-    }
-
-    static chatGpt() {
-        Run "https://gpt.chatapi.art/"
-    }
-
-}
-
-
-;; ======================================================================
-
-; 软件控制常用方法
-class Program {
-
-    static title := ""
-    static path := ""
-
-    ; 激活或运行
-    static run() {
-        activateOrRun(this.title, this.path)
-    }
-
-    ; 激活
-    static activate() {
-        if WinExist(this.title) {
-            WinActivate
-        }
-    }
-
-    ; 关闭
-    static close() {
-        if WinExist(this.title) {
-            WinClose
-        }
-    }
-
-    static isExist() {
-        return WinExist(this.title)
+    static hasNotIde() {
+        return !this.hasIde()
     }
 
 }

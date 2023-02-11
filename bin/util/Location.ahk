@@ -1,7 +1,3 @@
-SendMode "Input"
-SetWorkingDir A_ScriptDir
-FileEncoding "UTF-8"
-
 ; 🧪 开发工具
 ; ---
 ; 辅助写代码的集合：取色，取坐标，序列化二维数组（储存数据库）

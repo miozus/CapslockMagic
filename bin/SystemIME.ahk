@@ -6,6 +6,7 @@ SetWorkingDir A_ScriptDir    ; Ensures a consistent starting directory.
 ;                   微软拼音让它进化了:在一个输入法中，中文和英文模式切换
 
 
+; Input Method Editor
 ; 其他中文标点符号，已收录进分号模式的私有字典
 #Hotif IME.exists() and EnableChinesePunctuation
 ,:: Send "{text}，"
@@ -154,6 +155,12 @@ class IME {
             return false
         }
         return pixelExist
+    }
+
+
+    static commentCN(startStr := "") {
+        Send "{text}" startStr " "
+        IME.set("中文")
     }
 
 }

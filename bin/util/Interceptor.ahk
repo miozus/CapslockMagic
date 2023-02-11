@@ -1,8 +1,3 @@
-
-SendMode "Input"
-SetWorkingDir A_ScriptDir
-FileEncoding "UTF-8"
-
 ; 拦截器
 ; 巨坑：windows 必须反斜杠标识路径, 因为/xx 被判定为一个文件名称
 class Interceptor {

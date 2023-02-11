@@ -1,7 +1,3 @@
-SendMode "Input"
-SetWorkingDir A_ScriptDir
-FileEncoding "UTF-8"
-
 #Include Logger.ahk
 
 ; 文件读写

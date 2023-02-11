@@ -1,8 +1,3 @@
-SendMode "Input"
-SetWorkingDir A_ScriptDir
-FileEncoding "UTF-8"
-
-; 文件管理工具：读写，文件名添加日期
 class FilePipe {
 
 

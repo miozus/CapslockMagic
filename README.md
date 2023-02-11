@@ -4,7 +4,7 @@
 >
 > Make Capslock Great Three!
 > 
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.5-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.6-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
 - [CapslockMagic](#capslockmagic)
   - [快速开始](#快速开始)
@@ -499,9 +499,14 @@ CapslockMagic\bin\util
 
 ![HHKB-win-keymap](bin/img/HHKB-win-keymap.png)
 
-TODO: 兼容更BT的 60 配列，按常用功能进行整合重构，移除冷门应用
+这样改键，为了兼顾 Mac 习惯，又不失caps常用功能，从普通键盘到 HHKB 过渡自然，瞬间适应。
 
-这样改键，为了兼顾 Mac 习惯，又不失caps常用功能，过渡自然
+兼容更BT的 60 配列，按常用功能进行整合重构，移除冷门应用。
+
+● X 插件拆分
+  - 控制器：X_KB(keyboard)
+  - 实现类：impl + interface + common + util
+
 
 ## 1分钟学会添加一个猴子词条
 

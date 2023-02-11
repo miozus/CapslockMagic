@@ -16,27 +16,44 @@
 ;                                       AHK version: thqby/AutoHotkey_H
 
 
-SendMode "Input"             ; 速度快
-SetWorkingDir A_ScriptDir    ; 当前脚本目录，就是脚本运行目录
-InstallKeybdHook             ; 无条件安装键盘钩子,防止丢失
-DetectHiddenWindows True     ; 虚拟桌面：打开检测隐藏窗口
 
 
 ;=====================================================================o
-; 全局配置
+;                       CapsLock Global Setting
 ;
+; 我的键盘布局 (HHKB ¯‗¯‗‗‗) ，其实任意键盘都兼容适配
+;
+; ,-----------------------------------------------------------.
+; |Esc|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =| \| `  |
+; |-----------------------------------------------------------|
+; |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|BackS|
+; |-----------------------------------------------------------|
+; |Caps  |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '| Return |
+; |-----------------------------------------------------------|
+; |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift |Fn |
+; |-----------------------------------------------------------|
+; |    |Alt |Ctrl  |         Space         |Win  |Alt |       |
+; `-----------------------------------------------------------'
+;
+;
+SendMode "Input"             ; 速度快
+SetWorkingDir A_ScriptDir    ; 当前脚本目录，就是脚本运行目录
+InstallKeybdHook             ; 无条件安装键盘钩子,防止丢失
+DetectHiddenWindows True     ; 虚拟桌面：打开检测隐藏窗口，自动跳转桌面
+;
+; 全局配置开始 =============
+;
+; 鼠标移速
+global kMouseMoveSpeedFast := 97
+global kMouseMoveSpeedSlow := 11
+; 是否开启输入法保证中文标点[，。：？] 但分号特殊符不受影响，仍是英文标点
+global EnableChinesePunctuation := true
 ; 声明正在使用的中文输入法类型
 ; ---
 ; - MICROSOFT 微软拼音/搜狗五笔/手心输入法
 ; - QQ        QQ拼音
 ; - OTHER     搜狗拼音/其他
 global kImeType := PinYinEnum.MICROSOFT
-; 鼠标移速
-global kMouseMoveSpeedFast := 97
-global kMouseMoveSpeedSlow := 11
-; 是否开启输入法保证中文标点[，。：？] 但分号特殊符不受影响，仍是英文标点
-global EnableChinesePunctuation := true
-
 
 ;=====================================================================o
 ;                       CapsLock init
@@ -50,23 +67,25 @@ allHotkeys.Push("*3")
 allHotkeys.Push("*4")
 
 #Include data\UserDictionary.ahk
-#Include data\Program.ahk
-#Include bin\util\Common.ahk
-#Include bin\util\UserDictUtil.ahk
+#Include data\Application.ahk
+#Include data\Website.ahk
+#Include bin\common\Common.ahk
 #Include bin\util\Animation.ahk
 #Include bin\util\Dotfiles.ahk
+#Include bin\util\Location.ahk
+#Include bin\util\Vim.ahk
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\DigitKeyboard.ahk
-#Include bin\DebugKeyboard.ahk
-#Include bin\InputMethodEditor.ahk
+#Include bin\SystemIME.ahk
 #Include bin\MouseController.ahk
 #Include bin\SemicolonHook.ahk
-#Include bin\plugin\GarbageCollector.ahk
-#Include bin\plugin\IDE.ahk
-#Include bin\plugin\Notion.ahk
-#Include bin\plugin\Vim.ahk
+#Include bin\plugin\DebugKB.ahk
+#Include bin\plugin\GarbageKB.ahk
+#Include bin\plugin\NotionKB.ahk
+#Include bin\plugin\IDEKB.ahk
 #Include bin\MoomWinManager.ahk
 
+; 全局配置结束 ===========
 
 ;=====================================================================o
 ;                      Application
@@ -97,13 +116,13 @@ CapsLock & d::
 {
     if GetKeyState("Alt")
     {
-        Launcher.apifox.run()
+        App.apifox.run()
     } else if GetKeyState("Ctrl")
     {
-        Launcher.redisManager.run()
+        App.redisManager.run()
     } else
     {
-        Launcher.navicat.run()
+        App.navicat.run()
     }
 }
 
@@ -111,10 +130,10 @@ CapsLock & d::
 CapsLock & f::
 {
     if GetKeyState("Ctrl") {
-        Launcher.explorer()
+        WinOS.Manager.explorer()
     }
     else {
-        Launcher.everything()
+        App.everything()
     }
     IME.set("EN")
 }
@@ -124,11 +143,11 @@ CapsLock & g::
 {
     if GetKeyState("Alt")
     {
-        Launcher.Chrome.searchSelected()
+        App.Chrome.searchSelected()
     }
     else
     {
-        Launcher.Chrome.run()
+        App.Chrome.run()
     }
 }
 
@@ -137,10 +156,10 @@ CapsLock & e::
 {
     if GetKeyState("Alt")
     {
-        Launcher.drawio()
+        App.drawio()
     }
     else {
-        Launcher.notion()
+        App.notion()
     }
 }
 
@@ -149,16 +168,16 @@ CapsLock & r::
 {
     if GetKeyState("Ctrl")
     {
-        Launcher.Uniapp.activate()
+        App.Uniapp.activate()
     }
     else if GetKeyState("LWin") {
-        Launcher.jmeter()
+        App.jmeter()
     }
     else if GetKeyState("Alt")
     {
-        Launcher.todesk.run()
+        App.todesk.run()
     } else {
-        Launcher.Idea.activate()
+        App.Idea.activate()
     }
 }
 
@@ -167,19 +186,19 @@ CapsLock & t::
 {
     if GetKeyState("Ctrl")
     {
-        Launcher.WxDevTools.activate()
+        App.Tabby.run()
     }
     else if getKeyState("Alt")
     {
-        Launcher.Tabby.run()
+        App.WxDevTools.activate()
     }
     else if getKeyState("LWin")
     {
-        Launcher.hwMirror()
+        App.hwMirror()
     }
     else
     {
-        Launcher.Vscode.run()
+        App.Vscode.run()
     }
 }
 
@@ -215,7 +234,7 @@ CapsLock & c::
 ; v = paste | clipboard
 CapsLock & v::
 {
-    Launcher.ditto()
+    App.ditto()
 }
 
 ; y = why | reload script 脚本暂停标记，至少留一组快捷键控制脚本重启
