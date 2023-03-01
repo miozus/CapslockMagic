@@ -53,10 +53,11 @@ global secretDict := Map(
     "syl", "登录门户",
     "syd", "本地开发",
     "sya", "协同云",
-    "docs", "云文档",
+    "docs", "腾讯文档",
     "gpt", "ChatGpt",
     "gen", "工具箱",
     "json", "excel2json",
+    "eco", "易协同",
     "devst", "开始编程",
     "devex", "结束编程",
     "gmst", "开始游戏",
@@ -64,8 +65,24 @@ global secretDict := Map(
     "dd", "隐藏状态栏",
     "ww", "微信",
     "ca", "清空日志",
-    "pix", "像素坐标",
     ; logger
     "lgi", "",
     "lgg", "",
+    "roui", "换UI",
+    "syk", "开发日志",
+    "test", "提交表单",
+    "ms", "光标坐标",
+    "px", "取色坐标",
+    ; sound
+    "sound", "声音设备",
+    "mute", "音量",
+    "mic", "麦克风",
+    ; vue2
+    "vi", "import",
+    "vm", "methods",
+    "vs", "style",
+    "vd", "data",
+    "vv", "view",
+    ; 快速命令
+    "re", "快速命令",
 )

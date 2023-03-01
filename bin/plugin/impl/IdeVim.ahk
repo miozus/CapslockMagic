@@ -1,3 +1,4 @@
+; IDE 统一动作，通过VIM操作
 class IdeVim {
 
     ; <leader> n 下一个错误

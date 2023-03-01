@@ -113,10 +113,10 @@ class Debug {
     }
 
 
-    ; 切面：业务逻辑，自动切换窗口
+    ; 切面：业务逻辑，自动激活窗口
     static around(self, func, args*) {
         try {
-            ; 最常用：首先自动切换窗口
+            ; TODO: 参数和自身属性的差异，只执行名字相同时的代码，不要遍历执行
             App.Idea.activate()
             func(self, args*)
         } catch Error as e {
@@ -128,14 +128,15 @@ class Debug {
     ; 切面: 注册
     static __New() {
 
+        ; 禁止列表写法：因为每次调用，一个函数名，对应三个方法了，依次执行了。
         fns := [
             this.stepOver,
-            this.stepIntoSmart,
-            this.resumeProgram
+            ; this.stepIntoSmart,
+            ; this.resumeProgram
         ]
 
         for _, fn in fns {
-            tmp := fn    ; 由于读取一次性，必须临时储存
+            tmp := fn    ; 语言读取一次性，必须临时储存在第一行
             fn_name := LTrim(tmp.Name, 'Debug.')
             this.DefineProp(fn_name, {
                 call: (self, args*) => this.around(self, tmp, args*)

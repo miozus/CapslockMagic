@@ -312,5 +312,5 @@ firstVisibleWindow(windowSelector)
 tip(message, duration := -1000)
 {
     ToolTip message
-    SetTimer () => ToolTip(), message
+    SetTimer () => ToolTip(), duration
 }

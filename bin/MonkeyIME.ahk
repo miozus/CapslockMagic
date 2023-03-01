@@ -9,7 +9,6 @@ class SemicolonAbbr {
             case "oo": IME.toggle()    ; 如果第一次没切换成功，将就连按切换
             case "mm": Mouse.move()
             case "dbg": Debug.toggle()
-            case "pix": Location.getPixelSearchCode()
             case "hey": Sleep 500    ; 测试专用
             case "os": Run A_ScriptDir
                 ; ====  操作系统 ====
@@ -33,8 +32,8 @@ class SemicolonAbbr {
             case "dota": Dotfiles.apply()
             case "dotb": Dotfiles.backup()
             case "doto": Dotfiles.open()
-            case "dt": Send FormatTime(, "yyyy-MM-dd HH:mm:ss")
-                ; ====  应用管理 ====
+            case "dt": Timer.showDatetime()
+            ; ====  应用管理 ====
             case "spy": App.AHK.winSpy()
             case "ww": App.WeChat.activate()
             case "1": App.dittoPaste(1)
@@ -50,6 +49,7 @@ class SemicolonAbbr {
             case "il": Vim.inputChineseInDdoubleQuotes()    ; 引号中输入中文
             case "cil": Vim.changeCnCommentInDoubleQuotes()
             case "list": Vim.surroundWithList()
+            case "roui": UI.convert(TagRemap.ElementToUview2)
             case "tt": Vim.paste2LastLineUp()
             case "gg": Vim.paste2LastLineReplace()
             case "bb": Vim.paste2LastLineDown()
@@ -68,22 +68,41 @@ class SemicolonAbbr {
             case "lrr": IdeVim.rename()
             case "H": IdeVim.tabPreview()
             case "L": IdeVim.tabNext()
+                ; ====  开发工具 ====
+            case "ms": Locator.getMousePosCode()
+            case "px": Locator.getPixelSearchCode()
                 ; ====  日常办公 ====
+            case "syl": Website.Seeyon.login()
+            case "syk": Website.Seeyon.developNote()
+            case "syd": Website.Seeyon.dev()
+            case "sya": Website.Seeyon.app()
+            case "test": Website.Seeyon.testSubmitForm()
             case "docs": Website.Docs.king()
             case "gen": Website.codeGen()
             case "json": Website.excel2json()
             case "gpt": Website.chatGpt()
+            case "eco": Website.eco()
             case "devst": BatchLauncher.devStart()
             case "devex": BatchLauncher.devExit()
             case "gmst": BatchLauncher.gameStart()
             case "gmex": BatchLauncher.gameExit()
+                ; ====  电脑控制 ====
+            case "sound": App.AHK.winSoundComponent()
+            case "mute": Send "{Volume_Mute}"
+            case "mic": SoundVolume.switchVolumeAndMicrophone()
+            case "vi": Vim.find("import")
+            case "vm": Vim.find("methods")
+            case "vs": Vim.find("style ")
+            case "vd": Vim.find("data")
+            case "vv": Vim.find("view")
+                ; ====  快速测试 ====
+            case "re": tooltip "is building"
             default:
                 return false
         }
         return true
     }
 }
-
 
 ;=====================================================================o
 ; 猴子输入法

@@ -6,11 +6,8 @@ class Notion {
 
     static refBookmark()
     {
-        ; Send "^+7"
-        ; Send "{Text}参考"
-        ; Send "{Enter}"
         Send "^v"
-        Send "{Down}"
+        ; 2023-02 快捷键改版
         Send "{Enter}"
         Sleep 100
         this.editCaption()

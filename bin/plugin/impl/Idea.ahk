@@ -1,5 +1,5 @@
 ; JetBrains Itellij Idea 快捷键指令
-class Idea {
+class Idea extends App.Idea {
 
 
     class Jrebel {

@@ -34,7 +34,8 @@ CapsLock & Space:: Send "{Blind}{Enter}"
 ; 鼠标前进和后退
 XButton1:: ^[
 XButton2:: ^]
-;---------------------------------------------------------------------o
+
+; format
 CapsLock & f::
 {
     if GetKeyState("Ctrl") {

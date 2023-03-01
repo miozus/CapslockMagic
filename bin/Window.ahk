@@ -8,9 +8,9 @@ class Window {
     {
         ToolTip direction
         try {
-            WinGetPos &pos_x, &pos_y, &Width, &Height, "A"
-            h := A_ScreenHeight
-            w := A_ScreenWidth
+            WinGetPos &pos_x, &pos_y, &width, &height, "A"
+            h := A_Screenheight
+            w := A_Screenwidth
             d := (h/10)
         } catch (Error) {
             ; 刚启动尚未未激活窗口时，找不到窗口；需等待几秒
@@ -22,7 +22,7 @@ class Window {
             case "↓" : WinMove pos_x          , pos_y + d       ,,, "A"         
             case "←" : WinMove pos_x - d      , pos_y           ,,, "A"    
             case "→" : WinMove pos_x + d      , pos_y           ,,, "A"   
-            case "|" : WinMove (w/2)-(Width/3), (h/2)-(Height/2),,, "A"                                           
+            case "|" : WinMove (w/2)-(width/3), (h/2)-(height/2),,, "A"                                           
         }
         Sleep 25
         Tooltip
@@ -32,8 +32,8 @@ class Window {
     static zoomWin(direction)
     {
         ToolTip direction
-        h := A_ScreenHeight
-        w := A_ScreenWidth
+        h := A_Screenheight
+        w := A_Screenwidth
         try {
             switch (direction)
             {

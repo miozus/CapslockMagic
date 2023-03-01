@@ -6,12 +6,12 @@
 ;   使用方法：轻按分号键 ; 显示窗口，输入密令（key）
 
 ; 猴子词典分类
-#Include ./dict/secret.ahk
-#Include ./dict/emoji.ahk
-#Include ./dict/logo.ahk
-#Include ./dict/private.ahk
-#Include ./dict/terminal.ahk
-#Include ./dict/computer.ahk
+#Include ./dict/dict_secret.ahk
+#Include ./dict/dict_emoji.ahk
+#Include ./dict/dict_logo.ahk
+#Include ./dict/dict_private.ahk
+#Include ./dict/dict_terminal.ahk
+#Include ./dict/dict_computer.ahk
 ; 转换工具
 #Include ../bin/util/UserDictUtil.ahk
 

@@ -1,7 +1,7 @@
 ; 🧪 开发工具
 ; ---
 ; 辅助写代码的集合：取色，取坐标，序列化二维数组（储存数据库）
-class Location {
+class Locator {
 
    static serilize(nestedObj) {
         inner := "", outer := ""

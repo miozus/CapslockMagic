@@ -5,25 +5,6 @@
 ;               
 
 global EnableDigitKeyboard := false
-
-; 数字小键盘
-*3::
-{
-    global EnableDigitKeyboard
-    thisHotkey := A_ThisHotkey
-    GC.disableOtherHotkey(thisHotkey)
-    EnableDigitKeyboard := true
-    ToolTip "🔢"
-    keywait "3" 
-    EnableDigitKeyboard := false
-    if (A_PriorKey == "3" && A_TimeSinceThisHotkey < 350)
-    {
-        Send "{blind}3"
-    }
-    GC.enableOtherHotkey(thisHotkey)
-    ToolTip
-}
-
 #Hotif EnableDigitKeyboard
 ; 对应标准的小键盘指法
 *H::Send "{blind}." ; 小数频率更高
@@ -58,3 +39,22 @@ global EnableDigitKeyboard := false
 *-::Send "{blind}{F11}"
 *=::Send "{blind}{F12}"
 #Hotif
+
+
+; 数字小键盘
+*3::
+{
+    global EnableDigitKeyboard
+    thisHotkey := A_ThisHotkey
+    GC.disableOtherHotkey(thisHotkey)
+    EnableDigitKeyboard := true
+    ToolTip "🔢"
+    keywait "3" 
+    EnableDigitKeyboard := false
+    if (A_PriorKey == "3" && A_TimeSinceThisHotkey < 250)
+    {
+        Send "{blind}3"
+    }
+    GC.enableOtherHotkey(thisHotkey)
+    ToolTip
+}

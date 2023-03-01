@@ -6,6 +6,26 @@
 ; 不用使用“Off”因为语法自身瑕疵，会莫名其妙切换大小写，估计源码底层是！写法
 SetCapsLockState "AlwaysOff"
 
+;=====================================================================o
+;                         CapsLock Escaper:
+
+CapsLock::Esc  ; 500ms
+
+; 手动解放大小写锁定
+\::
+{
+    Send "\"
+    keepCapsLockLower()
+    SetTimer () => GC.ModifyKeyDocker(), -1000
+}
+
+
+keepCapsLockLower() {
+    if GetKeyState("CapsLock", "T") {
+        SetCapsLockState "AlwaysOff"
+    }
+}
+
 
 ;=====================================================================o
 ;                       CapsLock Switcher:
@@ -30,26 +50,6 @@ CapsLock & `::
 !CapsLock::
 { }
 
-
-;=====================================================================o
-;                         CapsLock Escaper:
-
-CapsLock::Esc
-
-; 手动解放大小写锁定
-\::
-{
-    Send "\"
-    keepCapsLockLower()
-    SetTimer () => GC.ModifyKeyDocker(), -1000
-}
-
-
-keepCapsLockLower() {
-    if GetKeyState("CapsLock", "T") {
-        SetCapsLockState "AlwaysOff"
-    }
-}
 
 
 ;=====================================================================o

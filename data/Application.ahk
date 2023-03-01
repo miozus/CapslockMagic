@@ -47,14 +47,14 @@ class App {
     class Tabby extends Software {
         static __New() {
             this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe Tabby.exe"
-            this.path := "bin\util\Tabby Terminal.lnk"
+            this.path := "tools\Tabby Terminal.lnk"
         }
     }
 
     class Terminal extends Software {
         static __New() {
             this.title := "ahk_exe WindowsTerminal.exe"
-            this.path := "bin\util\Windows Terminal.lnk"
+            this.path := "tools\Windows Terminal.lnk"
         }
     }
 
@@ -184,6 +184,14 @@ class App {
         activateOrRun(title)
     }
 
+    class Wemeet extends Software {
+        static __New() {
+            this.title := "ahk_class TXGuiFoundation ahk_exe wemeetapp.exe"
+            this.path := A_Programs "\腾讯会议.lnk"
+        }
+        
+    }
+
     ; === 其他 =================================================
 
     static everything() {
@@ -234,7 +242,11 @@ class App {
         }
 
         static winSpy() {
-            activateOrRun("ahk_exe WindowSpy.exe", "bin\plugin\WindowSpy.ahk")
+            activateOrRun("ahk_exe WindowSpy.exe", A_ScriptDir "\bin\util\WindowSpy.ahk")
+        }
+
+        static winSoundComponent() {
+            ActivateOrRun("Sound Components ahk_class AutoHotkeyGUI ahk_exe AutoHotkey64.exe", A_ScriptDir "\bin\util\SoundComponent.ahk")
         }
 
     }
@@ -253,6 +265,12 @@ class App {
         }
     }
 
+    class QQLive extends Software {
+        static __New() {
+            this.title := "ahk_class TXGuiFoundation ahk_exe QQLive.exe"
+            this.path := A_Programs "\腾讯软件\腾讯视频\腾讯视频.lnk"
+        }
+    }
 
 }
 
@@ -264,7 +282,11 @@ class BatchLauncher {
 
     static devStart()
     {
+        ; 腾出内存
         App.TxCouldGame.close()
+        App.Wemeet.close()
+        App.QQLive.close()
+        ; 运行工具
         App.Idea.run()
         App.Vscode.run()
         App.Uniapp.run()
@@ -283,6 +305,7 @@ class BatchLauncher {
         App.Apifox.close()
         ; 多个窗口
         Loop 2 {
+            Sleep 1000
             App.Vscode.close()
             App.WxDevTools.close()
         }

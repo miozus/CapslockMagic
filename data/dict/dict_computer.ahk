@@ -6,7 +6,7 @@ computerDict := Map(
     "apy", "application.yml",
     "app", "application.properties",
     "bsy", "bootstrap.yml",
-    "px", "pom.xml",
+    "pom", "pom.xml",
     "spc", "Spring Could",
     "spb", "Spring Boot",
     "C", "Controller",
@@ -149,5 +149,6 @@ computerDict := Map(
     ; Vue3
     "vss", '<script setup lang="ts">`r</script>',
     "vir", "import { ref } from 'vue'",
-    "via", "import axios from 'axios'",
+    ; ES6
+    "jjs", "var obj = JSON.parse(JSON.stringify())`;", ; 深拷贝常用方法 
 )

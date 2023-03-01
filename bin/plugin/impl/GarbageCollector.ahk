@@ -18,8 +18,8 @@ class GC {
             Send "{Ctrl Up}"
         }
         Sleep 100
-        ToolTip "  LAlt" GetKeyState("LAlt") " LWin" GetKeyState("LWin") " LCtrl" GetKeyState("LCtrl") 
-        SetTimer () => ToolTip(), -1000
+        ; ToolTip "  LAlt" GetKeyState("LAlt") " LWin" GetKeyState("LWin") " LCtrl" GetKeyState("LCtrl") 
+        ; SetTimer () => ToolTip(), -1000
     }
 
     static ModifyKeyDocker() {

@@ -1,7 +1,4 @@
-﻿SendMode "Input"             ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir A_ScriptDir    ; Ensures a consistent starting directory.
-
-;=====================================================================o
+﻿;=====================================================================o
 ;               中文输入法特殊优待（默认中文状态使用英文字符）
 ;                   微软拼音让它进化了:在一个输入法中，中文和英文模式切换
 
@@ -139,7 +136,7 @@ class IME {
     static isTypingPinYinImg() {
         CoordMode "Pixel"    ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
         try {
-            pixelExist := ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogo.png")
+            pixelExist := ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "img\IMElogo.png")
         } catch Error as e {
             return false
         }
@@ -150,7 +147,7 @@ class IME {
     static isTypingPinYinImgOld() {
         CoordMode "Pixel"    ; 将下面的坐标解释为相对于屏幕而不是活动窗口.
         try {
-            pixelExist := ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "bin\img\IMElogoOld.png")
+            pixelExist := ImageSearch(&FoundX, &FoundY, 0, 0, A_ScreenWidth, A_ScreenHeight, "img\IMElogoOld.png")
         } catch Error as e {
             return false
         }

@@ -24,7 +24,7 @@
 *U:: Send "{blind}$"    ; 句子后
 *E:: Send "{blind}{^}"    ; 句子前，上中左右
 +J:: Send "{blind}{text}；"    ; 中文分号，大人什么都要
-*J:: Send "{blind}{text};"    ; 英文分号，常用
+*J:: Send "{blind}{text};"    ; 英文分号，被自动补全替代
 *C:: Send "{blind}."    ; 存疑，一个身位可以到达，设置2个键，过度设计？.=, copy复用上次操作
 +B:: Send "{blind}{}}"    ; 成对在一起
 *B:: Send "{blind}{{}"    ; viB,viq配合很好
@@ -62,19 +62,20 @@ semicolonHook.OnEnd := onTypoEnd
     EnableSemicolonComfort := true
     KeyWait ";"
     EnableSemicolonComfort := false
-    if (A_PriorKey == ";" && A_TimeSinceThisHotkey < 350)
+    if (A_PriorKey == ";" && A_TimeSinceThisHotkey < 250)
     {
         MonkeyIME.enterSemicolonAbbr(semicolonHook)
     }
     GC.enableOtherHotkey(thisHotkey)
 }
+
+; 删除缓存拼写时，也不会更新
 onTypoChar(ih, char) {
-    ; 删除缓存拼写时，也不会更新
     Tooltip ih.Input
 }
 
+; 清空缓存，可能遮蔽表现：有时新命令遗留错误上次错误信息
 onTypoEnd(ih) {
-    ; 清空缓存，可能遮蔽表现：有时新命令遗留错误上次错误信息
     Tooltip
     ; typoTip.show(ih.Input)
 }

@@ -1,15 +1,8 @@
 #Include impl\IDE.ahk
 #Include impl\Idea.ahk
 #Include impl\IdeVim.ahk
-
-;=====================================================================o
-; 所有代码编辑器
-#hotif Enviorment.hasIde()
-CapsLock:: IDE.Esc()
-CapsLock & 2:: IDE.terminal()
-CapsLock & 4:: IDE.service()
-CapsLock & 5:: IDE.debug()
-#HotIf
+#Include impl\WxDevTools.ahk
+#Include impl\Vscode.ahk
 
 ;=====================================================================o
 ; 仅限大脑喷射编辑器 IDEA
@@ -30,3 +23,25 @@ CapsLock & z:: Idea.runContextCode()
 #Hotif App.Chrome.isActive()
 CapsLock & 2:: Idea.focusPasteElementByIdeavim()
 #Hotif
+
+;=====================================================================o
+; 仅限微信开发工具
+#Hotif App.WxDevTools.isActive()
+CapsLock & 1:: WxDevTools.batch()
+CapsLock & 2:: WxDevTools.testRegisterCreate()
+#Hotif
+
+;=====================================================================o
+; 仅VSCode
+#Hotif App.Vscode.isActive()
+CapsLock & 5:: Vscode.run()
+#Hotif
+
+;=====================================================================o
+; 所有代码编辑器 （特殊放前面，普遍放最后）
+#hotif Enviorment.hasIde()
+CapsLock:: IDE.Esc()
+CapsLock & 2:: IDE.terminal()
+CapsLock & 4:: IDE.service()
+CapsLock & 5:: IDE.run()
+#HotIf

@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+;switch keymap: LCtrl <-> LAlt
+
+; create
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,1D,00,38,00,38,00,1D,00,00,00,00,00
+
+; delete
+; [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+; "Scancode Map"=-
