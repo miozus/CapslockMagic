@@ -4,35 +4,33 @@
 >
 > Make Capslock Great Three!
 > 
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.6-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.9-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
-- [CapslockMagic](#capslockmagic)
-  - [快速开始](#快速开始)
-    - [Windows](#windows)
-    - [MacOS](#macos)
-      - [直接云端导入配置](#直接云端导入配置)
-  - [如何使用](#如何使用)
-    - [3️⃣ 数字小键盘](#3️⃣-数字小键盘)
-    - [; 分号特殊符（特舒服）](#-分号特殊符特舒服)
-    - [⌨️ 猴子输入法](#️-猴子输入法)
-    - [📺 窗口移动](#-窗口移动)[README_EN.md](README_EN.md)
-    - [📺 窗口定型](#-窗口定型)
-    - [🖱️ 鼠标控制](#️-鼠标控制)
-  - [程序员专辑](#程序员专辑)
-    - [🦉 V1.2.0 单手调试器](#-v120-单手调试器)
-    - [🦑 V1.3.0 宇宙编辑器](#-v130-宇宙编辑器)
-    - [🕷️ v1.4.0 爬虫零件箱](#️-v140-爬虫零件箱)
-    - [️🕶️ v1.5.0 HHKB兼容适配](#️️-v150-hhkb兼容适配)
-  - [1分钟学会添加一个猴子词条](#1分钟学会添加一个猴子词条)
-  - [进化史](#进化史)
-  - [五个人性化设计](#五个人性化设计)
-  - [常见问题](#常见问题)
+* 1. [Quick Start](#QuickStart)
+	* 1.1. [Windows](#Windows)
+	* 1.2. [MacOS](#MacOS)
+		* 1.2.1. [import from cloud](#importfromcloud)
+* 2. [Usage](#Usage)
+	* 2.1. [3️⃣ Digital Keyboard](#DigitalKeyboard)
+	* 2.2. [<kbd>;</kbd> Semicolon Keyboard](#kbdkbdSemicolonKeyboard)
+	* 2.3. [⌨️ Monkey IME](#MonkeyIME)
+	* 2.4. [📺 Window Movement](#WindowMovement)
+	* 2.5. [📺 Window Zoom & Position](#WindowZoomPosition)
+	* 2.6. [🖱️ Mouse Controller](#MouseController)
+* 3. [Programmer Episode](#ProgrammerEpisode)
+	* 3.1. [🦉 V1.2.0 One-handed Debugger](#V1.2.0One-handedDebugger)
+	* 3.2. [🦑 V1.3.0 Universe Code Editor](#V1.3.0UniverseCodeEditor)
+	* 3.3. [ ️🕶️ v1.5.0 HHKB兼容适配](#v1.5.0HHKB)
+* 4. [1分钟学会添加一个猴子词条](#)
+* 5. [进化史](#-1)
+* 6. [五个人性化设计](#-1)
+* 7. [常见问题](#-1)
 
 ---
 
-## Quick Start
+##  1. <a name='QuickStart'></a>Quick Start
 
-### Windows
+###  1.1. <a name='Windows'></a>Windows
 
 1.Download
 
@@ -75,9 +73,9 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 </details>
 
-### MacOS
+###  1.2. <a name='MacOS'></a>MacOS
 
-#### import from cloud
+####  1.2.1. <a name='importfromcloud'></a>import from cloud
 
 copy and open the url by `Safari`, which would load setting into  `Karabiner-Element` automatically, then open it, choose tag `complex-mapping`  >
  `add-rule` (left-below) > choose setting  > `Enable` 。
@@ -125,7 +123,7 @@ yq eval -j -I=2 your_path_to_CapslockMagic/tools/karabiner/caps_lock_magic.yml >
 
 </details>
 
-## Usage
+##  2. <a name='Usage'></a>Usage
 
 Make ⇪CapsLock a stronger function modify key(✱ Hyper), improve productive and efficiency incredibly.
 
@@ -134,7 +132,7 @@ Make ⇪CapsLock a stronger function modify key(✱ Hyper), improve productive a
 
 Most keymapping extends [CapsLock-Enhancement](https://github.com/Vonng/Capslock/tree/master/docs/zh-cn) , press those combination which you interest. Now I will introduce the evolutionary function of `Magic`：
 
-### 3️⃣ Digital Keyboard
+###  2.1. <a name='DigitalKeyboard'></a>3️⃣ Digital Keyboard
 
 Hold on <kbd>3</kbd> into digital state, as while press gently <kbd>SecondKey</kbd>, whose output perform the relative key below. release <kbd>3</kbd> would exit digital state。
 
@@ -161,7 +159,7 @@ Hold on <kbd>3</kbd> into digital state, as while press gently <kbd>SecondKey</k
 
 </details>
 
-### <kbd>;</kbd> Semicolon Keyboard
+###  2.2. <a name='kbdkbdSemicolonKeyboard'></a><kbd>;</kbd> Semicolon Keyboard
 
 Hold <kbd>;</kbd> **and do not release**, start "Semicolon Keyboard State", as the same time, press <kbd>second key</kbd>, it would remap the symbol key up on the keystore. exit if release <kbd>;</kbd>.
 
@@ -213,7 +211,7 @@ Hold <kbd>;</kbd> **and do not release**, start "Semicolon Keyboard State", as t
 
 </details>
 
-### ⌨️ Monkey IME
+###  2.3. <a name='MonkeyIME'></a>⌨️ Monkey IME
 
 Press <kbd>;</kbd> **and release now**, start "Monkey Input Method Editor State", script would listen all the input of keyboard. 
 
@@ -315,7 +313,7 @@ MAC / PINYIN / JSON）
 
 **<kbd>A</kbd> is related to aim to window manager and mouse controller.
 
-### 📺 Window Movement
+###  2.4. <a name='WindowMovement'></a>📺 Window Movement
 
 ![窗口禅模式](bin/img/moom-move.gif)
 
@@ -326,7 +324,7 @@ now press <kbd>second key</kbd> gently, moving current window position.
 - <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> as left / down / up / right, like vim
 - <kbd>␣</kbd> to screen center
 
-### 📺 Window Zoom & Position
+###  2.5. <a name='WindowZoomPosition'></a>📺 Window Zoom & Position
 
 ![窗口定型](bin/img/moom-zoom.gif)
 
@@ -342,7 +340,7 @@ now press <kbd>second key</kbd> gently, make window position at part of the scre
 - <kbd>M</kbd> <kbd>,</kbd> max / min
 - <kbd>.</kbd> back to last size
 
-### 🖱️ Mouse Controller
+###  2.6. <a name='MouseController'></a>🖱️ Mouse Controller
 
 ![鼠标禅模式](bin/img/mouse-move.gif)
 
@@ -360,9 +358,9 @@ now press <kbd>second key</kbd> gently, control mouse action.
 
 ---
 
-## Programmer Episode
+##  3. <a name='ProgrammerEpisode'></a>Programmer Episode
 
-### 🦉 V1.2.0 One-handed Debugger 
+###  3.1. <a name='V1.2.0One-handedDebugger'></a>🦉 V1.2.0 One-handed Debugger 
 
 I wrap **JetBrains Intellij Idea** keymap. Press key combination, it would activate the window of `Idea`, if exists, remap the key shot, do the related function.
 
@@ -384,7 +382,7 @@ example
 - press <kbd>4</kbd> + <kbd>5</kbd> , `hotspot` , run plugin `Jrebel` hotpot code-compiled function, equal to press the icon axe to compile.
 
 
-### 🦑 V1.3.0 Universe Code Editor
+###  3.2. <a name='V1.3.0UniverseCodeEditor'></a>🦑 V1.3.0 Universe Code Editor
 
 Unification of the world, `vscode` + `idea` + `neovim` && `winOS` + `macOS` all use the same keymap strategy. I wrap the usual operation in integrated development environment.
 
@@ -466,37 +464,7 @@ tree .\CAPSLOCKMAGIC\TOOLS
 
 </details>
 
-### 🕷️ v1.4.0 爬虫零件箱
-
-提供零件，可组合零件实现浏览器爬虫：点击网页元素，下载资源的自动化机器人。
-
-适用场景：
-
-- 害怕 Python 爬虫而封禁IP，或解析资源路径困难。
-- 可复制的网页预览的文件（非图片）
-- 上万条记录，需要人工点击下载。
-
-```bash
-CapslockMagic\bin\util
-├── Animation.ahk     # 时间动画: 挂机运行非静止画面
-├── FilePipe.ahk      # 文件管道：导入导出和文件名添加日期
-├── FileStream.ahk    # 文件流：增删改查
-├── Interceptor.ahk   # 过滤器：不必每个点开看
-├── Internet.ahk      # 网络测试：是否断网
-├── Location.ahk      # 定位器：网页元素坐标
-└── Logger.ahk        # 日志：每条记录处理过程和结果
-```
-
-日志示例：每个表情代表执行了一种管道操作
-
-``` bash
-[2022-12-12 05:18:44] 4582-8 🙈 *** empty file
-[2022-12-12 05:20:38] 4591-2 🐘 *** too big size
-[2022-12-12 16:06:50] 4: ✅: source => destination | well-done
-[2022-12-12 16:33:57] 9: 🈚⭐🐞: source ⇒ destination | not exist & create file & bug
-```
-
-###  ️🕶️ v1.5.0 HHKB兼容适配
+###  3.3. <a name='v1.5.0HHKB'></a> ️🕶️ v1.5.0 HHKB兼容适配
 
 ![HHKB-win-keymap](bin/img/HHKB-win-keymap.png)
 
@@ -509,11 +477,11 @@ CapslockMagic\bin\util
   - 实现类：impl + interface + common + util
 
 
-## 1分钟学会添加一个猴子词条
+##  4. <a name=''></a>1分钟学会添加一个猴子词条
 
 TODO: 语法嗅探、快捷短语、自定义函数，（特殊应用环境生效），集成进词条
 
-## 进化史
+##  5. <a name='-1'></a>进化史
 
 `Magic` 继承了 `Capslock Enhancement` 的经典设计（类似 HHKB 键盘），弥补了它在 Windows 平台的空白。
 
@@ -539,7 +507,7 @@ TODO: 语法嗅探、快捷短语、自定义函数，（特殊应用环境生�
 | 🦉            | 单手调试器 | ❌                                                   | ❌                                                             | ✅ 压缩的调试组合键（程序员特供）                                  |
 | 🦑            | 宇宙编辑器 | ❌                                                   | ❌                                                             | ✅ 统一的 Idea + vscoDe 键位映射方案 + vim 增强热键 （程序员特供） |
 
-## 五个人性化设计
+##  6. <a name='-1'></a>五个人性化设计
 
 🤖 **中英文管家**
 
@@ -609,7 +577,7 @@ TODO: 语法嗅探、快捷短语、自定义函数，（特殊应用环境生�
 
 如果你网络请求，等待时间比较长，看上去像电脑死机，为什么不试试  `Timer` 动画呢？人有悲欢离合，月有阴晴圆缺。
 
-## 常见问题
+##  7. <a name='-1'></a>常见问题
 
 <details>
 <summary> 1. 脚本可以设置开机自启吗？ </summary>

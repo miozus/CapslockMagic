@@ -1,10 +1,10 @@
 # CapslockMagic
 
-> [中文文档](https://github.com/miozus/CapslockMagic) | [README](https://translate.google.cn/) | [Karabiner Gallery](https://ke-complex-modifications.pqrs.org/#caps_lock_magic) | [Github Repo](https://github.com/miozus/CapslockMagic) | [Gitee Repo](https://gitee.com/miozus/CapslockMagic)
+> [中文文档](https://github.com/miozus/CapslockMagic) | [README](https://github.com/miozus/CapslockMagic/blob/master/README_EN.md) | [Karabiner Gallery](https://ke-complex-modifications.pqrs.org/#caps_lock_magic) | [Github Repo](https://github.com/miozus/CapslockMagic) | [Gitee Repo](https://gitee.com/miozus/CapslockMagic)
 >
 > Make Capslock Great Three!
 > 
-> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.6-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
+> <a href="https://github.com/thqby/AutoHotkey_H"> <img src="https://img.shields.io/badge/AutoHotkey__H-thqby-orange?style=flat&logo=GitHub"></a> <a href="https://github.com/miozus/CapslockMagic"> <img src="https://img.shields.io/badge/CapslockMagic-1.4.9-brightengreen?style=flat&logo=ClickUp"></a> <a href="https://jq.qq.com/?_wv=1027&k=iiuN83v3"> <img src="https://img.shields.io/badge/QQ群-1026918136-yellow?style=flat&logo=TencentQQ"></a>
 
 - [CapslockMagic](#capslockmagic)
   - [快速开始](#快速开始)
@@ -469,11 +469,14 @@ tree .\CAPSLOCKMAGIC\TOOLS
 
 这样改键，为了兼顾 Mac 习惯，又不失caps常用功能，从普通键盘到 HHKB 过渡自然，瞬间适应。
 
-兼容更BT的 60 配列，按常用功能进行整合重构，移除冷门应用。
+兼容更BT的 60 配列，按常用功能进行整合重构
 
 ● X 插件拆分
   - 控制器：X_KB(keyboard)
   - 实现类：impl + interface + common + util
+● 移除冷门应用: ![爬虫零件箱](https://github.com/miozus/SpiderToolbox) ，已拆分成第二个项目。
+● 增加按键转换注册表脚本，修改映射左侧两键 <kbd>Alt</kbd> <-> <kbd>Ctrl</kbd>
+● 修复：检测图片太慢而导致500ms，在 IDE 环境异步进程 200ms 后，自动将设置为英文
 
 
 ## 1分钟学会添加一个猴子词条
