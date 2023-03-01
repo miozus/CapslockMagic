@@ -15,12 +15,13 @@
     - [3️⃣ 数字小键盘](#3️⃣-数字小键盘)
     - [; 分号特殊符（特舒服）](#-分号特殊符特舒服)
     - [⌨️ 猴子输入法](#️-猴子输入法)
-    - [📺 窗口移动](#-窗口移动)
+    - [📺 窗口移动](#-窗口移动)[README_EN.md](README_EN.md)
     - [📺 窗口定型](#-窗口定型)
     - [🖱️ 鼠标控制](#️-鼠标控制)
   - [程序员专辑](#程序员专辑)
     - [🦉 V1.2.0 单手调试器](#-v120-单手调试器)
     - [🦑 V1.3.0 宇宙编辑器](#-v130-宇宙编辑器)
+    - [🕷️ v1.4.0 爬虫零件箱](#️-v140-爬虫零件箱)
     - [️🕶️ v1.5.0 HHKB兼容适配](#️️-v150-hhkb兼容适配)
   - [1分钟学会添加一个猴子词条](#1分钟学会添加一个猴子词条)
   - [进化史](#进化史)
@@ -29,25 +30,25 @@
 
 ---
 
-## 快速开始
+## Quick Start
 
 ### Windows
 
-1.下载
+1.Download
 
 ```bash
 git clone https://github.com/miozus/CapslockMagic.git
 ```
 
-2.运行
+2.run
 
-1. 解压文件: `tools/AutoHotkey_H/AutoHotkey_H-xx-thqby.7z`
-   ，或者 [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H/releases) 版本中心下载最新发行版和解压。
-2. 添加管理员权限：右键单击 `AutoHotKey.exe` （x64 / x32）> 属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
-3. 设置默认打开方式：右键单击 `CapslockMagic.ahk` : 打开方式，选择到步骤1的解压目录的 `AutoHotKey.exe` 打开。
+1. unzip: `tools/AutoHotkey_H/AutoHotkey_H-xx-thqby.7z`
+   , or go to [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H/releases) releases page to download. 
+2. authorize administrator privileges: Right click `AutoHotKey.exe` （x64 / x32）> Property > Security > Compatible > Administrator > Sure。
+3. set default open method: right click `CapslockMagic.ahk` , Open-method, choose the program called `AutoHotKey.exe` which step 1 used。
 
 <details>
-<summary> 【推荐】开机自启</summary>
+<summary> 【recommend】auto startup</summary>
 &nbsp;
 
 创建基本任务：按 <kbd>Win</kbd> 键搜索 `task` > 任务计划程序 > 右键单击任务计划程序库，新建文件夹 > 新建基本任务 > (按引导设置) > 完成
@@ -62,7 +63,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 </details>
 
 <details>
-<summary>【可选】快速启动小技巧</summary>
+<summary>【optional】quick launch tip</summary>
 &nbsp;
 
 1. 新建文件夹 `myenv` 
@@ -76,23 +77,23 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 ### MacOS
 
-#### 直接云端导入配置
+#### import from cloud
 
-使用 `Safari` 浏览器打开链接，它将自动加载配置到 `Karabiner-Element`：打开软件，选择 `complex-mapping` 标签 >
-左下角 `add-rule` > 选择配置 > `Enable` 。
+copy and open the url by `Safari`, which would load setting into  `Karabiner-Element` automatically, then open it, choose tag `complex-mapping`  >
+ `add-rule` (left-below) > choose setting  > `Enable` 。
 
 ```bash
 karabiner://karabiner/assets/complex_modifications/import?url=https://raw.githubusercontent.com/miozus/CapslockMagic/master/tools/karabiner/caps_lock_magic.json
 ```
 
-> **注意**： 脚本支撑软件是免费开源的 [Karabiner-Element](https://karabiner-elements.pqrs.org/) ，如未下载，请先自行下载。 CapsLockMagic 已支持拓展包：
+> **Notice**： please download   [Karabiner-Element](https://karabiner-elements.pqrs.org/) first, which is free and open-source. CapsLockMagic support plugins below：
 > 
-> - 分号特殊符 `Semicolon Pull Down Symbol`
-> - 数字小键盘 `3 Awake Digital Keyboard`
-> - 其他基础功能，请参考开源项目 [Vonng/Capslock](https://github.com/Vonng/Capslock) ，按需导入。
+> - `Semicolon Pull Down Symbol`
+> - `3 Awake Digital Keyboard`
+> - the other function, please go to  [Vonng/Capslock](https://github.com/Vonng/Capslock) , import as needed。
 
 <details>
-<summary>【可选】官方仓库导入</summary>
+<summary>【optional】import from official karabiner website</summary>
 &nbsp;
 
 ```bash
@@ -102,59 +103,56 @@ https://ke-complex-modifications.pqrs.org/#caps_lock_magic
 </details>
 
 <details>
-<summary>【可选】二次开发手动导入 </summary>
+<summary>【optional】import from here by custom </summary>
 &nbsp;
 
-1. 下载
+1. download
 
   ```bash
   git clone https://github.com/miozus/CapslockMagic.git
   ```
 
-2. 修改
-   修改文件 `tools/karabiner/caps_lock_magic.yml`
-3. 运行终端命令 yq （如果没安装过，则先运行 `brew install yq`），转换格式 yaml ⇒ json 放到默认配置目录中
+2. modify `tools/karabiner/caps_lock_magic.yml`
+3. run terminal command `yq` ，transform yaml ⇒ json , then put it into default config content on MacOS.
+ - run `brew install yq` first if downloaded not yet
 
 ```bash
 yq eval -j -I=2 your_path_to_CapslockMagic/tools/karabiner/caps_lock_magic.yml > ~/.config/karabiner/assets/complex_modifications/caps_lock_magic.json
 ```
 
-4 打开应用，添加规则和启用配置
+4 open `Karabiner-Elements`, add rules, enable setting.
 
-```bash
-open -a Karabiner-Elements
-```
 
 </details>
 
-## 如何使用
+## Usage
 
-将 ⇪CapsLock（大写锁定键）改造为一个强力的功能修饰键（✱ Hyper ），奇迹般地提高操作效率与生产力。
+Make ⇪CapsLock a stronger function modify key(✱ Hyper), improve productive and efficiency incredibly.
+
 
 ![控制平面](/bin/img/keyboard-enhancement.jpg)
 
-按键功能继承自 [CapsLock-Enhancement](https://github.com/Vonng/Capslock/tree/master/docs/zh-cn) （中文参考文档），操作基本一致，直接敲键盘试用，这里不再赘述。 下面主要介绍 `Magic` 进化的功能：
+Most keymapping extends [CapsLock-Enhancement](https://github.com/Vonng/Capslock/tree/master/docs/zh-cn) , press those combination which you interest. Now I will introduce the evolutionary function of `Magic`：
 
-### 3️⃣ 数字小键盘
+### 3️⃣ Digital Keyboard
 
-按住数字 <kbd>3</kbd> 不松手时，保持在数字模式，同时轻敲 <kbd>第二个键</kbd>，实际输出为图示对应键位下方的键，松开 <kbd>3</kbd> 退出数字模式。
+Hold on <kbd>3</kbd> into digital state, as while press gently <kbd>SecondKey</kbd>, whose output perform the relative key below. release <kbd>3</kbd> would exit digital state。
 
 ![数字小键盘](bin/img/digital-keyboard.png)
 
-| 输入                        | 输出                     |
-| --------------------------- | ------------------------ |
-| <kbd>3</kbd> + <kbd>2</kbd> | <kbd>F2</kbd>            |
-| <kbd>3</kbd> + <kbd>J</kbd>  | 4                        |
-| <kbd>3</kbd> + <kbd>N</kbd>  | 空格键                   |
-| <kbd>3</kbd> + <kbd>G</kbd>  | G（Vim 跳行） |
-| <kbd>3</kbd> + 无（松开）   | 3                        |
+| input                        | output                 |
+|------------------------------|------------------------|
+| <kbd>3</kbd> + <kbd>2</kbd>  | <kbd>F2</kbd>          |
+| <kbd>3</kbd> + <kbd>J</kbd>  | <kbd>4</kbd>           |
+| <kbd>3</kbd> + <kbd>N</kbd>  | <kbd>␣</kbd>           |
+| <kbd>3</kbd> + <kbd>G</kbd>  | <kbd>G</kbd>（Vim jump） |
+| <kbd>3</kbd> + NULL（release）| <kbd>3</kbd>          |
 
-- 方便记忆：想象成稍微倾斜的数字小键盘。
-
-- 适用场景：手机号码、验证码、坐标、代码行号等。附带确认、删除。
+- remember easily: imagine the digital keyboard which is banked slightly, compared with the usual one.
+- applicable scene: phone, check-code, position, code line. ensure or cancel also been included.
 
 <details>
-<summary>数字小键盘设计思路（展开）</summary>
+<summary>Digital keyboard design (expand) </summary>
 &nbsp;
 
 - 取消了映射到 <kbd>F3</kbd> 的按键，因为 <kbd>F3</kbd> 为了成全整个模式，牺牲了它自己。
@@ -163,16 +161,17 @@ open -a Karabiner-Elements
 
 </details>
 
-### <kbd>;</kbd> 分号特殊符（特舒服）
+### <kbd>;</kbd> Semicolon Keyboard
 
-按住分号 <kbd>;</kbd> **不松手**，进入“分号特殊符模式”，同时轻敲 <kbd>第二个键</kbd> ，实际输出对应键位上方的字符。松开 <kbd>;</kbd> 立即退出。
+Hold <kbd>;</kbd> **and do not release**, start "Semicolon Keyboard State", as the same time, press <kbd>second key</kbd>, it would remap the symbol key up on the keystore. exit if release <kbd>;</kbd>.
+
 
 ![分号特殊符](bin/img/semicolon-keyboard.png)
 
-- 例如 <kbd>;</kbd> + <kbd>a</kbd> 实际输出 <kbd>*</kbd>
+- example <kbd>;</kbd> + <kbd>a</kbd> output <kbd>*</kbd>
 
 <details>
-<summary>符号分布设计思路（展开）</summary>
+<summary>semicolon design (expand)</summary>
 &nbsp;
 
 这样排布设计来自咸鱼阿康， 我们都用 Vim，所以本人优化的方向，也在于提升 Vim 体验:
@@ -214,27 +213,29 @@ open -a Karabiner-Elements
 
 </details>
 
-### ⌨️ 猴子输入法
+### ⌨️ Monkey IME
 
-按下分号 <kbd>;</kbd> **立即松手**（即轻按），进入“猴子输入法”状态，此时监听键盘，输入正确的密令，输出字符片段（纯文本），或执行自定义的函数指令。
+Press <kbd>;</kbd> **and release now**, start "Monkey Input Method Editor State", script would listen all the input of keyboard. 
 
-如果输入错误密令或按下 <kbd>Esc</kbd> 等，立即退出。
+- If match the right abbr, output string snippets or run function you defined.
+- else exit the state immediately. press <kbd>⏎</kbd> / <kbd>Esc</kbd> / <kbd>␣</kbd> to exit, also works.
+
 
 <img src="bin/img/hook_cne.gif" width="100%" alt="print_snippets.gif"/>
 
-| 输入                                                              | 显示   | 输出说明                                       | 猴子   | 输入法状态 |
-| ----------------------------------------------------------------- | ------ | ---------------------------------------------- | ------ | ---------- |
-| <kbd>;</kbd>（轻按）                                              | 🙈      | 等待输入密令                                   | 不看   | 进入       |
-| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>e</kbd>                       | cn     | 匹配到猴子词典（字符片段 1️⃣），输出纯文本 |        | 退出       |
-| 假如 <kbd>c</kbd> <kbd>n</kbd> <kbd>k</kbd>                       | cnk    | 尚未匹配，继续等待                             |        | 等待       |
-| <kbd>⏎</kbd> 或 <kbd>Esc</kbd> 或 <kbd>␣</kbd>                    | 💨      | 截至目前未匹配成功，中断                       | 跑了   | 退出       |
-| 假如 <kbd>s</kbd><kbd>l</kbd><kbd>e</kbd><kbd>e</kbd><kbd>p</kbd> | slee   | 匹配到猴子词典（函数指令 2️⃣），执行自定义函数功能           |        |
-|                                                                   | 🙉 睡眠 | 电脑马上进入休眠状态                           | 猜对了 | 退出       |
+| input                                                           | display | output explanation                       | monkey      | IME State |
+|-----------------------------------------------------------------|---------|------------------------------------------|-------------|-----------|
+| <kbd>;</kbd>(press)                                             | 🙈      | waiting                                  | blindfolded | enter     |
+| <kbd>c</kbd> <kbd>n</kbd> <kbd>e</kbd>                       | cn      | match monkey abbr(string snippets 1️ )   |             | exit      |
+| <kbd>c</kbd> <kbd>n</kbd> <kbd>k</kbd>                       | cnk     | not match yet, waiting                   |             | waiting   |
+| <kbd>⏎</kbd> / <kbd>Esc</kbd> / <kbd>␣</kbd>                    | 💨      | match failed (travese all / interupt)    | run away    | exit      |
+| <kbd>s</kbd><kbd>l</kbd><kbd>e</kbd><kbd>e</kbd><kbd>p</kbd> | slee    | match monkey abbr(function snippets 2️⃣） |             |
+|                                                                 | 🙉 睡眠   | computer sleeps soon                     | guess right | exit      |
 
-> 这是 Windows **独占**功能，词条数据保存在 `/data/UserDictionary.ahk` 中。
+> This is Windows **Unique** plugin，all abbr saved in `/data/UserDictionary.ahk`.
 
 <details>
-<summary>猴子输入法设计思路（展开）</summary>
+<summary>Monkey IME design note</summary>
 &nbsp;
 
 它的本质是map字典映射
@@ -253,7 +254,7 @@ MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 </details>
 
 <details>
-<summary>【案例】如何将猴子词典（.ahk）导出到第三方输入法，比如苹果词典（.plist）?</summary>
+<summary>【example】How does Monkey IME convert abbr dictionary (.ahk) to the 3rd IME like Apple dictionary(.plist)?</summary>
 &nbsp;
 
 > 目前已支持 MacOS、QQ拼音、搜狗拼音相互转换
@@ -279,11 +280,9 @@ MAC / PINYIN / JSON）
     ;猴子词典 < -苹果词典（弹窗选择文件）
     ;Converter.parse()
 
-;猴子词典 < -苹果词典（文件目录） 
-    ;
-fileDir := "/dist/userdict4macos.plist"
-;
-Converter.parse(fileDir)
+    ;猴子词典 < -苹果词典（文件目录） 
+    ;fileDir := "/dist/userdict4macos.plist"
+    ;Converter.parse(fileDir)
 
 }
 
@@ -307,118 +306,121 @@ Converter.parse(fileDir)
 
 &nbsp;
 
-> **<kbd>A</kbd>  禅模式（单手操作原理）**
+> **<kbd>A</kbd>  Zen Mode**
 >
-> - 进入：组合键按下后，即可松手，键盘进入 1.5 秒的监听状态，根据用户第二个按键，立即做出一次响应动作。
-> - 退出：等待超时，会退出状态，或者按下 <kbd>Esc</kbd> 键，主动退出禅模式。
+> - enter: press key combination, enter the state of 1.5 second keyboard listening, base on the <kbd>second key</kbd>, run the function immediately.
+> - exit: wait until timeout, or press <kbd>Esc</kbd> .
 > 
-> 注意： 如果遇到状态栏菜单，快速弹出作为收尾动作，这是正常现象，因为用来解除 `Win` 键的按键锁定，避免卡键的副作用。
+> Notice: Windows dock pop-up and hide finally, which is normal, as release the <kbd>Win</kbd> lock.
 
-**<kbd>A</kbd> 系列的组合键，专门集成窗口管理和鼠标控制的功能**
+**<kbd>A</kbd> is related to aim to window manager and mouse controller.
 
-### 📺 窗口移动
+### 📺 Window Movement
 
 ![窗口禅模式](bin/img/moom-move.gif)
 
-按下 <kbd>Caps</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd> （可以松手了）开启禅模式：
+Press <kbd>Caps</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd> (release now) to enter zen mode:
 
-此时轻敲 <kbd>第二个键</kbd>，移动窗口坐标位置。
+now press <kbd>second key</kbd> gently, moving current window position.
 
-- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 控制左下上右的移动方向（Vim 风格）
-- <kbd>␣</kbd> 窗口回到屏幕中央
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> as left / down / up / right, like vim
+- <kbd>␣</kbd> to screen center
 
-### 📺 窗口定型
+### 📺 Window Zoom & Position
 
 ![窗口定型](bin/img/moom-zoom.gif)
 
-按下 <kbd>Caps</kbd> + <kbd>Ctrl</kbd> + <kbd>A</kbd> （可以松手了）开启禅模式：
+Press <kbd>Caps</kbd> + <kbd>Ctrl</kbd> + <kbd>A</kbd> (release now) enter zen mode:
 
-此时轻敲 <kbd>第二个键</kbd>，使得窗口占据屏幕部分区域。
+now press <kbd>second key</kbd> gently, make window position at part of the screen.
 
-- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 上下左右，即 Vim 风格
-- <kbd>[</kbd> <kbd>]</kbd> 偏左 / 右（2:1）
-- <kbd>I</kbd> <kbd>O</kbd> 偏左 / 右（1:1）
-- <kbd>␣</kbd> 中央（1:1:1）
-- <kbd>N</kbd> 正中央
-- <kbd>M</kbd> <kbd>,</kbd> 窗口最大/小化
-- <kbd>.</kbd> 窗口大小回到上一个状态
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> as left / down / up / right, like vim
+- <kbd>[</kbd> <kbd>]</kbd> bias left / right (2:1)
+- <kbd>I</kbd> <kbd>O</kbd> bias left / right (1:1)
+- <kbd>␣</kbd> center (1:1:1)
+- <kbd>N</kbd> absolute center 
+- <kbd>M</kbd> <kbd>,</kbd> max / min
+- <kbd>.</kbd> back to last size
 
-### 🖱️ 鼠标控制
+### 🖱️ Mouse Controller
 
 ![鼠标禅模式](bin/img/mouse-move.gif)
 
-<kbd>Caps</kbd> + <kbd>Win</kbd> + <kbd>A</kbd> 或者 猴子输入法 <kbd>;</kbd> `mm` （即 mouse move ，可以松手了），开启禅模式：
+Press <kbd>Caps</kbd> + <kbd>Win</kbd> + <kbd>A</kbd> or Monkey IME <kbd>;</kbd> `mm` ( mouse move ，release now）, enter zen mode:
 
-此时轻敲 <kbd>第二个键</kbd>，控制光标动作。
+now press <kbd>second key</kbd> gently, control mouse action.
 
-- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> 控制方向（Vim）
-  - 同时按住不放 <kbd>A</kbd> 键，能降低鼠标移动速度
-- <kbd>I</kbd> / <kbd>O</kbd> 单击左 / 右
-- <kbd>U</kbd> / <kbd>P</kbd> 滚轮前 / 后
-- <kbd>N</kbd> / <kbd>M</kbd> 侧键前 / 后
-- <kbd>C</kbd> / <kbd>V</kbd> 复制/粘贴 选中文字
-- <kbd>G</kbd> 指针回到窗口中央
+- <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> <kbd>L</kbd> as left / down / up / right, like vim
+  - while hold <kbd>A</kbd> , speed down
+- <kbd>I</kbd> / <kbd>O</kbd> left / right click
+- <kbd>U</kbd> / <kbd>P</kbd> forward / backward scroll
+- <kbd>N</kbd> / <kbd>M</kbd> forward / backward side button
+- <kbd>C</kbd> / <kbd>V</kbd> copy / paste word selected
+- <kbd>G</kbd> move back to screen center
 
 ---
 
-## 程序员专辑
+## Programmer Episode
 
-### 🦉 V1.2.0 单手调试器
+### 🦉 V1.2.0 One-handed Debugger 
 
-封装了 JetBrains Intellij Idea 键位映射风格的调试快捷键。按下组合键后，它先自动激活 Idea 窗口（如有，没有则作罢），通过快捷键，触发对应的功能。
+I wrap **JetBrains Intellij Idea** keymap. Press key combination, it would activate the window of `Idea`, if exists, remap the key shot, do the related function.
 
-- 进入（二选一）
-    - 按住生效：按住数字键 <kbd>4</kbd> 不松手
-    - 猴子输入法 <kbd>;</kbd> `dbg` 开启禅模式
-- 退出
-    - 主动：<kbd>Esc</kbd>
-    - 被动：<kbd>A</kbd> <kbd>I</kbd> <kbd>O</kbd> <kbd>S</kbd> 增删改代码时，或 <kbd>␣</kbd> 打开调试计算器时默默退出
+- enter (optional)
+    - hold <kbd>4</kbd> + <kbd>second key</kbd>
+    - press <kbd>;</kbd> `dbg` 
+- exit (optional)
+    - active: press <kbd>Esc</kbd>
+    - passive: press <kbd>A</kbd> / <kbd>I</kbd> / <kbd>O</kbd> / <kbd>S</kbd> when CRUD code, or press <kbd>␣</kbd> when open calculator.
 
-特别地，同时按下（第三个键） <kbd>Ctrl</kbd> 键，左上角按键都获得增强功能。
+Especially，press 3 key combination (<kbd>Ctrl</kbd>), run the enhancement of function as left-top key said in picture.
 
 <img src="bin/img/debug-keyboard.png" width="100%" alt="print_snippets.gif">
 
-示例
+example
 
-- 按下 <kbd>4</kbd> + <kbd>1</kbd> ，触发 `stepOver` 快捷键，程序执行当前语句，高亮下一行语句。
-- 按下 <kbd>4</kbd> + <kbd>3</kbd> ，触发 `resume` 快捷键，程序放行当前断点，执行到下一个断点。
-- 按下 <kbd>4</kbd> + <kbd>5</kbd> ，触发 `hotspot` 快捷键，执行 Jrebel 热部署的编译功能，相当于按下小斧头。
+- press <kbd>4</kbd> + <kbd>1</kbd> , `stepOver`, program run current statement, go to next statement.
+- press <kbd>4</kbd> + <kbd>3</kbd> , `resume`, program release current breakpoint, jump to the next. 
+- press <kbd>4</kbd> + <kbd>5</kbd> , `hotspot` , run plugin `Jrebel` hotpot code-compiled function, equal to press the icon axe to compile.
 
 
-### 🦑 V1.3.0 宇宙编辑器
+### 🦑 V1.3.0 Universe Code Editor
 
-一统天下之 vscode + idea + neovim && win + mac 都共用一套快捷键，封装了编辑器的常见操作。
+Unification of the world, `vscode` + `idea` + `neovim` && `winOS` + `macOS` all use the same keymap strategy. I wrap the usual operation in integrated development environment.
+
 
 通用：需添加前缀 `<leader>` （默认空格键）
+global usage：press the prefix key `<leader>` (default <kbd>␣</kbd>)
 
-- <kbd>n</kbd> 下一个错误
-- <kbd>j</kbd> 快速修复
-- <kbd>o</kbd> 大纲
-- <kbd>z</kbd> 禅模式
-- <kbd>f</kbd> 代码格式排版
-- <kbd>e</kbd> 转到文件
-- <kbd>a</kbd> 文件中查找
-- <kbd>s</kbd> 左侧资源管理器中查看该文件
-- <kbd>h</kbd> 该文件版本历史
-- <kbd>b</kbd> 该行打断点
-- <kbd>rr</kbd> 重构：重命名
+- <kbd>n</kbd> next error hunt
+- <kbd>j</kbd> quick fix
+- <kbd>o</kbd> content
+- <kbd>z</kbd> zen mode
+- <kbd>f</kbd> format document
+- <kbd>e</kbd> search opened files
+- <kbd>a</kbd> find in projects
+- <kbd>s</kbd> show current file in explorer
+- <kbd>h</kbd> show history version about current file
+- <kbd>b</kbd> add breakpoint
+- <kbd>rr</kbd> refactor: rename
 
-Idea 特供（Vscode 相似接口不起作用）
+Idea episode (cause Vscode similar interface does not work)
 
-- <kbd>g</kbd> 类名高亮时可生成代码
-- <kbd>,</kbd> 参数换位左移
-- <kbd>.</kbd> 参数换位右移
-- <kbd>v</kbd> 重构：抽取变量
-- <kbd>m</kbd> 重构：抽取为新方法
+- <kbd>g</kbd> gen code if highlight class name 
+- <kbd>,</kbd> parameter move left
+- <kbd>.</kbd> parameter move right
+- <kbd>v</kbd> refactor: abstract variable
+- <kbd>m</kbd> refactor: wrap as new function
 
-特殊：
+Especially, if vim plugin installed：
 
-- <kbd>H</kbd> 窗口标签：上一个（无前缀）
-- <kbd>L</kbd> 窗口标签：下一个（无前缀）
+- <kbd>H</kbd> go to previous tag (without prefix)
+- <kbd>L</kbd> go to next tag (without prefix
 
-当然，猴子输入法 <kbd>;</kbd> `**`，也记录了上述指令，不过实际输出为对应的快捷键组合。这套通用的快捷键映射，我已经做成一套，用了一年多。
+Certainly, Monkey IME, <kbd>;</kbd> `**`，also record the function above,  but output related key shot. those are used about N year
 
 使用方法：替换对应软件键位映射配置文件
+usage: replace relate program config  setting
 
 ```bash
 # Windows 复制粘贴到（默认/类似）位置 ->
@@ -463,6 +465,37 @@ tree .\CAPSLOCKMAGIC\TOOLS
 在插件 IDE.ahk 中的 `IdeAction` 类，封装了 1 方案的组合键。
 
 </details>
+
+### 🕷️ v1.4.0 爬虫零件箱
+
+提供零件，可组合零件实现浏览器爬虫：点击网页元素，下载资源的自动化机器人。
+
+适用场景：
+
+- 害怕 Python 爬虫而封禁IP，或解析资源路径困难。
+- 可复制的网页预览的文件（非图片）
+- 上万条记录，需要人工点击下载。
+
+```bash
+CapslockMagic\bin\util
+├── Animation.ahk     # 时间动画: 挂机运行非静止画面
+├── FilePipe.ahk      # 文件管道：导入导出和文件名添加日期
+├── FileStream.ahk    # 文件流：增删改查
+├── Interceptor.ahk   # 过滤器：不必每个点开看
+├── Internet.ahk      # 网络测试：是否断网
+├── Location.ahk      # 定位器：网页元素坐标
+└── Logger.ahk        # 日志：每条记录处理过程和结果
+```
+
+日志示例：每个表情代表执行了一种管道操作
+
+``` bash
+[2022-12-12 05:18:44] 4582-8 🙈 *** empty file
+[2022-12-12 05:20:38] 4591-2 🐘 *** too big size
+[2022-12-12 16:06:50] 4: ✅: source => destination | well-done
+[2022-12-12 16:33:57] 9: 🈚⭐🐞: source ⇒ destination | not exist & create file & bug
+```
+
 ###  ️🕶️ v1.5.0 HHKB兼容适配
 
 ![HHKB-win-keymap](bin/img/HHKB-win-keymap.png)
