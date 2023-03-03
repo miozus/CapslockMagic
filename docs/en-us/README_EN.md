@@ -263,7 +263,7 @@ MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
 1. 打开猴子词典 `./data/UserDictionary.ahk` ，在底部根据自身需要去掉注释，保存后按 <kbd>Caps</kbd> <kbd>Y</kbd> 重启脚本。
 
-```JavaScript
+```autohotkey
 
 ;选择性注释，开放转换接口
 global
@@ -494,7 +494,7 @@ TODO: 语法嗅探、快捷短语、自定义函数，（特殊应用环境生�
 | 🌐            | Github     | [Vonng/Capslock](https://github.com/Vonng/Capslock) | [xianyukang/MyKeymap](https://github.com/xianyukang/MyKeymap) | [miozus/CapslockMagic](https://github.com/miozus/CapslockMagic)   |
 | 💻            | 支持平台   | 主: MacOS </br> 次: Windows                         | 仅限 Windows11/10                                             | 主: Windows 11/10 </br> 次: MacOS                                 |
 | ⌨️            | 推荐配列   | 87 键                                               | 60 键                                                         | 60 键                                                             |
-| 🧰            | 开发软件   | Karabiner 单纯的字典风格                            | AutoHotkey V1 面向过程的脚本风格                              | AutoHotkey_H_V2 面向对象的现代风格，类似 JavaScript，支持多线程   |
+| 🧰            | 开发软件   | Karabiner 单纯的字典风格                            | AutoHotkey V1 面向过程的脚本风格                              | AutoHotkey_H_V2 面向对象的现代风格，类似 autohotkey，支持多线程   |
 | ⚙️            | 配置文件   | 鸿篇巨制的 json / yaml 文本                         | 内置网页服务，界面非常友好                                    | 源码即配置，拓展灵活，适合开发者                                  |
 | 👾            | 启动程序   | ✅ 仅打开第一个                                      | ✅ 支持同类窗口切换                                            | ✅ 支持同类窗口切换                                                |
 | 📺            | 窗口调整   | ✅ 需安装 Moom                                       | ✅ 调整位置和移动                                              | ✅ 调整位置和移动（仿写的 Moom）、支持禅模式                       |

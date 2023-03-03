@@ -11,17 +11,35 @@
 </head>
 
 <body>
+  <nav>
+    <a href="#/zh-cn/">简体中文</a>
+    <a href="#/en-us/">EN</a>
+  </nav>
   <div id="app">请稍等...</div>
   <script>
     window.$docsify = {
-      name: 'CapslockMagic',
-      repo: 'https://github.com/miozus/CapslockMagic',
+      logo: 'img/capslock_run.ico',
+      repo: 'miozus/CapslockMagic',
+      loadSidebar: true,
       loadNavbar: true,
-      loadSidebar: true
+      coverpage: true,
+      coverpage: ['/', '/zh-cn/', '/en-us/'],
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      copyCode: {
+        buttonText: '📋',
+        errorText: 'Error',
+        successText: 'Copied'
+      },
     }
   </script>
   <!-- Docsify v4 -->
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-autohotkey.min.js"></script>
 </body>
 
 </html>

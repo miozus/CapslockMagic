@@ -61,26 +61,22 @@ MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
 1. 打开猴子词典 `./data/UserDictionary.ahk` ，在底部根据自身需要去掉注释，保存后按 <kbd>Caps</kbd> <kbd>Y</kbd> 重启脚本。
 
-```JavaScript
+```autohotkey
 
 ;选择性注释，开放转换接口
-global
-macDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict])
+global macDictionary := UserDict.concat([emojiDict, csDict, privateDict, logoDict])
 
 CapsLock & 9::
 {
-;猴子词典 -> 苹果词典（枚举类参数可选
-MAC / PINYIN / JSON）
+    ;猴子词典 -> 苹果词典（枚举类参数可选 MAC / PINYIN / JSON）
     Converter.convert(macDictionary, DictTypeEnum.MAC)
 
     ;猴子词典 < -苹果词典（弹窗选择文件）
     ;Converter.parse()
 
-;猴子词典 < -苹果词典（文件目录） 
-    ;
-fileDir := "/dist/userdict4macos.plist"
-;
-Converter.parse(fileDir)
+    ;猴子词典 < -苹果词典（文件目录） 
+    ; fileDir := "/dist/userdict4macos.plist"
+    ; Converter.parse(fileDir)
 
 }
 
