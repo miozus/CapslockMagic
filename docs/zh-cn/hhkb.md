@@ -2,9 +2,11 @@
 
 ![HHKB-win-keymap](../img/HHKB-win-keymap.png)
 
-这样改键，为了兼顾 Mac 习惯，又不失caps常用功能，从普通键盘到 HHKB 过渡自然，瞬间适应。
+> 注意：作者使用 `/tools/reg/switch_keymap_lctrl_lalt.reg` 脚本，将系统键位左下角的 <kbd>Alt</kbd> 和 <kbd>Ctrl</kbd> 互换，最终效果为“空格键相邻左边是 <kbd>Ctrl</kbd> 键”
 
-兼容更BT的 60 配列，按常用功能进行整合重构
+这样改键，为了兼顾 Mac 习惯，又不失 <kbd>caps</kbd> 常用功能，从普通键盘到 60 配列的 `HHKB` 过渡自然，瞬间适应。
+
+本次版本更新做了代码重构
 
 * X 插件拆分
   - 控制器：X_KB(keyboard)
