@@ -11,7 +11,7 @@
 
 特别地，同时按下（第三个键） <kbd>Ctrl</kbd> 键，左上角按键都获得增强功能。
 
-![print_snippets.gif](../img/debug-keyboard.png)
+![debugger](../img/debug-keyboard.png)
 
 示例
 
