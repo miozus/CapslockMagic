@@ -16,7 +16,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 2. 设置默认打开方式：右键单击 `CapslockMagic.ahk` ，选择打开方式，选择到步骤1的的 `AutoHotKey.exe` 打开。
 
-* 成功标志：鼠标光标出现黑色桃心`🖤` ，或者桌面右下角托盘，出现绿色图标 `⇧`
+> 成功标志：鼠标光标出现黑色桃心`🖤` ，或者桌面右下角托盘，出现绿色图标 `⇧`
 
 
 ---

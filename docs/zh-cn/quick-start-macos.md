@@ -3,7 +3,7 @@
 #### 【推荐】免下载一键导入
 
 
-> **温馨提示**： 脚本支撑软件是免费开源的 [Karabiner-Element](https://karabiner-elements.pqrs.org/) ，如未下载，请先自行下载。 CapsLockMagic 已支持拓展包：
+> **温馨提示**： 运行所需软件是轻量、免费和开源的 [Karabiner-Element](https://karabiner-elements.pqrs.org/) ，如未下载，请先自行下载。 CapsLockMagic 已支持拓展包：
 > 
 > - 分号特殊符 `Semicolon Pull Down Symbol`
 > - 数字小键盘 `3 Awake Digital Keyboard`
