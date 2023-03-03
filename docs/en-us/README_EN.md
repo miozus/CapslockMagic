@@ -56,7 +56,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 - 条件：取消勾选所有
 - 操作：启动程序 `AutoHotKey.exe`, 参数 `CapslockMagic.ahk` 文件地址
 
-![auto-startup-plan](bin/img/auto-startup-plan.png)
+![auto-startup-plan](../img/auto-startup-plan.png)
 
 </details>
 
@@ -69,7 +69,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 3. 将 `myenv` 文件夹完整路径，添加到系统环境变量 PATH。
 4. 即实现 <kbd> Win</kbd> + <kbd>E</kbd> 输入 `m` 回车，瞬间启动。
 
-![myenv-tip](bin/img/myenv-tip.png)
+![myenv-tip](../img/myenv-tip.png)
 
 </details>
 
@@ -136,7 +136,7 @@ Most keymapping extends [CapsLock-Enhancement](https://github.com/Vonng/Capslock
 
 Hold on <kbd>3</kbd> into digital state, as while press gently <kbd>SecondKey</kbd>, whose output perform the relative key below. release <kbd>3</kbd> would exit digital state。
 
-![数字小键盘](bin/img/digital-keyboard.png)
+![数字小键盘](../img/digital-keyboard.png)
 
 | input                        | output                 |
 |------------------------------|------------------------|
@@ -164,7 +164,7 @@ Hold on <kbd>3</kbd> into digital state, as while press gently <kbd>SecondKey</k
 Hold <kbd>;</kbd> **and do not release**, start "Semicolon Keyboard State", as the same time, press <kbd>second key</kbd>, it would remap the symbol key up on the keystore. exit if release <kbd>;</kbd>.
 
 
-![分号特殊符](bin/img/semicolon-keyboard.png)
+![分号特殊符](../img/semicolon-keyboard.png)
 
 - example <kbd>;</kbd> + <kbd>a</kbd> output <kbd>*</kbd>
 
@@ -219,7 +219,7 @@ Press <kbd>;</kbd> **and release now**, start "Monkey Input Method Editor State"
 - else exit the state immediately. press <kbd>⏎</kbd> / <kbd>Esc</kbd> / <kbd>␣</kbd> to exit, also works.
 
 
-<img src="bin/img/hook_cne.gif" width="100%" alt="print_snippets.gif"/>
+<img src="../img/hook_cne.gif" width="100%" alt="print_snippets.gif"/>
 
 | input                                                           | display | output explanation                       | monkey      | IME State |
 |-----------------------------------------------------------------|---------|------------------------------------------|-------------|-----------|
@@ -257,7 +257,7 @@ MacOS 仅将用户词典添加到内置输入法，作为打字候选项。
 
 > 目前已支持 MacOS、QQ拼音、搜狗拼音相互转换
 
-![UserDict](bin/img/userDict.png)
+![UserDict](../img/userDict.png)
 
 根据需要调用 `Converter` 类的转换方法，获得用户自定义短语文件 ，通过局域网/蓝牙/微信等方式传输，导入输入法软件即可。
 
@@ -288,11 +288,11 @@ MAC / PINYIN / JSON）
 
 2. 按 <kbd>Caps</kbd> <kbd>9</kbd> ，根据弹窗提示操作后，点击确定，脚本所在目录就生成了文件 `/dist/userdict4macos.plist` ，通过局域网共享文件传输到 MacOS。
 
-![转换弹窗提示](bin/img/convertMsg.png)
+![转换弹窗提示](../img/convertMsg.png)
 
 3. MacOS 拖拽用户词典到文本
 
-![importMacDict](bin/img/macObj2macDict.gif)
+![importMacDict](../img/macObj2macDict.gif)
 
 偏好设置 > 键盘 > 文本
 
@@ -315,7 +315,7 @@ MAC / PINYIN / JSON）
 
 ###  2.4. <a name='WindowMovement'></a>📺 Window Movement
 
-![窗口禅模式](bin/img/moom-move.gif)
+![窗口禅模式](../img/moom-move.gif)
 
 Press <kbd>Caps</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd> (release now) to enter zen mode:
 
@@ -326,7 +326,7 @@ now press <kbd>second key</kbd> gently, moving current window position.
 
 ###  2.5. <a name='WindowZoomPosition'></a>📺 Window Zoom & Position
 
-![窗口定型](bin/img/moom-zoom.gif)
+![窗口定型](../img/moom-zoom.gif)
 
 Press <kbd>Caps</kbd> + <kbd>Ctrl</kbd> + <kbd>A</kbd> (release now) enter zen mode:
 
@@ -342,7 +342,7 @@ now press <kbd>second key</kbd> gently, make window position at part of the scre
 
 ###  2.6. <a name='MouseController'></a>🖱️ Mouse Controller
 
-![鼠标禅模式](bin/img/mouse-move.gif)
+![鼠标禅模式](../img/mouse-move.gif)
 
 Press <kbd>Caps</kbd> + <kbd>Win</kbd> + <kbd>A</kbd> or Monkey IME <kbd>;</kbd> `mm` ( mouse move ，release now）, enter zen mode:
 
@@ -373,7 +373,7 @@ I wrap **JetBrains Intellij Idea** keymap. Press key combination, it would activ
 
 Especially，press 3 key combination (<kbd>Ctrl</kbd>), run the enhancement of function as left-top key said in picture.
 
-<img src="bin/img/debug-keyboard.png" width="100%" alt="print_snippets.gif">
+<img src="../img/debug-keyboard.png" width="100%" alt="print_snippets.gif">
 
 example
 
@@ -466,7 +466,7 @@ tree .\CAPSLOCKMAGIC\TOOLS
 
 ###  3.3. <a name='v1.5.0HHKB'></a> ️🕶️ v1.5.0 HHKB兼容适配
 
-![HHKB-win-keymap](bin/img/HHKB-win-keymap.png)
+![HHKB-win-keymap](../img/HHKB-win-keymap.png)
 
 这样改键，为了兼顾 Mac 习惯，又不失caps常用功能，从普通键盘到 HHKB 过渡自然，瞬间适应。
 

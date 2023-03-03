@@ -1,5 +1,7 @@
 # 快速上手 Windows 版
 
+![windows-install](../img/windows-install.gif)
+
 #### 1.下载
 
 ```bash
@@ -8,10 +10,12 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 #### 2.运行
 
-1. 解压文件: `tools/AutoHotkey_H/AutoHotkey_H-xx-thqby.7z`
-   ，或者 [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H/releases) 版本中心下载最新发行版和解压。
-2. 添加管理员权限：右键单击 `AutoHotKey.exe` （x64 / x32）> 属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
-3. 设置默认打开方式：右键单击 `CapslockMagic.ahk` : 打开方式，选择到步骤1的解压目录的 `AutoHotKey.exe` 打开。
+1. 添加管理员权限：打开程序目录`/tools/AutoHotkey_H/`，右键单击 `AutoHotKey.exe` （x64 / x32），选择 属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
+
+2. 设置默认打开方式：右键单击 `CapslockMagic.ahk` : 打开方式，选择到步骤1的解压目录的 `AutoHotKey.exe` 打开。
+
+> **提示**：运行所需程序已内置，也可从 [thqby/AutoHotkey_H](https://github.com/thqby/AutoHotkey_H/releases) 版本中心下载最新发行版。
+
 
 <details>
 <summary> 【推荐】开机自启</summary>
