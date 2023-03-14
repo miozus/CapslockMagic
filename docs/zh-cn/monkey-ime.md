@@ -4,7 +4,10 @@
 
 如果输入错误密令或按下 <kbd>Esc</kbd> 等，立即退出。
 
-<img src="../img/hook_cne.gif" width="100%" alt="print_snippets.gif"/>
+关键词：**跨应用**!无论处在什么程序，都生效的魔法。
+
+![print_snippets](../img/hook_cne.gif)
+
 &nbsp;
 
 | 输入                                                              | 显示   | 输出说明                                       | 猴子   | 输入法状态 |

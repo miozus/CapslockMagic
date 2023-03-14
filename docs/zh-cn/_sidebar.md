@@ -7,12 +7,12 @@
 
 * **使用说明书**
 
-* [⇪&nbsp;上档键增强](zh-cn/capslock-enhancement.md)
-* [3️⃣&nbsp;数字小键盘](zh-cn/numpad.md)
-* [;&nbsp;&nbsp;&nbsp;号特殊符（特舒服）](zh-cn/semicolon-hook.md)
-* [⌨️&nbsp;猴子输入法](zh-cn/monkey-ime.md)
-* [📺&nbsp;窗口管理](zh-cn/window.md)
-* [🖱️&nbsp;鼠标控制](zh-cn/mouse.md)
+* [`⇪` 上档键增强](zh-cn/capslock-enhancement.md)
+* [3️⃣ 数字小键盘](zh-cn/numpad.md)
+* [`;` 号特殊符（特舒服）](zh-cn/semicolon-hook.md)
+* [⌨️ 猴子输入法](zh-cn/monkey-ime.md)
+* [📺 窗口管理](zh-cn/window.md)
+* [🖱️ 鼠标控制](zh-cn/mouse.md)
 
 * **程序员专辑**
 
