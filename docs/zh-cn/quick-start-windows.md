@@ -38,6 +38,6 @@ git clone https://github.com/miozus/CapslockMagic.git
 1. 新建文件夹 `myenv` 
 2. 右键点击`CapslockMagic.ahk` 创建快捷方式，剪切放入 `myenv` 文件夹中（重命名为`m`）
 3. 将 `myenv` 文件夹完整路径，添加到系统环境变量 PATH。
-4. 即实现 <kbd> Win</kbd> + <kbd>E</kbd> 输入 `m` 回车，瞬间启动。
+4. 即实现 <kbd> Win</kbd> + <kbd>R</kbd> 输入 `m` 回车，瞬间启动。
 
 ![myenv-tip](../img/myenv-tip.png)

@@ -1,23 +1,52 @@
 # 1分钟学会添加一个猴子词条
 
+## 字符片段词条
 
-比如我在写 vue2 页面，每次 `@click=clickMethod`，新增函数需要定位到 methods 的部分，再手写函数，写多了，我突然可以将这个过程保存为“快速编写方法”的快捷键操作。
+最简单的 `语法嗅探` 词条，打开 `\bin\data\dict\dict_xxx.ahk` 新增一条映射关系就可以了。例如增加 emoji 表情
+
+```autohotkey
+
+emojiDict := Map(
+    ...
+    ; 新增
+    "gzh", "⛩️", ; 公众号
+    "xcx", "🐣", ; 小程序
+)
+
+```
+
+按下 <kbd>Caps</kbd> + <kbd>Y</kbd> 刷新，使用最新更改的文件。
+
+按下 <kbd>;</kbd> <kbd>g</kbd> <kbd>z</kbd> <kbd>h</kbd> 看看魔法的效果吧。
+
+> 注意： 如果增加新的词典分类，请在 `UserDictionary.ahk` 使用`#Include` 语法引用进来。
+
+
+
+
+## 函数指令词条
+
+
+刚才是静态的指令，而这个是动态的指令。
+
+比如我在写 vue2 页面，每次 `@click=clickMethod`，新增函数需要定位到 methods 的部分，再手写函数，写多了，我突然想到，可以将这个过程保存为“编写方法”的快捷键操作。
 
 ### 1. 给魔法起名字
 
-手动打开 （或在vscode使用 <kbd>␣</kbd><kbd>e</kbd>搜索 monkey）`\bin\MonkeyIME.ahk` ，在最后的条件分支，再添加新的分支
+手动打开 （或在vscode使用 <kbd>␣</kbd> <kbd>e</kbd> 搜索 monkey）`\bin\MonkeyIME.ahk` ，在最后的条件分支，再添加新的分支
 
 ```autohotkey
 ; 原文
+...
 case "vv": Vim.find("view")
 
-; 改为 im = implement
-case "im": Vim.implement()
+; 添加（im = implement）
+case "im": Vim.implement()  
 ```
 
 ### 2. 实现魔法
 
-此时打开 `\bin\util\Vim.ahk` (或者光标移动到 Vim.`find` 按快捷键<kbd>␣</kbd><kbd>d</kbd> 跳转实现类) , 根据需要实现方法
+此时打开 `\bin\util\Vim.ahk` (或者光标移动到 Vim.`find` 按快捷键 <kbd>␣</kbd> <kbd>d</kbd> 跳转实现类文件) , 然后根据实际需要实现脚本
 
 ```
 class Vim {
@@ -45,7 +74,7 @@ class Vim {
     "im", "implement",
 ```
 
-按下 <kbd>Caps</kbd> <kbd>y</kbd> 刷新，使用最新更改的文件。
+按下 <kbd>Caps</kbd> + <kbd>Y</kbd> 刷新，使用最新更改的文件。
 
 ### 4.使用魔法
 
@@ -101,4 +130,4 @@ class Vim {
 }
 ```
 
-这样一个跨应用的猴子词条就完成了。
+这样一个跨应用的猴子词条就完成了。后面想到新的细节，再完善它。
