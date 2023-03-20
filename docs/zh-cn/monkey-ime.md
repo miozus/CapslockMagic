@@ -42,6 +42,7 @@
             - 还要在 `bin\SemicolonHook.ahk` 的`execSemicolonAbbr` 方法中添加一种情况 `case "sleep": computerGoSleep()`
         - 技巧：它可以用来写 Vim 的宏，完美的跨软件运行方案。
 
+【案例】[1分钟学会添加一个猴子词条](zh-cn/note/add-monkey-dict.md)
 
 #### 映射编码规则
 
@@ -51,8 +52,9 @@
 
 #### 猴子词典涵盖范围
 
+- `secret`：魔法注册中心
 - `emoji`：数据结构和算法 | 缓存 | 线程 | 设计模式 | 事务
-- `cs`：计算机科学 | Spring 常用注解 | RESTful | 代码片段（如预防各种类型 NPE）
-- `win`: PowerShell 终端命令
+- `computer`：计算机科学 | Spring 常用注解 | RESTful | 代码片段（如预防各种类型 NPE）
+- `terminal`: PowerShell 终端命令
 - `private`：完整中文标点符号 （无视输入法）| 按键符号
 - `logo`：收集各种开发框架图标链接，装饰 Notion 标题

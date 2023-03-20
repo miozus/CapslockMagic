@@ -19,13 +19,9 @@ emojiDict := Map(
 
 按下 <kbd>;</kbd> <kbd>g</kbd> <kbd>z</kbd> <kbd>h</kbd> 看看魔法的效果吧。
 
-> 注意： 如果增加新的词典分类，请在 `UserDictionary.ahk` 使用`#Include` 语法引用进来。
-
-
-
+> 注意： 如果添加新的词典分类文件 `dict_xxx.ahk`，请在 `UserDictionary.ahk` 使用`#Include` 语法引用进来。
 
 ## 函数指令词条
-
 
 刚才是静态的指令，而这个是动态的指令。
 
