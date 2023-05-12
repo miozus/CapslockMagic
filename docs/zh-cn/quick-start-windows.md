@@ -14,9 +14,9 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 1. 添加管理员权限：打开目录`CapslockMagic/tools/AutoHotkey_H/`，右键单击 `AutoHotKey.exe` （x64 / x32），依次选择 属性 > 安全 > 兼容性 > 勾选管理员权限 > 确定。
 
-2. 设置默认打开方式：右键单击 `CapslockMagic.ahk` ，选择打开方式，选择到步骤1的的 `AutoHotKey.exe` 打开。
+2. 设置默认打开方式：右键单击 `CapslockMagic.ahk` ，选择打开方式，选择到步骤1 路径的 `AutoHotKey.exe` 打开。
 
-> 成功标志：鼠标光标出现黑色桃心`🖤` ，或者桌面右下角托盘，出现绿色图标 `⇧`
+> 运行成功标志：鼠标光标出现黑色桃心`🖤` ，或者桌面右下角托盘，出现绿色图标 `⇧`
 
 
 ---
@@ -37,7 +37,7 @@ git clone https://github.com/miozus/CapslockMagic.git
 
 1. 新建文件夹 `myenv` 
 2. 右键点击`CapslockMagic.ahk` 创建快捷方式，剪切放入 `myenv` 文件夹中（重命名为`m`）
-3. 将 `myenv` 文件夹完整路径，添加到系统环境变量 PATH。
+3. 将 `myenv` 文件夹完整路径，添加到系统环境变量 PATH
 4. 即实现 <kbd> Win</kbd> + <kbd>R</kbd> 输入 `m` 回车，瞬间启动。
 
 ![myenv-tip](../img/myenv-tip.png)

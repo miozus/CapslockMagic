@@ -1,5 +1,7 @@
 # 🦉 V1.2.0 单手调试器
 
+![debugger](../img/debug-keyboard.png)
+
 封装了 JetBrains Intellij Idea 键位映射风格的调试快捷键。按下组合键后，它先自动激活 Idea 窗口（如有，没有则作罢），通过快捷键，触发对应的功能。
 
 - 进入（二选一）
@@ -11,9 +13,8 @@
 
 特别地，同时按下（第三个键） <kbd>Ctrl</kbd> 键，左上角按键都获得增强功能。
 
-![debugger](../img/debug-keyboard.png)
 
-示例
+#### 示例
 
 - 按下 <kbd>4</kbd> + <kbd>1</kbd> ，触发 `stepOver` 快捷键，程序执行当前语句，高亮下一行语句。
 - 按下 <kbd>4</kbd> + <kbd>3</kbd> ，触发 `resume` 快捷键，程序放行当前断点，执行到下一个断点。

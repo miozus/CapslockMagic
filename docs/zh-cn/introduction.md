@@ -37,3 +37,10 @@
 | 🤖            | 中英文管家 | ❌                                                   | ❌                                                             | ✅ 解决写代码又写注释的切换痛点                                    |
 | 🦉            | 单手调试器 | ❌                                                   | ❌                                                             | ✅ 压缩的调试组合键（程序员特供）                                  |
 | 🦑            | 宇宙编辑器 | ❌                                                   | ❌                                                             | ✅ 统一的 Idea + vscoDe 键位映射方案 + vim 增强热键 （程序员特供） |
+
+
+&nbsp;
+>
+> All my effort is the parody of Ruohang Feng (@Vonng) &amp; Salted Fish Akang (@xianyukang).
+>
+> 我所有的努力都是对冯若航和咸鱼阿康的拙劣模仿。

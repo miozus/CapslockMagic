@@ -24,7 +24,8 @@
 * **设计笔记**
 
 * [其他人性化设计](zh-cn/note/design.md)
-* [1分钟学会添加一个猴子词条](zh-cn/note/add-monkey-dict.md)
+* [1分钟添加猴子词条之快捷短语](zh-cn/note/add-monkey-dict-string.md)
+* [1分钟添加猴子词条之魔法命令](zh-cn/note/add-monkey-dict-command.md)
 * [导出猴子词典](zh-cn/note/export-monkey-dict.md)
 
 * **常见问题**
