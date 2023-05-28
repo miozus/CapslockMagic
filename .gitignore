@@ -4,3 +4,4 @@
 /dist
 /bin/plugin/seeyon
 .git.bfg-report
+/data/dict/dict_private.ahk
