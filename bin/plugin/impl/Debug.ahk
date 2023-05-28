@@ -1,11 +1,11 @@
-; Intelj IDEA 调试动作
+; Intellij IDEA 调试动作
 ; ---
 ; docs: https://www.cnblogs.com/chiangchou/p/idea-debug.html
 class Debug {
 
     Enable := false
 
-    ; view , when contion is true
+    ; view , when condition is true
     static view() {
         Send "{blind}^+{F8}"
         ToolTip "🔍"
@@ -98,6 +98,19 @@ class Debug {
         this.evaluateExpression()
         Sleep 500
         this.exit()
+    }
+
+    ; 强制返回 NULL 结束当前进程
+    static forceReturn() {
+        Send "{blind}^!{F10}"
+        Sleep 100
+        SendText "null"
+        Send "{Blind}{Enter}"
+        Sleep 1000
+        this.resumeProgram()
+        Sleep 100
+        Idea.Jrebel.hotspot()
+        ToolTip "⏹️"
     }
 
     ; 启动开关

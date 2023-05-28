@@ -119,5 +119,6 @@ CapsLock & 4::
 ;---------------------------------------------------------------------o
 CapsLock & 5:: Notion.commentByDoubleSlash()
 LAlt & v:: Notion.pasteCodeSingleLine()
+^o:: Notion.cursorCallBack()
 #Hotif
 ;---------------------------------------------------------------------o

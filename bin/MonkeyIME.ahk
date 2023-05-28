@@ -1,3 +1,5 @@
+#Include plugin\impl\WinOS.ahk
+
 ; 分号短语命令
 class SemicolonAbbr {
 
@@ -33,9 +35,10 @@ class SemicolonAbbr {
             case "dotb": Dotfiles.backup()
             case "doto": Dotfiles.open()
             case "dt": Timer.showDatetime()
-            ; ====  应用管理 ====
+                ; ====  应用管理 ====
             case "spy": App.AHK.winSpy()
-            case "ww": App.WeChat.activate()
+            case "wsc": App.AHK.winSoundComponent()
+            case "wx": App.WeChat.activate()
             case "1": App.dittoPaste(1)
             case "2": App.dittoPaste(2)
             case "3": App.dittoPaste(3)
@@ -69,19 +72,14 @@ class SemicolonAbbr {
             case "H": IdeVim.tabPreview()
             case "L": IdeVim.tabNext()
                 ; ====  开发工具 ====
-            case "ms": Locator.getMousePosCode()
+            case "ms": Locator.getMousePositionCode()
             case "px": Locator.getPixelSearchCode()
+            case "pl": Locator.getPixelElementCode()
                 ; ====  日常办公 ====
-            case "syl": Website.Seeyon.login()
-            case "syk": Website.Seeyon.developNote()
-            case "syd": Website.Seeyon.dev()
-            case "sya": Website.Seeyon.app()
-            case "test": Website.Seeyon.testSubmitForm()
             case "docs": Website.Docs.king()
             case "gen": Website.codeGen()
             case "json": Website.excel2json()
             case "gpt": Website.chatGpt()
-            case "eco": Website.eco()
             case "devst": BatchLauncher.devStart()
             case "devex": BatchLauncher.devExit()
             case "gmst": BatchLauncher.gameStart()
@@ -90,17 +88,28 @@ class SemicolonAbbr {
             case "sound": App.AHK.winSoundComponent()
             case "mute": Send "{Volume_Mute}"
             case "mic": SoundVolume.switchVolumeAndMicrophone()
+                ; ====  前端编码 ====
             case "vi": Vim.find("import")
             case "vm": Vim.find("methods")
             case "vs": Vim.find("style ")
-            case "vd": Vim.find("data")
+            case "vd": Vim.find("data()")
             case "vv": Vim.find("view")
+            case "im": Vim.implement()
                 ; ====  快速测试 ====
-            case "re": tooltip "is building"
+            case "re": UnitTest.testFunction()
             default:
                 return false
         }
         return true
+    }
+}
+
+class UnitTest {
+
+    static testFunction() {
+        ; tooltip WinActive("ahk_exe STGameOpt.exe")
+        ; tooltip WinActive("ahk_class START Cloud Game ahk_exe STGameOpt.exe")
+        ; tooltip WinActive("ahk_class START Cloud Game Render ahk_exe STGameOpt.exe")
     }
 }
 

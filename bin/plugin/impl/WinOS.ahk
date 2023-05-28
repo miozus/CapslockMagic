@@ -79,7 +79,7 @@ class WinOS {
     }
 
     static explorer() {
-      activateOrRun("ahk_class CabinetWClass", "")
+      activateOrRun("ahk_class CabinetWClass", "explorer",,,true)
     }
 
     static explorerReload() {
@@ -150,6 +150,7 @@ class WinOS {
       tip(exStyle, -500)
     }
 
+    ; [已废弃] 同类窗口的切换: 实测按9下才回到这个窗口
     static shift() {
       winClass := WinGetClass("A")
       if (winClass == "ApplicationFrameWindow") {

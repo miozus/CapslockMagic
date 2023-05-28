@@ -38,14 +38,14 @@ class GC {
     }
 
     static ModifyKeyPhysical() {
-        Send "{Alt}{Ctrl}"
+        Send "{Alt}"
+        Send "{Alt}"
         if GetKeyState("LWin")
         {
             Send "{LWin Up}"
             Sleep 100
             Send "{Esc}"
         }
-        Sleep 100
         ToolTip
         ; ToolTip "  LAlt" GetKeyState("LAlt") " LWin" GetKeyState("LWin") " LCtrl" GetKeyState("LCtrl") 
     }

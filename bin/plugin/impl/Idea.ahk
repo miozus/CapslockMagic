@@ -15,7 +15,20 @@ class Idea extends App.Idea {
             Send "{blind}^{F9}"
             ToolTip "🫕"
         }
+    }
 
+    class Git {
+        ; 下一个差异
+        static nextDiff() {
+            Send "{Blind}{F7}"
+        }
+    }
+
+
+    ; 奇怪的环境经常被 Alt 锁住
+    static terminal() {
+        Send "{Alt Up}"
+        Send "{Blind!#^}!{F12}"
     }
 
     ; 运行当前上下文的程序
@@ -57,7 +70,7 @@ class Idea extends App.Idea {
     }
 
     static clearAll() {
-        Send "{Blind}!8"
+        IDE.service()
         Send "{Blind}^!+\"
         Send "{Blind}{Esc}"
         this.activateCursor()
@@ -78,7 +91,7 @@ class Idea extends App.Idea {
 
     ; 重启当前服务
     static reloadCurrentService() {
-        Send "!8"
+        IDE.service()
         Sleep 200
         Send "^!c"
     }
@@ -117,8 +130,8 @@ class Idea extends App.Idea {
             } else {
                 Send "^#+d"    ; clear all
             }
-            Send "!8"
-            Send "!8"
+            IDE.service()
+            IDE.service()
             Sleep 250
             if (keyword != "null")
             {

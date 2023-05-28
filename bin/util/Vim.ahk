@@ -1,4 +1,16 @@
 class Vim {
+    
+    ; 剪切板的单词，填写到 methods 下面
+    static implement() {
+        this.find("methods")
+        Send "{Esc}"
+        Sleep 50
+        SendText "o"
+        Sleep 100
+        SendText A_Clipboard '(){ console.log("' A_Clipboard ' works") },'
+        Sleep 50
+        Send "{Esc}"
+    }
 
     static find(str) {
         Send "{Esc}"

@@ -220,7 +220,7 @@ class App {
     class AHK {
 
         static help() {
-            ;   Run "https://wyagd001.github.io/v2/docs/AutoHotkey.htm"
+            ;   Run "https://wyagd001.github.io/v2/docs/"
             ;   Run "D:\TOOLS\AutoHotKey\AutoHotkey_H v2.chm"
             path := "tools\AutoHotkey_V2L_CN.chm"
             title := "AutoHotkey v2"
@@ -289,7 +289,7 @@ class BatchLauncher {
         ; 运行工具
         App.Idea.run()
         App.Vscode.run()
-        App.Uniapp.run()
+        ; App.Uniapp.run()
         App.Chrome.run()
     }
 

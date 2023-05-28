@@ -1,5 +1,10 @@
 class Notion {
     
+    static cursorCallBack() {
+        Send "{Blind}^z"
+        Send "{Blind}^+z"
+    }
+    
     static editCaption() {
         Send "{Blind!}^!m"
     }
@@ -8,6 +13,7 @@ class Notion {
     {
         Send "^v"
         ; 2023-02 快捷键改版
+        Send "{Down}"
         Send "{Enter}"
         Sleep 100
         this.editCaption()

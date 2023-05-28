@@ -3,8 +3,6 @@ computerDict := Map(
     ; SQL
     "ss", "sqlserver ",
     ; Java
-    "apy", "application.yml",
-    "app", "application.properties",
     "bsy", "bootstrap.yml",
     "pom", "pom.xml",
     "spc", "Spring Could",
@@ -58,9 +56,11 @@ computerDict := Map(
     "alg", "@Slf4j",
     "acf", "@Configuration",
     "act", "@Controller",
-    "apm", '@PostMapping("")',
-    "agm", '@GetMapping("")',
-    "arm", '@RequestMapping("")',
+    ; RESTful
+    "apm", '@PostMapping("/")',
+    "agm", '@GetMapping("/")',
+    "arm", '@RequestMapping("/")',
+    ; controller
     "ats", '@Transactional',
     "arc", '@RestController',
     "arb", '@ResponseBody',
@@ -86,13 +86,11 @@ computerDict := Map(
     "asp", "@Aspect",
     "aide", '@Idempotent("")',
     "acp", "@Component",
-    ; swagger2
-    "apt", '@Api(tags = "")',    ; 控制器标签
-    "apo", '@ApiOperation("")',  ; 接口函数
-    "api", '@ApiImplicitParam(name = "id", value = "编号", required = true, dataTypeClass = Long.class)',
-    "aps", "@ApiImplicitParams({})",  ; 多个入参
-    "apd", '@ApiModel("")', ; POJO
-    "amp", '@ApiModelProperty(value = "用户编号", required = true, example = "1024")',
+    ; swagger3
+    "apt", '@Tag(name = "")',    ; 控制器标签注释
+    "apo", '@Operation(summary = "")',  ; 接口函数作用注释
+    "app", '@Parameter(name = "id", description = "编号", required = true)', ; 入参注释
+    "api", '@GetMapping("/get")`n@Operation(summary = "测试接通情况")`n@Parameter(name = "id", description = "编号", required = true, example = "1024")`npublic CommonResult<Long> testApi(@RequestParam("id") Long id) {`nreturn success(1L);`n}',
     ; lobmok
     "add", "@Data",
     "agt", "@Getter",
@@ -150,5 +148,9 @@ computerDict := Map(
     "vss", '<script setup lang="ts">`r</script>',
     "vir", "import { ref } from 'vue'",
     ; ES6
-    "jjs", "var obj = JSON.parse(JSON.stringify())`;", ; 深拷贝常用方法 
+    "jcp", "var obj = JSON.parse(JSON.stringify())`;", ; json copy obj
+    "kin", "Object.keys(obj).length === 0", ; keys is null
+    "knn", "Object.keys(obj).length !== 0", ; keys not null
+    ; service
+    "lls", 'cd E:\MagicBook\company\mall\lilishop\lilishop-ui\seller `;`; npm run dev', ; 丽丽商城店铺端UI
 )

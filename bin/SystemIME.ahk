@@ -156,7 +156,7 @@ class IME {
 
 
     static commentCN(startStr := "") {
-        Send "{text}" startStr " "
+        SendText startStr " "
         IME.set("中文")
     }
 

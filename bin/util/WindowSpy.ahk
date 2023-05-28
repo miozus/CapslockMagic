@@ -1,4 +1,3 @@
-; 
 ; Window Spy for AHKv2
 ; API: https://github.com/TheArkive/Window_Spy_ahk2
 

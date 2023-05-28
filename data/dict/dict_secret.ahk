@@ -11,6 +11,7 @@ global secretDict := Map(
     "os", "脚本目录",
     "tm", "任务管理器",
     "spy", "查看控件",
+    "wsc", "音量控件",
     "dotb", "备份配置",
     "doto", "打开配置",
     "rex", "重启资源管理器",
@@ -49,31 +50,30 @@ global secretDict := Map(
     "lb", "",
     "ldd", "",
     "lrr", "",
-    ; website
-    "syl", "登录门户",
-    "syd", "本地开发",
-    "sya", "协同云",
-    "docs", "腾讯文档",
+    ; 网站
+    "docs", "金山文档",
     "gpt", "ChatGpt",
     "gen", "工具箱",
     "json", "excel2json",
-    "eco", "易协同",
     "devst", "开始编程",
     "devex", "结束编程",
     "gmst", "开始游戏",
     "gmex", "结束游戏",
     "dd", "隐藏状态栏",
-    "ww", "微信",
+    "wx", "微信",
     "ca", "清空日志",
-    ; logger
+    ; 日志
     "lgi", "",
     "lgg", "",
     "roui", "换UI",
-    "syk", "开发日志",
+    "syn", "开发日志_旧",
+    "syk", "开发日志_新",
     "test", "提交表单",
+    ; 坐标点
     "ms", "光标坐标",
     "px", "取色坐标",
-    ; sound
+    "pl", "元素坐标",
+    ; 声音
     "sound", "声音设备",
     "mute", "音量",
     "mic", "麦克风",
@@ -83,6 +83,7 @@ global secretDict := Map(
     "vs", "style",
     "vd", "data",
     "vv", "view",
+    "im", "implement",
     ; 快速命令
     "re", "快速命令",
 )

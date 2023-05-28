@@ -25,14 +25,9 @@ CapsLock & a::
 ; d = database | api docs
 CapsLock & d::
 {
-    if GetKeyState("Alt")
-    {
+    if GetKeyState("Ctrl") {
         App.apifox.run()
-    } else if GetKeyState("Ctrl")
-    {
-        App.redisManager.run()
-    } else
-    {
+    } else {
         App.navicat.run()
     }
 }
@@ -42,8 +37,7 @@ CapsLock & f::
 {
     if GetKeyState("Ctrl") {
         WinOS.Manager.explorer()
-    }
-    else {
+    } else {
         App.everything()
     }
     IME.set("EN")
@@ -52,12 +46,9 @@ CapsLock & f::
 ; g = google
 CapsLock & g::
 {
-    if GetKeyState("Ctrl") or GetKeyState("Alt")
-    {
+    if GetKeyState("Ctrl") or GetKeyState("Alt") {
         App.Chrome.searchSelected()
-    }
-    else
-    {
+    } else {
         App.Chrome.run()
     }
 }
@@ -65,13 +56,7 @@ CapsLock & g::
 ; e = editor
 CapsLock & e::
 {
-    if GetKeyState("Alt")
-    {
-        App.drawio()
-    }
-    else {
-        App.notion()
-    }
+    App.notion()
 }
 
 ; r = run | develop | java | back-end
@@ -81,12 +66,9 @@ CapsLock & r::
     {
         App.Uniapp.activate()
     }
-    else if GetKeyState("LWin") {
-        App.jmeter()
-    }
     else if GetKeyState("Alt")
     {
-        App.todesk.run()
+        App.Todesk.run()
     } else {
         App.Idea.activate()
     }
@@ -95,20 +77,11 @@ CapsLock & r::
 ; t = terminal | develop | front-end
 CapsLock & t::
 {
-    if GetKeyState("Ctrl")
-    {
+    if GetKeyState("Ctrl") {
         App.WxDevTools.activate()
-    }
-    else if getKeyState("Alt")
-    {
+    } else if getKeyState("Alt") {
         App.Tabby.run()
-    }
-    else if getKeyState("LWin")
-    {
-        App.hwMirror()
-    }
-    else
-    {
+    } else {
         App.Vscode.run()
     }
 }
@@ -146,6 +119,5 @@ CapsLock & v::
 
 ;=====================================================================o
 ;                    DevUtil
-; !0:: Locator.getMousePosCode()
 ; 看电视
 CapsLock & 8:: Send "{Media_Play_Pause}"

@@ -17,7 +17,8 @@ global EnableDebugKeyboard := false
 *3:: Debug.resumeProgram()
 
 *5:: Idea.Jrebel.hotspot()
-*6:: Debug.reboot()
+*6:: Debug.forceReturn()
+*7:: Debug.reboot()
 *[:: IDE.usage()
 *]:: IDE.hierarchy()
 *\:: Debug.run2Cursor()

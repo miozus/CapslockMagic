@@ -3,16 +3,17 @@
 #Include impl\IdeVim.ahk
 #Include impl\WxDevTools.ahk
 #Include impl\Vscode.ahk
+#Include impl\Chrome.ahk
 
 ;=====================================================================o
 ; 仅限大脑喷射编辑器 IDEA
 #Hotif App.Idea.isActive()
 LCtrl & \:: Vim.javaDocViaMethodLine()
-CapsLock & 5:: Idea.Jrebel.compile()
-CapsLock & 7:: Idea.eidtVmOptions()
+CapsLock & 1:: Idea.Jrebel.hotspot()
+CapsLock & 2:: Idea.terminal()
+CapsLock & 3:: Idea.Git.nextDiff()
+CapsLock & 4:: IdeVim.rename()
 CapsLock & b:: Idea.implement()
-CapsLock & .:: Idea.delete()
-CapsLock & n:: Idea.backspace()
 CapsLock & w:: Idea.closeTab()
 CapsLock & x:: Idea.stop()
 CapsLock & z:: Idea.runContextCode()
@@ -21,7 +22,8 @@ CapsLock & z:: Idea.runContextCode()
 ;=====================================================================o
 ; 仅限谷歌浏览器
 #Hotif App.Chrome.isActive()
-CapsLock & 2:: Idea.focusPasteElementByIdeavim()
+CapsLock & 1:: Chrome.address()
+CapsLock & 2:: Chrome.debug()
 #Hotif
 
 ;=====================================================================o
@@ -42,6 +44,6 @@ CapsLock & 5:: Vscode.run()
 #hotif Enviorment.hasIde()
 CapsLock:: IDE.Esc()
 CapsLock & 2:: IDE.terminal()
-CapsLock & 4:: IDE.service()
-CapsLock & 5:: IDE.run()
+CapsLock & 5:: IDE.debug()
+CapsLock & 8:: IDE.service()
 #HotIf

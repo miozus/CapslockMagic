@@ -1,30 +1,13 @@
 ;=====================================================================o
 ;                       CapsLock Initializer
 
-#Include plugin\impl\WinOS.ahk
-#Include plugin\impl\GarbageCollector.ahk
 ; 不用使用“Off”因为语法自身瑕疵，会莫名其妙切换大小写，估计源码底层是！写法
 SetCapsLockState "AlwaysOff"
 
 ;=====================================================================o
 ;                         CapsLock Escaper:
 
-CapsLock::Esc  ; 500ms
-
-; 手动解放大小写锁定
-\::
-{
-    Send "\"
-    keepCapsLockLower()
-    SetTimer () => GC.ModifyKeyDocker(), -1000
-}
-
-
-keepCapsLockLower() {
-    if GetKeyState("CapsLock", "T") {
-        SetCapsLockState "AlwaysOff"
-    }
-}
+CapsLock::Esc
 
 
 ;=====================================================================o
@@ -49,7 +32,6 @@ CapsLock & `::
 ^CapsLock::
 !CapsLock::
 { }
-
 
 
 ;=====================================================================o
@@ -166,11 +148,8 @@ CapsLock & ,::Delete
 ;-----------------------------------o---------------------------------o
 CapsLock & s::
 {
-    if GetKeyState("Alt") = 1
+    if GetKeyState("Ctrl") or GetKeyState("Alt") = 1
         Send "^+{Tab}"
-    else if GetKeyState("Ctrl") = 1
-        ; 同类窗口的切换
-        WinOS.Window.shift()
     else
         Send "^{Tab}"
 }
@@ -190,3 +169,6 @@ CapsLock & w:: {
 
 ; open menu like right click
 CapsLock & /::AppsKey
+
+; 临时映射键盘没有的键位
+CapsLock & b:: Numpad1

@@ -36,7 +36,6 @@
 ; `-----------------------------------------------------------'
 ;
 ;
-SetControlDelay -1
 SendMode "Input"             ; 速度快
 SetWorkingDir A_ScriptDir    ; 当前脚本目录，就是脚本运行目录
 InstallKeybdHook             ; 无条件安装键盘钩子,防止丢失
@@ -83,7 +82,6 @@ allHotkeys.Push("*4")
 ; 增强插件 ============================
 #Include bin\CapsLockEnhancement.ahk
 #Include bin\Numpad.ahk
-#Include bin\SystemIME.ahk
 #Include bin\Mouse.ahk
 #Include bin\Navigator.ahk
 #Include bin\SemicolonHook.ahk

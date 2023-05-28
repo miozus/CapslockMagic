@@ -12,13 +12,14 @@
 #Include ./dict/dict_private.ahk
 #Include ./dict/dict_terminal.ahk
 #Include ./dict/dict_computer.ahk
+#Include ./dict/dict_mysql.ahk
 ; 转换工具
 #Include ../bin/util/UserDictUtil.ahk
 
-global userDict := DictUtil.concat([emojiDict, computerDict, privateDict, logoDict, terminalDict])
+global userDict := DictUtil.concat([emojiDict, computerDict, privateDict, logoDict, terminalDict, mysqlDict])
 
 ; 真实案例：猴子词典转换为第三方输入法词库的代码
-; global macDictionary := UserDict.concat([emojiDict, computerDict, privateDict, logoDict])
+; global macDictionary := UserDict.concat([emojiDict, computerDict, privateDict, logoDict, mysqlDict])
 
 ; CapsLock & 9:: 
 ; {
@@ -27,10 +28,6 @@ global userDict := DictUtil.concat([emojiDict, computerDict, privateDict, logoDi
 
     ; 猴子词典 <- 苹果词典（弹窗选择文件）
     ; Converter.parse()
-
-    ; 猴子词典 <- 苹果词典（文件目录，可选） 
-    ; fileDir := "./dist/userdict4macos.plist"
-    ; Converter.parse(fileDir)
 
 ; }
 
