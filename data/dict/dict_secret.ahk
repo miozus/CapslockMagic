@@ -36,7 +36,6 @@ global secretDict := Map(
     "tt", "",
     "bb", "",
     "vsa", "",
-    "dota", "加载配置",
     ; Idea Action
     "ln", "",
     "lj", "",
@@ -66,9 +65,6 @@ global secretDict := Map(
     "lgi", "",
     "lgg", "",
     "roui", "换UI",
-    "syn", "开发日志_旧",
-    "syk", "开发日志_新",
-    "test", "提交表单",
     ; 坐标点
     "ms", "光标坐标",
     "px", "取色坐标",
@@ -86,4 +82,15 @@ global secretDict := Map(
     "im", "implement",
     ; 快速命令
     "re", "快速命令",
+    "hosts", "本地解析",
+    ; 数字键盘
+    "np1", "Numpad1",
+    "np2", "Numpad2",
+    "np3", "Numpad3",
+    "np4", "Numpad4",
+    ; 浏览器
+    "ot", "oneTab",
+    ; git
+    "gm", "提交代码",
+
 )

@@ -5,10 +5,11 @@ class Software {
 
     static title := ""
     static path := ""
+    static args := ""
 
     ; 激活或运行
     static run() {
-        activateOrRun(this.title, this.path)
+        activateOrRun(this.title, this.path, this.args)
     }
 
     ; 激活

@@ -58,3 +58,48 @@ global EnableDigitKeyboard := false
     GC.enableOtherHotkey(thisHotkey)
     ToolTip
 }
+
+
+class Numpad {
+    
+    static numpad1() {
+        Send "{Numpad1}"
+    }
+
+    static numpad2() {
+        Send "{Numpad2}"
+    }
+
+    static numpad3() {
+        Send "{Numpad3}"
+    }
+
+    static numpad4() {
+        Send "{Numpad4}"
+    }
+
+    static numpad5() {
+        Send "{Numpad5}"
+    }
+
+    static numpad6() {
+        Send "{Numpad6}"
+    }
+
+    static numpad7() {
+        Send "{Numpad7}"
+    }
+
+    static numpad8() {
+        Send "{Numpad8}"
+    }
+
+    static numpad9() {
+        Send "{Numpad9}"
+    }
+
+    static numpad0() {
+        Send "{Numpad0}"
+    }
+
+}

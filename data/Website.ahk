@@ -14,21 +14,12 @@ class Website {
 
   }
 
-  ; 致远 OA
-  class Seeyon {
-
-  }
-
   static codeGen() {
     Run "https://cloud.codegen.cc/"
   }
 
   static alg4() {
     Run "https://visualgo.net/zh/sorting"
-  }
-
-  static editArticles() {
-
   }
 
   static excel2json() {

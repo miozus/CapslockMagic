@@ -6,14 +6,14 @@ class Selenium {
     ; Expected Conditions
     class EC {
 
-        ; 屏幕中按钮的中央坐标和颜色，等待出现就点击
+        ; 屏幕中按钮的中央坐标和颜色，等待出现就点击，最多等待n秒
         static buttonIs(x0, y0, color, timeout := 10)
         {
             ; 随机延迟：它可能加速快
             Loop timeout
             {
-                if (PixelSearch(&FoundX, &FoundY, x0 - 500, y0 - 500, x0 + 500, y0 + 500, color, 3)) {
-                    Click FoundX, FoundY
+                if (PixelSearch(&FoundX, &FoundY, x0 - 100, y0 - 100, x0 + 100, y0 + 100, color, 3)) {
+                    Click FoundX + 5, FoundY + 5
                     tooltip
                     return true
                 }

@@ -25,9 +25,7 @@ class Idea extends App.Idea {
     }
 
 
-    ; 奇怪的环境经常被 Alt 锁住
     static terminal() {
-        Send "{Alt Up}"
         Send "{Blind!#^}!{F12}"
     }
 

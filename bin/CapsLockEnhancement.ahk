@@ -31,7 +31,8 @@ CapsLock & `::
 
 ^CapsLock::
 !CapsLock::
-{ }
+{ 
+}
 
 
 ;=====================================================================o
@@ -172,3 +173,6 @@ CapsLock & /::AppsKey
 
 ; 临时映射键盘没有的键位
 CapsLock & b:: Numpad1
+
+; 适用美术设计：左手按键盘 + 右手鼠标
+CapsLock & Space:: Send "{Blind}{Enter}"

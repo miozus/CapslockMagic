@@ -12,10 +12,9 @@ LCtrl & \:: Vim.javaDocViaMethodLine()
 CapsLock & 1:: Idea.Jrebel.hotspot()
 CapsLock & 2:: Idea.terminal()
 CapsLock & 3:: Idea.Git.nextDiff()
-CapsLock & 4:: IdeVim.rename()
+CapsLock & 6:: IdeVim.rename()
 CapsLock & b:: Idea.implement()
 CapsLock & w:: Idea.closeTab()
-CapsLock & x:: Idea.stop()
 CapsLock & z:: Idea.runContextCode()
 #HotIf
 
@@ -37,6 +36,7 @@ CapsLock & 2:: WxDevTools.testRegisterCreate()
 ; 仅VSCode
 #Hotif App.Vscode.isActive()
 CapsLock & 5:: Vscode.run()
+CapsLock & b:: Idea.implement()
 #Hotif
 
 ;=====================================================================o

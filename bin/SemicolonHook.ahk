@@ -6,7 +6,6 @@
 +A:: Send "{Blind}{text}●"          ; 分点论述的符号
 *A:: Send "{blind}*"                ; 星号
 *I:: Send "{blind}:"                ; 插入（Vim）
-*,:: Send "{blind}{space}"          ; 因为空格键经常误触换行
 +V:: Send "{blind}{text}、"         ; 中文顿号
 *V:: Send "{blind}|"                ; or
 *Y:: Send "{blind}@"                ; at
@@ -22,7 +21,7 @@
 *Q:: Send "{blind}("                ; 括号 [k]uo hao
 *U:: Send "{blind}$"                ; 句子后
 *E:: Send "{blind}{^}"              ; 句子前，上中左右, up
-+J:: Send "{blind}{text}；"          ; 中文分号，大人什么都要
++J:: Send "{blind}{text}；"         ; 中文分号，大人什么都要
 *J:: Send "{blind}{text};"          ; 英文分号，被自动补全替代
 *C:: Send "{blind}."                ; 1键变2个键是否过度设计？.=, copy复用上次操作，保证输出英文（避免中文影响）
 +B:: Send "{blind}W"                ; 防误触
@@ -34,12 +33,13 @@
 *M:: Send "{blind}{+}"              ; minus/减少
 +T:: Send "{blind!+}{Space 4}"      ; 类似 tab
 *T:: Send "{blind}~"                ; 终端用户根目录
-*Z:: Send "{blind}^z"               ; 撤回，相当于删字
+*Z:: Vim.focusMethod()              ; 光标定位到函数名字（Vim）
+*,:: Send "{blind}{space}"          ; 因为空格键经常误触换行
 !Space:: send "{blind}{Alt}{enter}" ; 表格换行
 *Space:: send "{blind}{enter}"      ; 回车，免位移
 *O:: IME.toggle()                   ; 终端可用 Esc 切换回英文，任意场合用 Rshift 切换，或再按一遍
 *1:: IME.commentCN("//")            ; java 注释
-*2:: IME.commentCN(";")             ; ahk注释
+*2:: IME.commentCN(";")             ; ahk 注释
 #Hotif
 
 
@@ -48,7 +48,7 @@
 global EnableSemicolonComfort := false
 ; 词典数据 /data/dict
 semicolonHookStr := getKeyStr(secretDict) "," getKeyStr(userDict)
-semicolonHook := InputHook("C", "{Space}{Esc}", semicolonHookStr)
+semicolonHook := InputHook("c", "{Space}{Esc}", semicolonHookStr)
 semicolonHook.OnChar := onTypoChar
 semicolonHook.OnEnd := onTypoEnd
 

@@ -92,10 +92,11 @@ allHotkeys.Push("*4")
 #Include bin\plugin\GarbageKB.ahk
 #Include bin\plugin\NotionKB.ahk
 #Include bin\plugin\IDEKB.ahk
+#Include bin\plugin\FigmaKB.ahk
 
 ; 全局配置结束 ===========
 
-; y = why | reload script 脚本暂停标记，至少留一组快捷键控制脚本重启
+; y = why | reload script 脚本暂停标记，至少留一组快捷键控制脚本重启，激活最新改动版本
 #SuspendExempt
 
 CapsLock & y:: Reload

@@ -30,7 +30,6 @@ global INDENT_LEVEL := 0
 ; 居然映射成 ESC 和 ^v 这太诡异了; 不要留空格;
 CapsLock & b:: Send "{Blind}^+h"
 CapsLock & x:: Send "{Blind}{Backspace}"
-CapsLock & Space:: Send "{Blind}{Enter}"
 ; 鼠标前进和后退
 XButton1:: ^[
 XButton2:: ^]

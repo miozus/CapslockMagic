@@ -74,6 +74,18 @@ class App {
             this.path := A_Desktop "\Another Redis Desktop Manager.lnk"
         }
     }
+    
+    ; === 网络 =================================================
+
+    class DNS extends Software {
+        
+        static __New() {
+            this.args :=  " C:\Windows\System32\drivers\etc\hosts"
+            this.title := "hosts - Visual Studio Code"
+            this.path := App.Vscode.path
+        }
+
+    }
 
     ; === 测试 =================================================
 
@@ -150,6 +162,14 @@ class App {
         title := "ahk_exe msedge.exe"
         activateOrRun(title, path)
     }
+    
+    class Figma extends Software {
+
+        static __New() {
+            this.title := " Figma - Google Chrome ahk_class Chrome_WidgetWin_1"
+            this.path := "https://www.figma.com/file/IMSlvvPACLl36rzjMPnv98/uView1-UI-Kit-%EF%BC%88Probe%EF%BC%89-(Community)?type=design&node-id=2258-4073&t=yMPcmikHeRq4HIJP-0"
+        }
+    }
 
     ; === 笔记 =================================================
 
@@ -193,6 +213,10 @@ class App {
     }
 
     ; === 其他 =================================================
+
+    static eaudic() {
+        Send "{blind}!+m"
+    }
 
     static everything() {
         Send "{blind}!+f"

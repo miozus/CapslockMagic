@@ -7,4 +7,8 @@ class Chrome extends App.Chrome {
     static address() {
         Send "!d"
     }
+    
+    static oneTab() {
+        Send "!+1"
+    }
 }

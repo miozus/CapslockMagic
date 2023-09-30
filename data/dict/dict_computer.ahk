@@ -149,8 +149,10 @@ computerDict := Map(
     "vir", "import { ref } from 'vue'",
     ; ES6
     "jcp", "var obj = JSON.parse(JSON.stringify())`;", ; json copy obj
-    "kin", "Object.keys(obj).length === 0", ; keys is null
-    "knn", "Object.keys(obj).length !== 0", ; keys not null
+    "kin", "Object.keys(obj).length === 0 && obj.constructor === Object", ; keys is null
+    "knn", "!(Object.keys(obj).length === 0 && obj.constructor === Object)", ; keys not null
     ; service
     "lls", 'cd E:\MagicBook\company\mall\lilishop\lilishop-ui\seller `;`; npm run dev', ; 丽丽商城店铺端UI
+    ; logger
+    "lgf", 'log.info(Progress.format(locationName, String.format("")));',
 )

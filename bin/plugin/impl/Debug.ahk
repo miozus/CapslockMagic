@@ -1,11 +1,11 @@
-; Intellij IDEA 调试动作
+; Intelj IDEA 调试动作
 ; ---
 ; docs: https://www.cnblogs.com/chiangchou/p/idea-debug.html
 class Debug {
 
     Enable := false
 
-    ; view , when condition is true
+    ; view , when contion is true
     static view() {
         Send "{blind}^+{F8}"
         ToolTip "🔍"

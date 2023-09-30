@@ -1,5 +1,9 @@
 class Vim {
-    
+    ; 定位当前行的函数名字，方便源码之间跳转
+    static focusMethod() {
+        Send "{blind}{Esc}`%`%h"
+    }
+
     ; 剪切板的单词，填写到 methods 下面
     static implement() {
         this.find("methods")
@@ -14,7 +18,7 @@ class Vim {
 
     static find(str) {
         Send "{Esc}"
-        Send "/" 
+        Send "/"
         Sleep 50
         SendText str
         Sleep 50
@@ -55,7 +59,7 @@ class Vim {
         Send "{Left}"
         IME.set("中文")
     }
-
+    
     static changeCnCommentInDoubleQuotes() {
         Send '{Blind}ci"'
         IME.set("中文")

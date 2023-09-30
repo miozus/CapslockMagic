@@ -1,4 +1,5 @@
 #Include plugin\impl\WinOS.ahk
+#Include plugin\impl\Git.ahk
 
 ; 分号短语命令
 class SemicolonAbbr {
@@ -30,10 +31,6 @@ class SemicolonAbbr {
             case "dl": WinOS.Desktop.next()
             case "no": WinOS.Editor.notepad()
             case "rex": WinOS.Manager.explorerReload()
-                ; ====  配置方案 ====
-            case "dota": Dotfiles.apply()
-            case "dotb": Dotfiles.backup()
-            case "doto": Dotfiles.open()
             case "dt": Timer.showDatetime()
                 ; ====  应用管理 ====
             case "spy": App.AHK.winSpy()
@@ -86,6 +83,7 @@ class SemicolonAbbr {
             case "gmex": BatchLauncher.gameExit()
                 ; ====  电脑控制 ====
             case "sound": App.AHK.winSoundComponent()
+            case "hosts": App.DNS.run()
             case "mute": Send "{Volume_Mute}"
             case "mic": SoundVolume.switchVolumeAndMicrophone()
                 ; ====  前端编码 ====
@@ -95,6 +93,15 @@ class SemicolonAbbr {
             case "vd": Vim.find("data()")
             case "vv": Vim.find("view")
             case "im": Vim.implement()
+                ; ====  浏览器 ====
+            case "ot": Chrome.oneTab()
+                ; ====  数字键盘 ====
+            case "np1": Numpad.numpad1()
+            case "np2": Numpad.numpad2()
+            case "np3": Numpad.numpad3()
+            case "np4": Numpad.numpad4()
+                ; ====  版本管理 ====
+            case "gm": Git.commitAllByComment()
                 ; ====  快速测试 ====
             case "re": UnitTest.testFunction()
             default:
@@ -107,9 +114,7 @@ class SemicolonAbbr {
 class UnitTest {
 
     static testFunction() {
-        ; tooltip WinActive("ahk_exe STGameOpt.exe")
-        ; tooltip WinActive("ahk_class START Cloud Game ahk_exe STGameOpt.exe")
-        ; tooltip WinActive("ahk_class START Cloud Game Render ahk_exe STGameOpt.exe")
+
     }
 }
 

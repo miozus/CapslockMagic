@@ -62,6 +62,7 @@ class IDE {
             }
             Send "{Left}"
         }
+        
 
         ; 前提：[NORMAL] Ctrl+C / y 拷贝
         static infoPaste()

@@ -8,6 +8,8 @@ emojiDict := Map(
     "mty", "🦉",   ; 猫头鹰/debug
     "jsq", "🧮",   ; 计算器/算盘
     "whlo", "🌐",   ; 网络/地球
+    "fhhoql", "🧱",  ; 防火墙
+    "hoyj", "🔥",  ; 火焰
     ; RESTful
     "dv", "✅",
     "xyhr", "🔄",  ; 循环/多次/重复/loop/multiple
@@ -219,7 +221,12 @@ emojiDict := Map(
     "mdjx", "🤾", ; 买家
     "tsys", "🔩", ; 通用
     "gzwu", "🛒", ; 购物/消费
-    "dmhx", "📞", ; 客服
+    ; 天气
+    "doyy", "🌤️", ;多云
+    ; 表情
+    "sikc", "🤔", ; 思考
+    "nvrf", "👩", ; 女人
+    "njrf", "👨", ; 男人
 
 )
 

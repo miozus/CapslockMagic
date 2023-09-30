@@ -1,7 +1,5 @@
 ; 个人私有词典
 privateDict := Map(
-    ; 查看磁盘分区大小
-    ; "fdiskl", "fdisk -l",
     ; 中文词组
     "guli", "谷粒",
     "vswf", "中文",
@@ -44,6 +42,7 @@ privateDict := Map(
     "dayu", ">",
     "dydy", "≥",
     "numno", "№", ; 数字编号
+    "pfm", "㎡",  ; 平方米
     ; 系统按键符号
     "backdel", "⌦",
     "del", "⌫",
