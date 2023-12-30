@@ -54,7 +54,7 @@ class GC {
 
     static disableOtherHotkey(thisHotkey)
     {
-        global allHotkeys, EnableChinesePunctuation := false
+        global allHotkeys
         for index, value in allHotkeys
         {
             if (value != thisHotkey) {
@@ -65,7 +65,7 @@ class GC {
 
     static enableOtherHotkey(thisHotkey)
     {
-        global allHotkeys, EnableChinesePunctuation := true
+        global allHotkeys
         for index, value in allHotkeys
         {
             if (value != thisHotkey) {

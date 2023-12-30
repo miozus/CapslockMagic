@@ -74,13 +74,13 @@ class App {
             this.path := A_Desktop "\Another Redis Desktop Manager.lnk"
         }
     }
-    
+
     ; === 网络 =================================================
 
     class DNS extends Software {
-        
+
         static __New() {
-            this.args :=  " C:\Windows\System32\drivers\etc\hosts"
+            this.args := " C:\Windows\System32\drivers\etc\hosts"
             this.title := "hosts - Visual Studio Code"
             this.path := App.Vscode.path
         }
@@ -162,7 +162,7 @@ class App {
         title := "ahk_exe msedge.exe"
         activateOrRun(title, path)
     }
-    
+
     class Figma extends Software {
 
         static __New() {
@@ -175,9 +175,9 @@ class App {
 
     static notion() {
         path := A_Programs "\Notion.lnk"
-        title := "ahk_exe Notion.exe"
+        title := "ahk_class Chrome_WidgetWin_1 ahk_exe Notion.exe"
         activateOrRun(title, path)
-        IME.set("中文")
+        IME.set("中")
     }
 
     static notionEnhance() {
@@ -209,7 +209,7 @@ class App {
             this.title := "ahk_class TXGuiFoundation ahk_exe wemeetapp.exe"
             this.path := A_Programs "\腾讯会议.lnk"
         }
-        
+
     }
 
     ; === 其他 =================================================
@@ -286,6 +286,13 @@ class App {
         static __New() {
             this.title := "ahk_class WeChatMainWndForPC ahk_exe WeChat.exe"
             this.path := A_Programs "\微信\微信.lnk"
+        }
+    }
+
+    class Tim extends Software {
+        static __New() {
+            this.title := "ahk_class TXGuiFoundation ahk_exe TIM.exe"
+            this.path := "D:\tools\Tencent\TIM\Bin\TIM.exe"
         }
     }
 
@@ -371,3 +378,14 @@ class Enviorment {
     }
 
 }
+
+;; ======================================================================
+
+; 临时脚本: 处理瑞和锦程，并发节点不能合并策略问题
+
+
+class QuickStart {
+
+}
+
+; ^x:: QuickStart.scrollDown()

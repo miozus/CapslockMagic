@@ -41,7 +41,7 @@ privateDict := Map(
     "xydy", "≤",
     "dayu", ">",
     "dydy", "≥",
-    "numno", "№", ; 数字编号
+    "num", "№", ; 数字编号
     "pfm", "㎡",  ; 平方米
     ; 系统按键符号
     "backdel", "⌦",
@@ -57,4 +57,6 @@ privateDict := Map(
     "ltab", "⇤",
     "space", "␣",
     "yrdm", "•",
+    ; 制表符号
+    "xsj", "▼", ; 下三角
 )

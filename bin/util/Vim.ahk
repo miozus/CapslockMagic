@@ -57,12 +57,12 @@ class Vim {
     static inputChineseInDdoubleQuotes() {
         Send "{Text}`"`""
         Send "{Left}"
-        IME.set("中文")
+        IME.set("中")
     }
     
     static changeCnCommentInDoubleQuotes() {
         Send '{Blind}ci"'
-        IME.set("中文")
+        IME.set("中")
     }
 
     ; vim micro

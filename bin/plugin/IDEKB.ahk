@@ -4,6 +4,7 @@
 #Include impl\WxDevTools.ahk
 #Include impl\Vscode.ahk
 #Include impl\Chrome.ahk
+#Include ..\..\data\Website.ahk
 
 ;=====================================================================o
 ; 仅限大脑喷射编辑器 IDEA
@@ -15,7 +16,7 @@ CapsLock & 3:: Idea.Git.nextDiff()
 CapsLock & 6:: IdeVim.rename()
 CapsLock & b:: Idea.implement()
 CapsLock & w:: Idea.closeTab()
-CapsLock & z:: Idea.runContextCode()
+; CapsLock & z:: Idea.runContextCode()
 #HotIf
 
 ;=====================================================================o

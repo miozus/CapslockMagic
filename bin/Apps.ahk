@@ -117,10 +117,14 @@ CapsLock & v::
 }
 
 ; x = ? dict
-CapsLock & x::
+CapsLock & z::
 {
     App.eaudic()
 }
+
+; 配合鼠标使用，因为删除键较远
+CapsLock & x:: Send "{Blind}{Backspace}"
+
 
 
 ;=====================================================================o

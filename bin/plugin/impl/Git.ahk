@@ -3,7 +3,7 @@ class Git {
 
     static commitAllByComment() {
         SendText "gaa `;`; gcam '* "
-        IME.set("中文")
+        IME.set("中")
     }
 
 }

@@ -34,7 +34,8 @@
 +T:: Send "{blind!+}{Space 4}"      ; 类似 tab
 *T:: Send "{blind}~"                ; 终端用户根目录
 *Z:: Vim.focusMethod()              ; 光标定位到函数名字（Vim）
-*,:: Send "{blind}{space}"          ; 因为空格键经常误触换行
+; *,:: Send "{blind}{space}"          ; 因为空格键经常误触换行
+*,:: Send "{blind}{text},"          ; 因为空格键经常误触换行
 !Space:: send "{blind}{Alt}{enter}" ; 表格换行
 *Space:: send "{blind}{enter}"      ; 回车，免位移
 *O:: IME.toggle()                   ; 终端可用 Esc 切换回英文，任意场合用 Rshift 切换，或再按一遍
@@ -48,7 +49,7 @@
 global EnableSemicolonComfort := false
 ; 词典数据 /data/dict
 semicolonHookStr := getKeyStr(secretDict) "," getKeyStr(userDict)
-semicolonHook := InputHook("c", "{Space}{Esc}", semicolonHookStr)
+semicolonHook := InputHook("C", "{Space}{Esc}", semicolonHookStr)
 semicolonHook.OnChar := onTypoChar
 semicolonHook.OnEnd := onTypoEnd
 

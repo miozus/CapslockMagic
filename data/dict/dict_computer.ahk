@@ -138,6 +138,7 @@ computerDict := Map(
     "zfb", "vsdgso6117@sandbox.com",
     ; mysql
     "mc", "set global max_connections=1000`;", ; too many connections
+    "gta", "grant all on ``ginchat``.* to ``ginchat``@``%`` with grant option;",
     ; unittest
     "sk", '@unittest.skip("")',
     ; Golang

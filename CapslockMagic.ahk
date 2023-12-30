@@ -46,14 +46,17 @@ DetectHiddenWindows True     ; 虚拟桌面：打开检测隐藏窗口，自动�
 ; 鼠标移速
 global kMouseMoveSpeedFast := 97
 global kMouseMoveSpeedSlow := 11
-; 是否开启输入法保证中文标点[，。：？] 但分号特殊符不受影响，仍是英文标点
-global EnableChinesePunctuation := true
-; 声明正在使用的中文输入法类型
+; 用户正在使用的中文输入法类型
 ; ---
-; - MICROSOFT 微软拼音/搜狗五笔/手心输入法
-; - QQ        QQ拼音
-; - OTHER     搜狗拼音/其他
-global kImeType := PinYinEnum.MICROSOFT
+; - WETYPE          微信输入法(推荐)
+; - MICROSOFT       微软拼音(Win11+)
+; - MICROSOFT_EARLY 微软拼音
+; - SOU_GOU_WU_BI   搜狗五笔
+; - SOU_GOU_PIN_YIN 搜狗拼音
+; - SHOU_XIN        手心输入法
+; - QQ_PIN_YIN      QQ拼音
+; - OTHER           其他（需要你调试）
+global kImeType := PinYinEnum.WETYPE
 
 ;=====================================================================o
 ;                       CapsLock init
