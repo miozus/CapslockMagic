@@ -42,7 +42,7 @@
             - 还要在 `bin\SemicolonHook.ahk` 的`execSemicolonAbbr` 方法中添加一种情况 `case "sleep": computerGoSleep()`
         - 技巧：它可以用来写 Vim 的宏，完美的跨软件运行方案。
 
-【案例】[1分钟学会添加一个猴子词条](zh-cn/note/add-monkey-dict.md)
+【案例】1分钟学会添加一个猴子词条:[快捷短语](zh-cn/note/add-monkey-dict-string.md) [魔法命令](zh-cn/note/add-monkey-dict-command.md)
 
 #### 映射编码规则
 
