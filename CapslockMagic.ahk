@@ -57,6 +57,8 @@ global kMouseMoveSpeedSlow := 11
 ; - QQ_PIN_YIN      QQ拼音
 ; - OTHER           其他（需要你调试）
 global kImeType := PinYinEnum.WETYPE
+; 微信输入法且中文标点状态下，部分分号快捷键依然输出英文标点，适用编程
+global EnableEnPunctionByWeType := true
 
 ;=====================================================================o
 ;                       CapsLock init
