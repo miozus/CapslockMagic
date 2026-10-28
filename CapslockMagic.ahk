@@ -97,7 +97,7 @@ allHotkeys.Push("*4")
 #Include bin\plugin\GarbageKB.ahk
 #Include bin\plugin\NotionKB.ahk
 #Include bin\plugin\IDEKB.ahk
-#Include bin\plugin\FigmaKB.ahk
+#Include bin\plugin\WxDevToolsKB.ahk
 
 ; 全局配置结束 ===========
 

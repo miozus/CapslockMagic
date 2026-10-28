@@ -56,7 +56,7 @@ CapsLock & g::
 ; e = editor
 CapsLock & e::
 {
-    App.notion()
+    App.deepseekHarness()
 }
 
 ; r = run | develop | java | back-end
@@ -64,7 +64,7 @@ CapsLock & r::
 {
     if GetKeyState("Ctrl")
     {
-        App.Uniapp.activate()
+        App.Cursor.activate()
     }
     else if GetKeyState("Alt")
     {
@@ -119,7 +119,7 @@ CapsLock & v::
 ; x = ? dict
 CapsLock & z::
 {
-    App.eaudic()
+    App.eudic()
 }
 
 ; 配合鼠标使用，因为删除键较远

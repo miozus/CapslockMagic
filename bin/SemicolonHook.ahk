@@ -62,8 +62,7 @@
 *,:: Send "{blind},"                ; 因为空格键经常误触换行
 ; 以下中英文模式通用
 *Z:: Vim.focusMethod()              ; 光标定位到函数名字（Vim）
-!Space:: send "{blind}{Alt}{enter}" ; 表格换行
-*Space:: send "{blind}{enter}"      ; 回车，免位移
+*Space:: Send "{blind}+{enter}" ; 换行回车，适用于各种默认的编辑器，而且左shift坏了
 *O:: IME.toggle()                   ; 终端可用 Esc 切换回英文，任意场合用 Rshift 切换，或再按一遍
 *1:: IME.commentCN("//")            ; java 注释
 *2:: IME.commentCN(";")             ; ahk 注释

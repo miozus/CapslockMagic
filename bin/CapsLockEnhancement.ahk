@@ -155,13 +155,13 @@ CapsLock & s::
         Send "^{Tab}"
 }
 
-CapsLock & q::
-{
-    if GetKeyState("Alt") = 0
-        Send "^{F4}"
-    else
-        Send "!{F4}"
-}
+; CapsLock & q::
+; {
+;     if GetKeyState("Alt") = 0
+;         Send "^{F4}"
+;     else
+;         Send "!{F4}"
+; }
 
 ; close Tab
 CapsLock & w:: {

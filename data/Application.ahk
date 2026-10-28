@@ -58,13 +58,21 @@ class App {
         }
     }
 
+    class Cursor extends Software {
+        static __New() {
+            this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe Cursor.exe"
+            this.path := A_Programs "\Cursor\Cursor.lnk"
+        }
+    }
+
 
     ; === 数据 =================================================
 
     class Navicat extends Software {
         static __New() {
             this.title := "ahk_class TNavicatMainForm ahk_exe navicat.exe"
-            this.path := A_ProgramsCommon "\PremiumSoft\Navicat Premium 16.lnk"
+            ; this.path := A_ProgramsCommon "\PremiumSoft\Navicat Premium 16.lnk"
+            this.path := "C:\Users\Public\Desktop\Navicat Premium 16.lnk"
         }
     }
 
@@ -137,8 +145,16 @@ class App {
     class Chrome extends Software {
 
         static __New() {
-            this.path := A_AppData "\Microsoft\Internet Explorer\Quick Launch\Google Chrome.lnk"
+            ; 2025/07/01 遭遇故障打不开
+            this.path := "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome.lnk"
             this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe chrome.exe"
+            ; 360极速浏览器X 临危受命
+            ; this.path := "D:\tools\360\360ChromeX\Chrome\Application\360ChromeX.exe"
+            ; this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe 360ChromeX.exe"
+
+            ; Zen 浏览器临危受命（能避开域名备案）
+            ; this.path := "D:\tools\360\360ChromeX\Chrome\Application\360ChromeX.exe"
+            ; this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe 360ChromeX.exe"
         }
 
         static searchSelected() {
@@ -154,6 +170,16 @@ class App {
         }
     }
 
+    ; 360极速浏览器X 临危受命
+    class ChromeX360 extends Software {
+
+        static __New() {
+            this.path := "D:\tools\360\360ChromeX\Chrome\Application\360ChromeX.exe"
+            this.title := "ahk_class Chrome_WidgetWin_1 ahk_exe 360ChromeX.exe"
+        }
+
+    }
+
 
     ; 谷歌搜索选中文字
 
@@ -163,12 +189,13 @@ class App {
         activateOrRun(title, path)
     }
 
-    class Figma extends Software {
+    ; === ai =================================================
 
-        static __New() {
-            this.title := " Figma - Google Chrome ahk_class Chrome_WidgetWin_1"
-            this.path := "https://www.figma.com/file/IMSlvvPACLl36rzjMPnv98/uView1-UI-Kit-%EF%BC%88Probe%EF%BC%89-(Community)?type=design&node-id=2258-4073&t=yMPcmikHeRq4HIJP-0"
-        }
+    static deepseekHarness() {
+        path := A_Programs "\DeepSeek Harness.lnk"
+        title := "ahk_class Chrome_WidgetWin_1 ahk_exe DeepSeek Harness.exe"
+        activateOrRun(title, path)
+        IME.set("中")
     }
 
     ; === 笔记 =================================================
@@ -186,11 +213,6 @@ class App {
         activateOrRun(title, path)
     }
 
-    static drawio() {
-        path := "E:\seeyon\project\安顺市平坝区煤矿企业产销量综合监管平台项目\UML\协同分析业务流程设计稿.drawio"
-        title := "ahk_exe draw.io.exe"
-        activateOrRun(title, path)
-    }
 
     ; === 办公 =================================================
 
@@ -214,7 +236,7 @@ class App {
 
     ; === 其他 =================================================
 
-    static eaudic() {
+    static eudic() {
         Send "{blind}!+m"
     }
 
@@ -366,6 +388,7 @@ class Enviorment {
             App.Terminal,
             App.Tabby,
             App.Todesk,
+            App.Cursor
         ]
         for ide in ides
             if WinActive(ide.Title)
@@ -381,11 +404,21 @@ class Enviorment {
 
 ;; ======================================================================
 
-; 临时脚本: 处理瑞和锦程，并发节点不能合并策略问题
+; 临时脚本:
 
+#Include ./Website.ahk
 
 class QuickStart {
 
+
+    static run() {
+    }
+
+
+    static stop() {
+        Reload
+    }
+    
 }
 
 ; ^x:: QuickStart.scrollDown()

@@ -1,7 +1,6 @@
 #Include impl\IDE.ahk
 #Include impl\Idea.ahk
 #Include impl\IdeVim.ahk
-#Include impl\WxDevTools.ahk
 #Include impl\Vscode.ahk
 #Include impl\Chrome.ahk
 #Include ..\..\data\Website.ahk
@@ -9,7 +8,7 @@
 ;=====================================================================o
 ; 仅限大脑喷射编辑器 IDEA
 #Hotif App.Idea.isActive()
-LCtrl & \:: Vim.javaDocViaMethodLine()
+; LCtrl & \:: Vim.javaDocViaMethodLine()
 CapsLock & 1:: Idea.Jrebel.hotspot()
 CapsLock & 2:: Idea.terminal()
 CapsLock & 3:: Idea.Git.nextDiff()

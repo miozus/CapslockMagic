@@ -1,3 +1,6 @@
+; 微信开发者工具测试脚本
+; 版本号：Stable 2.01.2510260
+; 窗口配置条件：全屏 Huawei Mate 80 92% 16
 class WxDevTools extends App.WxDevTools {
 
     static batch() {
